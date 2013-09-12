@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf8" />
+		<title>test dessin</title>
+		<link rel="stylesheet" href="test.css">
+		<link rel="stylesheet" href="color.css">
+		<script src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>
+		<script src="http://github.com/DmitryBaranovskiy/raphael/raw/master/raphael-min.js"></script>
+		<script src="popup.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
+		<script id="repl_table_Tpl" type="text/template">
+<h2>Replicon</h2>
+    <ul>
+        {{#replicon}}
+        <li>name: {{name}}</li>
+        <li>length: {{length}}</li>
+        <li>topology: {{topology}}</li> 
+        {{/replicon}}
+    </ul>
+    
+    
+    <div id="genes_schema" class="grabbable">
+    </div>
+    
+    <h3>Genes</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Protein-length</th>
+                <th>Strand</th>
+                <th>Position</th>
+                <th>Match</th>
+                <th>System</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#genes}}
+            <tr>
+                <td {{#match}} class="gene_{{match}}"{{/match}}>{{name}}</td>
+                <td>{{sequence_length}}</td>
+                <td>{{strand}}</td>
+                <td>{{position}}</td>
+                <td>{{match}}</td>
+                <td>{{system}}</td>
+            </tr>
+            {{/genes}}
+        </tbody>
+    </table>
+</script>
+ </head>
+    <body>
+    <H1>test javascript</H1>
+    <div id="genes_schema" class="grabbable">
+    </div>
+    <div id="table">
+    
+    </div>
+</body>
+     <script type="text/javascript">
+        //if I don't put my script here Rapahael produce an error
+        //due to jquery selector which not work 
+        //even if I use document.ready  
+        
+        var Replicon = function Replicon(doc){
+            this.length = doc.replicon.length;
+            this.topology = doc.replicon.topology;
+            this.genes = [];
+            var genes_number = doc.genes.length;
+            this.all_protein_length = 0;
+            for (var i = 0; i < genes_number; i++){
+                this.genes[i] = new Gene(this, doc.genes[i]);
+                this.all_protein_length = this.all_protein_length + this.genes[i].length
+            }
+            //drawer need to acces to genes so 
+            //it must be created after all genes
+            if (this.topology == 'linear'){
+                this.drawer = new LinearDrawer(this)
+            } else {
+                this.drawer = new CircularDrawer(this)
+            }
+            
+            //this.drawing = this.draw();
+        }
+        
+        Replicon.prototype.draw = function draw_replicon(paper){
+            if (this.topology == 'linear'){
+                repl_len_in_px = this.drawer.paper_w -(2 * this.drawer.replicon_offset);
+                return paper.path(["M, ",this.drawer.replicon_offset, this.drawer.y_replicon, 
+                                   "h", repl_len_in_px, "a25,5 -1 0,1 0,5h", 
+                                   (-1*(repl_len_in_px)),"a25,5 0 0,1 0,-5z"]).attr({fill: "#aaa", stroke:"#aaa", "stroke-width":"1"} );
+            }else{
+            	var rep = paper.set()
+                var circ = paper.circle(this.drawer.x_center,
+                		  this.drawer.y_center,
+                		  this.drawer.radius['replicon']).attr({stroke:"#aaa", "stroke-width":"3"} );
+                rep.push(circ);
+                var ori_coord = this.drawer.pos_2_coord(0,"outer_body");
+                var ori = paper.rect(ori_coord[0], 
+                	                 ori_coord[1], 
+                		             2, 
+                		             this.drawer.radius["outer_body"] - this.drawer.radius["inner_body"]).attr({fill: "#aaa", stroke:"#aaa"});
+                rep.push(ori);
+                return rep
+            }
+        }
+        Replicon.prototype.zoom = function zoom(factor){}
+        Replicon.prototype.translate = function translate(dx, dy){}
+        
+        var Gene = function Gene(replicon, doc_gene){
+            this.replicon = replicon;
+            this.paper = replicon.paper
+            this.name = doc_gene.name;
+            this.position = doc_gene.position;
+            this.length = doc_gene.sequence_length;
+            this.strand = doc_gene.strand;
+            this.match = doc_gene.match;
+            //this.drawing = this.draw();
+            // est ce qu'il faut aussi une method resize
+            // binder sur les evt de resize de la fenetre
+            // ou on utilise zoom?
+        }
+        
+        Gene.prototype.draw = function draw_gene(paper){
+            var drawer = this.replicon.drawer;
+            /*********************************
+            *        draw the arrow
+            **********************************/
+            if(this.strand =='D' ){
+            	var body_l = this.length * 3 / 4;
+                var pt_0 = drawer.pos_2_coord(this.position,"inner_body");
+                var pt_1 = drawer.pos_2_coord(this.position + body_l, "inner_body");
+                var pt_2 = drawer.pos_2_coord(this.position + body_l, "inner_head");
+                var pt_3 = drawer.pos_2_coord(this.position + this.length, "replicon");
+                var pt_4 = drawer.pos_2_coord(this.position + body_l, "outer_head");
+                var pt_5 = drawer.pos_2_coord(this.position + body_l, "outer_body");
+                var pt_6 = drawer.pos_2_coord(this.position, "outer_body");
+                var arrow_path = ["M ", pt_0[0], pt_0[1],
+                                  "A", drawer.radius["inner_body"], drawer.radius["inner_body"], pt_1[2], "0,1", pt_1[0], pt_1[1],
+                                  "L", pt_2[0], pt_2[1],
+                                  "L", pt_3[0], pt_3[1],
+                                  "L", pt_4[0], pt_4[1],
+                                  "L", pt_5[0], pt_5[1],
+                                  "A", drawer.radius["outer_body"], drawer.radius["outer_body"], pt_1[2], "0,0", pt_6[0], pt_6[1],
+                                  "Z"
+                                  ];
+            }else if(this.strand =='C' ){
+            	var head_l = this.length / 4;
+                var pt_0 = drawer.pos_2_coord(this.position,"replicon");
+                var pt_1 = drawer.pos_2_coord(this.position + head_l, "inner_head");
+                var pt_2 = drawer.pos_2_coord(this.position + head_l, "inner_body");
+                var pt_3 = drawer.pos_2_coord(this.position + this.length, "inner_body");
+                var pt_4 = drawer.pos_2_coord(this.position + this.length, "outer_body");
+                var pt_5 = drawer.pos_2_coord(this.position + head_l, "outer_body");
+                var pt_6 = drawer.pos_2_coord(this.position+ head_l, "outer_head");
+                var arrow_path = ["M ", pt_0[0], pt_0[1],
+                                  "L", pt_1[0], pt_1[1],
+                                  "L", pt_2[0], pt_2[1],
+                                  "A", drawer.radius["inner_body"], drawer.radius["inner_body"], pt_3[2], "0,1", pt_3[0], pt_3[1],
+                                  "L", pt_4[0], pt_4[1],
+                                  "A", drawer.radius["outer_body"], drawer.radius["outer_body"], pt_3[2], "0,0", pt_5[0], pt_5[1],
+                                  "L", pt_6[0], pt_6[1],
+                                  "Z"
+                                  ];
+            }else{
+                var pt_0 = drawer.pos_2_coord(this.position,"inner_body");
+                var pt_1 = drawer.pos_2_coord(this.position + this.length ,"inner_body");
+                var pt_2 = drawer.pos_2_coord(this.position + this.length ,"outer_body");
+                var pt_3 = drawer.pos_2_coord(this.position ,"outer_body");
+                var arrow_path = ["M ", pt_0[0], pt_0[1], 
+                		"A", drawer.radius["inner_body"], drawer.radius["inner_body"], pt_1[2], "0,1", pt_1[0], pt_1[1],
+                		"L", pt_2[0],pt_2[1],
+                		"A", drawer.radius["outer_body"], drawer.radius["outer_body"], pt_1[2], "0,0", pt_3[0], pt_3[1],
+                		"Z"];
+            }
+            var arrow = paper.path(arrow_path);
+            if(!this.match){
+                arrow.attr({fill: "white", stroke: "black", "stroke-dasharray": "-", "fill-opacity": 0.5});
+            }else{
+                var color=$(".gene_" + this.match).css( "backgroundColor" );
+                arrow.attr({fill: color, stroke: "none", "fill-opacity": 0.9});
+            }
+            /*********************************
+             *        draw the popup
+             **********************************/
+            var popup = paper.set();
+            var label = paper.set();
+            var txt = {font: '12px Helvetica, Arial', fill: "#fff"};
+            var title = {font: '12px Helvetica, Arial', fill: "#aaf"};
+            label.push(paper.text(60, 12, "Gene-name: " + this.name ).attr(title));
+            if(this.match){
+                label.push(paper.text(60, 27, "match: " + this.match ).attr(txt));
+            }
+            label.push(paper.text(60, 42, "protein length: " + this.length).attr(txt));
+            if(this.description){
+                label.push(paper.text(60, 57, "description: " + this.description).attr(txt));
+            }
+            //label.hide();
+            var corner = drawer.pos_2_coord(this.position + (this.length / 2), "popup");
+            popup.push( label );
+            console.log(corner)
+            if (corner[2] < Math.PI / 2) {
+            	var pos = "top-left";
+            }else if(corner[2] >= Math.PI / 2 && corner[2] < Math.PI ){
+            	var pos = "bottom-left";
+            }else if(corner[2] >= Math.PI && corner[2] < 3 * Math.PI / 2){
+            	var pos = "bottom-right";
+            }else{
+            	var pos = "top-right";
+            }
+            	  
+            var frame = Raphael.fn.popup( corner[0], 
+            		corner[1], 
+            		label, 
+            		pos).attr({fill: "#000", stroke: "#666", "stroke-width": 2, "fill-opacity": .7});
+            //frame.hide();
+            frame.show();
+            popup.push(frame);
+            return arrow
+        }
+        Gene.prototype.zoom = function zoom_gene(factor){}
+        Gene.prototype.translate = function translate_gene(dx, dy){}
+        
+        var CircularDrawer = function CircularDrawer(replicon){
+            // comment on represente les replicons circulaire
+            // mais dont une petite partie du replicon seileument contient des hits
+            // circulaire -> partie du graphique vide
+            // lineaire -> perd visuellement l'info de la topology
+            // si lineaire avec gene sur l'origine ???
+            this.paper_h = 500;
+            this.paper_w = $("#genes_schema").width();
+            this.replicon_l = replicon.length //ne peut pas acceder a replicon grace a une fermeture??
+            this.x_center = this.paper_w / 2;
+            this.y_center = this.paper_h / 2;
+            var radius = (this.paper_h - 170) / 2;
+            this.radius = {
+                    "popup" : radius + 25,
+                    "inner_body" : radius - 10,
+                    "outer_body" : radius + 10,
+                    "inner_head" : radius - 20,
+                    "outer_head" : radius + 20,
+                    "replicon" : radius,
+                    } 
+        }
+        
+        CircularDrawer.prototype.pos_2_coord = function(pos, feature_part){
+            var angle = 2 * Math.PI * pos / this.replicon_l; //the angle in rad
+            var x = this.x_center + this.radius[feature_part] * Math.sin(angle);
+            var y = this.y_center - this.radius[feature_part] * Math.cos(angle);
+            return [x, y, angle]
+        }
+        
+        var LinearDrawer = function LinearDrawer(replicon){
+            this.paper_h = 250;
+            this.paper_w = $("#genes_schema").width();
+            this.y_replicon = 55;
+            this.replicon_offset = 40;
+            this.genes_offset = 20;
+            this.first_g_start = replicon.genes[0].start;//ne peut pas acceder a replicon grace a une fermeture??
+            var last_gene = replicon.genes[replicon.genes.length - 1];
+            this.last_g_end = replicon.genes[last_gene.start] + last_gene.length;   
+            this.coef = this.paper_w - (this.replicon_offset + this.genes_offset) * 2 / (this.last_g_end - this.first_g_start);
+            this.ord = {
+                    "popup" : this.y_replicon - 40,
+                    "inner_body" : this.y_replicon + 10,
+                    "outer_body" : this.y_replicon - 10,
+                    "inner_head" : this.y_replicon + 20,
+                    "outer_head" : this.y_replicon - 20,
+                    "replicon" : this.y_replicon,
+                    }
+        }
+        LinearDrawer.prototype.pos_2_coord = function(pos, feature_part){
+            var y = ord[feature_part];
+            var x = (pos - first_g_start) * this.coef + replicon_offset + genes_offset;
+            return [x, y, null] //null is to keep the same signature of CircularDrawer.pos_2_coord
+        }
+        
+        
+        var c_doc = {
+                "replicon" : {
+                    "name" : "PSAE001c01",
+                    "length": 2000,
+                    "topology": "circular",
+                },
+                "genes" : [{
+                    name : "t5bss-translocator",
+                    position : 40,
+                    sequence_length : 562,
+                    system : "T6SS",
+                    match : "SctC",
+                    strand : "D"
+                }, {
+                    name : "tssM",
+                    position : 650,
+                    sequence_length : 101,
+                    system : "T6SS",
+                    match : "SctL",
+                    strand : "C"
+                }, {
+                    name : "tssL",
+                    position : 800,
+                    sequence_length : 209,
+                    system : "T6SS",
+                    match : "SycD",
+                    strand : "D"
+                }, {
+                    name : "tssK",
+                    position : 1100,
+                    sequence_length : 444,
+                    system : "T6SS",
+                    strand : "C"
+                }, {
+                    name : "tssJ",
+                    position : 1600,
+                    sequence_length : 154,
+                    system : "T6SS",
+                    //strand : "D"
+                }]
+            };
+        
+        var l_doc = {
+                "replicon" : {
+                    "name" : "Linear rep",
+                    "sequence_length" : 500,
+                    "topology" : "linear",
+                },
+                "genes" : [{
+                    name : "tssA",
+                    position : 82,
+                    sequence_length : 344,
+                    system : "T4SS"
+                }, {
+                    name : "tssB",
+                    position : 83,
+                    length : 172,
+                    system : "T4SS"
+                }, {
+                    name : "tssC",
+                    position : 84,
+                    sequence_length : 498,
+                    system : "T4SS"
+                }, {
+                    name : "tssD",
+                    position : 85,
+                    sequence_length : 162,
+                    system : "T4SS"
+                }]
+            };
+        
+        var template = $('#repl_table_Tpl').html();
+        var html = Mustache.to_html(template, c_doc);
+        $('#table').html(html);
+
+             var c_rep = new Replicon(c_doc);
+             var paper = Raphael("genes_schema", c_rep.drawer.paper_w, c_rep.drawer.paper_h );
+             c_rep.drawing = c_rep.draw(paper);
+             
+             //doit on integrer la boucle dans
+             //Replicon.draw
+             //ou une methode Replicon.draw_gene
+             //sur chaque elt on doit binder les evts !!!
+             
+             for (var i = 0; i < c_rep.genes.length; i++ ){
+               g = c_rep.genes[i];
+               g.drawing = g.draw(paper);
+              }
+             
+             /*
+             var l_rep = new Replicon(l_doc);
+             var paper = Raphael("genes_schema", l_rep.drawer.paper_w, l_rep.drawer.paper_h );
+             l_rep.drawing = l_rep.draw(paper);
+             for (var i = 0; i < l_rep.genes.length; i++ ){
+                 g = l_rep.genes[i];
+                 g.drawing = g.draw(paper);
+             }
+             */
+        </script>
+</html>
