@@ -3,12 +3,15 @@
 	<head>
 		<meta charset="utf8" />
 		<title>test dessin</title>
-		<link rel="stylesheet" href="test.css">
-		<link rel="stylesheet" href="color.css">
-		<script src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>
-		<script src="http://github.com/DmitryBaranovskiy/raphael/raw/master/raphael-min.js"></script>
-		<script src="popup.js"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
+		<link rel="stylesheet" href="styles/test.css">
+		<link rel="stylesheet" href="styles/color.css">
+		<script src="lib/jquery-2.0.3.min.js" type="text/javascript"></script>
+		<!--<script src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>-->
+		<script src="lib/raphael-min.js"></script>
+		<!--<script src="http://github.com/DmitryBaranovskiy/raphael/raw/master/raphael-min.js"></script>-->
+		<script src="lib/popup.js"></script>
+		<script src="lib/mustache.min.js"></script>
+		<!--<script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>-->
 		<script id="repl_table_Tpl" type="text/template">
 <h2>Replicon</h2>
     <ul>
@@ -92,8 +95,8 @@
                                    (-1*(repl_len_in_px)),"a25,5 0 0,1 0,-5z"]).attr({fill: "#aaa", stroke:"#aaa", "stroke-width":"1"} );
             }else{
             	var rep = paper.set()
-                var circ = paper.circle(this.drawer.x_center,
-                		  this.drawer.y_center,
+                var circ = paper.circle(this.drawer.center.x,
+                		  this.drawer.center.y,
                 		  this.drawer.radius['replicon']).attr({stroke:"#aaa", "stroke-width":"3"} );
                 rep.push(circ);
                 var ori_coord = this.drawer.pos_2_coord(0,"outer_body");
@@ -105,8 +108,28 @@
                 return rep
             }
         }
-        Replicon.prototype.zoom = function zoom(factor){}
-        Replicon.prototype.translate = function translate(dx, dy){}
+
+        Replicon.prototype.zoom = function zoom(factor){
+           this.drawing.scale(factor);
+           for(var i = 0; i < this.genes.length; i++){
+                this.genes[i].zoom(factor);
+            }
+           //TODO: si on prend bbox on fait une erreur du a l'origin
+           // il faudrait se base que sur le cercle
+           var box = this.drawing.getBBox();
+           this.drawer.center.x = box.x+(box.width/2);
+           this.drawer.center.y = box.y+(box.heigth/2);
+           //YODO: il faut aussi recalculez les rayons 
+        }
+        
+        Replicon.prototype.translate = function translate(dx, dy){
+            this.drawing.translate(dx ,dy);
+						for(var i = 0; i < this.genes.length; i++){
+                this.genes[i].translate(dx, dy);
+            }
+            this.drawer.center.x = this.drawer.center.x + dx;
+            this.drawer.center.y = this.drawer.center.y + dy;
+        }
         
         var Gene = function Gene(replicon, doc_gene){
             this.replicon = replicon;
@@ -215,15 +238,33 @@
             		pos).attr({fill: "#000", stroke: "#666", "stroke-width": 2, "fill-opacity": .7});
             frame.hide();
             popup.push(frame);
-            return [arrow, popup]
+            return { "arrow" : arrow, 
+                     "popup" : popup}
         }
-        Gene.prototype.zoom = function zoom_gene(factor){}
-        Gene.prototype.translate = function translate_gene(dx, dy){}
+
+        Gene.prototype.zoom = function zoom_gene(factor){
+           var bf_box = this.drawing["arrow"].getBBox();
+           this.drawing["arrow"].scale(factor, factor, this.drawer.center.x, this.drawer.center.y);
+           var af_box = this.drawing["arrow"].getBBox();
+           this.popup.translate((af_box.x+(af_box.width/2)) - (bf_box.x+(bf_box.width /2 )), 
+                                (af_box.y+(af_box.heigth/2)) - (bf_box.y+(bf_box.heigth /2 )));
+        }  
+
+        Gene.prototype.translate = function translate_gene(dx, dy){
+            var bf_box = this.arrow.getBBox(false);
+            this.drawing["arrow"].translate(dx ,dy);
+            var af_box = this.arrow.getBBox(false);
+            this.drawing["popup"].translate((af_box.x + (af_box.width /2 )) - (bf_box.x + (bf_box.width /2 )),
+(af_box.y-bf_box.y));
+
+				}
+
         Gene.prototype.show = function show_gene(){
-        	this.drawing[1].show();
+        	this.drawing["popup"].show();
         }
+
         Gene.prototype.hide = function hide_gene(){
-        	this.drawing[1].hide();
+        	this.drawing["popup"].hide();
         }
         
         
@@ -239,8 +280,8 @@
             this.paper_h = 500;
             this.paper_w = $("#genes_schema").width();
             this.replicon_l = replicon.length //ne peut pas acceder a replicon grace a une fermeture??
-            this.x_center = this.paper_w / 2;
-            this.y_center = this.paper_h / 2;
+            this.center = { x : this.paper_w / 2,
+                            y : this.paper_h / 2 };
             var radius = (this.paper_h - 170) / 2;
             this.radius = {
                     "popup" : radius + 25,
@@ -254,8 +295,8 @@
         
         CircularDrawer.prototype.pos_2_coord = function(pos, feature_part){
             var angle = 2 * Math.PI * pos / this.replicon_l; //the angle in rad
-            var x = this.x_center + this.radius[feature_part] * Math.sin(angle);
-            var y = this.y_center - this.radius[feature_part] * Math.cos(angle);
+            var x = this.center.x + this.radius[feature_part] * Math.sin(angle);
+            var y = this.center.y - this.radius[feature_part] * Math.cos(angle);
             return [x, y, angle]
         }
         
@@ -277,6 +318,9 @@
                     "outer_head" : this.y_replicon - 20,
                     "replicon" : this.y_replicon,
                     }
+            this.center = { x : this.paper_w / 2,
+                            y : this.y_replicon
+                          };
         }
         LinearDrawer.prototype.pos_2_coord = function(pos, feature_part){
             var y = ord[feature_part];
@@ -372,8 +416,8 @@
              for (var i = 0; i < c_rep.genes.length; i++ ){
                g = c_rep.genes[i];
                g.drawing = g.draw(paper);
-               g.drawing[0].mouseover(g.show.bind(g));
-               g.drawing[0].mouseout(g.hide.bind(g));
+               g.drawing["arrow"].mouseover(g.show.bind(g));
+               g.drawing["arrow"].mouseout(g.hide.bind(g));
               }
              
              /*
