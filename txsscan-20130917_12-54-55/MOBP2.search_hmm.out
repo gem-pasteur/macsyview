@@ -1,0 +1,1616 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.0 (March 2010); http://hmmer.org/
+# Copyright (C) 2010 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  /Users/sabby/Documents/boulot/postdoc/Dev/controlled_version/txsscan/trunk//data/profiles/MOBP2.fasta-aln_edit.hmm
+# target sequence database:        /Users/sabby/Documents/boulot/postdoc/Dev/controlled_version/txsscan/trunk//test/datatest/alltogether_Prokaryotes_0213.prot
+# output directed to file:         /Users/sabby/Documents/boulot/postdoc/Dev/controlled_version/txsscan/trunk//data/txsscan-20130917_12-54-55/MOBP2.search_hmm.out
+# sequence reporting threshold:    E-value <= 1
+# number of worker threads:        0
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       MOBP2  [M=509]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+   5.9e-294  984.2  43.1   6.7e-294  984.0  29.9    1.0  1  BAAN003p02_000010 C ATG TAA 11 1567 Valid BAA_B0001 1557 _YP
+   5.9e-294  984.2  43.1   6.7e-294  984.0  29.9    1.0  1  BAAN005p02_001150 C ATG TAA 92279 93835 Valid BAMEG_B0115 15
+   1.7e-284  952.9  45.6   1.9e-284  952.8  31.6    1.0  1  BATU001p01_000790 C ATG TAG 75514 77070 Valid pBT9727_0080 1
+   6.6e-278  931.2  43.3   7.4e-278  931.1  30.0    1.0  1  BATU007p06_001330 D ATG TGA 110465 112021 Valid MC28_D133 15
+   1.4e-270  907.0  41.7   1.6e-270  906.9  28.9    1.0  1  BATU007p06_000350 D ATG TGA 29561 31033 Valid MC28_D035 1473
+   1.9e-262  880.3  36.0   2.1e-262  880.1  24.9    1.0  1  BAAN006p02_000010 C ATG TGA 51 1421 Valid BACI_pCIXO200010 1
+   2.4e-260  873.3  44.1   2.7e-260  873.1  30.6    1.0  1  ENFE001p03_000050 C ATG TAA 4631 6226 Valid HMPREF0351_12836
+   1.9e-255  857.1  43.6   2.2e-255  856.9  30.2    1.0  1  ENFE002p03_000330 D ATG TAA 31414 33006 Valid EFAU004_p1033 
+     2e-202  682.2  32.3   2.2e-202  682.1  22.4    1.0  1  BAAN007p02_001100 C GTG TAA 93792 94820 Valid H9401_5792 102
+    1.2e-61  217.7  50.3    8.8e-60  211.6  30.4    2.0  2  STEP001c01_014890 C ATG TAA 1530212 1531516 Valid SE1483 130
+      5e-60  212.4  28.7    5.3e-55  195.9  19.4    2.9  2  HAHL001c01_037260 C ATG TAG 3636046 3637209 Valid HBHAL_4698
+    5.7e-60  212.2  29.5    4.6e-55  196.1  19.7    2.8  2  HAHL001c01_006770 D ATG TAG 658572 659735 Valid HBHAL_1644 1
+    6.1e-58  205.5  33.4    4.3e-57  202.7  21.0    2.1  2  MACA001p02_000100 D ATG TAA 11947 13362 Valid MCCL_plsB0010 
+    1.6e-55  197.6  21.6    9.4e-51  181.8  14.0    2.4  2  ENFA004p02_000490 D ATG TAA 41587 42831 Valid EFD32_pB0049 1
+    1.3e-51  184.6  38.8    2.3e-45  164.1  26.2    3.8  2  BATU007p04_000060 C ATG TAA 5037 6227 Valid MC28_F006 1191 _
+    1.3e-51  184.6  38.8    2.3e-45  164.1  26.2    3.8  2  BATU007p05_001770 C ATG TAG 179904 181094 Valid MC28_E176 11
+    2.8e-49  177.0  12.9    4.3e-46  166.5   9.0    2.7  2  LACA001c01_005320 D ATG TAG 540528 541772 Valid LSEI_0546 12
+      3e-49  176.9  10.6    2.3e-46  167.3   7.4    2.4  2  LACA002c01_005890 D ATG TAG 598027 599271 Valid PBCN11 1245 
+      3e-49  176.9  10.6    2.3e-46  167.3   7.4    2.4  2  LACA004c01_006130 D ATG TAG 593281 594525 Valid LCBD_0609 12
+      3e-49  176.9  10.6    2.3e-46  167.3   7.4    2.4  2  LACA005c01_006140 D ATG TAG 596223 597467 Valid LC2W_0607 12
+      3e-49  176.9  10.6    2.3e-46  167.3   7.4    2.4  2  LACA006c01_006150 D ATG TAG 596409 597653 Valid BN194_06110 
+    3.2e-49  176.8  39.1      6e-48  172.6  26.9    2.7  1  CLPE001p01_000390 C ATG TAA 27983 29116 Valid PCP39 1134 _NP
+    8.1e-48  172.1  11.2    7.7e-45  162.3   7.8    2.5  2  LARH002p01_000090 D ATG TAG 5421 6665 Valid PBCN11 1245 _pLC
+    9.5e-45  162.0  39.1    1.4e-43  158.1  24.5    2.9  2  CLBO003p01_000140 D ATG TAA 12102 13241 Valid CLL_0015 1140 
+    1.1e-38  142.0  24.1    2.4e-38  140.9  16.6    1.5  1  LIMO005p01_000600 D ATG TAG 57703 59043 Valid LM5578_p60 134
+    1.1e-38  142.0  24.1    2.4e-38  140.9  16.6    1.5  1  LIMO016p01_000120 D ATG TAG 8536 9876 Valid LMOSLCC2482_p001
+    1.1e-38  142.0  24.1    2.4e-38  140.9  16.6    1.5  1  LIMO019p01_000120 D ATG TAG 8536 9876 Valid LMOSLCC2372_p001
+    4.4e-37  136.7  30.4    6.5e-36  132.9  21.4    1.9  1  LIIN001p01_000090 C ATG TAG 7151 8491 Valid pli0009 1341 _NP
+    7.9e-34  126.0  10.8    7.9e-34  126.0   7.5    4.6  3  STAG002c01_004590 D ATG TAA 397563 399929 Valid gbs0384 2367
+    7.9e-34  126.0  10.8    7.9e-34  126.0   7.5    4.6  3  STAG002c01_007850 D ATG TAA 723630 725996 Valid gbs0714 2367
+    7.9e-34  126.0  10.8    7.9e-34  126.0   7.5    4.6  3  STAG002c01_010640 C ATG TAA 1045921 1048287 Valid gbs0995 23
+    7.2e-31  116.2   7.7    7.2e-31  116.2   5.3    4.7  4  STGA003c01_022040 C ATG TAA 2245110 2247476 Valid SGGB_2179 
+    1.4e-27  105.4  11.2    1.3e-25   98.9   5.7    3.6  2  ENFA004c01_019820 C ATG TAA 2001207 2003378 Valid EFD32_1939
+    1.6e-25   98.6  17.5    1.6e-25   98.6  12.2    2.3  1  LASL002p03_000940 C TTG TAA 138441 140225 Valid HN6_01610 17
+      5e-24   93.6  23.8      5e-24   93.6  16.5    4.5  2  STIT001c01_007820 D GTG TAA 864941 867295 Valid SCIM_0750 23
+    1.5e-20   82.2   0.6    1.5e-20   82.2   0.4    2.0  1  ETHA001c01_024390 D ATG TAA 2659251 2663384 Valid Ethha_2483
+    1.1e-17   72.7  15.9    1.5e-17   72.3  11.0    1.2  1  LEKI001c01_000730 C ATG TAA 69421 70908 Valid LKI_00365 1488
+    2.7e-17   71.5  15.2    3.6e-17   71.0  10.6    1.2  1  LEME001c01_010470 D ATG TAA 1059197 1060684 Valid LEUM_1062 
+      4e-17   70.9   0.1    2.9e-12   54.8   0.0    2.0  2  BAWE001p03_000380 C ATG TAA 41334 41786 Valid BcerKBAB4_5400
+    3.4e-16   67.8  13.6    4.3e-16   67.5   9.4    1.1  1  LEME001c01_010550 D ATG TAA 1071492 1072901 Valid LEUM_1070 
+    4.9e-15   64.0   0.2    5.8e-15   63.8   0.1    1.1  1  LEME001c01_012390 C ATG TGA 1251638 1252348 Valid LEUM_1257 
+    1.2e-13   59.4  13.0    1.2e-13   59.4   9.0    2.4  2  RUAL001c01_032140 D ATG TAA 3648743 3651940 Valid Rumal_3252
+    1.8e-05   32.4   0.9    2.5e-05   32.0   0.6    1.2  1  LEGE001c01_010250 C TTG TAG 1046003 1046560 Valid C269_05105
+     0.0087   23.6   1.2    3.7e+02    8.3   0.0    3.3  3  CHCH001c01_015160 D ATG TAA 1971392 1975333 Valid Cag_1504 3
+  ------ inclusion threshold ------
+      0.042   21.3   6.9       0.37   18.2   4.5    2.5  1  CLSA001c01_035190 C ATC TAA 3849421 3850641 Valid Closa_3559
+      0.061   20.8   0.6      0.064   20.7   0.4    1.2  1  HEPY002c01_002840 D ATG TAA 305191 305493 Valid jhp0276 303 
+      0.072   20.6   0.2      0.081   20.4   0.1    1.3  1  HEPY020c01_003210 D ATG TAA 324138 324440 Valid HPGAM_01630 
+       0.54   17.7   1.3        0.7   17.3   0.9    1.2  1  STSA001c01_000620 D ATG TAA 71017 71685 Valid SSP0060 669 _Y
+          1   16.8   1.3        1.1   16.6   0.9    1.0  1  LISO001c01_003770 D GTG TAA 386325 386558 Valid CKC_01820 23
+
+
+Domain annotation for each sequence (and alignments):
+>> BAAN003p02_000010  C ATG TAA 11 1567 Valid BAA_B0001 1557 _YP_002860616.1_ BAA_B0001 1 11 1567 | hypothetical protein
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  984.0  29.9  4.6e-299  6.7e-294       1     509 []       1     517 [.       1     517 [. 1.00
+
+  Alignments for each domain:
+  == domain 1    score: 984.0 bits;  conditional E-value: 4.6e-299
+              MOBP2   1 mskspaviltsqftlpnkksfstyidyltreka.leekerltpeelqelsrlknaledfeieegetfssktkkevsekeaeakslltsginf 91 
+                        m+ksp++iltsq+t+pnkksf+ty+dy++r+ka l+++++lt++el+elsrl+na+++f++e+g+++s+++k++vsekeaeak+llts+++f
+  BAAN003p02_000010   1 MGKSPSIILTSQYTIPNKKSFTTYVDYCMRQKAlLKDGHTLTNTELTELSRLQNAIDSFDMERGSPHSNQKKVSVSEKEAEAKVLLTSPNSF 92 
+                        89*******************************99********************************************************* PP
+
+              MOBP2  92 dkeqdftkylsymtrkyaleskkkltkseeeelqllnkaikdlsteehk.......kaeeilpGvfskdkdvvkssdlkeikellqkaqnkG 176
+                        ++++df+ky+sym+rkyaleskkk+tk+eeee++llnk+i+dls+ee+k       kaeeil+Gvfskdk+v++s+dl+eikel++kaqnkG
+  BAAN003p02_000010  93 NTTTDFEKYVSYMGRKYALESKKKMTKTEEEEVSLLNKHIEDLSPEEMKegkkegiKAEEILSGVFSKDKNVITSTDLNEIKELVGKAQNKG 184
+                        ******************************************************************************************** PP
+
+              MOBP2 177 svyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklveekvnget 268
+                        svyyqdvisfdtdfli+qklydP+tdilde+r+r+as+kmmeqlfkdeq+ee+nGfW+asihrntehihihf++vekenrrklve+kv++et
+  BAAN003p02_000010 185 SVYYQDVISFDTDFLIEQKLYDPVTDILDENRIRNASHKMMEQLFKDEQIEENNGFWFASIHRNTEHIHIHFGTVEKENRRKLVEVKVDEET 276
+                        ******************************************************************************************** PP
+
+              MOBP2 269 yyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqskekkdereltllqeiynglpsnkkdWtyGskklpnetrek 360
+                        +yePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqskek+++re+tllqeiynglpsnkkdWtyGsk++pnetr+k
+  BAAN003p02_000010 277 FYEPKGKRKQSTLDHMKTTFANSLVDRTSELSRISNLRNNLVQEVKKEYLQSKEKQPNREVTLLQEIYNGLPSNKKDWTYGSKRMPNETRNK 368
+                        ******************************************************************************************** PP
+
+              MOBP2 361 ideltklllkdnpifkeykeavekesefqkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkneqikkkyerer 452
+                        idelt+ll+kdnpifkey+eavekes+fqk+lyGeseredkdyaknq+kd++krmGnsllkelkkkkpyednply++qqkneqikkkyerer
+  BAAN003p02_000010 369 IDELTGLLMKDNPIFKEYQEAVEKESNFQKGLYGESEREDKDYAKNQMKDMQKRMGNSLLKELKKKKPYEDNPLYQFQQKNEQIKKKYERER 460
+                        ******************************************************************************************** PP
+
+              MOBP2 453 kekrreeskyskykprlirkkdvrnleaalnddltkyraekeyeevqeriareqerd 509
+                        +ekrre+s+ys ykp+lirkkdvrn+eaalnddltk+rae+eye+vqeriar+qe+d
+  BAAN003p02_000010 461 SEKRREYSTYSPYKPPLIRKKDVRNIEAALNDDLTKWRAEQEYERVQERIARQQEMD 517
+                        *******************************************************97 PP
+
+>> BAAN005p02_001150  C ATG TAA 92279 93835 Valid BAMEG_B0115 1557 _YP_002808786.1_ BAMEG_B0115 1 92279 93835 | hypothet
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  984.0  29.9  4.6e-299  6.7e-294       1     509 []       1     517 [.       1     517 [. 1.00
+
+  Alignments for each domain:
+  == domain 1    score: 984.0 bits;  conditional E-value: 4.6e-299
+              MOBP2   1 mskspaviltsqftlpnkksfstyidyltreka.leekerltpeelqelsrlknaledfeieegetfssktkkevsekeaeakslltsginf 91 
+                        m+ksp++iltsq+t+pnkksf+ty+dy++r+ka l+++++lt++el+elsrl+na+++f++e+g+++s+++k++vsekeaeak+llts+++f
+  BAAN005p02_001150   1 MGKSPSIILTSQYTIPNKKSFTTYVDYCMRQKAlLKDGHTLTNTELTELSRLQNAIDSFDMERGSPHSNQKKVSVSEKEAEAKVLLTSPNSF 92 
+                        89*******************************99********************************************************* PP
+
+              MOBP2  92 dkeqdftkylsymtrkyaleskkkltkseeeelqllnkaikdlsteehk.......kaeeilpGvfskdkdvvkssdlkeikellqkaqnkG 176
+                        ++++df+ky+sym+rkyaleskkk+tk+eeee++llnk+i+dls+ee+k       kaeeil+Gvfskdk+v++s+dl+eikel++kaqnkG
+  BAAN005p02_001150  93 NTTTDFEKYVSYMGRKYALESKKKMTKTEEEEVSLLNKHIEDLSPEEMKegkkegiKAEEILSGVFSKDKNVITSTDLNEIKELVGKAQNKG 184
+                        ******************************************************************************************** PP
+
+              MOBP2 177 svyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklveekvnget 268
+                        svyyqdvisfdtdfli+qklydP+tdilde+r+r+as+kmmeqlfkdeq+ee+nGfW+asihrntehihihf++vekenrrklve+kv++et
+  BAAN005p02_001150 185 SVYYQDVISFDTDFLIEQKLYDPVTDILDENRIRNASHKMMEQLFKDEQIEENNGFWFASIHRNTEHIHIHFGTVEKENRRKLVEVKVDEET 276
+                        ******************************************************************************************** PP
+
+              MOBP2 269 yyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqskekkdereltllqeiynglpsnkkdWtyGskklpnetrek 360
+                        +yePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqskek+++re+tllqeiynglpsnkkdWtyGsk++pnetr+k
+  BAAN005p02_001150 277 FYEPKGKRKQSTLDHMKTTFANSLVDRTSELSRISNLRNNLVQEVKKEYLQSKEKQPNREVTLLQEIYNGLPSNKKDWTYGSKRMPNETRNK 368
+                        ******************************************************************************************** PP
+
+              MOBP2 361 ideltklllkdnpifkeykeavekesefqkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkneqikkkyerer 452
+                        idelt+ll+kdnpifkey+eavekes+fqk+lyGeseredkdyaknq+kd++krmGnsllkelkkkkpyednply++qqkneqikkkyerer
+  BAAN005p02_001150 369 IDELTGLLMKDNPIFKEYQEAVEKESNFQKGLYGESEREDKDYAKNQMKDMQKRMGNSLLKELKKKKPYEDNPLYQFQQKNEQIKKKYERER 460
+                        ******************************************************************************************** PP
+
+              MOBP2 453 kekrreeskyskykprlirkkdvrnleaalnddltkyraekeyeevqeriareqerd 509
+                        +ekrre+s+ys ykp+lirkkdvrn+eaalnddltk+rae+eye+vqeriar+qe+d
+  BAAN005p02_001150 461 SEKRREYSTYSPYKPPLIRKKDVRNIEAALNDDLTKWRAEQEYERVQERIARQQEMD 517
+                        *******************************************************97 PP
+
+>> BATU001p01_000790  C ATG TAG 75514 77070 Valid pBT9727_0080 1557 _YP_173323.1_ pBT9727_0080 1 75514 77070 | hypotheti
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  952.8  31.6  1.3e-289  1.9e-284       1     509 []       1     517 [.       1     517 [. 1.00
+
+  Alignments for each domain:
+  == domain 1    score: 952.8 bits;  conditional E-value: 1.3e-289
+              MOBP2   1 mskspaviltsqftlpnkksfstyidyltreka.leekerltpeelqelsrlknaledfeieegetfssktkkevsekeaeakslltsginf 91 
+                        m+ksp++iltsq+t+p++ksf+tyidy+tr+ka l+++++lt++elqel+rl++al++fe+e ++t ssk kk++s+ke+eak++lts+++f
+  BATU001p01_000790   1 MGKSPGIILTSQYTIPKQKSFTTYIDYCTRKKAlLQDGHTLTSTELQELNRLEFALDSFEMEIDSTPSSKGKKDISKKEGEAKAILTSPEKF 92 
+                        89*******************************99********************************************************* PP
+
+              MOBP2  92 dkeqdftkylsymtrkyaleskkkltkseeeelqllnkaikdlsteehk.......kaeeilpGvfskdkdvvkssdlkeikellqkaqnkG 176
+                        ++e+df+ky+sym+r+yaleskkk+tk+eeeel+llnk+i+dls+e++k       ++eeilpGvfskdk++++++dl +ik+l++k+qn+G
+  BATU001p01_000790  93 NTESDFVKYVSYMGRRYALESKKKMTKTEEEELNLLNKHIEDLSPEKNKddqeietEGEEILPGVFSKDKNIITQNDLIDIKNLMEKSQNSG 184
+                        *******************************************************99*********************************** PP
+
+              MOBP2 177 svyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklveekvnget 268
+                        svyyqdvisfdtdfl+k+klydP+td+lde+r+r+as+kmm+qlfkdeq+ee+nGfW+asihrnt+hihihf++vekenrrk+v+++vng+t
+  BATU001p01_000790 185 SVYYQDVISFDTDFLVKNKLYDPQTDTLDENRIRIASHKMMHQLFKDEQIEESNGFWFASIHRNTDHIHIHFGTVEKENRRKVVKKEVNGKT 276
+                        ******************************************************************************************** PP
+
+              MOBP2 269 yyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqskekkdereltllqeiynglpsnkkdWtyGskklpnetrek 360
+                        yyePkGkrkq+tldhmkttfanslvdrtselsrisnlrn+lvqevk++++qskekk++r+l+llqeiy+glpsnkkdWtyGskk+p++tr+k
+  BATU001p01_000790 277 YYEPKGKRKQRTLDHMKTTFANSLVDRTSELSRISNLRNDLVQEVKEQFQQSKEKKQDRKLVLLQEIYDGLPSNKKDWTYGSKKMPKTTRDK 368
+                        ******************************************************************************************** PP
+
+              MOBP2 361 ideltklllkdnpifkeykeavekesefqkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkneqikkkyerer 452
+                        idelt++l+kdnp++keykeavekes+fqkelyGes redkdyaknq+kd++krmGnsllkelkkkkpye+nplyk+qqkneqikkkyer+r
+  BATU001p01_000790 369 IDELTESLMKDNPVLKEYKEAVEKESDFQKELYGESGREDKDYAKNQMKDMYKRMGNSLLKELKKKKPYEENPLYKFQQKNEQIKKKYERGR 460
+                        ******************************************************************************************** PP
+
+              MOBP2 453 kekrreeskyskykprlirkkdvrnleaalnddltkyraekeyeevqeriareqerd 509
+                         ekr+e+skyskykp+lirkkdvrn+eaalnddltk+rae+eye+vq+riar+qe+d
+  BATU001p01_000790 461 LEKRGEYSKYSKYKPPLIRKKDVRNIEAALNDDLTKWRAEREYEIVQQRIARQQEMD 517
+                        *******************************************************97 PP
+
+>> BATU007p06_001330  D ATG TGA 110465 112021 Valid MC28_D133 1557 _YP_006815421.1_ MC28_D133 1 110465 112021 | pXO2-84 
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  931.1  30.0  5.1e-283  7.4e-278       1     509 []       1     517 [.       1     517 [. 0.99
+
+  Alignments for each domain:
+  == domain 1    score: 931.1 bits;  conditional E-value: 5.1e-283
+              MOBP2   1 mskspaviltsqftlpnkksfstyidyltreka.leekerltpeelqelsrlknaledfeieegetfssktkkevsekeaeakslltsginf 91 
+                        m+ksp++iltsq+t+p+++sf+ty+dy+tr+ka l+++++lt++elqel+rl+na+++f+++ g+t+ss+  + +s+keaea++llts+ +f
+  BATU007p06_001330   1 MGKSPGIILTSQYTIPKQQSFTTYVDYCTRKKAlLKDGHTLTSTELQELNRLENAIDSFDMKIGSTYSSRDRQGISKKEAEAQVLLTSPDSF 92 
+                        89*******************************99********************************************************* PP
+
+              MOBP2  92 dkeqdftkylsymtrkyaleskkkltkseeeelqllnkaikdlsteehk.......kaeeilpGvfskdkdvvkssdlkeikellqkaqnkG 176
+                        d+++df+ky+sym+rkyaleskkk+tk+e+ee+ llnk+i+dls++++        + +eilpGvfsk+k+v++++dl+eikel++kaqnkG
+  BATU007p06_001330  93 DTTSDFEKYVSYMGRKYALESKKKITKTEKEEMVLLNKHIEDLSPNRNEnnrglekEVKEILPGVFSKNKNVITQNDLTEIKELVGKAQNKG 184
+                        *********************************************98877889988999********************************* PP
+
+              MOBP2 177 svyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklveekvnget 268
+                        svyyqdvisfdt flikqklydPktd+lde+r+r+as+kmmeqlfkdeq+ee+nGfW+asihrnt+hihihf++vekenrrklv++ v+g+t
+  BATU007p06_001330 185 SVYYQDVISFDTAFLIKQKLYDPKTDTLDENRIRNASQKMMEQLFKDEQIEESNGFWFASIHRNTDHIHIHFGTVEKENRRKLVTKDVDGKT 276
+                        ******************************************************************************************** PP
+
+              MOBP2 269 yyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqskekkdereltllqeiynglpsnkkdWtyGskklpnetrek 360
+                        yyePkGkrkqstldhmkttfan lvdrtselsrisnlrn+lvqe+k+e++qske+k++re++llqeiy+glpsnkkdWtyGskk+p+et++k
+  BATU007p06_001330 277 YYEPKGKRKQSTLDHMKTTFANALVDRTSELSRISNLRNELVQEIKEEFQQSKERKQNREVVLLQEIYDGLPSNKKDWTYGSKKMPKETKNK 368
+                        ******************************************************************************************** PP
+
+              MOBP2 361 ideltklllkdnpifkeykeavekesefqkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkneqikkkyerer 452
+                        idelt+ll+kdnp fkeykeavekes+fqk+lyGeseredkdyaknq+kd++krmGnsllkelkkkkpye+nply++qqkneqikkkyer+r
+  BATU007p06_001330 369 IDELTGLLMKDNPLFKEYKEAVEKESSFQKGLYGESEREDKDYAKNQMKDMYKRMGNSLLKELKKKKPYEENPLYQFQQKNEQIKKKYERGR 460
+                        ******************************************************************************************** PP
+
+              MOBP2 453 kekrreeskyskykprlirkkdvrnleaalnddltkyraekeyeevqeriareqerd 509
+                        +ekr+e+skyskykp+lirkkdvrn+eaalnddltk+rae+eye vq+riar+qe+d
+  BATU007p06_001330 461 SEKRGEYSKYSKYKPPLIRKKDVRNMEAALNDDLTKWRAEREYELVQQRIARQQEMD 517
+                        *******************************************************97 PP
+
+>> BATU007p06_000350  D ATG TGA 29561 31033 Valid MC28_D035 1473 _YP_006815323.1_ MC28_D035 1 29561 31033 | pXO2-84  (tr
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  906.9  28.9  1.1e-275  1.6e-270      29     509 .]       1     489 [.       1     489 [. 1.00
+
+  Alignments for each domain:
+  == domain 1    score: 906.9 bits;  conditional E-value: 1.1e-275
+              MOBP2  29 treka.leekerltpeelqelsrlknaledfeieegetfssktkkevsekeaeakslltsginfdkeqdftkylsymtrkyaleskkkltks 119
+                        +r+ka l+++++lt++el elsrl+na+++f++e+g+t+s+++k++vsekeaeak+llts+++f++++df+ky+sym+rkyaleskkk+tk+
+  BATU007p06_000350   1 MRQKAlLKDGHTLTNTELAELSRLQNAIDSFDMERGSTHSNQKKVSVSEKEAEAKVLLTSPNSFNTTTDFEKYVSYMGRKYALESKKKMTKT 92 
+                        79***99************************************************************************************* PP
+
+              MOBP2 120 eeeelqllnkaikdlsteehk.......kaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdil 204
+                        eeee++llnk+i+dls+ee+k       + eeil+Gvfsk+k+v++ +dl+eikel++kaqnkGsvyyqdvisfdtdfli+qklydP+tdil
+  BATU007p06_000350  93 EEEEMSLLNKHIEDLSPEEMKegkkkgiEVEEILSGVFSKNKNVITPNDLNEIKELVGKAQNKGSVYYQDVISFDTDFLIEQKLYDPVTDIL 184
+                        *********************9*9999999************************************************************** PP
+
+              MOBP2 205 deerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslvdrt 296
+                        de+r+r+as+kmmeqlfk eq+ee+nGfW+asihrntehihihf++vekenrrklve+kv+get+yePkGkrkqstldhmkttfanslvdrt
+  BATU007p06_000350 185 DENRIRNASHKMMEQLFKGEQIEENNGFWFASIHRNTEHIHIHFGTVEKENRRKLVEVKVDGETFYEPKGKRKQSTLDHMKTTFANSLVDRT 276
+                        ******************************************************************************************** PP
+
+              MOBP2 297 selsrisnlrnnlvqevkkeylqskekkdereltllqeiynglpsnkkdWtyGskklpnetrekideltklllkdnpifkeykeavekesef 388
+                        selsrisnlrnnlvqevkkeylqskek+++re+tllqeiynglpsnkkdWtyGsk++pnetr+kidelt+ll+kdnpif+eykeav+kes+f
+  BATU007p06_000350 277 SELSRISNLRNNLVQEVKKEYLQSKEKQPSREITLLQEIYNGLPSNKKDWTYGSKRMPNETRNKIDELTGLLMKDNPIFNEYKEAVDKESSF 368
+                        ******************************************************************************************** PP
+
+              MOBP2 389 qkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkneqikkkyererkekrreeskyskykprlirkkdvrnlea 480
+                        qk+lyGeseredkdyaknq+kd++krmGnsllkelkkk+pyednply++qqkneqikkkyer+r ekrre+++ys+ykp+lirkkdvrn+ea
+  BATU007p06_000350 369 QKGLYGESEREDKDYAKNQMKDMQKRMGNSLLKELKKKNPYEDNPLYQFQQKNEQIKKKYERGRPEKRREYTTYSQYKPPLIRKKDVRNIEA 460
+                        ******************************************************************************************** PP
+
+              MOBP2 481 alnddltkyraekeyeevqeriareqerd 509
+                        alnddltk+rae+eye+vqeriar+qe++
+  BATU007p06_000350 461 ALNDDLTKWRAEQEYERVQERIARQQEME 489
+                        ***************************96 PP
+
+>> BAAN006p02_000010  C ATG TGA 51 1421 Valid BACI_pCIXO200010 1371 _YP_003787022.1_ BACI_pCIXO200010 1 51 1421 | hypoth
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  880.1  24.9  1.4e-267  2.1e-262       1     447 [.       1     455 [.       1     456 [] 1.00
+
+  Alignments for each domain:
+  == domain 1    score: 880.1 bits;  conditional E-value: 1.4e-267
+              MOBP2   1 mskspaviltsqftlpnkksfstyidyltreka.leekerltpeelqelsrlknaledfeieegetfssktkkevsekeaeakslltsginf 91 
+                        m+ksp++iltsq+t+pnkksf+ty+dy++r+ka l+++++lt++el+elsrl+na+++f++e+g+++s+++k++vsekeaeak+llts+++f
+  BAAN006p02_000010   1 MGKSPSIILTSQYTIPNKKSFTTYVDYCMRQKAlLKDGHTLTNTELTELSRLQNAIDSFDMERGSPHSNQKKVSVSEKEAEAKVLLTSPNSF 92 
+                        89*******************************99********************************************************* PP
+
+              MOBP2  92 dkeqdftkylsymtrkyaleskkkltkseeeelqllnkaikdlsteehk.......kaeeilpGvfskdkdvvkssdlkeikellqkaqnkG 176
+                        ++++df+ky+sym+rkyaleskkk+tk+eeee++llnk+i+dls+ee+k       kaeeil+Gvfskdk+v++s+dl+eikel++kaqnkG
+  BAAN006p02_000010  93 NTTTDFEKYVSYMGRKYALESKKKMTKTEEEEVSLLNKHIEDLSPEEMKegkkegiKAEEILSGVFSKDKNVITSTDLNEIKELVGKAQNKG 184
+                        ******************************************************************************************** PP
+
+              MOBP2 177 svyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklveekvnget 268
+                        svyyqdvisfdtdfli+qklydP+tdilde+r+r+as+kmmeqlfkdeq+ee+nGfW+asihrntehihihf++vekenrrklve+kv++et
+  BAAN006p02_000010 185 SVYYQDVISFDTDFLIEQKLYDPVTDILDENRIRNASHKMMEQLFKDEQIEENNGFWFASIHRNTEHIHIHFGTVEKENRRKLVEVKVDEET 276
+                        ******************************************************************************************** PP
+
+              MOBP2 269 yyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqskekkdereltllqeiynglpsnkkdWtyGskklpnetrek 360
+                        +yePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqskek+++re+tllqeiynglpsnkkdWtyGsk++pnetr+k
+  BAAN006p02_000010 277 FYEPKGKRKQSTLDHMKTTFANSLVDRTSELSRISNLRNNLVQEVKKEYLQSKEKQPNREVTLLQEIYNGLPSNKKDWTYGSKRMPNETRNK 368
+                        ******************************************************************************************** PP
+
+              MOBP2 361 ideltklllkdnpifkeykeavekesefqkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkneqikkk 447
+                        idelt+ll+kdnpifkey+eavekes+fqk+lyGeseredkdyaknq+kd++krmGnsllkelkkkkpyednply++qqkneqikk+
+  BAAN006p02_000010 369 IDELTGLLMKDNPIFKEYQEAVEKESNFQKGLYGESEREDKDYAKNQMKDMQKRMGNSLLKELKKKKPYEDNPLYQFQQKNEQIKKE 455
+                        *************************************************************************************97 PP
+
+>> ENFE001p03_000050  C ATG TAA 4631 6226 Valid HMPREF0351_12836 1596 _YP_006377442.1_ HMPREF0351_12836 1 4631 6226 | hy
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  873.1  30.6  1.8e-265  2.7e-260       1     509 []       2     531 .]       2     531 .] 1.00
+
+  Alignments for each domain:
+  == domain 1    score: 873.1 bits;  conditional E-value: 1.8e-265
+              MOBP2   1 mskspaviltsqftlpnkksfstyidyltrekaleekerltpeelqelsrlknaledfeieegetfs.sktkkevsekeaeakslltsginf 91 
+                        m+kspavilt+qftlpnkksfstyidy+trekaleeker+tp+e+qel+r+knaledf+i+egetfs skt+ke+se+++ea+sl+++ginf
+  ENFE001p03_000050   2 MNKSPAVILTCQFTLPNKKSFSTYIDYMTREKALEEKERRTPDEEQELQRIKNALEDFYIPEGETFSeSKTDKEFSETSNEAQSLMGNGINF 93 
+                        9******************************************************************************************* PP
+
+              MOBP2  92 dk..eqdftkylsymtrkyaleskkkltkseeeelqllnkaikdlsteehkkaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyq 181
+                        dk  eqdftkylsymtr+yale+kk+lt+se++e+q+ln+aik+++te+hkka+++lpGvfs+++d+vk+sdlkeik+++q++q+kGs++yq
+  ENFE001p03_000050  94 DKleEQDFTKYLSYMTRHYALEQKKELTQSEQKEYQRLNQAIKKYQTEPHKKASGNLPGVFSMASDEVKGSDLKEIKQIFQRGQQKGSIIYQ 185
+                        ***9**************************************************************************************** PP
+
+              MOBP2 182 dvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklveekvngetyyePk 273
+                        dv+s+d+++l+k++lydPktd+ldee+l+aa+rkmme+lf++eql+et G+W+a+ihrnt+hihihfavveken+rk+++e++ng++y++Pk
+  ENFE001p03_000050 186 DVVSHDHSYLEKIGLYDPKTDTLDEEGLKAAGRKMMETLFEKEQLNET-GYWMATIHRNTKHIHIHFAVVEKENTRKPYTEVENGVSYIVPK 276
+                        ************************************************.******************************************* PP
+
+              MOBP2 274 Gkrkqstldhmkttfansl............vdrtselsrisnlrnnlvqevkkeylqskekkdereltllqeiynglpsnkkdWtyGsk.. 351
+                        Gkr+q+tld+mkt+++++l            ++++++l+r+s+lrn+l+++vk++     +++d+++++ll+e+y++lp+++++W+yG++  
+  ENFE001p03_000050 277 GKRRQATLDAMKTNYVHELegfsyeknrmigMEKRNLLTRKSDLRNSLTKVVKEP-----ARYDRHAMNLLTEVYKTLPDKRSEWHYGDEkr 363
+                        *******************************************************.....9****************************988 PP
+
+              MOBP2 352 .klpnetrekideltklllkdnpifkeykeavekesefqkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkne 442
+                         kl+++trek+deltk++l+++p+++ey++++++++e++k+lyGes+re+k+++kn+l+dlkkr+Gn++l+elkk+++++++++++++q+++
+  ENFE001p03_000050 364 tKLSPYTREKLDELTKYVLTKEPEYQEYIKISKALKEEAKNLYGESKRESKEAEKNALFDLKKRTGNAILTELKKQDSQIKPLIERMDQMQS 455
+                        89****************************************************************************************** PP
+
+              MOBP2 443 qikkkyererkekrreeskys.........kykprlirkkdvrnleaalnddltkyraekeyeevqeriareqerd 509
+                        +++++++r++k+++++e+kys         ++++r+++++++r+l++++n++++ky+a+k+yee+q+ri++eqer+
+  ENFE001p03_000050 456 IYNERSFRTLKQLPTNEYKYSyeefmkrrkQFQQRVVTQRSLRQLNRTINAHEEKYHASKAYEEQQRRIQMEQERQ 531
+                        **************************************************************************96 PP
+
+>> ENFE002p03_000330  D ATG TAA 31414 33006 Valid EFAU004_p1033 1593 _YP_005376163.1_ EFAU004_p1033 1 31414 33006 | hypo
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  856.9  30.2  1.5e-260  2.2e-255       1     509 []       1     530 []       1     530 [] 1.00
+
+  Alignments for each domain:
+  == domain 1    score: 856.9 bits;  conditional E-value: 1.5e-260
+              MOBP2   1 mskspaviltsqftlpnkksfstyidyltrekaleekerltpeelqelsrlknaledfeieegetfs.sktkkevsekeaeakslltsginf 91 
+                        m++spavilt+qftlpnkksfstyidy+tre+alee er+tpee+qel+r+knaledf+i+egetfs skt+ke+se+++ea+sl+++ginf
+  ENFE002p03_000330   1 MTQSPAVILTCQFTLPNKKSFSTYIDYMTREQALEEIERRTPEEEQELQRIKNALEDFYIPEGETFSeSKTDKEFSETSNEAQSLMGNGINF 92 
+                        889***************************************************************************************** PP
+
+              MOBP2  92 dk..eqdftkylsymtrkyaleskkkltkseeeelqllnkaikdlsteehkkaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyq 181
+                        dk  eqdftkylsymtr+yale+kk+lt+se++e+q+ln+aik+++te+hkka+++lpGvfs+++d+vk+sdlkeik+++q++q+kGs++yq
+  ENFE002p03_000330  93 DKleEQDFTKYLSYMTRHYALEQKKELTQSEQKEYQRLNQAIKKYQTEPHKKASGNLPGVFSMASDEVKGSDLKEIKQIFQRGQQKGSIIYQ 184
+                        ***9**************************************************************************************** PP
+
+              MOBP2 182 dvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklveekvngetyyePk 273
+                        dv+s+d+++l+k++lydPktd+ldee+l+aa+rkmme+lf++eql+et G+W+a+ihrnt+hihihfavveken+rk+++e++ng++y++Pk
+  ENFE002p03_000330 185 DVVSHDNSYLEKMGLYDPKTDTLDEEGLKAAGRKMMETLFEKEQLNET-GYWMATIHRNTKHIHIHFAVVEKENTRKPYTEVENGVSYIVPK 275
+                        ************************************************.******************************************* PP
+
+              MOBP2 274 Gkrkqstldhmkttfansl............vdrtselsrisnlrnnlvqevkkeylqskekkdereltllqeiynglpsnkkdWtyGsk.. 351
+                        Gkr+q+tld+mkt+++++l            ++++++l+r+s+lrn l+++vk++     +++d+++++ll+e+y++lp+++++W yG++  
+  ENFE002p03_000330 276 GKRRQATLDAMKTNYVHELerfsyekdrmigMEKRNLLTRKSDLRNTLTKVVKEP-----ARYDRHAMNLLNEVYKTLPDKRSEWNYGDEkr 362
+                        *******************************************************.....9****************************988 PP
+
+              MOBP2 352 .klpnetrekideltklllkdnpifkeykeavekesefqkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkne 442
+                         kl+++trek+deltk++l+++p+++ey++++++++e++k lyGes+re+kd++kn+l+dlkkr+Gn++l+elkk++++++++++ ++q+++
+  ENFE002p03_000330 363 tKLSPYTREKLDELTKYVLTKEPEYQEYIQISKALKEEAKSLYGESKRESKDAEKNALFDLKKRTGNAILTELKKQDSQIKPLIESMDQMQS 454
+                        89****************************************************************************************** PP
+
+              MOBP2 443 qikkkyererkekrreeskys.........kykprlirkkdvrnleaalnddltkyraekeyeevqeriareqerd 509
+                        +++++++r++k+++++e+kys         ++++r+++++++r+l++++n++++ky+a+k+yee+q+ri++eqer+
+  ENFE002p03_000330 455 IYNERSFRTLKQLPTNEYKYSyeefmkrrkQFQQRVVTQRSLRQLNRTINAHEEKYHASKAYEEQQRRIQMEQERQ 530
+                        **************************************************************************96 PP
+
+>> BAAN007p02_001100  C GTG TAA 93792 94820 Valid H9401_5792 1029 _YP_006204257.1_ H9401_5792 1 93792 94820 | hypothetic
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  682.1  22.4  1.5e-207  2.2e-202     169     509 .]       1     341 [.       1     341 [. 1.00
+
+  Alignments for each domain:
+  == domain 1    score: 682.1 bits;  conditional E-value: 1.5e-207
+              MOBP2 169 lqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklv 260
+                        ++kaqnkGsvyyqdvisfdtdfli+qklydP+tdilde+r+r+as+kmmeqlfkdeq+ee+nGfW+asihrntehihihf++vekenrrklv
+  BAAN007p02_001100   1 MGKAQNKGSVYYQDVISFDTDFLIEQKLYDPVTDILDENRIRNASHKMMEQLFKDEQIEENNGFWFASIHRNTEHIHIHFGTVEKENRRKLV 92 
+                        79****************************************************************************************** PP
+
+              MOBP2 261 eekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqskekkdereltllqeiynglpsnkkdWtyGskk 352
+                        e+kv++et+yePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqskek+++re+tllqeiynglpsnkkdWtyGsk+
+  BAAN007p02_001100  93 EVKVDEETFYEPKGKRKQSTLDHMKTTFANSLVDRTSELSRISNLRNNLVQEVKKEYLQSKEKQPNREVTLLQEIYNGLPSNKKDWTYGSKR 184
+                        ******************************************************************************************** PP
+
+              MOBP2 353 lpnetrekideltklllkdnpifkeykeavekesefqkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkneqi 444
+                        +pnetr+kidelt+ll+kdnpifkey+eavekes+fqk+lyGeseredkdyaknq+kd++krmGnsllkelkkkkpyednply++qqkneqi
+  BAAN007p02_001100 185 MPNETRNKIDELTGLLMKDNPIFKEYQEAVEKESNFQKGLYGESEREDKDYAKNQMKDMQKRMGNSLLKELKKKKPYEDNPLYQFQQKNEQI 276
+                        ******************************************************************************************** PP
+
+              MOBP2 445 kkkyererkekrreeskyskykprlirkkdvrnleaalnddltkyraekeyeevqeriareqerd 509
+                        kkkyerer+ekrre+s+ys ykp+lirkkdvrn+eaalnddltk+rae+eye+vqeriar+qe+d
+  BAAN007p02_001100 277 KKKYERERSEKRREYSTYSPYKPPLIRKKDVRNIEAALNDDLTKWRAEQEYERVQERIARQQEMD 341
+                        ***************************************************************97 PP
+
+>> STEP001c01_014890  C ATG TAA 1530212 1531516 Valid SE1483 1305 _NP_765038.1_ SE1483 1 1530212 1531516 | hypothetical 
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   10.6   2.4   0.00051        74       5      82 ..       3      81 ..       1      86 [. 0.84
+   2 !  211.6  30.4     6e-65   8.8e-60     128     506 ..      70     432 ..      64     434 .] 0.90
+
+  Alignments for each domain:
+  == domain 1    score: 10.6 bits;  conditional E-value: 0.00051
+              MOBP2  5 paviltsqftlpnkksfstyidyltrekaleekerltpeelqelsrlknaledfeieegetfs..sktkkevsekeaeak 82
+                       pa+il +qf+  + k +  yi+    +ka ++k++  +  +q+++ ++n + +++++  +++     +++++++k+++ k
+  STEP001c01_014890  3 PAIILKTQFSTSKFKGYLKYINDEKSNKANHDKKKI-QSLNQDIENINNEMSNLNLNSYSSYIigYMKNNSITKKDNQNK 81
+                       9***********999999999999999998888765.566899*************999988755677788888888765 PP
+
+  == domain 2    score: 211.6 bits;  conditional E-value: 6e-65
+              MOBP2 128 nkaikdlsteehkkaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeq 219
+                        n++i + + +++kk  +  +  f  ++  + +++l+++k+ ++ a ++G + yqd+isfd+dflik++lyd ktd l+e+ +++a+ km+++
+  STEP001c01_014890  70 NNSITKKDNQNKKKVIKRTTAPFNNNSYTLDNKELNKLKDDFDTAEKQGCINYQDIISFDNDFLIKNHLYDAKTDELNEDVIKKATIKMINR 161
+                        88999999999********************************************************************************* PP
+
+              MOBP2 220 lfkdeqleetnGfWlasihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvq 311
+                        + kde ++  +  W+a ih +t+ ihih ++ e +n+rk+++   ng+  +e kGkr+++tl++mk++f nsl+d t+ l  i+++rn+l +
+  STEP001c01_014890 162 MIKDENMNPYQTRWMANIHYDTDNIHIHISTTELKNTRKIIT---NGNGKVEIKGKRRKKTLENMKSSFSNSLLDSTKYLENITQVRNDLYH 250
+                        ***************************************986...67778999*************************************99 PP
+
+              MOBP2 312 evkkeylqskekkdereltllqeiynglpsnkkdWtyGskklpnetrekideltklllkdnpi..fkeykeavekesefqkelyGeseredk 401
+                        + k +        + + l+ ++++ + lp  kk+W+y +k +  + +  id++t ++++ n +  +++y e +    +f ke+yGe   +  
+  STEP001c01_014890 251 NFKIR------TDELETLQAIKNLKKQLPVSKKHWQYNNKEVK-HLQPDIDKITTSIVNRNNVhsYNQYMESIGYVANFYKEIYGENS-NAL 334
+                        98877......344566788889999***********999875.56788*********999764589*******************76.678 PP
+
+              MOBP2 402 dyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkneqikkkyere.rkekrreeskyskykprlirkkdvrnleaalnddltkyrae 492
+                        +y  n+ k+lk+r+Gn llkelkk +  +        ++n++i +++ r+ +k+   ++   +k ++ +++k d+ ++++a+nd+ + y  +
+  STEP001c01_014890 335 NYIDNKNKELKQRLGNKLLKELKKVDYDK--------KRNNKITENIYRHsKKNDSFNNRLVAKTNKSIVTKGDLYKIDKAINDETKDYLNQ 418
+                        9**********************987543........34555555555541555566777888999************************** PP
+
+              MOBP2 493 keyeevqeriareq 506
+                         eye+ q++i+ e+
+  STEP001c01_014890 419 IEYEKLQRKIEFEN 432
+                        **********9775 PP
+
+>> HAHL001c01_037260  C ATG TAG 3636046 3637209 Valid HBHAL_4698 1164 _YP_006182307.1_ HBHAL_4698 1 3636046 3637209 | hy
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   13.2   0.0   8.6e-05        13       4      38 ..       6      40 ..       3      51 .. 0.87
+   2 !  195.9  19.4   3.6e-60   5.3e-55     146     479 ..      59     384 ..      49     387 .] 0.82
+
+  Alignments for each domain:
+  == domain 1    score: 13.2 bits;  conditional E-value: 8.6e-05
+              MOBP2  4 spaviltsqftlpnkksfstyidyltrekaleeke 38
+                       +p+v+l ++f   nkk f  y++y+ re a  ++e
+  HAHL001c01_037260  6 TPGVVLKTKFVTANKKGFQDYVQYVDREEAKGKGE 40
+                       69**************************9965554 PP
+
+  == domain 2    score: 195.9 bits;  conditional E-value: 3.6e-60
+              MOBP2 146 lpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasi 237
+                         + +f++++d +  +  + ik l+++aq+k s+++qdvi+fd+d+l ++++yd kt +lde+ l++ +rk m++++k+e l+e+   W a+i
+  HAHL001c01_037260  59 TSALFTQQSDHLSIEGKQGIKSLFEQAQKKNSIMWQDVITFDNDWLQERGVYDSKTHTLDEDALKQVTRKSMQTMMKKEGLQES-AVWSAAI 149
+                        578899******************************************************************************.9****** PP
+
+              MOBP2 238 hrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnl.rnnlvqevkkeylqskekkdere 328
+                        h nt+ ihih a+ve + +r               +Gkrk +tld+mk++ +n l+drt+e  +i  l r+++v+e +++   s+ k ++re
+  HAHL001c01_037260 150 HYNTDNIHIHVATVEPNPTRD--------------RGKRKPKTLDAMKSEVVNGLLDRTQERDQINSLiRDHIVNEKREN---SNMKWSNRE 224
+                        ****************99995..............8**************************999776377777776666...99******* PP
+
+              MOBP2 329 lt.llqeiynglpsnkkdWtyGskklpnetrekidelt.klllkdnp.ifkeykeavekesefqkelyGeseredkdya...knqlkdlkkr 414
+                        ++ l+ e+yn lp++k++W+yG + +++  r kidelt k+l k +p ++k+ ++  ++e ++ k+ yG+  +++k y+   +n+l dl+kr
+  HAHL001c01_037260 225 MKpLFLEVYNHLPKDKRQWHYGYQTMNP-IRPKIDELTtKYLDKYHPkEMKQLHNKLDQEVNELKQAYGDGPKDKKRYEhykQNKLDDLYKR 315
+                        *75889******************9965.7*******72566666774689999999999**********9999986542228********* PP
+
+              MOBP2 415 mGnsllkelkkkkpyednp.....lyklqqkneqikkkyererke.krreeskyskykprlirkkdvrnle 479
+                        mGn++l+e+k+ + ++ +       + ++ + + i  + +r+++  +r+  ++y ++ + + ++k  r++e
+  HAHL001c01_037260 316 MGNAFLQEMKQYDYQQYPRqtsntKHPYKSMPSGI--QLQRSLRSiQRSMGQTYDQFINDMDHQKLEREIE 384
+                        *********98775543320000022223333333..3333333313444566777777766666666665 PP
+
+>> HAHL001c01_006770  D ATG TAG 658572 659735 Valid HBHAL_1644 1164 _YP_006179288.1_ HBHAL_1644 1 658572 659735 | hypoth
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   13.1   0.0   9.2e-05        14       4      38 ..       6      40 ..       3      48 .. 0.87
+   2 !  196.1  19.7   3.1e-60   4.6e-55     146     480 ..      59     385 ..      48     386 .. 0.85
+
+  Alignments for each domain:
+  == domain 1    score: 13.1 bits;  conditional E-value: 9.2e-05
+              MOBP2  4 spaviltsqftlpnkksfstyidyltrekaleeke 38
+                       +p+v+l ++f   nkk f  y++y+ re a  ++e
+  HAHL001c01_006770  6 TPGVVLKTKFVTANKKGFQDYVQYVDREEAKGKGE 40
+                       69**************************9965554 PP
+
+  == domain 2    score: 196.1 bits;  conditional E-value: 3.1e-60
+              MOBP2 146 lpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasi 237
+                         + +f++++d +  +  + ik l+++aq+k s+++qdvi+fd+d+l k+++yd kt +lde+ l++ +rk m+ ++k+e l+e+   W a+i
+  HAHL001c01_006770  59 TSALFTQKSDHLSIEGKQGIKSLFEQAQKKNSIMWQDVITFDNDWLQKRGVYDSKTHTLDEDALKQVTRKSMQAMMKKEGLQES-AVWSAAI 149
+                        5778999*****************************************************************************.9****** PP
+
+              MOBP2 238 hrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnl.rnnlvqevkkeylqskekkdere 328
+                        h nt+ ihih a+ve + +r               +Gkrk +tld+mk++ +n l+drt+e s+i  l r+++v+  kk+   s+ k ++re
+  HAHL001c01_006770 150 HFNTDNIHIHVATVEPNPTRE--------------RGKRKPKTLDAMKSEVVNRLLDRTQERSQINSLiRDHIVNTKKKN---SRMKWSNRE 224
+                        ****************99995..............7****************************9887266666665555...********* PP
+
+              MOBP2 329 lt.llqeiynglpsnkkdWtyGskklpnetrekideltklllkd..npifkeykeavekesefqkelyGeseredk...dyaknqlkdlkkr 414
+                        ++ l+ ++yn lp++k++W+yG + l++  r kidelt   l +    ++k+ ++  ++e ++ k  yG+  +++k   +y++n+l dl+kr
+  HAHL001c01_006770 225 MKpLFLDVYNHLPKDKRQWHYGYQTLNP-LRPKIDELTTRYLDKyhGKEMKQLHNKLDQEVNELKRAYGDGPKDKKryqHYKQNKLDDLYKR 315
+                        *75789*****************99965.7*******998886522467888888899999999******9888872224678********* PP
+
+              MOBP2 415 mGnsllkelkkkkpyednp.lyklqqkneqikk..kyererke.krreeskyskykprlirkkdvrnlea 480
+                        mGn++l+e+k+ + ++d+    +++q  + +    + +r+++  +r+  ++y ++ + l ++k  r++e+
+  HAHL001c01_006770 316 MGNAFLQEMKRYDYQQDPRqTSNIKQPYKSMPSgiQLQRSLRSiQRSMGQTYDQFINDLDHQKLERKIER 385
+                        **********998888764144566655544431134455444145566889999999999998888886 PP
+
+>> MACA001p02_000100  D ATG TAA 11947 13362 Valid MCCL_plsB0010 1416 _YP_002559341.1_ MCCL_plsB0010 1 11947 13362 | hypo
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?    3.8   0.0     0.058   8.5e+03       6      49 ..       3      44 ..       1      51 [. 0.82
+   2 !  202.7  21.0     3e-62   4.3e-57     146     508 ..      87     462 ..      68     463 .. 0.83
+
+  Alignments for each domain:
+  == domain 1    score: 3.8 bits;  conditional E-value: 0.058
+              MOBP2  6 aviltsqftlp.nkksfstyidyltrekaleekerltpeelqels 49
+                       ++++ s+f +  nkk +s  idy  r    eek+++ ++e++ ls
+  MACA001p02_000100  3 GIVVISNFVVGnNKKNYSGIIDYYER---YEEKNTRIQNEKEVLS 44
+                       6888999999626899********99...5899999999887765 PP
+
+  == domain 2    score: 202.7 bits;  conditional E-value: 3e-62
+              MOBP2 146 lpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasi 237
+                         +G+f  d +  +s + + +ke ++k+q++Gsv++ +v sfd++fl k+klyd +t  l+e +++ a r  + +++k+e+++ +   W   i
+  MACA001p02_000100  87 SSGLFGDDTNHFTSDEKEVMKEAFNKGQENGSVLWGNVYSFDNEFLKKHKLYDEETGFLNEIKIKEAVRSSIRTMLKEEKIDSS-AVWCGEI 177
+                        489**********9999999**************************************************************99.9****** PP
+
+              MOBP2 238 hrntehihihfavvekenrrklveekv...ngetyye........PkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeyl 318
+                        h +t+ ih+h ++ve +n+r +v +++    g  +ye        Pk k k++tld+mk+ fan+l+dr +++  is+lr +l + +k +  
+  MACA001p02_000100 178 HYDTDNIHVHTSIVEMKNTRPIVMVEKmkkLGSKHYEptgefelqPKAKLKKKTLDNMKSVFANKLIDRSKDMKAISDLRTSLHHSIKLD-- 267
+                        ********************987554311135556651111222268899**************************************98.. PP
+
+              MOBP2 319 qskekkdereltllqeiynglpsnkkdWtyGskklpnetrekideltklllkdnp..ifkeykeavekesefqkelyGesere.dkdyaknq 407
+                        +sk    + +++ll+ i + lp++k++W+y +k + n  r  id+ t   +k n    ++ y +  + e++f k+lyGe + +  kd +kn+
+  MACA001p02_000100 268 DSK----TSQIKLLNTIRKNLPKEKSKWQYNNKEMKN-LRPLIDNYTMNYIKTNNkkDYQVYTKLLKDEEDFYKDLYGEGKDNrYKDPSKNK 354
+                        444....56799**********************976.79*******98888765226*********************986527******* PP
+
+              MOBP2 408 lkdlkkrmGnsllkelkkkkpyednplyklqqkneqikkkyererkekr...reeskys....kykprlirkkdvrnleaalnddltkyrae 492
+                        l dlk rmGn+llkelkk++       y+ + +ne+ k k  r   +++   ++ ++ s    k+kp +   k  + + +++ +     + e
+  MACA001p02_000100 355 LEDLKGRMGNALLKELKKENRSMTYKNYNGNINNEKTKVKNSRLVDRNKyidGNLKTKSngtiKFKPSITPVKVNQAVRSTFRSYRRNRELE 446
+                        *******************9998888888777777777776664433221113444444677788888877766666666666666666666 PP
+
+              MOBP2 493 keyeevqeriareqer 508
+                         e+++ q  i+r+ er
+  MACA001p02_000100 447 FEHDKLQSNIQRDLER 462
+                        6677788888888776 PP
+
+>> ENFA004p02_000490  D ATG TAA 41587 42831 Valid EFD32_pB0049 1245 _YP_006539310.1_ EFD32_pB0049 1 41587 42831 | hypoth
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   15.7   0.0   1.5e-05       2.2       3      38 ..       5      40 ..       3      52 .. 0.90
+   2 !  181.8  14.0   6.4e-56   9.4e-51     141     500 ..      59     406 ..      37     413 .. 0.81
+
+  Alignments for each domain:
+  == domain 1    score: 15.7 bits;  conditional E-value: 1.5e-05
+              MOBP2  3 kspaviltsqftlpnkksfstyidyltrekaleeke 38
+                       k p+v+++ q+   +  +f ty+dyl r+ a+++++
+  ENFA004p02_000490  5 KRPGVVFAFQYVTGKAETFKTYVDYLDRDEAIRNEH 40
+                       89*****************************99887 PP
+
+  == domain 2    score: 181.8 bits;  conditional E-value: 6.4e-56
+              MOBP2 141 kaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGf 232
+                           e   G+f+ +kd++++++ + ike++q+aq+k sv++q v+sfd+d+l   ++++P+t  l  + +++a r mm++ + +eql ++   
+  ENFA004p02_000490  59 GNPEKSDGLFTANKDQLTTKERRSIKEVFQQAQEKDSVMWQGVVSFDNDWLAYYGFWNPRTKQLQADDIKNAFRHMMKETLVEEQLADS-AN 149
+                        4456778*********************************************************************************9.99 PP
+
+              MOBP2 233 Wlasihrntehihihfavvekenrrk..lveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqske 322
+                        W asih nt+ ihihfa+ve e +r   ++++++ gety   kG  +++tldh+++  + +l+dr + l++is l  + +      ++   +
+  ENFA004p02_000490 150 WAASIHYNTDNIHIHFAIVEPEPTRPygIYTNRKTGETYQARKGSWHKKTLDHVRSRMVSNLLDRDQSLAKISTLIRKEITGPGYSWK--AA 239
+                        *************************5338*********************************************95544444444444..44 PP
+
+              MOBP2 323 kkdereltllqeiynglpsnkkdWtyGskklpnetrekideltklllkd.npif.keykeavekesefqkelyGeseredk...dyaknqlk 409
+                         ++e   +l ++iy+ lp++++ W+y ++ + +e+r  id+  +  l + +p +  +  +  ++e + +   yG  + e k   dy kn+ +
+  ENFA004p02_000490 240 LREEPYRQLYTQIYDRLPNDRRLWKYNNH-VLREARPFIDQYIERYLSEyQPYLvSQLDQQLQEEMDVRERAYGTGDIEYKrilDYRKNKYH 330
+                        4455555789****************876.55789*****98876555427765256778889999***********99987779******* PP
+
+              MOBP2 410 dlkkrmGnsllkelkkkkpyednplyklqqkneqikkkyererkekrreeskyskykprlirkkdvrnleaalnddltkyraekeyeevqe 500
+                        +l+ r+Gnsll+++k ++   ++              +  r+ + + +ee + +  +++l+ +k++ ++++ l+ ++++ r ++ y++  +
+  ENFA004p02_000490 331 ELYTRLGNSLLRDMKEQDQERKK--------------RAPRQYETN-QEEWEKTTKQKPLVSQKQLNKIKRGLDRQVEHARNQRIYQQLLR 406
+                        **************998765443..............333332222.23333334467899999999999999999999999999876543 PP
+
+>> BATU007p04_000060  C ATG TAA 5037 6227 Valid MC28_F006 1191 _YP_006815689.1_ MC28_F006 1 5037 6227 | hypothetical pro
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   13.7   0.0   5.7e-05       8.3       3      36 ..      11      44 ..       9      55 .. 0.89
+   2 !  164.1  26.2   1.6e-50   2.3e-45     142     508 ..      61     395 ..      42     396 .] 0.86
+
+  Alignments for each domain:
+  == domain 1    score: 13.7 bits;  conditional E-value: 5.7e-05
+              MOBP2  3 kspaviltsqftlpnkksfstyidyltrekalee 36
+                        +p+v+l ++f lp   +f  yi+y+ re a  e
+  BATU007p04_000060 11 STPGVVLKTKFVLPSSDAFQNYIEYVDREEAKSE 44
+                       579**************************99655 PP
+
+  == domain 2    score: 164.1 bits;  conditional E-value: 1.6e-50
+              MOBP2 142 aeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfW 233
+                          e  + +f+  ++ + +s+ k +ke+++ a ++Gs+++qdvisf + +l++q++yd kt ++de++l   +r  m+++ k e le +   W
+  BATU007p04_000060  61 NPEKTSALFTEHSNRLSESEKKALKEMFKTAHENGSIMWQDVISFHNPWLEEQGIYDEKTKTVDEKKLMDVTRLAMKEMQKREGLEKS-SVW 151
+                        34667899******************************************************************************99.9** PP
+
+              MOBP2 234 lasihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnl.rnnlvqevkkeylqskekk 324
+                         a+ih nt+ ihih a+ve   +r               +Gkrk +tld+m+ + +n+l+dr++e  +i +l rnn+v + k++     + +
+  BATU007p04_000060 152 SAAIHFNTDNIHIHVATVEPVPTRE--------------RGKRKPKTLDAMRGKVVNNLLDRKQEQKQINDLiRNNMVGKKKED--SVFDWR 227
+                        *******************988874..............7*******************************779****999999..444556 PP
+
+              MOBP2 325 dereltllqeiynglpsnkkdWtyGskklpnetrekideltklllkd..npifkeykeavekesefqkelyGeseredkdya...knqlkdl 411
+                        +++   l+  iy+ lps+k++W+y  + + +  +  idel+   +++  +  ++++ +  +ke +  ke yGe + ++k+y+    n++ dl
+  BATU007p04_000060 228 NQHLKPLFLRIYKQLPSDKRQWQYSYNTIQPL-KPEIDELSSRYIQHhhKKDYDQFLQKLDKEVQVFKEAYGEGKYDKKQYEnykTNKINDL 318
+                        6666678899**************99998775.778****988776511567999999999999**********9999976522269***** PP
+
+              MOBP2 412 kkrmGnsllkelkkkkpyednplyklqqkneqikkkyererkekrreeskyskykprlirkkdvrnleaalnddltkyraekeyeevqeria 503
+                        +krmGn++l+e+k  +           qk+    kk            + + k+++++  + ++r++e+a++++ + ++ +k ye++q+  a
+  BATU007p04_000060 319 YKRMGNAFLQEMKAYDKE---------QKRIHHMKK-----------SKPFQKFQQNVSIQYSMRKVERAFKSEYESWKNQKYYERMQRESA 390
+                        ***********9965432.........222222222...........245789************************************999 PP
+
+              MOBP2 504 reqer 508
+                         e+er
+  BATU007p04_000060 391 YENER 395
+                        98886 PP
+
+>> BATU007p05_001770  C ATG TAG 179904 181094 Valid MC28_E176 1191 _YP_006815674.1_ MC28_E176 1 179904 181094 | cytosoli
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   13.7   0.0   5.7e-05       8.3       3      36 ..      11      44 ..       9      55 .. 0.89
+   2 !  164.1  26.2   1.6e-50   2.3e-45     142     508 ..      61     395 ..      42     396 .] 0.86
+
+  Alignments for each domain:
+  == domain 1    score: 13.7 bits;  conditional E-value: 5.7e-05
+              MOBP2  3 kspaviltsqftlpnkksfstyidyltrekalee 36
+                        +p+v+l ++f lp   +f  yi+y+ re a  e
+  BATU007p05_001770 11 STPGVVLKTKFVLPSSDAFQNYIEYVDREEAKSE 44
+                       579**************************99655 PP
+
+  == domain 2    score: 164.1 bits;  conditional E-value: 1.6e-50
+              MOBP2 142 aeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfW 233
+                          e  + +f+  ++ + +s+ k +ke+++ a ++Gs+++qdvisf + +l++q++yd kt ++de++l   +r  m+++ k e le +   W
+  BATU007p05_001770  61 NPEKTSALFTEHSNRLSESEKKALKEMFKTAHENGSIMWQDVISFHNPWLEEQGIYDEKTKTVDEKKLMDVTRLAMKEMQKREGLEKS-SVW 151
+                        34667899******************************************************************************99.9** PP
+
+              MOBP2 234 lasihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnl.rnnlvqevkkeylqskekk 324
+                         a+ih nt+ ihih a+ve   +r               +Gkrk +tld+m+ + +n+l+dr++e  +i +l rnn+v + k++     + +
+  BATU007p05_001770 152 SAAIHFNTDNIHIHVATVEPVPTRE--------------RGKRKPKTLDAMRGKVVNNLLDRKQEQKQINDLiRNNMVGKKKED--SVFDWR 227
+                        *******************988874..............7*******************************779****999999..444556 PP
+
+              MOBP2 325 dereltllqeiynglpsnkkdWtyGskklpnetrekideltklllkd..npifkeykeavekesefqkelyGeseredkdya...knqlkdl 411
+                        +++   l+  iy+ lps+k++W+y  + + +  +  idel+   +++  +  ++++ +  +ke +  ke yGe + ++k+y+    n++ dl
+  BATU007p05_001770 228 NQHLKPLFLRIYKQLPSDKRQWQYSYNTIQPL-KPEIDELSSRYIQHhhKKDYDQFLQKLDKEVQVFKEAYGEGKYDKKQYEnykTNKINDL 318
+                        6666678899**************99998775.778****988776511567999999999999**********9999976522269***** PP
+
+              MOBP2 412 kkrmGnsllkelkkkkpyednplyklqqkneqikkkyererkekrreeskyskykprlirkkdvrnleaalnddltkyraekeyeevqeria 503
+                        +krmGn++l+e+k  +           qk+    kk            + + k+++++  + ++r++e+a++++ + ++ +k ye++q+  a
+  BATU007p05_001770 319 YKRMGNAFLQEMKAYDKE---------QKRIHHMKK-----------SKPFQKFQQNVSIQYSMRKVERAFKSEYESWKNQKYYERMQRESA 390
+                        ***********9965432.........222222222...........245789************************************999 PP
+
+              MOBP2 504 reqer 508
+                         e+er
+  BATU007p05_001770 391 YENER 395
+                        98886 PP
+
+>> LACA001c01_005320  D ATG TAG 540528 541772 Valid LSEI_0546 1245 _YP_805837.1_ LSEI_0546 1 540528 541772 | hypothetica
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !    7.1   0.0    0.0057   8.3e+02       4      37 ..       6      39 ..       3      50 .. 0.89
+   2 !  166.5   9.0   2.9e-51   4.3e-46     144     432 ..      60     354 ..      43     408 .. 0.83
+
+  Alignments for each domain:
+  == domain 1    score: 7.1 bits;  conditional E-value: 0.0057
+              MOBP2  4 spaviltsqftlpnkksfstyidyltrekaleek 37
+                       sp+++  ++f   + k f +yi+y+ r+ a++ +
+  LACA001c01_005320  6 SPGIVNVTDFVAAHAKKFGSYINYIDRDEAIRID 39
+                       9****************************98654 PP
+
+  == domain 2    score: 166.5 bits;  conditional E-value: 2.9e-51
+              MOBP2 144 eilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWla 235
+                        +  +G+f+ + d ++ +   ++k+ +  aq++ sv++q v sf +dfl ++++y+Pkt  lde +lr a+r  m+ +  +  +  +   W a
+  LACA001c01_005320  60 KKSSGIFTDQYDHLTPTQRVQLKKQFTVAQKHQSVMWQSVFSFRNDFLAENNVYNPKTKQLDEAKLRDATRVAMNDFTGKMGMTHS-AIWSA 150
+                        45689***********************************************************************9999999999.9**** PP
+
+              MOBP2 236 sihrntehihihfavvekenrrklveekv...ngetyye..PkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqske 322
+                        +ihrnt+ ihih a+ve + +r   +++v    gety e   kG   ++ l+h k++fan++vdr   l+ris+l  +  q  ++       
+  LACA001c01_005320 151 AIHRNTDNIHIHVAIVEPQPTREWKRVTVegkHGETYQEwqRKGYVPKKILNHFKAAFANEMVDRDRSLARISDLIRQRLQPDQRSV---WR 239
+                        *******************99966555541115789*7633689999***************************9766666554442...22 PP
+
+              MOBP2 323 kkdere.ltllqeiynglpsnkkdWtyGskklpnetrekidelt.klllkdnpi.fkeykeavekesefqkelyGesered...kdyaknql 408
+                        ++++ +  +  qe+ ++lp +++ W+y ++ + ++ r+++d ++ ++l++ +p+ + e+k+   +e  f+  lyG   +e    +dy  n+l
+  LACA001c01_005320 240 HQSSLDfAVRYQELVKSLPRDRRLWKYNNNAMKPY-RDQLDAMSrNYLMRCKPEeLGEFKQLLAQETRFREALYGSGTKEAnraQDYTDNKL 330
+                        33333314568********************9886.9*****973699*99995499******************99988533379****** PP
+
+              MOBP2 409 kdlkkrmGnsllkelkkkkpyedn 432
+                        ++l+ rmGns+lk++    + ++ 
+  LACA001c01_005320 331 HELYARMGNSILKDISAYRTEQEA 354
+                        **************9876655444 PP
+
+>> LACA002c01_005890  D ATG TAG 598027 599271 Valid PBCN11 1245 _LCABL_06030_YP_001986586.1_ LCABL_06030 1 598027 599271
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !    7.1   0.0    0.0059   8.6e+02       4      37 ..       6      39 ..       3      48 .. 0.89
+   2 !  167.3   7.4   1.6e-51   2.3e-46     141     436 ..      57     358 ..      43     412 .. 0.83
+
+  Alignments for each domain:
+  == domain 1    score: 7.1 bits;  conditional E-value: 0.0059
+              MOBP2  4 spaviltsqftlpnkksfstyidyltrekaleek 37
+                       sp+++  ++f   + k f +yi+y+ r+ a++ +
+  LACA002c01_005890  6 SPGIVNVTDFVAAHAKKFGSYINYIDRDEAIRID 39
+                       9****************************98654 PP
+
+  == domain 2    score: 167.3 bits;  conditional E-value: 1.6e-51
+              MOBP2 141 kaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGf 232
+                        k  +  +G+f+ + d ++ +   ++k+ +  aq++ sv++q v sf +dfl ++++y+Pkt  lde +lr a+r  m+ +  +  +  +   
+  LACA002c01_005890  57 KNPKKSSGIFTDQYDRLTPTQRVQLKKQFTVAQKHQSVMWQSVFSFRNDFLAENNVYNPKTKQLDEAKLRDATRVAMHDFTSKMGMAHS-AI 147
+                        4556679*******************************************************************************999.9* PP
+
+              MOBP2 233 Wlasihrntehihihfavvekenrrklveekv...ngetyye..PkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylq 319
+                        W a+ihrnt+ ihih a+ve + +r   +++v    gety e   kG   ++ l+h k++fan++vdr   l+ris+l  +  q  ++    
+  LACA002c01_005890 148 WSAAIHRNTDNIHIHVAIVEPQPTREWKRVTVggkHGETYQEwqRKGYVPKKILNHFKAAFANEMVDRDRSLARISELIRQRLQPDQRS--- 236
+                        ************************976666652226799*7633689999***************************965555544333... PP
+
+              MOBP2 320 skekkdere.ltllqeiynglpsnkkdWtyGskklpnetrekidelt.klllkdnpi.fkeykeavekesefqkelyGesered...kdyak 405
+                        +  ++++ +  +  qe+ ++lp +++ W+y ++ + ++ re++d ++ ++l++ +p+ + e+k+   +e  f+  lyG   +e    ++y  
+  LACA002c01_005890 237 AWRHQSSLDfAVRYQELVKSLPRDRRLWKYNNNAMQPY-REQLDAMSrNYLMRCKPEgLGEFKQLLTQETRFREALYGSGTKEAnraQHYTD 327
+                        33334444414568*********************987.9*****97369***9998689******************99998622257999 PP
+
+              MOBP2 406 nqlkdlkkrmGnsllkelkkkkpyednplyk 436
+                        n+l++l+ rmGns+lk++    + +++  + 
+  LACA002c01_005890 328 NKLHELYTRMGNSILKDISAYRSEQEEVSKT 358
+                        *****************98877766654443 PP
+
+>> LACA004c01_006130  D ATG TAG 593281 594525 Valid LCBD_0609 1245 _YP_005858648.1_ LCBD_0609 1 593281 594525 | hypothet
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !    7.1   0.0    0.0059   8.6e+02       4      37 ..       6      39 ..       3      48 .. 0.89
+   2 !  167.3   7.4   1.6e-51   2.3e-46     141     436 ..      57     358 ..      43     412 .. 0.83
+
+  Alignments for each domain:
+  == domain 1    score: 7.1 bits;  conditional E-value: 0.0059
+              MOBP2  4 spaviltsqftlpnkksfstyidyltrekaleek 37
+                       sp+++  ++f   + k f +yi+y+ r+ a++ +
+  LACA004c01_006130  6 SPGIVNVTDFVAAHAKKFGSYINYIDRDEAIRID 39
+                       9****************************98654 PP
+
+  == domain 2    score: 167.3 bits;  conditional E-value: 1.6e-51
+              MOBP2 141 kaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGf 232
+                        k  +  +G+f+ + d ++ +   ++k+ +  aq++ sv++q v sf +dfl ++++y+Pkt  lde +lr a+r  m+ +  +  +  +   
+  LACA004c01_006130  57 KNPKKSSGIFTDQYDRLTPTQRVQLKKQFTVAQKHQSVMWQSVFSFRNDFLAENNVYNPKTKQLDEAKLRDATRVAMHDFTSKMGMAHS-AI 147
+                        4556679*******************************************************************************999.9* PP
+
+              MOBP2 233 Wlasihrntehihihfavvekenrrklveekv...ngetyye..PkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylq 319
+                        W a+ihrnt+ ihih a+ve + +r   +++v    gety e   kG   ++ l+h k++fan++vdr   l+ris+l  +  q  ++    
+  LACA004c01_006130 148 WSAAIHRNTDNIHIHVAIVEPQPTREWKRVTVggkHGETYQEwqRKGYVPKKILNHFKAAFANEMVDRDRSLARISELIRQRLQPDQRS--- 236
+                        ************************976666652226799*7633689999***************************965555544333... PP
+
+              MOBP2 320 skekkdere.ltllqeiynglpsnkkdWtyGskklpnetrekidelt.klllkdnpi.fkeykeavekesefqkelyGesered...kdyak 405
+                        +  ++++ +  +  qe+ ++lp +++ W+y ++ + ++ re++d ++ ++l++ +p+ + e+k+   +e  f+  lyG   +e    ++y  
+  LACA004c01_006130 237 AWRHQSSLDfAVRYQELVKSLPRDRRLWKYNNNAMQPY-REQLDAMSrNYLMRCKPEgLGEFKQLLTQETRFREALYGSGTKEAnraQHYTD 327
+                        33334444414568*********************987.9*****97369***9998689******************99998622257999 PP
+
+              MOBP2 406 nqlkdlkkrmGnsllkelkkkkpyednplyk 436
+                        n+l++l+ rmGns+lk++    + +++  + 
+  LACA004c01_006130 328 NKLHELYTRMGNSILKDISAYRSEQEEVSKT 358
+                        *****************98877766654443 PP
+
+>> LACA005c01_006140  D ATG TAG 596223 597467 Valid LC2W_0607 1245 _YP_005855525.1_ LC2W_0607 1 596223 597467 | hypothet
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !    7.1   0.0    0.0059   8.6e+02       4      37 ..       6      39 ..       3      48 .. 0.89
+   2 !  167.3   7.4   1.6e-51   2.3e-46     141     436 ..      57     358 ..      43     412 .. 0.83
+
+  Alignments for each domain:
+  == domain 1    score: 7.1 bits;  conditional E-value: 0.0059
+              MOBP2  4 spaviltsqftlpnkksfstyidyltrekaleek 37
+                       sp+++  ++f   + k f +yi+y+ r+ a++ +
+  LACA005c01_006140  6 SPGIVNVTDFVAAHAKKFGSYINYIDRDEAIRID 39
+                       9****************************98654 PP
+
+  == domain 2    score: 167.3 bits;  conditional E-value: 1.6e-51
+              MOBP2 141 kaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGf 232
+                        k  +  +G+f+ + d ++ +   ++k+ +  aq++ sv++q v sf +dfl ++++y+Pkt  lde +lr a+r  m+ +  +  +  +   
+  LACA005c01_006140  57 KNPKKSSGIFTDQYDRLTPTQRVQLKKQFTVAQKHQSVMWQSVFSFRNDFLAENNVYNPKTKQLDEAKLRDATRVAMHDFTSKMGMAHS-AI 147
+                        4556679*******************************************************************************999.9* PP
+
+              MOBP2 233 Wlasihrntehihihfavvekenrrklveekv...ngetyye..PkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylq 319
+                        W a+ihrnt+ ihih a+ve + +r   +++v    gety e   kG   ++ l+h k++fan++vdr   l+ris+l  +  q  ++    
+  LACA005c01_006140 148 WSAAIHRNTDNIHIHVAIVEPQPTREWKRVTVggkHGETYQEwqRKGYVPKKILNHFKAAFANEMVDRDRSLARISELIRQRLQPDQRS--- 236
+                        ************************976666652226799*7633689999***************************965555544333... PP
+
+              MOBP2 320 skekkdere.ltllqeiynglpsnkkdWtyGskklpnetrekidelt.klllkdnpi.fkeykeavekesefqkelyGesered...kdyak 405
+                        +  ++++ +  +  qe+ ++lp +++ W+y ++ + ++ re++d ++ ++l++ +p+ + e+k+   +e  f+  lyG   +e    ++y  
+  LACA005c01_006140 237 AWRHQSSLDfAVRYQELVKSLPRDRRLWKYNNNAMQPY-REQLDAMSrNYLMRCKPEgLGEFKQLLTQETRFREALYGSGTKEAnraQHYTD 327
+                        33334444414568*********************987.9*****97369***9998689******************99998622257999 PP
+
+              MOBP2 406 nqlkdlkkrmGnsllkelkkkkpyednplyk 436
+                        n+l++l+ rmGns+lk++    + +++  + 
+  LACA005c01_006140 328 NKLHELYTRMGNSILKDISAYRSEQEEVSKT 358
+                        *****************98877766654443 PP
+
+>> LACA006c01_006150  D ATG TAG 596409 597653 Valid BN194_06110 1245 _YP_006750677.1_ BN194_06110 1 596409 597653 | hypo
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !    7.1   0.0    0.0059   8.6e+02       4      37 ..       6      39 ..       3      48 .. 0.89
+   2 !  167.3   7.4   1.6e-51   2.3e-46     141     436 ..      57     358 ..      43     412 .. 0.83
+
+  Alignments for each domain:
+  == domain 1    score: 7.1 bits;  conditional E-value: 0.0059
+              MOBP2  4 spaviltsqftlpnkksfstyidyltrekaleek 37
+                       sp+++  ++f   + k f +yi+y+ r+ a++ +
+  LACA006c01_006150  6 SPGIVNVTDFVAAHAKKFGSYINYIDRDEAIRID 39
+                       9****************************98654 PP
+
+  == domain 2    score: 167.3 bits;  conditional E-value: 1.6e-51
+              MOBP2 141 kaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGf 232
+                        k  +  +G+f+ + d ++ +   ++k+ +  aq++ sv++q v sf +dfl ++++y+Pkt  lde +lr a+r  m+ +  +  +  +   
+  LACA006c01_006150  57 KNPKKSSGIFTDQYDRLTPTQRVQLKKQFTVAQKHQSVMWQSVFSFRNDFLAENNVYNPKTKQLDEAKLRDATRVAMHDFTSKMGMAHS-AI 147
+                        4556679*******************************************************************************999.9* PP
+
+              MOBP2 233 Wlasihrntehihihfavvekenrrklveekv...ngetyye..PkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylq 319
+                        W a+ihrnt+ ihih a+ve + +r   +++v    gety e   kG   ++ l+h k++fan++vdr   l+ris+l  +  q  ++    
+  LACA006c01_006150 148 WSAAIHRNTDNIHIHVAIVEPQPTREWKRVTVggkHGETYQEwqRKGYVPKKILNHFKAAFANEMVDRDRSLARISELIRQRLQPDQRS--- 236
+                        ************************976666652226799*7633689999***************************965555544333... PP
+
+              MOBP2 320 skekkdere.ltllqeiynglpsnkkdWtyGskklpnetrekidelt.klllkdnpi.fkeykeavekesefqkelyGesered...kdyak 405
+                        +  ++++ +  +  qe+ ++lp +++ W+y ++ + ++ re++d ++ ++l++ +p+ + e+k+   +e  f+  lyG   +e    ++y  
+  LACA006c01_006150 237 AWRHQSSLDfAVRYQELVKSLPRDRRLWKYNNNAMQPY-REQLDAMSrNYLMRCKPEgLGEFKQLLTQETRFREALYGSGTKEAnraQHYTD 327
+                        33334444414568*********************987.9*****97369***9998689******************99998622257999 PP
+
+              MOBP2 406 nqlkdlkkrmGnsllkelkkkkpyednplyk 436
+                        n+l++l+ rmGns+lk++    + +++  + 
+  LACA006c01_006150 328 NKLHELYTRMGNSILKDISAYRSEQEEVSKT 358
+                        *****************98877766654443 PP
+
+>> CLPE001p01_000390  C ATG TAA 27983 29116 Valid PCP39 1134 _NP_150032.1_ PCP39 1 27983 29116 | hypothetical protein  (
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  172.6  26.9   4.1e-53     6e-48     129     503 ..      34     374 ..      19     377 .] 0.89
+
+  Alignments for each domain:
+  == domain 1    score: 172.6 bits;  conditional E-value: 4.1e-53
+              MOBP2 129 kaikdlsteehk.kaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeq 219
+                        k+ +++s+ ++     e +  +f+kdk+ ++++++k++k+ ++kaq +Gs ++q+v sfd++fl+ ++lyd +   ldee+++ a+r+ me+
+  CLPE001p01_000390  34 KNFDKYSAYNNYmGNPEKIGSLFTKDKHSLTEKEVKKLKKDFDKAQLNGSNMWQEVFSFDNEFLEANGLYDSENGALDEEKIQEATRRAMEE 125
+                        5667777766652445788899********************************************************************** PP
+
+              MOBP2 220 lfkdeqleetnGfWlasihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnl.rnnlv 310
+                        l k e  ++    W as+h nt+ ih+h a ve +  r               +Gk k +tl +mk++f+nsl+d++++l +i  l r+nl+
+  CLPE001p01_000390 126 LSKREGFKDL--TWSASLHYNTDNIHVHIASVEINPSRE--------------RGKFKPRTLYNMKSSFVNSLLDKQKDLDKINLLiRDNLI 201
+                        *******998..8********************988874..............7999**************************9755999*9 PP
+
+              MOBP2 311 qevkkeylqskekkdereltllqeiynglpsnkkdWtyGskklpnetrekideltklllk..dnpifkeykeavekesefqkelyGesered 400
+                        q  k+     ke  + r++  ++ei + lps+k++W+y  + +  e r  id+ltk+ ++  ++ +fke  +  eke++f ke+yG+ + e 
+  CLPE001p01_000390 202 QGKKEM--SFKEDIEMRKM--VKEIVKKLPSDKRQWHYNYNSMQ-EVRPLIDNLTKYYIEtyKKDEFKELVDRLEKEDKFYKEVYGKRKVET 288
+                        987776..66777777765..79****************99995.78**********986346889************************** PP
+
+              MOBP2 401 kdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkneqikkkyererkekrreeskyskykprlirkkdvrnleaalnddltkyrae 492
+                          y+ n+++dl+ rmGn++lke+k      ++   k q+k e +++k e                ++ +i+k+++  ++++lndd +  + +
+  CLPE001p01_000390 289 TTYKDNKIQDLYTRMGNTILKEIKEY---VKEEDLKSQKKFENLQEKWEI--------------NRNIIITKQSISMMKKSLNDDINSMKNQ 363
+                        ***********************864...443334566666766666643..............34679*********************** PP
+
+              MOBP2 493 keyeevqeria 503
+                        +eye+ q+ i+
+  CLPE001p01_000390 364 REYEKLQNSIE 374
+                        *******9997 PP
+
+>> LARH002p01_000090  D ATG TAG 5421 6665 Valid PBCN11 1245 _pLC705_00009_YP_003175612.1_ pLC705_00009 1 5421 6665 | hyp
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !    7.1   0.0    0.0058   8.5e+02       4      37 ..       6      39 ..       3      49 .. 0.89
+   2 !  162.3   7.8   5.3e-50   7.7e-45     144     433 ..      60     355 ..      43     411 .. 0.81
+
+  Alignments for each domain:
+  == domain 1    score: 7.1 bits;  conditional E-value: 0.0058
+              MOBP2  4 spaviltsqftlpnkksfstyidyltrekaleek 37
+                       sp+++  ++f   + k f +yi+y+ r+ a++ +
+  LARH002p01_000090  6 SPGIVNVTDFVAAHAKKFGSYINYIDRDEAIRID 39
+                       9****************************98654 PP
+
+  == domain 2    score: 162.3 bits;  conditional E-value: 5.3e-50
+              MOBP2 144 eilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWla 235
+                        +  +G+f+ + d ++ +   ++k+ +  aq++ sv++q v sf +dfl ++++y+Pkt  lde +lr a+r  m+ +  +  +  +   W a
+  LARH002p01_000090  60 KKSSGIFTDQYDHLTPTQRVQLKKQFTVAQKHQSVMWQSVFSFRNDFLAENNVYNPKTKQLDEAKLRDATRVAMNDFTGKMGMTHS-AIWSA 150
+                        45689***********************************************************************9999999999.9**** PP
+
+              MOBP2 236 sihrntehihihfavvekenrrklveekv...ngetyye..PkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqske 322
+                        +ihrnt+ ihih a+ve + +r   +++v    gety e   kG   ++ l+h k++fan++vdr   l+ris+l  +  q  ++       
+  LARH002p01_000090 151 AIHRNTDNIHIHVAIVEPQPTREWKRVTVegkHGETYQEwqRKGYVPKKILNHFKAAFANEMVDRDRSLARISDLIRQRLQPDQRSV---WR 239
+                        *******************99966555541115789*7633689999***************************9766666554442...22 PP
+
+              MOBP2 323 kkdere.ltllqeiynglpsnkkdWtyGskklpnetrekideltk.lllkdnp.ifkeykeavekesefqkelyGesered...kdyaknql 408
+                        ++++ +  +  qe+ ++lp +++ W+y ++ + ++ r ++d +++ +l + +p ++ e+k+   +e  f+  lyG   +e    ++y  n+l
+  LARH002p01_000090 240 HQSSLDfAVRYQELVKSLPRDRRLWKYNNNAMQPY-RGQLDAMSRnYLTRCKPeELGEFKQLLAQETRFREALYGSGTKEAnraQNYTDNKL 330
+                        33333314568*********************987.999***987155555673699******************9999862226899**** PP
+
+              MOBP2 409 kdlkkrmGnsllkelkkkkpyednp 433
+                        ++l+ rmGns+lk++    + ++  
+  LARH002p01_000090 331 HELYARMGNSILKDISAYRTEQEAV 355
+                        **************98766554443 PP
+
+>> CLBO003p01_000140  D ATG TAA 12102 13241 Valid CLL_0015 1140 _YP_001893638.1_ CLL_0015 1 12102 13241 | hypothetical p
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?    3.0   0.1       0.1   1.5e+04       7      36 ..       4      33 ..       2      40 .. 0.83
+   2 !  158.1  24.5   9.8e-49   1.4e-43     147     462 ..      53     351 ..      32     378 .. 0.80
+
+  Alignments for each domain:
+  == domain 1    score: 3.0 bits;  conditional E-value: 0.1
+              MOBP2  7 viltsqftlpnkksfstyidyltrekalee 36
+                       ++   +f     k f +yi+y+ r+ a ++
+  CLBO003p01_000140  4 IVHKVRFVTSSSKKFKSYINYIARDEATRN 33
+                       566778999999*************99765 PP
+
+  == domain 2    score: 158.1 bits;  conditional E-value: 9.8e-49
+              MOBP2 147 pGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasih 238
+                          +f+  kd + ++  +++ke+++k+q++ s+++qdv sfd+++l+k++lyd kt ++de ++r+a r  me+l k+e l+     W as+h
+  CLBO003p01_000140  53 GSLFTSTKDWLDKKGTEQLKEVFEKSQENNSIMWQDVFSFDNEWLEKNGLYDSKTHTVDETKVRNAVRAAMEELKKNENLDGL--VWSASLH 142
+                        4579999*************************************************************************998..9****** PP
+
+              MOBP2 239 rntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnl.rnnlvqevkkeylqskekkderel 329
+                         nt+ ih+h a ve +  r               +Gkrk +tl +mk++  n+l+dr++e s+i ++ r n++++ ++     k+k+     
+  CLBO003p01_000140 143 YNTDNIHVHIASVEINPSRE--------------RGKRKPKTLINMKSKLLNNLIDRQAEYSKINDIiRKNIIEQRRDT-DFFKDKE---IK 216
+                        **************988874..............7*****************************996377776655543.3333332...33 PP
+
+              MOBP2 330 tllqeiynglpsnkkdWtyGskklpnetrekideltklllk..dnpifkeykeavekesefqkelyGeser.edkdyaknqlkdlkkrmGns 418
+                        ++l++i + lp++++ W+y ++ + n+ r k+d+ltk+ ++  ++  ++e ++  +k ++f ke yGe e+   kdy+ n++ dl+ rmGns
+  CLBO003p01_000140 217 KMLKDIIKDLPEDHSLWKYNNNCM-NDIRPKLDKLTKYYIEnyKKDDYEELIKELNKGEKFLKESYGEGEKfRYKDYKENKINDLYTRMGNS 307
+                        589****************99887.679**********99723467899999999999**********998467****************** PP
+
+              MOBP2 419 llkelkkkkpyednplyklqq.kneqikkkyererkekrreesky 462
+                        +l el+ +   e++ l+  ++  n+  k+    +++ ++++ ++ 
+  CLBO003p01_000140 308 ILSELRINAK-EKERLEARKKfVNNLRKNTNTNTLNIRNKDVNRI 351
+                        *****97655.4555544444044444444433433333333333 PP
+
+>> LIMO005p01_000600  D ATG TAG 57703 59043 Valid LM5578_p60 1341 _YP_003415190.1_ LM5578_p60 1 57703 59043 | hypothetic
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  140.9  16.6   1.7e-43   2.4e-38      94     506 ..      25     441 ..      12     444 .. 0.80
+
+  Alignments for each domain:
+  == domain 1    score: 140.9 bits;  conditional E-value: 1.7e-43
+              MOBP2  94 eqdftkylsymtrkyalesk..kk..ltksee...eelqllnkaikdlsteehkkaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsv 178
+                        +q +  y+ y+ r  a+ +   k+  l   ee   ee +  nk+  d+  +++k      +G+f+  k  +++++ k+ k  +q aq++ sv
+  LIMO005p01_000600  25 KQYWPNYIKYIDRDEAVRNAhyKEfsLIGNEEeraEEDKERNKKYIDYMGNPQK-----TSGLFTEGKTRLTAAEKKKYKSAFQTAQDNNSV 111
+                        566678888888888876531144113333331112334455555555555555.....68******************************* PP
+
+              MOBP2 179 yyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklveekv....ng 266
+                        ++q visfd+d+l kq++ydP   +lde+rl++ +   m+ ++++e ++ +   Wla+ih+nt+h h+h +v e + +rk + +k+    ++
+  LIMO005p01_000600 112 MFQHVISFDNDWLAKQGIYDPSIGMLDEKRLQQVTSAAMKSFLRKEEMDGS-AIWLAAIHKNTKHFHVHISVTEPNPTRKFYSNKKrpelEK 202
+                        *************************************************99.9*****************************9875221122 PP
+
+              MOBP2 267 et..yyePkGkrkqstldhmkttfanslvdrtselsrisnl.rnnlvqevkkeylqske.kkdereltllqeiynglpsnkkdWtyGskklp 354
+                         t    +  G+   +t  ++++t   ++ +r +   ri +  + +l   +++     ke  ++e++++l+ e+++    +  +W yG+ +  
+  LIMO005p01_000600 203 GTdgNPVRDGRMAPATRRAVRSTVYSEIAQRGAFYQRIDDYaKAQLLTPLRES----KEaLRSEENVALFLELHQMYKAHSGQWNYGNLNRH 290
+                        23114455799999*************************98245666666555....5515677899********************96433 PP
+
+              MOBP2 355 netrekidel.tklllkdnpi.fkeykeavekesefqkelyGeser.edkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkneq 443
+                        + +++ +d++ t++l++++p+ ++ +++a e+e + q+e yGe    +   y   +   l+k++Gn +l+e+kk +  + +     +  ++q
+  LIMO005p01_000600 291 P-AKKVVDQItTNYLMQHHPEeMQVFRKAWEHEGKLQQEAYGEKTEfNIHTYLESKDEKLYKQLGNQVLQEVKKYDRSNGESKASGHYLDQQ 381
+                        3.456678872589*****964899*****************97551667899999999***************998887777776666777 PP
+
+              MOBP2 444 ikkkyererkekrreeskyskykprlirkkdvrnleaalnddltkyraekeyeevqeriareq 506
+                         + k+  +r   + +  +y + +  +i +  +++++  l++  +k++ ++++ee ++ ++re+
+  LIMO005p01_000600 382 GNLKV-TGRLTPKDKLERYRRRRGSVIYQ--LKKMDYELDNSYKKWKNDRAFEELEQEMEREK 441
+                        77666.56666777788999999999976..899*********************99999886 PP
+
+>> LIMO016p01_000120  D ATG TAG 8536 9876 Valid LMOSLCC2482_p0012 1341 _CBV37065.1_ LMOSLCC2482_p0012 1 8536 9876 | hypo
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  140.9  16.6   1.7e-43   2.4e-38      94     506 ..      25     441 ..      12     444 .. 0.80
+
+  Alignments for each domain:
+  == domain 1    score: 140.9 bits;  conditional E-value: 1.7e-43
+              MOBP2  94 eqdftkylsymtrkyalesk..kk..ltksee...eelqllnkaikdlsteehkkaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsv 178
+                        +q +  y+ y+ r  a+ +   k+  l   ee   ee +  nk+  d+  +++k      +G+f+  k  +++++ k+ k  +q aq++ sv
+  LIMO016p01_000120  25 KQYWPNYIKYIDRDEAVRNAhyKEfsLIGNEEeraEEDKERNKKYIDYMGNPQK-----TSGLFTEGKTRLTAAEKKKYKSAFQTAQDNNSV 111
+                        566678888888888876531144113333331112334455555555555555.....68******************************* PP
+
+              MOBP2 179 yyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklveekv....ng 266
+                        ++q visfd+d+l kq++ydP   +lde+rl++ +   m+ ++++e ++ +   Wla+ih+nt+h h+h +v e + +rk + +k+    ++
+  LIMO016p01_000120 112 MFQHVISFDNDWLAKQGIYDPSIGMLDEKRLQQVTSAAMKSFLRKEEMDGS-AIWLAAIHKNTKHFHVHISVTEPNPTRKFYSNKKrpelEK 202
+                        *************************************************99.9*****************************9875221122 PP
+
+              MOBP2 267 et..yyePkGkrkqstldhmkttfanslvdrtselsrisnl.rnnlvqevkkeylqske.kkdereltllqeiynglpsnkkdWtyGskklp 354
+                         t    +  G+   +t  ++++t   ++ +r +   ri +  + +l   +++     ke  ++e++++l+ e+++    +  +W yG+ +  
+  LIMO016p01_000120 203 GTdgNPVRDGRMAPATRRAVRSTVYSEIAQRGAFYQRIDDYaKAQLLTPLRES----KEaLRSEENVALFLELHQMYKAHSGQWNYGNLNRH 290
+                        23114455799999*************************98245666666555....5515677899********************96433 PP
+
+              MOBP2 355 netrekidel.tklllkdnpi.fkeykeavekesefqkelyGeser.edkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkneq 443
+                        + +++ +d++ t++l++++p+ ++ +++a e+e + q+e yGe    +   y   +   l+k++Gn +l+e+kk +  + +     +  ++q
+  LIMO016p01_000120 291 P-AKKVVDQItTNYLMQHHPEeMQVFRKAWEHEGKLQQEAYGEKTEfNIHTYLESKDEKLYKQLGNQVLQEVKKYDRSNGESKASGHYLDQQ 381
+                        3.456678872589*****964899*****************97551667899999999***************998887777776666777 PP
+
+              MOBP2 444 ikkkyererkekrreeskyskykprlirkkdvrnleaalnddltkyraekeyeevqeriareq 506
+                         + k+  +r   + +  +y + +  +i +  +++++  l++  +k++ ++++ee ++ ++re+
+  LIMO016p01_000120 382 GNLKV-TGRLTPKDKLERYRRRRGSVIYQ--LKKMDYELDNSYKKWKNDRAFEELEQEMEREK 441
+                        77666.56666777788999999999976..899*********************99999886 PP
+
+>> LIMO019p01_000120  D ATG TAG 8536 9876 Valid LMOSLCC2372_p0012 1341 _YP_006932054.1_ LMOSLCC2372_p0012 1 8536 9876 | 
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  140.9  16.6   1.7e-43   2.4e-38      94     506 ..      25     441 ..      12     444 .. 0.80
+
+  Alignments for each domain:
+  == domain 1    score: 140.9 bits;  conditional E-value: 1.7e-43
+              MOBP2  94 eqdftkylsymtrkyalesk..kk..ltksee...eelqllnkaikdlsteehkkaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsv 178
+                        +q +  y+ y+ r  a+ +   k+  l   ee   ee +  nk+  d+  +++k      +G+f+  k  +++++ k+ k  +q aq++ sv
+  LIMO019p01_000120  25 KQYWPNYIKYIDRDEAVRNAhyKEfsLIGNEEeraEEDKERNKKYIDYMGNPQK-----TSGLFTEGKTRLTAAEKKKYKSAFQTAQDNNSV 111
+                        566678888888888876531144113333331112334455555555555555.....68******************************* PP
+
+              MOBP2 179 yyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklveekv....ng 266
+                        ++q visfd+d+l kq++ydP   +lde+rl++ +   m+ ++++e ++ +   Wla+ih+nt+h h+h +v e + +rk + +k+    ++
+  LIMO019p01_000120 112 MFQHVISFDNDWLAKQGIYDPSIGMLDEKRLQQVTSAAMKSFLRKEEMDGS-AIWLAAIHKNTKHFHVHISVTEPNPTRKFYSNKKrpelEK 202
+                        *************************************************99.9*****************************9875221122 PP
+
+              MOBP2 267 et..yyePkGkrkqstldhmkttfanslvdrtselsrisnl.rnnlvqevkkeylqske.kkdereltllqeiynglpsnkkdWtyGskklp 354
+                         t    +  G+   +t  ++++t   ++ +r +   ri +  + +l   +++     ke  ++e++++l+ e+++    +  +W yG+ +  
+  LIMO019p01_000120 203 GTdgNPVRDGRMAPATRRAVRSTVYSEIAQRGAFYQRIDDYaKAQLLTPLRES----KEaLRSEENVALFLELHQMYKAHSGQWNYGNLNRH 290
+                        23114455799999*************************98245666666555....5515677899********************96433 PP
+
+              MOBP2 355 netrekidel.tklllkdnpi.fkeykeavekesefqkelyGeser.edkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkneq 443
+                        + +++ +d++ t++l++++p+ ++ +++a e+e + q+e yGe    +   y   +   l+k++Gn +l+e+kk +  + +     +  ++q
+  LIMO019p01_000120 291 P-AKKVVDQItTNYLMQHHPEeMQVFRKAWEHEGKLQQEAYGEKTEfNIHTYLESKDEKLYKQLGNQVLQEVKKYDRSNGESKASGHYLDQQ 381
+                        3.456678872589*****964899*****************97551667899999999***************998887777776666777 PP
+
+              MOBP2 444 ikkkyererkekrreeskyskykprlirkkdvrnleaalnddltkyraekeyeevqeriareq 506
+                         + k+  +r   + +  +y + +  +i +  +++++  l++  +k++ ++++ee ++ ++re+
+  LIMO019p01_000120 382 GNLKV-TGRLTPKDKLERYRRRRGSVIYQ--LKKMDYELDNSYKKWKNDRAFEELEQEMEREK 441
+                        77666.56666777788999999999976..899*********************99999886 PP
+
+>> LIIN001p01_000090  C ATG TAG 7151 8491 Valid pli0009 1341 _NP_569166.1_ pli0009 1 7151 8491 | hypothetical protein  (
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  132.9  21.4   4.5e-41   6.5e-36      92     509 .]      22     444 ..      11     444 .. 0.79
+
+  Alignments for each domain:
+  == domain 1    score: 132.9 bits;  conditional E-value: 4.5e-41
+              MOBP2  92 dk.eqdftkylsymtrkyal..eskkklt..ksee...eelqllnkaikdlsteehkkaeeilpGvfskdkdvvkssdlkeikellqkaqnk 175
+                        +k ++ +  y+ y+ r  a+  e+ k+++    ee   ee +  nk+  d+  +++k      +G+f+  k ++++++ k+ k+ +q a ++
+  LIIN001p01_000090  22 NKsKKYWSNYIKYIDRDEAVrnEHYKEFSmiGNEEertEEEKERNKKYIDYMGNPKK-----TSGLFTEGKPKLTQAEKKKYKDAFQTAEKN 108
+                        553556789999999999984345566541133331112344556666666666655.....58**************************** PP
+
+              MOBP2 176 GsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklveekvnge 267
+                         sv++q visfd+++l kq++ydPk  +lde+rl++ +   m+ ++++e +e +   Wla+ih+nt+h h+h +v e   +rk + +k   e
+  LIIN001p01_000090 109 NSVMFQHVISFDNEWLAKQGIYDPKIGMLDEKRLQQVTSASMKSFLRKEGMEGS-AIWLAAIHKNTKHFHVHISVTEPTPTRKFYSNKRRPE 199
+                        ***************************************************999.9*****************************9876543 PP
+
+              MOBP2 268 ....tyyeP..kGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqskekkderel.tllqeiynglpsnkkdWtyGskk 352
+                            t  +P   G+   +t  ++++t   ++ +r s   ri +   +   ++  +   ske   ++e  +l+ e+++   ++  +W yG+ +
+  LIIN001p01_000090 200 lekgTDGKPvrDGRMAPATRRAVRSTVYSEIAQRGSIYQRIDDYAKE---QLLTPLHASKEVIRSHENeALFLELHQMYKKHSGQWNYGNLN 288
+                        11113333322577778999**********************98654...334455667877666654167789999999999******864 PP
+
+              MOBP2 353 lpnetrekidel.tklllkdnpi.fkeykeavekesefqkelyGes.eredkdyaknqlkdlkkrmGnsllkelkkkkpyednplyklqqkn 441
+                          + +++ +d++ t++l++++p+ ++ +++a e+e + q+e yG+  e +   y   +   l+k++Gn +l+e+k  +   +      +  +
+  LIIN001p01_000090 289 KHP-AKKVVDQItTNYLMQHHPEeMQVFRKAWEHEGNLQQEAYGKKtEFNIHTYLESKDEKLYKQLGNQVLQEVKNYDKRFNHSKSDHHYLD 379
+                        332.455678872589*****964899*****************86156678899999999**************98877666655555555 PP
+
+              MOBP2 442 eqikkkyererkekrreeskyskykprlirkkdvrnleaalnddltkyraekeyeevqeriareqerd 509
+                        +q + k e +++  + + ++y + +  +i +  +++++  l++  +k++ ++++e+ ++ ++re+ +d
+  LIIN001p01_000090 380 QQGNLKKEGSLT-PKDKIARYRRRRGSVIYQ--LKKMDYELDNSYKKWKNDRAFEQLEQEMEREKSMD 444
+                        555555443333.344567888889999975..899**************************999886 PP
+
+>> STAG002c01_004590  D ATG TAA 397563 399929 Valid gbs0384 2367 _NP_734852.1_ gbs0384 1 397563 399929 | hypothetical pr
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?    3.4   0.2     0.075   1.1e+04       3      55 ..       5      62 ..       3      68 .. 0.62
+   2 !    9.2   0.3    0.0014     2e+02      93     128 ..      65     101 ..      61     102 .. 0.80
+   3 !  126.0   7.5   5.4e-39   7.9e-34     141     406 ..      84     348 ..      79     435 .. 0.74
+
+  Alignments for each domain:
+  == domain 1    score: 3.4 bits;  conditional E-value: 0.075
+              MOBP2  3 kspaviltsqftlpnkksfstyidyltrekaleekerl...tpee......lqelsrlknal 55
+                        sp + +  q+t  n      y+dy  re a++ +e l   t+ +      + el+r++ a+
+  STAG002c01_004590  5 SSPNITFMLQYTEAN----PQYVDYTNREEAVKIDEELsleTNRQmiegltEDELTRIQEAV 62
+                       689999999999776....57**********7654443111332211122245677777776 PP
+
+  == domain 2    score: 9.2 bits;  conditional E-value: 0.0014
+              MOBP2  93 keqdftkylsymtrkyale.skkkltkseeeelqlln 128
+                        ++ +f  y+ ym r ya e + k+lt    +e + l 
+  STAG002c01_004590  65 TQLNFREYIDYMNRSYATEeQSKELTAIFTQEADYLQ 101
+                        56789************8637799*998888777665 PP
+
+  == domain 3    score: 126.0 bits;  conditional E-value: 5.4e-39
+              MOBP2 141 kaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGf 232
+                        + ++ l+ +f+++ d +++  l ++k+ l+ a ++Gs+++q visfd+ fl +q+lyd  t  +d++ ++a  r mm +l ++e l ++  f
+  STAG002c01_004590  84 EQSKELTAIFTQEADYLQKLRLIDLKNKLESAYQNGSLLWQGVISFDNAFLAEQGLYDVATGQVDQKAIKAVMRDMMPTLIQKEGLSDS-AF 174
+                        457789***********************************************************************************.9* PP
+
+              MOBP2 233 WlasihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslv..drtselsrisnlrnnlvqevkkeylqske 322
+                        W   ih nt+ ihihf+  e e +r  +  +  g+  +e kG   q+t++  k+   + l+  + +s+l r+ ++  nl  +      q  +
+  STAG002c01_004590 175 WWGNIHLNTDNIHIHFGLSEVESNREKIFYQPRGR--MEYKGNFSQKTINRFKSGVYHGLLkeETRSNLLRKEQILANLKADFITSIYQKDK 264
+                        ********************997776655555554..677***************9999973356899999999999998888887777777 PP
+
+              MOBP2 323 kkdereltllqeiynglpsnkkdWtyGsk.klpnetrekideltklllkdnpifkeykeavekesefqkelyGe.seredkdyakn 406
+                          ++ e ++l++ yn lp nkk W yGs+ +    ++  +d   ++ l+++     y+e  ++ ++f +   G  s  ++k y+k 
+  STAG002c01_004590 265 ITSSAEKNFLEQAYNHLPLNKK-WRYGSNaRDFAVSKFFLDRYLDSYLNNEGS-AAYQEFLKETRDFLQTYEGVySAEKNKIYEKL 348
+                        7888999************986.*****9744445555566666655555432.33444444444444443332122222333332 PP
+
+>> STAG002c01_007850  D ATG TAA 723630 725996 Valid gbs0714 2367 _NP_735164.1_ gbs0714 1 723630 725996 | hypothetical pr
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?    3.4   0.2     0.075   1.1e+04       3      55 ..       5      62 ..       3      68 .. 0.62
+   2 !    9.2   0.3    0.0014     2e+02      93     128 ..      65     101 ..      61     102 .. 0.80
+   3 !  126.0   7.5   5.4e-39   7.9e-34     141     406 ..      84     348 ..      79     435 .. 0.74
+
+  Alignments for each domain:
+  == domain 1    score: 3.4 bits;  conditional E-value: 0.075
+              MOBP2  3 kspaviltsqftlpnkksfstyidyltrekaleekerl...tpee......lqelsrlknal 55
+                        sp + +  q+t  n      y+dy  re a++ +e l   t+ +      + el+r++ a+
+  STAG002c01_007850  5 SSPNITFMLQYTEAN----PQYVDYTNREEAVKIDEELsleTNRQmiegltEDELTRIQEAV 62
+                       689999999999776....57**********7654443111332211122245677777776 PP
+
+  == domain 2    score: 9.2 bits;  conditional E-value: 0.0014
+              MOBP2  93 keqdftkylsymtrkyale.skkkltkseeeelqlln 128
+                        ++ +f  y+ ym r ya e + k+lt    +e + l 
+  STAG002c01_007850  65 TQLNFREYIDYMNRSYATEeQSKELTAIFTQEADYLQ 101
+                        56789************8637799*998888777665 PP
+
+  == domain 3    score: 126.0 bits;  conditional E-value: 5.4e-39
+              MOBP2 141 kaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGf 232
+                        + ++ l+ +f+++ d +++  l ++k+ l+ a ++Gs+++q visfd+ fl +q+lyd  t  +d++ ++a  r mm +l ++e l ++  f
+  STAG002c01_007850  84 EQSKELTAIFTQEADYLQKLRLIDLKNKLESAYQNGSLLWQGVISFDNAFLAEQGLYDVATGQVDQKAIKAVMRDMMPTLIQKEGLSDS-AF 174
+                        457789***********************************************************************************.9* PP
+
+              MOBP2 233 WlasihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslv..drtselsrisnlrnnlvqevkkeylqske 322
+                        W   ih nt+ ihihf+  e e +r  +  +  g+  +e kG   q+t++  k+   + l+  + +s+l r+ ++  nl  +      q  +
+  STAG002c01_007850 175 WWGNIHLNTDNIHIHFGLSEVESNREKIFYQPRGR--MEYKGNFSQKTINRFKSGVYHGLLkeETRSNLLRKEQILANLKADFITSIYQKDK 264
+                        ********************997776655555554..677***************9999973356899999999999998888887777777 PP
+
+              MOBP2 323 kkdereltllqeiynglpsnkkdWtyGsk.klpnetrekideltklllkdnpifkeykeavekesefqkelyGe.seredkdyakn 406
+                          ++ e ++l++ yn lp nkk W yGs+ +    ++  +d   ++ l+++     y+e  ++ ++f +   G  s  ++k y+k 
+  STAG002c01_007850 265 ITSSAEKNFLEQAYNHLPLNKK-WRYGSNaRDFAVSKFFLDRYLDSYLNNEGS-AAYQEFLKETRDFLQTYEGVySAEKNKIYEKL 348
+                        7888999************986.*****9744445555566666655555432.33444444444444443332122222333332 PP
+
+>> STAG002c01_010640  C ATG TAA 1045921 1048287 Valid gbs0995 2367 _NP_735443.1_ gbs0995 1 1045921 1048287 | hypothetica
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?    3.4   0.2     0.075   1.1e+04       3      55 ..       5      62 ..       3      68 .. 0.62
+   2 !    9.2   0.3    0.0014     2e+02      93     128 ..      65     101 ..      61     102 .. 0.80
+   3 !  126.0   7.5   5.4e-39   7.9e-34     141     406 ..      84     348 ..      79     435 .. 0.74
+
+  Alignments for each domain:
+  == domain 1    score: 3.4 bits;  conditional E-value: 0.075
+              MOBP2  3 kspaviltsqftlpnkksfstyidyltrekaleekerl...tpee......lqelsrlknal 55
+                        sp + +  q+t  n      y+dy  re a++ +e l   t+ +      + el+r++ a+
+  STAG002c01_010640  5 SSPNITFMLQYTEAN----PQYVDYTNREEAVKIDEELsleTNRQmiegltEDELTRIQEAV 62
+                       689999999999776....57**********7654443111332211122245677777776 PP
+
+  == domain 2    score: 9.2 bits;  conditional E-value: 0.0014
+              MOBP2  93 keqdftkylsymtrkyale.skkkltkseeeelqlln 128
+                        ++ +f  y+ ym r ya e + k+lt    +e + l 
+  STAG002c01_010640  65 TQLNFREYIDYMNRSYATEeQSKELTAIFTQEADYLQ 101
+                        56789************8637799*998888777665 PP
+
+  == domain 3    score: 126.0 bits;  conditional E-value: 5.4e-39
+              MOBP2 141 kaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGf 232
+                        + ++ l+ +f+++ d +++  l ++k+ l+ a ++Gs+++q visfd+ fl +q+lyd  t  +d++ ++a  r mm +l ++e l ++  f
+  STAG002c01_010640  84 EQSKELTAIFTQEADYLQKLRLIDLKNKLESAYQNGSLLWQGVISFDNAFLAEQGLYDVATGQVDQKAIKAVMRDMMPTLIQKEGLSDS-AF 174
+                        457789***********************************************************************************.9* PP
+
+              MOBP2 233 WlasihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslv..drtselsrisnlrnnlvqevkkeylqske 322
+                        W   ih nt+ ihihf+  e e +r  +  +  g+  +e kG   q+t++  k+   + l+  + +s+l r+ ++  nl  +      q  +
+  STAG002c01_010640 175 WWGNIHLNTDNIHIHFGLSEVESNREKIFYQPRGR--MEYKGNFSQKTINRFKSGVYHGLLkeETRSNLLRKEQILANLKADFITSIYQKDK 264
+                        ********************997776655555554..677***************9999973356899999999999998888887777777 PP
+
+              MOBP2 323 kkdereltllqeiynglpsnkkdWtyGsk.klpnetrekideltklllkdnpifkeykeavekesefqkelyGe.seredkdyakn 406
+                          ++ e ++l++ yn lp nkk W yGs+ +    ++  +d   ++ l+++     y+e  ++ ++f +   G  s  ++k y+k 
+  STAG002c01_010640 265 ITSSAEKNFLEQAYNHLPLNKK-WRYGSNaRDFAVSKFFLDRYLDSYLNNEGS-AAYQEFLKETRDFLQTYEGVySAEKNKIYEKL 348
+                        7888999************986.*****9744445555566666655555432.33444444444444443332122222333332 PP
+
+>> STGA003c01_022040  C ATG TAA 2245110 2247476 Valid SGGB_2179 2367 _YP_006034990.1_ SGGB_2179 1 2245110 2247476 | hypo
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?    3.0   0.1       0.1   1.5e+04       3      39 ..       5      37 ..       3      62 .. 0.73
+   2 ?    5.5   0.2     0.017   2.5e+03      89     113 ..      61      85 ..      41      87 .. 0.76
+   3 !  116.2   5.3   4.9e-36   7.2e-31     140     364 ..      83     306 ..      73     402 .. 0.83
+   4 ?   -0.1   0.4      0.89   1.3e+05       9      62 ..     484     536 ..     457     571 .. 0.60
+
+  Alignments for each domain:
+  == domain 1    score: 3.0 bits;  conditional E-value: 0.1
+              MOBP2  3 kspaviltsqftlpnkksfstyidyltrekaleeker 39
+                        sp++ +  q+t  n    s+y+dy  r+ a++ ++ 
+  STGA003c01_022040  5 SSPSITFMLQYTEAN----SAYVDYTNRDEAVQMDND 37
+                       689999999999665....89**********764433 PP
+
+  == domain 2    score: 5.5 bits;  conditional E-value: 0.017
+              MOBP2  89 infdkeqdftkylsymtrkyalesk 113
+                        +  +++ +f+ y+ ym r ya e++
+  STGA003c01_022040  61 EVPETTLNFQEYIDYMNRSYATEKQ 85 
+                        44567899*************9975 PP
+
+  == domain 3    score: 116.2 bits;  conditional E-value: 4.9e-36
+              MOBP2 140 kkaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnG 231
+                         k ++ l+ +f++d + ++ + ++e+k+ l++a ++Gs+++q visfd++fl  q+lyd  t  +d++ +++  r ++ ++  +e l e+  
+  STGA003c01_022040  83 EKQSDDLTAIFTQDANYLQREKVTELKQKLEQAHDNGSLLWQGVISFDNEFLAAQGLYDRATGRVDQQAIKTVMRDVIPKMIAKEGLSES-A 173
+                        477999************************************************************************************.9 PP
+
+              MOBP2 232 fWlasihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslvd.r.tselsrisnlrnnlvqevkkeylqsk 321
+                        fW   ih nt+ ih+hf+  e e +r  +  +   +  +e +G   q+t+++ k+   + l++ + +s l r+ ++  nl  ++ ++  q  
+  STGA003c01_022040 174 FWWGNIHLNTDNIHVHFGLSEIESKREKFFYQP--RHRMEYRGNFSQKTIQKCKSDVFHGLINdKtRSALLRKEQILANLKANLIDQVFQES 263
+                        ***********************9997765544..4456779******************98523258899999988888888888877778 PP
+
+              MOBP2 322 ekkdereltllqeiynglpsnkkdWtyGsk.klpnetrekidel 364
+                            + e ++l++ yn lp +kk W yGs+ k    ++  +d+ 
+  STGA003c01_022040 264 RMVRSTEKNFLEQAYNHLPFQKK-WRYGSNaKDFAVSKFFLDKY 306
+                        88888999***********9865.****9843333444445554 PP
+
+  == domain 4    score: -0.1 bits;  conditional E-value: 0.89
+              MOBP2   9 ltsqftlpnkksfstyidyltrekaleekerltpeelqelsrlknaledfeiee 62 
+                        l+ q tl +   fst  d        ++k+++t +e qel  +++al    +ee
+  STGA003c01_022040 484 LAKQLTLKDLSFFSTE-DLKELVDVAKQKQHRTLKERQELGTFRYALRLSRLEE 536
+                        3444444443333332.3333333345566666666666666666665444444 PP
+
+>> ENFA004c01_019820  C ATG TAA 2001207 2003378 Valid EFD32_1939 2172 _YP_006538300.1_ EFD32_1939 1 2001207 2003378 | pu
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   15.9   0.0   1.3e-05       1.8       3      37 ..       4      38 ..       1      58 [. 0.87
+   2 !   98.9   5.7   8.8e-31   1.3e-25     144     426 ..      77     359 ..      65     395 .. 0.84
+
+  Alignments for each domain:
+  == domain 1    score: 15.9 bits;  conditional E-value: 1.3e-05
+              MOBP2  3 kspaviltsqftlpnkksfstyidyltrekaleek 37
+                       k+ ++ilts f +p   ++ +y+dy+ r+ a +++
+  ENFA004c01_019820  4 KTAGIILTSAFVMPGSNTYQAYLDYMERNEATRNE 38
+                       7889**************************96544 PP
+
+  == domain 2    score: 98.9 bits;  conditional E-value: 8.8e-31
+              MOBP2 144 eilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWla 235
+                        e  + +f+k+ d+  +++++ +k+ +  aq++ s ++q v sf +++li+++  d kt+ l  + + +a+rk + +l k+e l+ +   W a
+  ENFA004c01_019820  77 EKNSALFTKNYDQTPENEVHRMKKYFSEAQENRSPLWQLVFSFRNEWLIEKGYLDEKTNHLKAQYIYQATRKAVAELEKKEGLKGE---WTA 165
+                        455789****************************************************************************9877...*** PP
+
+              MOBP2 236 sihrntehihihfavvekenrrklvee...kvngetyyePkGkrkqstldhmkttfanslvdrtse.lsris..nlrnnlvqevkkeylqsk 321
+                        +ih nt+ +h+h + veke +r  ++    ++  ++ ++ kGk  q+ + + k +f+n+l++++++ ls ++  + +  l +  ++++ q  
+  ENFA004c01_019820 166 AIHYNTDNLHVHVGYVEKEPTREWINYihpTEPHKSGWQYKGKFAQKNITATKRAFVNELMQNKEQlLSLQTylDYQKRLAESCQEQFTQG- 256
+                        **********************98765111566788899*********************98766515554422678899*******9886. PP
+
+              MOBP2 322 ekkdereltllqeiynglpsnkkdWtyGskklpnetrekideltklllkdnp..ifkeykeavekesefqkelyGeseredkdyaknql... 408
+                         ++++r ++l+    + lp n+  W+yG     ++ +  +d l +l+l+ +    +++     ++ s+   e+yG+ + +   y   ql   
+  ENFA004c01_019820 257 -QYEQRFVQLM----EKLPRNQYFWKYGFAER-HHFKPELDRLIDLFLETDGkeLMDKILPRLKQISDDYEEVYGNPRNK-PTYYDQQLygk 341
+                        .5778888876....579**********8754.567889******9997654114556667789999999*****97555.44555555222 PP
+
+              MOBP2 409 kdlkkrmGnsllkelkkk 426
+                          l+ r+Gn +l e kk 
+  ENFA004c01_019820 342 NSLYSRIGNLILSEAKKY 359
+                        4799***********995 PP
+
+>> LASL002p03_000940  C TTG TAA 138441 140225 Valid HN6_01610 1785 _YP_005877483.1_ HN6_01610 1 138441 140225 | hypothet
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   98.6  12.2   1.1e-30   1.6e-25     163     427 ..       9     267 ..       2     302 .. 0.78
+
+  Alignments for each domain:
+  == domain 1    score: 98.6 bits;  conditional E-value: 1.1e-30
+              MOBP2 163 keikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavveke 254
+                        +e+ + +  aq++ s+++q v+sf+ dfl++ klydP+t ++++  ++ a +k + +++k+e l+  + fW a +h nt+h+h+h ++ + +
+  LASL002p03_000940   9 HELADKIIEAQKNKSMLWQGVVSFNPDFLERAKLYDPETGVVNQRAIKRAVQKAIPEMLKQEELNVPETFWWADVHLNTNHVHVHIGISQTK 100
+                        5566666779999*****************************************************99************************ PP
+
+              MOBP2 255 nrrklveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkke.ylqskek.kdereltllqeiynglpsnk. 343
+                        n+r l         + ePkG+ + ++l ++k+   +++ d+ s    i nl  + + e+kk+   q ke+ +++++ ++l++i+++lp+ k 
+  LASL002p03_000940 101 NTRPL--------KFGEPKGRFQTKSLKKIKSIVHREVEDKVSRKQDI-NLEKK-IDELKKDvVDQLKENlQQQHQQKILEQIWHALPKYKd 182
+                        ***76........599***************99888886665433222.33333.333333313344443266788899*********8651 PP
+
+              MOBP2 344 .kdWtyGskklpnetre.ki..deltklllkd..npifkeykeavekesefqkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkk 427
+                         + W   ++  + + re k+   +l + +lk   n  ++ey  a++++++ ++e yG+   ++    knq kdl+  + n ++ el+k +
+  LASL002p03_000940 183 kRRWRASNN--SYDFREaKLltGKLVDDFLKTdlNQDYEEYLSAIKQKDSDNREKYGQNIPDS--IPKNQ-KDLHDYLMNRVFDELRKVD 267
+                        156764444..33333312211344444444334678********************987655..56776.89999999*******9976 PP
+
+>> STIT001c01_007820  D GTG TAA 864941 867295 Valid SCIM_0750 2355 _YP_006469652.1_ SCIM_0750 1 864941 867295 | hypothet
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   93.6  16.5   3.4e-29     5e-24      99     453 ..      21     419 ..      14     428 .. 0.74
+   2 ?   -0.8   0.6       1.5   2.1e+05      33      63 ..     503     533 ..     497     614 .. 0.75
+
+  Alignments for each domain:
+  == domain 1    score: 93.6 bits;  conditional E-value: 3.4e-29
+              MOBP2  99 kylsymtrkyaleskkkltkseeeel.qll.n...kaikdlsteehk................kaeeilpGvfskdkdvvkssdlkeikell 169
+                        +y+ y  r  a+e   +l   ++++l + l +   k+ik+  +e++                 + ++  + vf +d + ++++ + ++k+ l
+  STIT001c01_007820  21 QYVDYTNRDEAVELENDLFLENHKQLiEDLtEeqiKEIKKAVPEQNLnfkeyidymnrsyateQQNQEWTAVFNQDANYLQTKRVDQLKRNL 112
+                        6777777777776666655433332212221211144555555555477788888888888877788899********************** PP
+
+              MOBP2 170 qkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWlasihrntehihihfavvekenrrklve 261
+                        + a ++Gs+++q visfd++fl +++lyd  t  +d++ +++  r  m ++ ++e l ++  fW   ih nt+ ih+h +  e + +r  + 
+  STIT001c01_007820 113 EGAYQNGSLLWQGVISFDNEFLAQEGLYDKATGHVDQQAIKNVIREAMPKVIQKEGLSDS-AFWWGNIHLNTDNIHVHIGLSEINSNREKIF 203
+                        ************************************************************.9*********************875555444 PP
+
+              MOBP2 262 ekvngetyyePkGkrkqstldhmkttfanslvdr..tselsrisnlrnnlvqevkkeylqskekkdereltllqeiynglpsnkkdWtyGsk 351
+                         +  g+  +e +G   q+t+ ++k+   + l++   ++ + r+ ++  nl  ++  +  + ++   + e ++l++ yn lp +k +W y s+
+  STIT001c01_007820 204 YRPRGR--MEYRGNFSQKTIKQLKSDVFHGLINEqtRNMIVRKEQVLANLKSDLLTNVFKNNQVTLSAEKNFLEQAYNHLPFEK-QWRYASN 292
+                        444444..5568999****************975226789999888888877777777777888889999***********875.7****98 PP
+
+              MOBP2 352 .............klpnetrekideltklllkdnpifke.ykeav..ekesefqkely..Ge...seredkdyaknql.....kdlkkrmGn 417
+                                      l ++  +   e  + +l++  +f e y+ +   ek++ ++k  y  G+   s+ ++k y+ ++l     ++l+ r+Gn
+  STIT001c01_007820 293 akdfavskffinkYLDSYFENEGKEDYQKFLTETREFLEmYEGVYsaEKNQTYEKLRYvnGKavrSQGQSKGYEIEKLihrreHELRERLGN 384
+                        888866666555445555666666667778888887777255444114444556655633542225557899988777333335899***** PP
+
+              MOBP2 418 sllkelkkkkpyednplyklqqkneqikkkyererk 453
+                         +l+++k++ p + n     ++ ++  k + er r+
+  STIT001c01_007820 385 QILQKFKQEVPRIANVE-PKNNIEDFSKGNQERIRQ 419
+                        *******9999987743.333444444444455444 PP
+
+  == domain 2    score: -0.8 bits;  conditional E-value: 1.5
+              MOBP2  33 aleekerltpeelqelsrlknaledfeieeg 63 
+                        a ++k ++t++e qel  +++al+   ++e+
+  STIT001c01_007820 503 AAKNKANRTEKERQELGTFRYALKLSLLKEQ 533
+                        5688899999999999999999875544443 PP
+
+>> ETHA001c01_024390  D ATG TAA 2659251 2663384 Valid Ethha_2483 4134 _YP_004092708.1_ Ethha_2483 1 2659251 2663384 | Se
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   82.2   0.4     1e-25   1.5e-20     143     427 ..      58     322 ..      26     331 .. 0.83
+
+  Alignments for each domain:
+  == domain 1    score: 82.2 bits;  conditional E-value: 1e-25
+              MOBP2 143 eeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleetnGfWl 234
+                         e   G+f  + d +++ d k+  e+++ aq+  s +yq +isfd+d+l  +++     d l  + l+  +r  +  l  +  l+e n  W 
+  ETHA001c01_024390  58 REKTDGLFDANFDLLNDYDKKNYGEMFDAAQDVDSCMYQPIISFDNDYLLAHGIDYRTEDGL--HLLKEMTRLAVSDLIANSHLDEHNAIWT 147
+                        466789***********************************************977777877..47999*********************** PP
+
+              MOBP2 235 asihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqskekkde 326
+                         +ih nt  ihih a+ e e ++ + ++         P     ++++d+mk+  an l+   + +     l  +l +e++       + +  
+  ETHA001c01_024390 148 GAIHTNTGNIHIHIAIAEIEKTKSPRDVL--------P-----EKAIDKMKSRVANVLMGDEKIIRLSEYLHKELPHEIRTA-----ALEAG 221
+                        *******************9998876654........3.....3479************98765544445777888888777.....44555 PP
+
+              MOBP2 327 reltllqeiynglpsnkkdWtyGskklpnetrekideltklllkdnpifk.eykeavekesefq...kelyGesere.dkdyaknqlkdlkk 413
+                        +elt l      lp +   W+y    ++++ r ki+   +++++ np++  +y +a+  ++e++   +++yG  + +   ++  n+l d++ 
+  ETHA001c01_024390 222 NELTALA---RLLPAD-CAWQYNRPSMAPY-RTKINHCVDTIIRSNPELTaKYTDAMGLLEEYRqdiQDVYGVGKHDrAHEMMDNKLADFYA 308
+                        6666665...558876.67********997.99**************98537999886665554111679**98876257899********* PP
+
+              MOBP2 414 rmGnsllkelkkkk 427
+                        r Gn+ll e k  k
+  ETHA001c01_024390 309 RAGNALLAEAKELK 322
+                        *******8877533 PP
+
+>> LEKI001c01_000730  C ATG TAA 69421 70908 Valid LKI_00365 1488 _YP_003620585.1_ LKI_00365 1 69421 70908 | hypothetical
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   72.3  11.0     1e-22   1.5e-17     140     456 ..      79     410 ..      18     487 .. 0.77
+
+  Alignments for each domain:
+  == domain 1    score: 72.3 bits;  conditional E-value: 1e-22
+              MOBP2 140 kkaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeq.l.... 226
+                          a      +f  dk    + d+  +++ l+ +q++G  ++    s   d+l+k++lydP+t ++d+++l+ a + + ++l ++   l    
+  LEKI001c01_000730  79 NSAVTETHPIFGSDKLNYDNHDISVLRKDLDETQKNGNNIHELAFSIRGDWLVKNNLYDPETRMIDQNKLKHAEQEVAKTLINKGFnLplge 170
+                        3566666779999999999**************************************************************98863233344 PP
+
+              MOBP2 227 eetnGfWlasihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeyl 318
+                        +e++  W+  ih++t+h+ +h+    k    ++   k++g+   +P G      +++ k +f ++l+   +el r  ++   +    kke +
+  LEKI001c01_000730 171 DENDIVWFGVIHQDTDHLNMHLWFAKKSQETRPEMIKQEGKYKGQPIGVIPLEVIEQAKRQFRKQLMSS-QELRRHQEILKGVG-GFKKEIV 260
+                        78889****************99999999999999999999999**********************985.68999988876654.4555555 PP
+
+              MOBP2 319 qs..kekkdereltllqeiynglpsnkk.dWtyGskklpn..etrekideltklllkd......npifkeykeavekesefqkelyGesere 399
+                        ++   +  ++r+ + +++iy++lp+n k  W+ G+ +l+       k ++lt+ l+ d      +p+++ +k  +++ +  + e  G  ++ 
+  LEKI001c01_000730 261 EAalDNLLNDRHAKAIKQIYDALPQNMKgRWQVGNAHLTAgkGRMAKANQLTDQLIDDlfaeelKPEYEGFKSLAQEYDAINIEDQGVMHKG 352
+                        44113556899999**********996637*****9775411334577777777665544444569************************** PP
+
+              MOBP2 400 dkdyaknqlkdlkkrmGnsllkelkkkkpyednply.klqqkneqikkkyererkekr 456
+                        + + + n+  +l+kr+ n l k l + +    n +  ++ +  + +kk+ + + ++k 
+  LEKI001c01_000730 353 QLKWSENKEEELRKRLANQLYKHLAQIEDTSLNDIDqQMSELLSNVKKRDKGGITDKT 410
+                        ***********************98766555554431455555555555544444443 PP
+
+>> LEME001c01_010470  D ATG TAA 1059197 1060684 Valid LEUM_1062 1488 _YP_818535.1_ LEUM_1062 1 1059197 1060684 | hypothe
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   71.0  10.6   2.5e-22   3.6e-17     137     454 ..      76     408 ..      14     441 .. 0.79
+
+  Alignments for each domain:
+  == domain 1    score: 71.0 bits;  conditional E-value: 2.5e-22
+              MOBP2 137 eehkkaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeq.l. 226
+                         ++  a      +f  dk    + d+  +++ l+ aq++G  ++    s   d+l+k++ly+P+t ++d+++l+ a + + ++l ++   l 
+  LEME001c01_010470  76 ANRNSAVTETHPIFGNDKLNYDNHDISVLRKNLDEAQENGNNIHELAFSIRGDWLVKNNLYEPETRMIDQNKLKHAEQEVSKTLINKGFnLp 167
+                        333366666778999*********************************************************************98863223 PP
+
+              MOBP2 227 ...eetnGfWlasihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkk 315
+                           +e++  W+  ih++t+h+ +h+    k    ++   k++ge   +P G      +++ k +f ++l+   +el r  ++   +    kk
+  LEME001c01_010470 168 lgeDENDVVWFGVIHQDTDHLNMHLWFAKKSQETRPEMLKQEGEYKGQPIGVIPLEVIEQAKRQFRKQLMSS-QELRRHQEILKGVG-GFKK 257
+                        34478999****************99999999999999999999999**********************985.68999998877654.4555 PP
+
+              MOBP2 316 eylqs..kekkdereltllqeiynglpsn.kkdWtyGskklp..netrekideltklllkd......npifkeykeavekesefqkelyGes 396
+                        e +++   +  ++r+ + +++iy++lp++ k  W+ Gs  l+  +    k d+lt+ ll d      +p+++ +k ++++ +  + e  G  
+  LEME001c01_010470 258 EIVETapDNLLNDRHAKAIKQIYDALPQDmKGRWQVGSAYLTagKGKMAKADQLTNQLLDDlfdkelKPEYEGFKSMAQEYDAINIEDQGVM 349
+                        5554411456789999***********872668******765225667899****999987555555799*********9999********* PP
+
+              MOBP2 397 eredkdyaknqlkdlkkrmGnsllkelkkkkpyednply.klqqkneqikkkyererke 454
+                        ++ + + + n+  +l++r+ n l k l + +    n +  ++ +  + +kk+ + + ++
+  LEME001c01_010470 350 HKGQLKWSENKDEELRQRLANQLYKHLAQIEDTSLNDIDqQMSELLSNVKKRDKGGITD 408
+                        **************************987665555554314555555555555444444 PP
+
+>> BAWE001p03_000380  C ATG TAA 41334 41786 Valid BcerKBAB4_5400 453 _YP_001642726.1_ BcerKBAB4_5400 1 41334 41786 | hyp
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   15.6   0.0   1.5e-05       2.2       4      36 ..      12      44 ..       9      58 .. 0.89
+   2 !   54.8   0.0     2e-17   2.9e-12     128     210 ..      48     129 ..      40     142 .. 0.80
+
+  Alignments for each domain:
+  == domain 1    score: 15.6 bits;  conditional E-value: 1.5e-05
+              MOBP2  4 spaviltsqftlpnkksfstyidyltrekalee 36
+                       +p+v+l ++f lp   +f  yi+y+ re a  e
+  BAWE001p03_000380 12 TPGVVLKTKFVLPSSDAFQNYIEYVDREEAQSE 44
+                       79**************************99665 PP
+
+  == domain 2    score: 54.8 bits;  conditional E-value: 2e-17
+              MOBP2 128 nkaikdlsteehkkaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlr 210
+                        n ++ ++  e + +  e  + +f+   + +++s+ k +ke+++ a ++Gs+++qdvisf + +l++q++yd kt +lde +  
+  BAWE001p03_000380  48 NPKMFEMYQEYMGN-PEKTSALFTEHANRLTESEKKSLKEMFKTAYENGSIMWQDVISFHNPWLEEQGIYDSKTKTLDERNAE 129
+                        43333333444443.466799**********************************************************7654 PP
+
+>> LEME001c01_010550  D ATG TAA 1071492 1072901 Valid LEUM_1070 1410 _YP_818543.1_ LEUM_1070 1 1071492 1072901 | transpo
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   67.5   9.4   2.9e-21   4.3e-16     170     455 ..      85     381 ..      76     459 .. 0.80
+
+  Alignments for each domain:
+  == domain 1    score: 67.5 bits;  conditional E-value: 2.9e-21
+              MOBP2 170 qkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeq.l....eetnGfWlasihrntehihihfavvekenr 256
+                         ++q++G  ++    s   d+l+k++lydP+  ++d+++l+ a + + ++l ++   l    +e++  W+  ih++t+h+ +h+    k   
+  LEME001c01_010550  85 LRSQENGNNIHELAFSIRGDWLVKNNLYDPEIRMIDQNKLKHAEQEVAKTLINKGFnLplgeDENDVVWFGVIHQDTDHLNMHLWFAKKSQE 176
+                        589************************************************9886323334478999*************999988888888 PP
+
+              MOBP2 257 rklveekvngetyyePkGkrkqstldhmkttfanslvdrtselsrisnlrnnlvqevkkeylqs..kekkdereltllqeiynglpsn.kkd 345
+                         +   +k++g+   +P G      +++ k +f ++l+   +el r  ++   +    kke +++   +  ++r+ + +++iy++lp++ k  
+  LEME001c01_010550 177 TRSEMVKQEGKYKGQPIGVIPLEVIEQAKRQFRKQLMSS-QELRRHQEILKGVGG-FKKEIVETapENLLNDRHAKAIKQIYDALPQDmKGR 266
+                        88888888999999**********************975.689999998776554.45554443113456899999**********872568 PP
+
+              MOBP2 346 WtyGskklp..netrekideltklllkd......npifkeykeavekesefqkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkkpy 429
+                        W+ G+ +l+  +    k ++lt+ ll d      +p+++ +k  +++ +  + e  G  ++ +++ + n+  +l+kr+ n l k l + +  
+  LEME001c01_010550 267 WQVGNAHLTagKGKMAKANQLTNQLLDDlfdkelKPEYEGFKSLAQEYDAINIEDQGLMHKGQRKWSENKEDELRKRLANQLYKHLAQIE-- 356
+                        *****97762244567888888888876554455699********99999999999*9**************************998754.. PP
+
+              MOBP2 430 ednplyklqqkneqikkkyererkek 455
+                         d  l+ ++q+ + +  +++++ k +
+  LEME001c01_010550 357 -DTSLNDIDQQMSELLSHVKQKNKGN 381
+                        .4455555444443333333333322 PP
+
+>> LEME001c01_012390  C ATG TGA 1251638 1252348 Valid LEUM_1257 711 _YP_818727.1_ LEUM_1257 1 1251638 1252348 | hypothet
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   63.8   0.1   3.9e-20   5.8e-15     145     259 ..      91     212 ..      32     219 .. 0.79
+
+  Alignments for each domain:
+  == domain 1    score: 63.8 bits;  conditional E-value: 3.9e-20
+              MOBP2 145 ilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraas....rkmmeqlfkdeqleet..n 230
+                            vfs+dk    + d+ ++k+ l+ aq++G  +y    s   d+l+k+klydP+t ild+++l+ a     +k+++q f    l et  +
+  LEME001c01_012390  91 ENQPVFSHDKLNYDNHDVSNLKKRLDEAQQNGNNMYELAFSIRGDWLVKNKLYDPETGILDQNKLKRAEqvvaKKLINQGFSL-PLGETpeD 181
+                        4456**************************************************************99711114555555543.34444223 PP
+
+              MOBP2 231 GfWlasihrntehi..hihfavvekenrrkl 259
+                          W+  ih++t+h+  h+ fa v  e r  +
+  LEME001c01_012390 182 VAWFGVIHQDTDHLnmHLWFAKVSPETRPEM 212
+                        68***********733566999988877655 PP
+
+>> RUAL001c01_032140  D ATG TAA 3648743 3651940 Valid Rumal_3252 3198 _YP_004106349.1_ Rumal_3252 1 3648743 3651940 | Se
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   59.4   9.0   8.1e-19   1.2e-13     104     443 ..      39     357 ..      24     429 .. 0.70
+   2 ?   -2.7   0.3       5.5     8e+05     382     434 ..     973    1025 ..     964    1062 .. 0.69
+
+  Alignments for each domain:
+  == domain 1    score: 59.4 bits;  conditional E-value: 8.1e-19
+              MOBP2 104 mtrkyaleskkkltkseeeelqllnkaikdlsteehk......kaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtd 189
+                        mtr  a++ k    +++eee+               k      + +e   G f  d+d ++++ +   +e  + a+++G   y  visf+++
+  RUAL001c01_032140  39 MTRPAAFKPKE---HTDEEEY---------------KdfldymRNNEKSEGAFDTDHDLLTKEQMSAYREQERVARDNGCPKYGGVISFNNE 112
+                        55555554443...3444454...............233333355666789***************************************** PP
+
+              MOBP2 190 flikqklydPktdildeerlraasrkmmeqlf.kdeqleetnGfWlasihrntehihihfavvekenrrklveekvngetyyePkGkrkqst 280
+                        fl ++++       +d  +l++  r  ++++  k ++l   n  W+ +ih nt+ ihihfa+   e + +  ++ +n++          q +
+  RUAL001c01_032140 113 FLRNNGIMIG--SAIDYIKLKNVVRNGINKMIdKSDKLSADNINWIGAIHENTDNIHIHFAMYPLERTTRRNHKDKNQDCI-------EQDA 195
+                        ******8743..344555555555554444441578999999*******************98776665555555555443.......5788 PP
+
+              MOBP2 281 ldhmkttfanslvdrts..elsrisnlrnnlvqevkkeylqskekkdereltllqeiynglpsnkkdWtyGskklpnetrekideltklllk 370
+                        +  +k+t an ++++t   e++ri   r+ l  ++      s +  d ++  +l e+ n +p n    +yG++++ +  re id+  + ++ 
+  RUAL001c01_032140 196 IKTLKSTIANGIINQTHtpEITRIK--REILFPQL------SDAMGDAEK--MLLELANRFPPNI-AMQYGNHRMKPFQRE-IDKCIDKIIG 275
+                        8899*********987522666664..44444433......333444444..5669******997.579********9997.9********* PP
+
+              MOBP2 371 dnpifke....ykeavekesefqkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkkpye......dnplyklqqkneq 443
+                         +p++k+    y       + + +++yG+   +   y+  q+ d++ r Gn llk +k  k+ e      d+++++l  k   
+  RUAL001c01_032140 276 SDPELKKsfdlYVSSLGMMDRQYQDFYGDE-SQALTYSEHQMEDFYNRAGNILLKHIKEMKNGEfpdtgsDELIKRLSDKGVS 357
+                        ***987633335555666677778999975.45789*******************9998775541111114455555444332 PP
+
+  == domain 2    score: -2.7 bits;  conditional E-value: 5.5
+              MOBP2  382 vekesefqkelyGeseredkdyaknqlkdlkkrmGnsllkelkkkkpyednpl 434 
+                         ++k+ + +k  +  s  +  ++ak+ l+ +++     +l+      +y+ n+ 
+  RUAL001c01_032140  973 SDKNASSAKSWFKRSAADGNEAAKEMLRYMQRTKKAPMLRRSVAASTYNANMC 1025
+                         67788888888889999999999999999988887777777666666666654 PP
+
+>> LEGE001c01_010250  C TTG TAG 1046003 1046560 Valid C269_05105 558 _YP_006745346.1_ C269_05105 1 1046003 1046560 | hyp
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   32.0   0.6   1.7e-10   2.5e-05     129     216 ..      75     172 ..      32     180 .. 0.78
+
+  Alignments for each domain:
+  == domain 1    score: 32.0 bits;  conditional E-value: 1.7e-10
+              MOBP2 129 kaikdlsteehk..........kaeeilpGvfskdkdvvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlr 210
+                         ai dl   +++           a      +f  +k    + d+ ++++ l+ aq +G  ++    s   d+l++++lydP+t +ld+++l+
+  LEGE001c01_010250  75 AAITDLIVLKEQfnkrgyanrsTAVTETHPIFGEEKLNYDNHDISQLRKQLDEAQANGNNIHELAFSIRGDWLVENNLYDPETQVLDQNKLK 166
+                        344444332222223444443366677778999999999***************************************************** PP
+
+              MOBP2 211 aasrkm 216
+                        +  +  
+  LEGE001c01_010250 167 QVEHEK 172
+                        998865 PP
+
+>> CHCH001c01_015160  D ATG TAA 1971392 1975333 Valid Cag_1504 3942 _YP_379803.1_ Cag_1504 1 1971392 1975333 | TPR repea
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !    8.3   0.0    0.0025   3.7e+02      20     113 ..     854     951 ..     845     969 .. 0.85
+   2 !    7.1   0.0    0.0057   8.4e+02      20     113 ..     974    1071 ..     968    1093 .. 0.80
+   3 ?    4.8   0.0     0.029   4.2e+03      20     113 ..    1094    1191 ..    1085    1221 .. 0.80
+
+  Alignments for each domain:
+  == domain 1    score: 8.3 bits;  conditional E-value: 0.0025
+              MOBP2  20 sfstyidyltreka.lee..kerltpeelqelsrlknaledfeieegetfs.sktkkevsekeaeakslltsginfdkeqdftkylsymtrk 107
+                         + t +dyl r  a +ee  ++ +    l+++s++ +a  d++   +      +  +e+ +k++e  +l + ++ f+  +d+   l y+ r 
+  CHCH001c01_015160 854 DYDTALDYLKRSLAiVEEigDKARVGAALNNISQIFKARGDYDTALDYLKRsLNIRQEIGDKSGEGVTLNNISQIFKAWSDYDTALDYLKRS 945
+                        57899*********666543467888999***************9998665278899*********************************** PP
+
+              MOBP2 108 yalesk 113
+                        +a+ + 
+  CHCH001c01_015160 946 FAIRQE 951
+                        **9886 PP
+
+  == domain 2    score: 7.1 bits;  conditional E-value: 0.0057
+              MOBP2   20 sfstyidyltrekaleek..erl.tpeelqelsrlknaledfeieegetfs.sktkkevsekeaeakslltsginfdkeqdftkylsymt 105 
+                          + t +dyl r  ++ ++  +++   + l+++s++ +a  d++i  +        ++e+ +k++e  +l + ++ +d   d+   l y+ 
+  CHCH001c01_015160  974 DYDTALDYLKRSFTITHEigDKKgEGTTLNNISQIFQARGDYDIALDYLKCsLVIQQEIGDKSGEGTTLNNISQIYDARGDYDTALDYLK 1063
+                         6789999999999865441133313456777788889999*****999776367899********************************* PP
+
+              MOBP2  106 rkyalesk 113 
+                         r  a+++ 
+  CHCH001c01_015160 1064 RSLAIQQE 1071
+                         ****9885 PP
+
+  == domain 3    score: 4.8 bits;  conditional E-value: 0.029
+              MOBP2   20 sfstyidyltrekaleekerltpeelqel...srlknaledfeieegetfs.sktkkevsekeaeakslltsginfdkeqdftkylsymt 105 
+                          + t +dyl r  a++++    + e + l   s++  a  d++   +         +e+ +k++e  +l + +  ++   d+   l y+ 
+  CHCH001c01_015160 1094 DYDTALDYLKRSLAIQQEIGDKSGEGTTLnniSQIYDARGDYDTALDYLKRsLAIRQEIGDKSGEGTTLNNISALYHARGDYDTALDYLK 1183
+                         578999********88876666666555500056667778999998876552678999**********9999999999************ PP
+
+              MOBP2  106 rkyalesk 113 
+                         r  a+ + 
+  CHCH001c01_015160 1184 RSLAIAQE 1191
+                         *9998774 PP
+
+>> CLSA001c01_035190  C ATC TAA 3849421 3850641 Valid Closa_3559 1221 _YP_003823706.1_ Closa_3559 1 3849421 3850641 | hy
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   18.2   4.5   2.6e-06      0.37     140     398 ..      36     305 ..      14     357 .. 0.72
+
+  Alignments for each domain:
+  == domain 1    score: 18.2 bits;  conditional E-value: 2.6e-06
+              MOBP2 140 kkaeeilpGvfskdkd..vvkssdlkeikellqkaqnkGsvyyqdvisfdtdflikqklydPktdildeerlraasrkmmeqlfkdeqleet 229
+                         k e++  G+f k +   v + +d +++ +l+    +k   +y+ visfd++   + +l d k+        r   + +m ++ +++ +  +
+  CLSA001c01_035190  36 SKNEGMNHGLFGKLSPgpVTEFEDWRDVARLVYVNSKKHITMYRSVISFDEETAAELNLTDQKAWQ------RYIENHIM-TIAEKNNIRRE 120
+                        377888888998876422556689***********************************9988643......23333334.67788899888 PP
+
+              MOBP2 230 nGfWlasihrntehihihfavvekenrrklveekvngetyyePkGkrkqstldhmk...ttfanslvdrtselsrisn.....lrnnlvqev 313
+                           W  ++h++ +h hih    +   r k            +P   rkq   d       ++ ++  + t+el  isn     +  +l +  
+  CLSA001c01_035190 121 HLQWACALHKEKHHPHIHVVFWDTSSRVKN-----PFTPPAVPNAIRKQLIKDTFAeriRAYGEQKNKSTAELRSISNelvdeFEQHLRRLG 207
+                        899***************888777666543.....233456899999997655443111345555577788888888642222344555666 PP
+
+              MOBP2 314 kkeylqskekkde.reltllqeiynglpsnkkdWtyGsk............klpnetrekideltklllkdnpifkeykeavekesefqkel 392
+                        k++y++ ++ +de +el+   +  + + ++  d  +  k             l++e + k+del  +ll++ p ++e ke     +     l
+  CLSA001c01_035190 208 KDQYKRLRDDYDEeNELSGSFDFDDEVLNETADRVFRLKsalpptgriayqLLTPEIKAKVDELVSYLLENVPALREQKERYIDSKMKMTLL 299
+                        88898888777651455544444444444445544444444445554566578999************************999999999999 PP
+
+              MOBP2 393 yGeser 398
+                        yG s+ 
+  CLSA001c01_035190 300 YGGSDE 305
+                        *99974 PP
+
+>> HEPY002c01_002840  D ATG TAA 305191 305493 Valid jhp0276 303 _NP_222997.1_ jhp0276 1 305191 305493 | hypothetical pro
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   20.7   0.4   4.4e-07     0.064     395     459 ..      10      75 ..       1     100 [] 0.83
+
+  Alignments for each domain:
+  == domain 1    score: 20.7 bits;  conditional E-value: 4.4e-07
+              MOBP2 395 eseredkdyaknqlkdl.kkrmGnsllkelkkkkpyednplyklqqkneqikkkyererkekrree 459
+                        e  r + d+  n+l dl  kr+G +l   l k+++ ++np+y  ++ +e++k+ ++r+ k++++e 
+  HEPY002c01_002840  10 ENLRAEIDALDNELSDLlDKRLGIALKIALIKQESPQENPIYCPKREQEILKRLSQRGFKHLNGEI 75 
+                        77799999********648***************************************99998875 PP
+
+>> HEPY020c01_003210  D ATG TAA 324138 324440 Valid HPGAM_01630 303 _YP_005780053.1_ HPGAM_01630 1 324138 324440 | hypot
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   20.4   0.1   5.6e-07     0.081     395     459 ..      10      75 ..       1     100 [] 0.85
+
+  Alignments for each domain:
+  == domain 1    score: 20.4 bits;  conditional E-value: 5.6e-07
+              MOBP2 395 eseredkdyaknqlkdl.kkrmGnsllkelkkkkpyednplyklqqkneqikkkyererkekrree 459
+                        e  r + d   n+l dl  kr+G +l   l k+++ ++np+y  ++ +e++k+ ++r+ k++++e 
+  HEPY020c01_003210  10 ENLRAEIDLLDNELSDLlDKRLGIALKIALAKQESPQENPIYCPKREQEILKRLSQRGFKHLNGEI 75 
+                        67788999999*****648***************************************99988775 PP
+
+>> STSA001c01_000620  D ATG TAA 71017 71685 Valid SSP0060 669 _YP_300150.1_ SSP0060 1 71017 71685 | capsular polysacchar
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   17.3   0.9   4.8e-06       0.7     104     165 ..      93     155 ..      40     165 .. 0.77
+
+  Alignments for each domain:
+  == domain 1    score: 17.3 bits;  conditional E-value: 4.8e-06
+              MOBP2 104 mtrkyales.kkkltkseeeelqllnkaikdlsteehkkaeeilpGvfskdkdvvkssdlkei 165
+                        +  ky+ e+    lt s++ e q ln a+++ s e   k  + ++ vfskd +++ + d   i
+  STSA001c01_000620  93 LKGKYSSEEiAGMLTVSNQAESQILNIAVENESREAAGKVANEIANVFSKDVNKIMNVDNVSI 155
+                        455777665145789****************************************99986554 PP
+
+>> LISO001c01_003770  D GTG TAA 386325 386558 Valid CKC_01820 234 _YP_004062603.1_ CKC_01820 1 386325 386558 | 30S ribos
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   16.6   0.9   7.6e-06       1.1     406     466 ..      12      73 ..       5      76 .. 0.84
+
+  Alignments for each domain:
+  == domain 1    score: 16.6 bits;  conditional E-value: 7.6e-06
+              MOBP2 406 nqlkdlkkrm.Gnsllkelkkkkpyednplyklqqkneqikkkyererkekrreeskyskyk 466
+                         +l+ lkk+m G+ +l+elk ++ ye++  +++  k e i++  +  rk  +re s  s+++
+  LISO001c01_003770  12 QALRVLKKKMqGEGVLRELKMRDHYEKPSQKRVRLKSEAIRRSRKLIRKLAQREGSPVSRFR 73 
+                        5677788887699***************************9988888888888888888876 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                            1  (509 nodes)
+Target sequences:                    7169236  (2258311084 residues)
+Passed MSV filter:                    266596  (0.0371861); expected 143384.7 (0.02)
+Passed bias filter:                   104799  (0.0146179); expected 143384.7 (0.02)
+Passed Vit filter:                      9172  (0.00127936); expected 7169.2 (0.001)
+Passed Fwd filter:                       131  (1.82725e-05); expected 71.7 (1e-05)
+Initial search space (Z):            7169236  [actual number of targets]
+Domain search space  (domZ):              49  [number of targets reported over threshold]
+# CPU time: 225.66u 4.32s 00:03:49.98 Elapsed: 00:03:50.53
+# Mc/sec: 4986.25
+//

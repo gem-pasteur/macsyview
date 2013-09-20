@@ -1,0 +1,835 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.0 (March 2010); http://hmmer.org/
+# Copyright (C) 2010 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  /Users/sabby/Documents/boulot/postdoc/Dev/controlled_version/txsscan/trunk//data/profiles/MOBB.fasta-aln_edit.hmm
+# target sequence database:        /Users/sabby/Documents/boulot/postdoc/Dev/controlled_version/txsscan/trunk//test/datatest/alltogether_Prokaryotes_0213.prot
+# output directed to file:         /Users/sabby/Documents/boulot/postdoc/Dev/controlled_version/txsscan/trunk//data/txsscan-20130917_12-54-55/MOBB.search_hmm.out
+# sequence reporting threshold:    E-value <= 1
+# number of worker threads:        0
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       MOBB  [M=224]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence          Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------          -----------
+    4.9e-89  306.6  11.9    5.8e-89  306.3   8.2    1.1  1  ZUPR001c01_041210 C ATG TAA 4415301 4416332 Valid ZPR_4130 1
+    9.3e-89  305.7  13.7    1.1e-88  305.4   9.5    1.1  1  ZUPR001c01_042560 C ATG TAA 4577793 4578824 Valid ZPR_4265 1
+    7.6e-88  302.7  15.5    9.1e-88  302.4  10.8    1.1  1  ZUPR001c01_017610 D ATG TAA 1902600 1903631 Valid ZPR_1764 1
+    3.4e-87  300.6  13.9      4e-87  300.3   9.7    1.1  1  ZUPR001c01_040010 C ATG TAA 4302047 4303078 Valid ZPR_4010 1
+    6.2e-86  296.4   0.1    9.5e-86  295.8   0.1    1.2  1  BAVU001c01_009610 C ATG TGA 1276658 1277671 Valid BVU_0966 1
+    2.1e-85  294.7  15.2    2.6e-85  294.4  10.6    1.1  1  GRFO001c01_013550 D ATG TAA 1405775 1406806 Valid GFO_1355 1
+      1e-82  285.9   0.4      3e-82  284.4   0.0    1.7  2  BAFR002c01_014400 C ATG TAG 1784743 1785693 Valid mobB 951 _
+    1.3e-82  285.6  13.6    1.7e-82  285.2   9.4    1.1  1  ZUPR001c01_044040 C ATG TAA 4754767 4755792 Valid ZPR_4413 1
+    1.4e-82  285.5   4.8    2.4e-82  284.7   3.3    1.3  1  BAVU001c01_034570 D ATG TAA 4329180 4330115 Valid BVU_3477 9
+    8.9e-80  276.3   7.9    8.9e-80  276.3   5.5    1.8  2  BAFR003c01_032050 D ATG TGA 3917714 3918664 Valid mobB 951 _
+    3.8e-78  271.0   8.1    6.4e-78  270.2   5.6    1.4  1  PADI001c01_012510 C ATG TAA 1456233 1457153 Valid BDI_1256 9
+    8.6e-77  266.5   6.4    8.6e-77  266.5   4.4    1.6  1  BAFR001c01_006500 C ATG TAA 761569 762504 Valid BF0643 936 _
+    1.2e-76  266.1   1.8    1.9e-76  265.4   1.2    1.3  1  SPLI001p06_000030 D ATG TGA 1128 2207 Valid Slin_7043 1080 _
+    3.3e-76  264.6   8.1    3.3e-76  264.6   5.6    1.7  2  BAFR003c01_019360 C ATG TAA 2388193 2389068 Valid mobB 876 _
+      9e-76  263.2   8.6    1.1e-75  263.0   5.9    1.1  1  MURU001c01_025760 D ATG TAA 2829693 2830712 Valid Murru_2558
+    1.1e-75  262.9   9.4    1.3e-75  262.7   6.5    1.1  1  MURU001c01_024960 D ATG TAA 2735292 2736311 Valid Murru_2476
+    3.9e-75  261.1   7.9    5.8e-75  260.6   5.5    1.3  1  SP21001c01_000970 C ATG TAG 101605 102591 Valid Sph21_0094 9
+    1.8e-74  259.0   8.9    2.4e-74  258.5   6.2    1.2  1  SP21001c01_003010 D ATG TGA 332380 333366 Valid Sph21_0308 9
+    2.1e-74  258.7   0.9    2.9e-74  258.3   0.1    1.7  1  BATH001p01_000070 D ATG TGA 5172 7421 Valid BT_p548207 2250 
+    5.9e-73  254.0   0.1    5.9e-73  254.0   0.1    1.5  1  SPLI001p07_000110 C ATG TGA 5297 6370 Valid Slin_7060 1074 _
+    6.2e-71  247.4   6.1    6.2e-71  247.4   4.2    2.6  2  BASA001p02_000010 C ATG TGA 108 1007 Valid Bacsa_3730 900 _Y
+    8.9e-71  246.9  11.8    1.2e-70  246.5   8.1    1.2  1  MURU001c01_002280 C ATG TGA 235479 236501 Valid Murru_0230 1
+    1.4e-63  223.3   1.6    3.1e-63  222.2   1.1    1.6  1  SPLI001p02_000130 C ATG TAA 9204 10403 Valid Slin_6839 1200 
+    1.6e-55  196.9   7.7    2.6e-55  196.3   5.4    1.3  1  BEBA001c01_020770 C ATG TAA 2282128 2282985 Valid Belba_2150
+    3.4e-48  173.0   3.1    7.5e-48  171.9   0.1    2.9  3  ALFI001c01_001920 D ATG TGA 219857 222667 Valid Alfi_0199 28
+    3.9e-45  163.0   0.3    3.9e-45  163.0   0.2    3.4  3  ALFI001c01_007870 C ATG TGA 874744 877554 Valid Alfi_0823 28
+    1.6e-13   59.6  12.6    2.1e-13   59.2   8.7    1.1  1  LEBU001c01_001060 D ATG TAA 106500 107165 Valid Lebu_0113 66
+  ------ inclusion threshold ------
+       0.39   19.1   4.8       0.64   18.4   3.4    1.4  1  BACE004c01_013500 C ATG TAA 1323079 1323603 Valid BCB4264_A1
+       0.39   19.1   4.8       0.64   18.4   3.4    1.4  1  BACE006c01_012990 C ATG TAA 1291371 1291895 Valid BC1313 525
+       0.39   19.1   4.8       0.64   18.4   3.4    1.4  1  BATU003c01_012680 C ATG TAA 1295466 1295990 Valid BMB171_C11
+       0.99   17.8   5.8        1.7   17.0   4.0    1.5  1  BAAN001c01_013190 C ATG TAA 1271518 1272042 Valid BA_1327 52
+       0.99   17.8   5.8        1.7   17.0   4.0    1.5  1  BAAN002c01_013140 C ATG TAA 1271641 1272165 Valid GBAA_1327 
+       0.99   17.8   5.8        1.7   17.0   4.0    1.5  1  BAAN003c01_012660 C ATG TAA 1271541 1272065 Valid BAA_1394 5
+       0.99   17.8   5.8        1.7   17.0   4.0    1.5  1  BAAN004c01_013010 C ATG TAA 1271587 1272111 Valid BAS1227 52
+       0.99   17.8   5.8        1.7   17.0   4.0    1.5  1  BAAN005c01_032200 D ATG TAA 2967032 2967556 Valid BAMEG_3269
+       0.99   17.8   5.8        1.7   17.0   4.0    1.5  1  BAAN007c01_013340 C ATG TAA 1262365 1262889 Valid H9401_1241
+
+
+Domain annotation for each sequence (and alignments):
+>> ZUPR001c01_041210  C ATG TAA 4415301 4416332 Valid ZPR_4130 1032 _YP_003586630.1_ ZPR_4130 1 4415301 4416332 | mobili
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  306.3   8.2   2.9e-94   5.8e-89       1     224 []       1     270 [.       1     270 [. 0.99
+
+  Alignments for each domain:
+  == domain 1    score: 306.3 bits;  conditional E-value: 2.9e-94
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgeee 92 
+                        myi+it+qk+g+ n+++ss+d+v+YlekEn++ + +e+ e+FFnq+ed+is++eV+keiD+n++klkk+++kfysit+sPs++el++l    
+  ZUPR001c01_041210   1 MYITITPQKMGG-NYSQSSGDFVGYLEKENEGLKPTEM-EHFFNQYEDKISADEVVKEIDGNTAKLKKTEPKFYSITVSPSKYELSRL---- 86 
+                        9********977.9******************999999.*************************************************.... PP
+
+               MOBB  93 qekaeklkkytrevmkeYaknfnreieesg...kDlkyyakieteRsykdtdeevkegqaka.............................. 151
+                        q+++e+lk+ytre+mk+Y+++fnrei++++   +D+kyyakie++Rs+k+td+++ke+q++a                              
+  ZUPR001c01_041210  87 QSSSEDLKRYTRELMKDYVASFNREINGRPiriEDIKYYAKIEHQRSFKGTDWQIKENQPYAtqilqlkneirhlktqgregeikslqrkis 178
+                        ******************************************************************************************** PP
+
+               MOBB 152 .................gerKeGlqlhihiIvsrkdasnkvkLsplskskaskkel..kkvkggfdrkeffqraektfdklfgyernlkesf 224
+                                         g+ K+G+q+hihi+vsrkdasn+++Lsp+sk+kas++e+  kkvk+gfdr++ff+r ektfd++fgy+rn++e++
+  ZUPR001c01_041210 179 klereaphqqdgkrivqGMLKAGNQSHIHIVVSRKDASNTFSLSPGSKHKASEVEMhgKKVKRGFDRDQFFERGEKTFDRTFGYQRNFAETY 270
+                        ******************************************************************************************98 PP
+
+>> ZUPR001c01_042560  C ATG TAA 4577793 4578824 Valid ZPR_4265 1032 _YP_003586764.1_ ZPR_4265 1 4577793 4578824 | mobili
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  305.4   9.5   5.7e-94   1.1e-88       1     224 []       1     270 [.       1     270 [. 0.99
+
+  Alignments for each domain:
+  == domain 1    score: 305.4 bits;  conditional E-value: 5.7e-94
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgeee 92 
+                        myi+it+qk+g  n+++ss+d+v+YlekEnq+ e++++ e+FFnq+ deis+eeV+keiD+n++kl+k++++fysit+sPs++el++l    
+  ZUPR001c01_042560   1 MYITITPQKMGS-NYSKSSADFVGYLEKENQGLEQQDM-EHFFNQYGDEISAEEVVKEIDGNTAKLEKHEPRFYSITVSPSKYELKRL---- 86 
+                        9*******9965.*************************.*************************************************.... PP
+
+               MOBB  93 qekaeklkkytrevmkeYaknfnreieesg...kDlkyyakieteRsykdtdeevkegqaka.............................. 151
+                        q+++e+l+kytre+mk+Y+++fnrei++++   +D+kyyakie++R +k+td ++ke+q++a                              
+  ZUPR001c01_042560  87 QNHSEDLQKYTRETMKDYVASFNREINGRPitiDDIKYYAKIEHQRAFKGTDFQIKENQPYAtkilqlkteirnvqdgraegnvkklekeig 178
+                        9******************************************************************************************* PP
+
+               MOBB 152 .................gerKeGlqlhihiIvsrkdasnkvkLsplskskaskkel..kkvkggfdrkeffqraektfdklfgyernlkesf 224
+                                         g++K+G+q+hihiIvsrkdasnk++Lsp+sk+kas++el  k+vk+gfdr+ ff++aektfdk fgy+rn++e++
+  ZUPR001c01_042560 179 klereaphqqngkrivqGMPKAGNQSHIHIIVSRKDASNKFSLSPGSKYKASDVELngKTVKRGFDRDGFFEKAEKTFDKSFGYQRNFAETY 270
+                        ******************************************************************************************98 PP
+
+>> ZUPR001c01_017610  D ATG TAA 1902600 1903631 Valid ZPR_1764 1032 _YP_003584294.1_ ZPR_1764 1 1902600 1903631 | mobili
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  302.4  10.8   4.5e-93   9.1e-88       1     224 []       1     270 [.       1     270 [. 0.99
+
+  Alignments for each domain:
+  == domain 1    score: 302.4 bits;  conditional E-value: 4.5e-93
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgeee 92 
+                        myi+it+qk+g+ n+++ss+d+v+YlekEnq+ e++++ e+FFnq+ deis+e Vi+eiD+n++kl+k++++fysitisPs++el++l    
+  ZUPR001c01_017610   1 MYITITPQKMGG-NFSKSSADFVGYLEKENQGLEQQDM-EHFFNQYGDEISAEAVIREIDGNTAKLEKHEPRFYSITISPSKYELQKL---- 86 
+                        9********977.9************************.*************************************************.... PP
+
+               MOBB  93 qekaeklkkytrevmkeYaknfnreieesg...kDlkyyakieteRsykdtdeevkegqaka.............................. 151
+                        q+++e+lk+ytre+mk+Y+++fnrei++++   +D+kyyakie++R++k+td +vke+q++a                              
+  ZUPR001c01_017610  87 QNSSEDLKRYTRELMKDYVASFNREIKGRPvniDDIKYYAKIEHQRTFKGTDFQVKENQPYAtkilqlkteirnvqegraegnikkmkkeia 178
+                        9******************************************************************************************* PP
+
+               MOBB 152 .................gerKeGlqlhihiIvsrkdasnkvkLsplskskaskkel..kkvkggfdrkeffqraektfdklfgyernlkesf 224
+                                         g+rK+G+q+hihi+vsrkdasn+++Lsp+sk+kas+++l  ++vk+gf+r++ff+raektfdk+fgy+rn++e++
+  ZUPR001c01_017610 179 klekqaphqqngkrivqGMRKDGNQSHIHIVVSRKDASNRFSLSPGSKYKASDVKLngETVKRGFNRDKFFERAEKTFDKTFGYKRNFAETY 270
+                        *********************************************************9********************************98 PP
+
+>> ZUPR001c01_040010  C ATG TAA 4302047 4303078 Valid ZPR_4010 1032 _YP_003586510.1_ ZPR_4010 1 4302047 4303078 | hypoth
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  300.3   9.7     2e-92     4e-87       1     224 []       1     270 [.       1     270 [. 0.99
+
+  Alignments for each domain:
+  == domain 1    score: 300.3 bits;  conditional E-value: 2e-92
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgeee 92 
+                        myi+it+qk g+ n+++ss+ +v+YlekEn++  e++v+e+FFnq+ed i++e+V+keiDnn++klkk+++kfysit+sPs++el++l    
+  ZUPR001c01_040010   1 MYITITPQKLGG-NYSQSSAGFVSYLEKENEG-IEEGVKEHFFNQYEDAITPEKVVKEIDNNTSKLKKKEPKFYSITVSPSKYELKRL---- 86 
+                        9*******9977.9****************87.888999*************************************************.... PP
+
+               MOBB  93 qekaeklkkytrevmkeYaknfnreieesg...kDlkyyakieteRsykdtdeevkegqaka.............................. 151
+                        q+++++lkkytre+mk+Y+++fnrei++++   +D+kyyakie++Rs+k+td++v+e+q++a                              
+  ZUPR001c01_040010  87 QSSSKDLKKYTRELMKDYVACFNREIDGRPinvNDIKYYAKIEHSRSFKGTDRQVRENQPYAtkilqlkseirkietelmqgsiqkrekeie 178
+                        9******************************************************************************************* PP
+
+               MOBB 152 .................gerKeGlqlhihiIvsrkdasnkvkLsplskskaskkel..kkvkggfdrkeffqraektfdklfgyernlkesf 224
+                                         g++K+G+q+hihiIvsrkdasn+v+Lsp+sk+kas++++  k+vk+gfdr++ff++aektfdk+fgy+rn++e++
+  ZUPR001c01_040010 179 kletraphrqdgkrivqGMPKAGNQSHIHIIVSRKDASNSVSLSPGSKYKASEVNFngKTVKRGFDRDRFFEKAEKTFDKTFGYQRNFVETY 270
+                        ******************************************************************************************98 PP
+
+>> BAVU001c01_009610  C ATG TGA 1276658 1277671 Valid BVU_0966 1014 _YP_001298283.1_ BVU_0966 1 1276658 1277671 | mobili
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  295.8   0.1   4.8e-91   9.5e-86       1     216 [.      22     255 ..      22     261 .. 0.98
+
+  Alignments for each domain:
+  == domain 1    score: 295.8 bits;  conditional E-value: 4.8e-91
+               MOBB   1 myikitkqkn..gtsnnkgssrdlveYlekEnqekeekevy.elFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahl. 88 
+                        my+k+++++n  g+s+nkg++ +lveYl+kE +e   +++y ++FF+q+ed++++ +V++++Dnn+++lk++d+kfy++ti+Ps +e++hl 
+  BAVU001c01_009610  22 MYCKVHRPVNtpGVSDNKGKCVQLVEYLSKELKE---ERPYyDNFFSQKEDYVTPLTVMHHMDNNHRTLKRNDDKFYMLTINPSGEEQQHLi 110
+                        9*******************************98...56666************************************************** PP
+
+               MOBB  89 ...............geeeqekaeklkkytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiI 165
+                                       +e+++e+ +++k+ tre+m+eYa+nf+re+++sg+Dl++y+++eteR+yk++d evk+g+akagerK+Glqlh+hiI
+  BAVU001c01_009610 111 ekvtgektgefpelsPEQQKEVLAEMKRLTRECMDEYARNFYREKIRSGDDLVWYGRVETERHYKGDDPEVKAGKAKAGERKPGLQLHVHII 202
+                        ******************************************************************************************** PP
+
+               MOBB 166 vsrkdasnkvkLsplskskaskkel..kkvkggfdrkeffqraektfdklfgy 216
+                        vsr+d+s++v+Lsplsks+++++ l  ++v++gfdr+++++r++++f++l+gy
+  BAVU001c01_009610 203 VSRMDRSQTVSLSPLSKSRGNRQVLdgRDVVVGFDRSQWSARCASRFNRLYGY 255
+                        ***********************99***************************9 PP
+
+>> GRFO001c01_013550  D ATG TAA 1405775 1406806 Valid GFO_1355 1032 _YP_861396.1_ GFO_1355 1 1405775 1406806 | hypotheti
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  294.4  10.6   1.3e-90   2.6e-85       1     224 []       1     270 [.       1     270 [. 0.99
+
+  Alignments for each domain:
+  == domain 1    score: 294.4 bits;  conditional E-value: 1.3e-90
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgeee 92 
+                        myi+it+qk g+ n+++ s+d+v+YlekEnq+ +++++ e FFnq+ed++s+eeV++eiD+n++kl+k++++fysitisPs++el++l    
+  GRFO001c01_013550   1 MYITITAQKLGG-NYSQGSADFVDYLEKENQGLDQEDR-EYFFNQYEDQVSAEEVVREIDANTAKLEKTEPRFYSITISPSKYELNRL---- 86 
+                        9*******9977.8888889*************99999.*************************************************.... PP
+
+               MOBB  93 qekaeklkkytrevmkeYaknfnreieesg...kDlkyyakieteRsykdtdeevkegqaka.............................. 151
+                        ++++e+lkkytr+vmk+Ya++fnre+++++   +D+kyyakie++R +k+td++v+e+q+ a                              
+  GRFO001c01_013550  87 KNNSEDLKKYTRAVMKDYAASFNRELNGRPvniDDIKYYAKIEHQRFFKGTDKQVQENQPFAakilqlksdikkvergeqpgniaqmkreis 178
+                        99***********************************************************9****************************** PP
+
+               MOBB 152 .................gerKeGlqlhihiIvsrkdasnkvkLsplskskaskkel..kkvkggfdrkeffqraektfdklfgyernlkesf 224
+                                         g++KeG+q+hihiIvsrkdasnk++Lsp+sk+kask+el  k vk+gfdr++ff +aektfdk fgy+rn++e++
+  GRFO001c01_013550 179 klekaaphkqegqrivqGMAKEGNQSHIHIIVSRKDASNKYSLSPGSKYKASKVELngKIVKRGFDRDKFFGKAEKTFDKNFGYQRNFVETY 270
+                        *********************************************************99*******************************98 PP
+
+>> BAFR002c01_014400  C ATG TAG 1784743 1785693 Valid mobB 951 _BF1521_YP_211166.1_ BF1521 1 1784743 1785693 | mobilisat
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  284.4   0.0   1.5e-87     3e-82       1     216 [.       1     234 [.       1     242 [. 0.97
+   2 ?   -0.8   0.0       2.3   4.7e+05      53      88 ..     268     303 ..     241     309 .. 0.63
+
+  Alignments for each domain:
+  == domain 1    score: 284.4 bits;  conditional E-value: 1.5e-87
+               MOBB   1 myikitkqkn..gtsnnkgssrdlveYlekEnqekeekevy.elFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahl. 88 
+                        my+k +++ n  ++ +nkg++++lv+Yl+kE+q    +++y ++FF+q++d++ + +V ++iDnn+++lk++d+kfy+++i+Ps +e++hl 
+  BAFR002c01_014400   1 MYCKPHRPGNtpQVPDNKGKCTRLVDYLSKESQV---ERPYyDNFFSQQKDYVIPLTVKNHIDNNHRTLKSNDDKFYMLSINPSGDEQRHLi 89 
+                        999****9999999******************98...55666************************************************** PP
+
+               MOBB  89 ...............geeeqekaeklkkytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiI 165
+                                       + e++++ +++kk+tre+m+eYa+nf+re+++sg+Dl++y+++eteR+yk++d evk+g+ kag++K+Glqlh+h+I
+  BAFR002c01_014400  90 ervtgrkvgefseltPGEQESVLAQMKKFTRECMDEYARNFYREKIKSGDDLVWYGRVETERHYKNDDPEVKAGRVKAGDKKPGLQLHVHVI 181
+                        **************999999************************************************************************ PP
+
+               MOBB 166 vsrkdasnkvkLsplskskaskkel..kkvkggfdrkeffqraektfdklfgy 216
+                        vsr+d++++v+Lsplsks+++++ l  ++v++gfdr+++++r++++f++ ++y
+  BAFR002c01_014400 182 VSRMDRTQTVSLSPLSKSRGNRQILegREVVVGFDRSQWSSRCASRFNQSYDY 234
+                        ***********************99*9*************************9 PP
+
+  == domain 2    score: -0.8 bits;  conditional E-value: 2.3
+               MOBB  53 eeVikeiDnnkkklkkedakfysitisPsekelahl 88 
+                        +eV k   +  ++l  +  ++y   ++P ++ +++l
+  BAFR002c01_014400 268 QEVLKGELKEERRLYANTFRIYRFVVNPRKAIIQEL 303
+                        344444444556677777777788888877655555 PP
+
+>> ZUPR001c01_044040  C ATG TAA 4754767 4755792 Valid ZPR_4413 1026 _YP_003586911.1_ ZPR_4413 1 4754767 4755792 | hypoth
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  285.2   9.4   8.4e-88   1.7e-82       1     224 []       1     270 [.       1     270 [. 0.99
+
+  Alignments for each domain:
+  == domain 1    score: 285.2 bits;  conditional E-value: 8.4e-88
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgeee 92 
+                        myi+i++qk g+ ++++s++d+v+YlekEnq+k+ +e+ e FFnq+ed i++ +VikeiD+n++klk +++k+ysiti+Ps++el+h+    
+  ZUPR001c01_044040   1 MYITISPQKLGG-AFSQSAGDFVNYLEKENQGKDLSEK-EFFFNQHEDGIKPFQVIKEIDGNTDKLKLKEPKYYSITINPSRYELQHI---- 86 
+                        9*******9977.9******************999999.*************************************************.... PP
+
+               MOBB  93 qekaeklkkytrevmkeYaknfnreieesg...kDlkyyakieteRsykdtdeevkegqaka.............................. 151
+                        +++ eklk+++re+mkeYa++f+rei++++   +D+ky+akie+eRsyk++d++++e++++a                              
+  ZUPR001c01_044040  87 HSNPEKLKAFVREAMKEYASSFHREINGRPvsiDDIKYFAKIEQERSYKTNDIAIRENKPYAkqiahlknelrkvargeisgntqkieneiq 178
+                        9******************************************************************************************* PP
+
+               MOBB 152 .................gerKeGlqlhihiIvsrkdasnkvkLsplskskaskkel..kkvkggfdrkeffqraektfdklfgyernlkesf 224
+                                         g++KeGlq+hihiIvsrkdasn+++Lsp+sk+kas++++  k vk+gf+r++ffq++e++fdk+f+y+rn++es+
+  ZUPR001c01_044040 179 klireapykirgqmvepGMKKEGLQSHIHIIVSRKDASNSYSLSPGSKYKASEVKMhgKLVKRGFERDRFFQHSEMAFDKMFKYNRNYVESY 270
+                        *********************************************************99*******************************98 PP
+
+>> BAVU001c01_034570  D ATG TAA 4329180 4330115 Valid BVU_3477 936 _YP_001300723.1_ BVU_3477 1 4329180 4330115 | mobilis
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  284.7   3.3   1.2e-87   2.4e-82       1     220 [.       1     238 [.       1     241 [. 0.98
+
+  Alignments for each domain:
+  == domain 1    score: 284.7 bits;  conditional E-value: 1.2e-87
+               MOBB   1 myikitkqkn..gtsnnkgssrdlveYlekEnqekeekevy.elFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahl. 88 
+                        m++k++k++n  ++++nk+++r+lveYl kE++e   +++y ++FF+++ed++ + +Vi++iDnn+kkl+k d+kfy+++i+Ps++e ahl 
+  BAVU001c01_034570   1 MFVKVHKPVNtpCVCDNKDRCRALVEYLLKESLE---DKPYyDTFFSHEEDYVPPVTVIQKIDNNHKKLMKGDDKFYMLSINPSQDEAAHLi 89 
+                        99********9*********************98...45555************************************************** PP
+
+               MOBB  89 ...............geeeqekaeklkkytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiI 165
+                                        ee++++ ++lk+y+r++m+ Ya+nf+re+++sgkDl+y++++eteR+y+++deevkegqak+g+rK+Glqlh+hiI
+  BAVU001c01_034570  90 rkvtgkqvtefeqltVEEQEKVIHELKNYSRNCMDLYAENFRREKIKSGKDLVYFGRVETERHYRNSDEEVKEGQAKSGDRKPGLQLHVHII 181
+                        **************9999************************************************************************** PP
+
+               MOBB 166 vsrkdasnkvkLsplskskaskkel..kkvkggfdrkeffqraektfdklfgyernl 220
+                        vsr+d +++v+Lspl++sk+s +el  kkv++gf+++e+++r++++f +++gy++++
+  BAVU001c01_034570 182 VSRNDVTQTVRLSPLARSKGSFNELngKKVMVGFEHMEWKSRCADRFISMYGYKATH 238
+                        *****************************************************9876 PP
+
+>> BAFR003c01_032050  D ATG TGA 3917714 3918664 Valid mobB 951 _BF638R_3320_YP_005112322.1_ BF638R_3320 1 3917714 391866
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  276.3   5.5   4.5e-85   8.9e-80       1     224 []       1     206 [.       1     206 [. 0.99
+   2 ?   -1.7   0.7       4.6   9.1e+05      21      49 ..     241     267 ..     215     278 .. 0.51
+
+  Alignments for each domain:
+  == domain 1    score: 276.3 bits;  conditional E-value: 4.5e-85
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevy.elFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgee 91 
+                        m+i+++++++gt+nn+gssr+l++Yle+E++e++ek++y e FFn t+d+i+k+ Vik+iD+n+++l k+dakfy+ ++sPsekel+++g++
+  BAFR003c01_032050   1 MHIDFAPPSKGTYNNAGSSRQLANYLEHEDLERMEKDIYtEGFFNLTDDNIYKSMVIKDIDSNIGQLLKTDAKFYATHVSPSEKELRAMGST 92 
+                        9******************************************************************************************* PP
+
+               MOBB  92 eqekaeklkkytrev.mkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsrkdasnkvkLsplsk 182
+                        e+e+ae++k+y+rev ++eYaknfn+e+++  +D+k+y+ki+++Rs++d++ ++                h+h+Ivsrkd+snk+kLspl++
+  BAFR003c01_032050  93 EKEQAEAMKRYIREVfIPEYAKNFNKELSA--SDIKFYGKIHFNRSRSDNELNM----------------HCHLIVSRKDQSNKKKLSPLTN 166
+                        ******************************..8********************9................********************** PP
+
+               MOBB 183 skaskkelkkvkggfdrkeffqraektfdklfgyernlkesf 224
+                        +k++k+  +++kggfdr ++fq+ae+ fdklf+y+r+l+e+f
+  BAFR003c01_032050 167 HKNTKN--GVIKGGFDRVNLFQQAEQGFDKLFNYNRQLSEAF 206
+                        *****9..*******************************987 PP
+
+  == domain 2    score: -1.7 bits;  conditional E-value: 4.6
+               MOBB  21 dlveYlekEnqekeekevy.elFFnqtede 49 
+                        d ++  ++ +++    ++  + F nq+e++
+  BAFR003c01_032050 241 DSMQICKHTDKQ---ADMIeNIFTNQQENN 267
+                        333333333322...333324444555544 PP
+
+>> PADI001c01_012510  C ATG TAA 1456233 1457153 Valid BDI_1256 921 _YP_001302639.1_ BDI_1256 1 1456233 1457153 | clindam
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  270.2   5.6   3.2e-83   6.4e-78       1     224 []       1     206 [.       1     206 [. 0.99
+
+  Alignments for each domain:
+  == domain 1    score: 270.2 bits;  conditional E-value: 3.2e-83
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevy.elFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgee 91 
+                        m+i+++ ++ngt+nn+gssr+l++Yle+E++e+ ek++y e FFn t+++i+k++Vik+iD+n+++l k+dakfy+i++sPsekel+ +g++
+  PADI001c01_012510   1 MHIDFASPSNGTYNNAGSSRQLANYLEHEDLERIEKGIYtEGFFNLTDNNIYKSKVIKDIDTNIGQLLKTDAKFYAIHVSPSEKELQVMGDT 92 
+                        9******************************************************************************************* PP
+
+               MOBB  92 eqekaeklkkytrev.mkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsrkdasnkvkLsplsk 182
+                        eq++ae +k+y+r+v ++eYaknfn+e+++  +D+k+y+ki+++Rs+++++ ++                h+h+Ivsrkd+ nk+kLspl++
+  PADI001c01_012510  93 EQKQAETMKRYIRQVfIPEYAKNFNKELSA--SDIKFYGKIHFDRSRSENELNM----------------HCHLIVSRKDQANKKKLSPLTN 166
+                        ******************************..8*********************................********************** PP
+
+               MOBB 183 skaskkelkkvkggfdrkeffqraektfdklfgyernlkesf 224
+                        +k++k+  ++++ggfdr ++fq++e+ fdklfgy+r+++esf
+  PADI001c01_012510 167 HKNTKN--GAITGGFDRVNLFQQTEQGFDKLFGYNRQQSESF 206
+                        *****9..********************************98 PP
+
+>> BAFR001c01_006500  C ATG TAA 761569 762504 Valid BF0643 936 _YP_097926.1_ BF0643 1 761569 762504 | clindamycin resist
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  266.5   4.4   4.3e-82   8.6e-77       1     224 []       1     206 [.       1     206 [. 0.99
+
+  Alignments for each domain:
+  == domain 1    score: 266.5 bits;  conditional E-value: 4.3e-82
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevy.elFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgee 91 
+                        m+i+++ ++ngt+nn+gssr+l++Yle+E++e++ek+ y + FFn te++i+k++Vik+iD+n+++l k+dakfy+i++sPsekel+++g++
+  BAFR001c01_006500   1 MHIDFALPSNGTYNNAGSSRQLANYLEHEDLERMEKGLYtDSFFNLTENNIYKSKVIKDIDSNIGQLLKTDAKFYAIHVSPSEKELQAMGNT 92 
+                        99****************************************************************************************** PP
+
+               MOBB  92 eqekaeklkkytrev.mkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsrkdasnkvkLsplsk 182
+                        e+e+ae++k+y+rev ++eYaknfn++++e  +D+k+y+ki+++Rs++d++ ++                h+h+Ivsrkd+snk+kLspl++
+  BAFR001c01_006500  93 EHEQAESMKRYIREVfIPEYAKNFNKGLSE--ADIKFYGKIHFNRSHSDNELNM----------------HCHLIVSRKDQSNKKKLSPLTN 166
+                        ******************************..9*******************99................********************** PP
+
+               MOBB 183 skaskkelkkvkggfdrkeffqraektfdklfgyernlkesf 224
+                        +k++kk  + +kggfdrk++fq+a+  f +lf+y+++l+esf
+  BAFR001c01_006500 167 HKNTKK--GPIKGGFDRKSLFQQAKLGFGRLFNYDKQLTESF 206
+                        *****9..********************************98 PP
+
+>> SPLI001p06_000030  D ATG TGA 1128 2207 Valid Slin_7043 1080 _YP_003391785.1_ Slin_7043 1 1128 2207 | hypothetical pro
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  265.4   1.2   9.6e-82   1.9e-76      15     224 .]       9     224 ..       1     224 [. 0.97
+
+  Alignments for each domain:
+  == domain 1    score: 265.4 bits;  conditional E-value: 9.6e-82
+               MOBB  15 nkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgeeeqekaeklkkytrev 106
+                         +gss+ lveYlekEn+ k e+++ el+F+q++++++ +eV+++iD+nk++l++edak+y++ ++Ps++elah+     ++++kl+++tr++
+  SPLI001p06_000030   9 GAGSSGGLVEYLEKENKLKPEQQA-ELWFSQQREQLAGQEVVAQIDHNKRNLGREDAKYYQVILAPSQAELAHI----GSDSQKLQAFTRAA 95 
+                        589***************999999.*************************************************....88899********* PP
+
+               MOBB 107 mkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsr...............kdasnkvkLsplsks 183
+                        m++Ya+nf+++ie+  kDl+++akie++R++++td++v+ g++ +g +K+G+q+hih+Ivsr               ++++n ++Lsp++++
+  SPLI001p06_000030  96 MEQYAANFGKGIES--KDLVWFAKIEHSRHFDHTDRAVQLGEQPKGVAKTGDQTHIHVIVSRtenlreyaagkknelHERKNPYHLSPMTNH 185
+                        **************..9*************************************************************************** PP
+
+               MOBB 184 kaskkelkkvkggfdrkeffqraektfdklfgyernlkesf 224
+                        ka++k  ++v+ggf+r++f+qr+e+tfd++f+yer+l+esf
+  SPLI001p06_000030 186 KATTK--GVVVGGFERNSFSQRTEQTFDQAFNYERSLTESF 224
+                        ****9..********************************98 PP
+
+>> BAFR003c01_019360  C ATG TAA 2388193 2389068 Valid mobB 876 _BF638R_2022_YP_005111086.1_ BF638R_2022 1 2388193 238906
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  264.6   5.6   1.6e-81   3.3e-76       1     224 []       1     206 [.       1     206 [. 0.99
+   2 ?   -2.1   0.3       5.9   1.2e+06      94     106 ..     223     235 ..     212     254 .. 0.59
+
+  Alignments for each domain:
+  == domain 1    score: 264.6 bits;  conditional E-value: 1.6e-81
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevy.elFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgee 91 
+                        m+i++++++ngt+nn+gssr+l++Y+e+E++e++e+++  e FFn t+d+i+k++Vik+iD+n+++l k+dakfy+i++sPse+el+++g++
+  BAFR003c01_019360   1 MHIDFAPPSNGTYNNSGSSRQLANYMEHEDLERMERGIFtEGFFNLTDDNIYKSKVIKDIDSNIGQLLKTDAKFYAIHVSPSENELRAMGNT 92 
+                        9******************************************************************************************* PP
+
+               MOBB  92 eqekaeklkkytrev.mkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsrkdasnkvkLsplsk 182
+                        eqekae++k+y+rev ++eYaknfn+e+++  +D+k+y+ki++eRs+++++ ++                h+h+I+srkd+ nk+kLspl++
+  BAFR003c01_019360  93 EQEKAEAMKRYIREVfIPEYAKNFNKELSA--SDIKFYGKIHFERSRSNNELNM----------------HCHLIISRKDQANKKKLSPLTN 166
+                        ******************************..8*********************................********************** PP
+
+               MOBB 183 skaskkelkkvkggfdrkeffqraektfdklfgyernlkesf 224
+                        +k++k+  + +kggf+r ++fq+ e+ fd +f y+r++ esf
+  BAFR003c01_019360 167 HKNTKN--GIIKGGFNRVNLFQKIERGFDYMFCYDRQQFESF 206
+                        *****9..9******************************998 PP
+
+  == domain 2    score: -2.1 bits;  conditional E-value: 5.9
+               MOBB  94 ekaeklkkytrev 106
+                        +++++l+ y r++
+  BAFR003c01_019360 223 QQEQELQSYERKT 235
+                        4455555555553 PP
+
+>> MURU001c01_025760  D ATG TAA 2829693 2830712 Valid Murru_2558 1020 _YP_004789016.1_ Murru_2558 1 2829693 2830712 | hy
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  263.0   5.9   5.4e-81   1.1e-75       1     224 []       1     267 [.       1     267 [. 0.99
+
+  Alignments for each domain:
+  == domain 1    score: 263.0 bits;  conditional E-value: 5.4e-81
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgeee 92 
+                        myi it+q+ g+ n  gs++d+v+YlekEn++k+ +++ elFFnq e++i +e+Vi+eiD+n++kl+k+d+kfysi +sPs++el+h+    
+  MURU001c01_025760   1 MYIAITPQQLGN-NHRGSAGDFVKYLEKENEGKSPEDR-ELFFNQRENDIEAERVIAEIDTNTGKLSKRDPKFYSIMVSPSQAELKHI---- 86 
+                        9*******9977.9******************999999.*************************************************.... PP
+
+               MOBB  93 qekaeklkkytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqaka................................. 151
+                         ++ eklk+ytre+mk Ya++f+r++e   kD+ y+ak+e+eR+y+++d++vke+q +a                                 
+  MURU001c01_025760  87 GDDPEKLKQYTRELMKRYAASFYRDNEVTVKDVLYFAKLERERTYSEKDKAVKENQVYAskilelhhqvravhrgeaqgdiakleeriqale 178
+                        8899************************9*************************************************************** PP
+
+               MOBB 152 ..............gerKeGlqlhihiIvsrkdasnkvkLsplskskaskkel..kkvkggfdrkeffqraektfdklfgyernlkesf 224
+                                      g++KeG+q+hihiIvsrkd +n+ +Lsp+sk++ s+  l  +kvk+gfdr++f++ aektfd  fgy rn++e++
+  MURU001c01_025760 179 reaphklngrrivpGMAKEGKQSHIHIIVSRKDVTNSHSLSPGSKFRTSETILngEKVKQGFDRDKFYRAAEKTFDTKFGYRRNFVETY 267
+                        ***************************************************99*99*******************************98 PP
+
+>> MURU001c01_024960  D ATG TAA 2735292 2736311 Valid Murru_2476 1020 _YP_004788936.1_ Murru_2476 1 2735292 2736311 | mo
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  262.7   6.5   6.5e-81   1.3e-75       1     224 []       1     267 [.       1     267 [. 0.98
+
+  Alignments for each domain:
+  == domain 1    score: 262.7 bits;  conditional E-value: 6.5e-81
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgeee 92 
+                        myi it+q+ g  n+ gs+rd+v+YlekEn++k  + + e +Fnq+e++i +e+Vi+eiD+n++klkk+++kfys+ +sPs++el+h+    
+  MURU001c01_024960   1 MYIAITRQQLGD-NFRGSARDFVKYLEKENEGKAPELQ-EGYFNQEENNIDAERVIAEIDANTAKLKKREPKFYSLVVSPSQRELQHI---- 86 
+                        9*******9876.9****************98655555.*************************************************.... PP
+
+               MOBB  93 qekaeklkkytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqaka................................. 151
+                         ++ ekl++ytrevm+ Ya++f+r+ e   kD+ y+ak+e+eR+y+++d+evke+qa+a                                 
+  MURU001c01_024960  87 GNDPEKLRQYTREVMQAYAASFYRDREVTVKDILYFAKLERERTYSEKDREVKENQAHAskilelqhrvraiqvgreqgdipklqekinale 178
+                        88999***********************9*************************************************************** PP
+
+               MOBB 152 ..............gerKeGlqlhihiIvsrkdasnkvkLsplskskaskkel..kkvkggfdrkeffqraektfdklfgyernlkesf 224
+                                      g++KeG+q+hihiIvsr+d++n+ +Lsp+sk++ s+ +l  ++vk+gfdr++ff+ aektfd+ f+y rn++e++
+  MURU001c01_024960 179 geaphqlngkrivpGMAKEGHQSHIHIIVSRMDRTNNHSLSPGSKFRTSETTLhgQTVKQGFDRDKFFRAAEKTFDQQFNYRRNFVETY 267
+                        ***************************************************9999********************************98 PP
+
+>> SP21001c01_000970  C ATG TAG 101605 102591 Valid Sph21_0094 987 _YP_004315356.1_ Sph21_0094 1 101605 102591 | hypothe
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  260.6   5.5   2.9e-80   5.8e-75       1     224 []       1     223 [.       1     223 [. 0.98
+
+  Alignments for each domain:
+  == domain 1    score: 260.6 bits;  conditional E-value: 2.9e-80
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahl..ge 90 
+                        myi+it +++   +nkgss+ lv+YlekEn++  e+++ e +Fn t ++i ++eV ++iD+n++kl+k+d+kf+ ++isPs+kela l  ++
+  SP21001c01_000970   1 MYINITDSEK--GDNKGSSGGLVHYLEKENRMDGEQQK-EYWFNGTGSNILPHEVRMKIDENIAKLGKNDSKFFLVNISPSQKELAFLvqKY 89 
+                        9******976..67******************998888.*************************************************7777 PP
+
+               MOBB  91 eeqekaeklkkytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsrkdasnkvkLsplsk 182
+                         eq  +eklk+y+ +vm+ Ya+nf+r  ++ ++Dl ++ak+e+ R+y ++d+evk+g++k+gerKeG+q+h+++Ivsrkd +n++kLsp+++
+  SP21001c01_000970  90 GEQGAKEKLKEYAVKVMDGYARNFKRPGINGNRDLLWFAKLENYRYYGHNDKEVKNGTKKRGERKEGRQMHVQVIVSRKDITNSIKLSPENT 181
+                        899***************************99************************************************************ PP
+
+               MOBB 183 skaskkelkkvkggfdrkeffqraektfdklfgyernlkesf 224
+                        s++++k++++++g+fdr++f+q+ e+ fd+ fg+ernlkesf
+  SP21001c01_000970 182 SRGKNKAHSQKLGQFDRTAFKQSGETLFDEFFGFERNLKESF 223
+                        ****************************************98 PP
+
+>> SP21001c01_003010  D ATG TGA 332380 333366 Valid Sph21_0308 987 _YP_004315560.1_ Sph21_0308 1 332380 333366 | hypothe
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  258.5   6.2   1.2e-79   2.4e-74       1     223 [.       1     226 [.       1     227 [. 0.96
+
+  Alignments for each domain:
+  == domain 1    score: 258.5 bits;  conditional E-value: 1.2e-79
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevy...elFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahl. 88 
+                        myi+itk++  t +nkgss++lv+YlekEn++k e+  +   e++Fn    +i+++eV + iD+n++kl++ed+kf+ i+isPs+kelahl 
+  SP21001c01_003010   1 MYINITKSE--TGDNKGSSGALVHYLEKENRMKPENANEnkpEHWFNGMARDIKPHEVRMGIDRNVAKLGREDSKFFLINISPSQKELAHLv 90 
+                        99***9996..578*****************99887665569*************************************************7 PP
+
+               MOBB  89 .geeeqekaeklkkytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsrkdasnkvkLsp 179
+                         ++ e+  +e+lk+++ +vm+eYa+nf+r  +++++Dl +++k+e  R+y+++d+evk+gq+++gerKeG+q+h++iIvsrkd +nk+kLsp
+  SP21001c01_003010  91 sQYGEDGAKENLKEFAMRVMDEYARNFKRLGINNHRDLLWFGKLESYRYYSHNDREVKSGQKRKGERKEGRQMHVQIIVSRKDITNKIKLSP 182
+                        77789999************************************************************************************ PP
+
+               MOBB 180 lskskaskkelkkvkggfdrkeffqraektfdklfgyernlkes 223
+                        +++s++++k++++++g+fdr++f+q+ e+ fd+ f++ernlk+s
+  SP21001c01_003010 183 QNTSRGKNKAHSQKLGQFDRTAFKQSGEALFDEQFDFERNLKDS 226
+                        *****************************************998 PP
+
+>> BATH001p01_000070  D ATG TGA 5172 7421 Valid BT_p548207 2250 _NP_818960.1_ BT_p548207 1 5172 7421 | mobilization prot
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  258.3   0.1   1.4e-79   2.9e-74       1     224 []       1     233 [.       1     233 [. 0.99
+
+  Alignments for each domain:
+  == domain 1    score: 258.3 bits;  conditional E-value: 1.4e-79
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahl.... 88 
+                        m+ k++++++ +s n+gs++dlv+YlekE+ e       ++FF++te++is+e+Vi++iD+nkk+l+ +dakf++++++Ps++e++hl    
+  BATH001p01_000070   1 MFAKVHPAEDVKSGNTGSCHDLVRYLEKETGEG------QRFFSHTEQDISPERVIMDIDGNKKALGANDAKFFMLSLNPSQSEQMHLigrk 86 
+                        899***************************983......68*************************************************** PP
+
+               MOBB  89 ........geeeqekaeklkkytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsrkdas 172
+                                ++e++e+ +kl+++tr++m+eYa nf+r++++ g+Dl+yya++eteRsy+ +deevk+g a++ge+K+Gl+lh+h+Ivsrk+ +
+  BATH001p01_000070  87 vddfkeltPQEKKEVFQKLEAFTRSAMDEYALNFGRDNIRGGQDLMYYARVETERSYHPEDEEVKQGIARIGEPKPGLNLHVHVIVSRKSLD 178
+                        ******************************************************************************************** PP
+
+               MOBB 173 nkvkLsplskskaskkel...kkvkggfdrkeffqraektfdklfgyernlkesf 224
+                         kvkLsp++ks ++++el   ++vk+gf+++ ++ r++++f++ f+y+++  e++
+  BATH001p01_000070 179 GKVKLSPGAKSAGNTWELegrGTVKRGFSHEGWKVRVQECFNRKFDYQAKEGETY 233
+                        ***************************************************9998 PP
+
+>> SPLI001p07_000110  C ATG TGA 5297 6370 Valid Slin_7060 1074 _YP_003391802.1_ Slin_7060 1 5297 6370 | hypothetical pro
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  254.0   0.1     3e-78   5.9e-73      13     224 .]       7     217 ..       1     217 [. 0.97
+
+  Alignments for each domain:
+  == domain 1    score: 254.0 bits;  conditional E-value: 3e-78
+               MOBB  13 snnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgeeeqekaeklkkytr 104
+                           +gs++ lv+YlekE+++        l+Fnq++++++ +eV++eiD nk++l++edak+y++ ++Ps++elah+    +++++kl+++tr
+  SPLI001p07_000110   7 GGSAGSCGGLVQYLEKEQAG--------LWFNQNREQLAGHEVVAEIDPNKRNLGREDAKYYQVILAPSQAELAHI----SSDSQKLQAFTR 86 
+                        4579**************86........6***********************************************....999********* PP
+
+               MOBB 105 evmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsr...............kdasnkvkLspls 181
+                        ++m+eYa+nf+++ie+  kDl+++akie++Rs+++td++v+ g++++g +K+G+q+hih+Ivsr               ++++n ++Lspl+
+  SPLI001p07_000110  87 AAMEEYAQNFGKGIES--KDLVWFAKIEHSRSFDHTDRAVQLGEQQKGVTKTGDQTHIHVIVSRtenlrayaegkknglHERKNPYHLSPLT 176
+                        ****************..9************************************************************************* PP
+
+               MOBB 182 kskaskkelkkvkggfdrkeffqraektfdklfgyernlkesf 224
+                        ++ka+++  ++v+ggf r++f+qrae+tfd++f+yer+l+esf
+  SPLI001p07_000110 177 NHKATTR--GVVLGGFGRNSFSQRAEQTFDQAFTYERSLTESF 217
+                        ******9..********************************98 PP
+
+>> BASA001p02_000010  C ATG TGA 108 1007 Valid Bacsa_3730 900 _YP_004260699.1_ Bacsa_3730 1 108 1007 | clindamycin resis
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  247.4   4.2   3.1e-76   6.2e-71       1     224 []       1     206 [.       1     206 [. 0.98
+   2 ?    0.7   1.9      0.86   1.7e+05      91     152 ..     230     291 ..     212     298 .. 0.71
+
+  Alignments for each domain:
+  == domain 1    score: 247.4 bits;  conditional E-value: 3.1e-76
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevy.elFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgee 91 
+                        m+iki+   +gt++n+gs++++++Yl++E++e+++++++ + FFn+++d+is++eV+ +iDnnk+kl+++dakfy+it+sPs++el+++g++
+  BASA001p02_000010   1 MNIKIQGGGSGTYANTGSCTEVTTYLQHEDLERMKNGREvQPFFNNSRDYISAQEVTFKIDNNKAKLSRNDAKFYVITVSPSSRELEKMGKT 92 
+                        99****************************************************************************************** PP
+
+               MOBB  92 eqekaeklkkytrev.mkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsrkdasnkvkLsplsk 182
+                        e+e+ae++++y+r+  m++Ya+ f++++++  +D++yy+ki++eR+  d   ++                h hiIvsrkd+sn++kLsp+++
+  BASA001p02_000010  93 EKEQAEAMRRYVRDDvMQHYAEGFGKGLNK--EDIEYYGKIHFERKGAD-RYDM----------------HAHIIVSRKDRSNTRKLSPKTN 165
+                        *************988**************..9************9966.6788................********************** PP
+
+               MOBB 183 skaskkelkkvkggfdrkeffqraektfdklfgyernlkesf 224
+                        ++++k++ ++vkggfdr++ff+++e++fdk+ gy+r  +++f
+  BASA001p02_000010 166 HTGKKNC-GNVKGGFDRTDFFRKCETSFDKRTGYDRAPEQTF 206
+                        *****96.*****************************99987 PP
+
+  == domain 2    score: 0.7 bits;  conditional E-value: 0.86
+               MOBB  91 eeqekaeklk.kytrevmkeYaknfnreieesgkDlkyyakieteRsykdt.deevkegqakag 152
+                         ++e+ ek+k +++r++ ++  ++ + ei+++g+++ +   i++  ++k++ +ee+  +q++++
+  BASA001p02_000010 230 VNHERLEKMKaEWSRDLQEQHQEQGREEIQQQGNNISQVPEINQASQRKKQqEEEL--NQPRKR 291
+                        36788899984488888888888888888888899999999987665555404444..565554 PP
+
+>> MURU001c01_002280  C ATG TGA 235479 236501 Valid Murru_0230 1023 _YP_004786708.1_ Murru_0230 1 235479 236501 | hypoth
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  246.5   8.1   5.8e-76   1.2e-70       1     224 []       1     267 [.       1     267 [. 0.98
+
+  Alignments for each domain:
+  == domain 1    score: 246.5 bits;  conditional E-value: 5.8e-76
+               MOBB   1 myikitkqkngtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgeee 92 
+                        my +i++qk+g   ++ s ++ v+YlekEn+ +  +++ e+FF+q++d +s+++Vi eiD+n++kl ++d+kfysi +sP +kel+++    
+  MURU001c01_002280   1 MYLTISAQKMGS-TYNSSVGNYVDYLEKENEDRLPEQR-EEFFDQENDSVSPQTVIDEIDANTAKLRQKDPKFYSIVVSPNKKELQAI---- 86 
+                        999*****9966.88899**************999999.*************************************************.... PP
+
+               MOBB  93 qekaeklkkytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqaka................................. 151
+                         ++ + l++ytr++m++Yak+f+r++e + ++lkyyakie+eR+y++ d++v+e+ +++                                 
+  MURU001c01_002280  87 GNDPNMLREYTRKLMEDYAKSFHRNQEVKAENLKYYAKIEHERTYRGLDKQVQENAPYRgeiarlrneirkvergesignvkelekrikehe 178
+                        88899*************************************************************************************** PP
+
+               MOBB 152 ..............gerKeGlqlhihiIvsrkdasnkvkLsplskskaskkel..kkvkggfdrkeffqraektfdklfgyernlkesf 224
+                                      g++KeG q+hihiIvsr+d +n++ Lsp++k+kas++el  k vk+gfdr++f+q aekt+d++ g++rn++es+
+  MURU001c01_002280 179 rlaphkqngqlvaaGMQKEGPQTHIHIIVSRRDVTNTYTLSPMAKHKASEVELngKMVKRGFDRDSFYQAAEKTYDRTTGFKRNYVESY 267
+                        ******************************************************9********************************98 PP
+
+>> SPLI001p02_000130  C ATG TAA 9204 10403 Valid Slin_6839 1200 _YP_003391587.1_ Slin_6839 1 9204 10403 | hypothetical p
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  222.2   1.1   1.5e-68   3.1e-63       1     223 [.       1     210 [.       1     211 [. 0.97
+
+  Alignments for each domain:
+  == domain 1    score: 222.2 bits;  conditional E-value: 1.5e-68
+               MOBB   1 myikitkqkn.gtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgee 91 
+                        m+i++ ++++ g ++n+gss+ lv+Yle+E +e+++ e+   FF+q+++ i++eeV+++iD+n+k ++k ++ f+s+ isPs++el+hl   
+  SPLI001p02_000130   1 MVIRVLPASKgGIYSNAGSSHFLVNYLEHEAREEKQPER-AIFFDQQREGIRAEEVQERIDANVKGVQKGKPLFHSLVISPSQDELRHL--- 88 
+                        89******99999********************888888.*************************************************... PP
+
+               MOBB  92 eqekaeklkkytrevmkeYaknfnreieesg..kDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsrkdasnkvkLspls 181
+                         +++ +klk+ytr+vm++Ya+nf  + +es   ++l++ya i+++R+y++ d +v++gqa++++rKeG+q+hih+Ivs +d++++++L+p++
+  SPLI001p02_000130  89 -NDDPDKLKAYTRQVMENYAANFAPKRRESLtsDNLVWYATIHRSRHYSGLDDAVQTGQAQSRQRKEGEQTHIHVIVSARDRTMSRSLHPDA 179
+                        .999********************999998788**********************************************************9 PP
+
+               MOBB 182 kskaskkelkkvkggfdrkeffqraektfdklfgyernlkes 223
+                         s            +f+ k++ q+++++f+++fgy+++++e+
+  SPLI001p02_000130 180 GSS-----------QFNYKAWLQKNHRDFEQTFGYKTTVTEK 210
+                        987...........7**********************99996 PP
+
+>> BEBA001c01_020770  C ATG TAA 2282128 2282985 Valid Belba_2150 858 _YP_006407472.1_ Belba_2150 1 2282128 2282985 | hyp
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  196.3   5.4   1.3e-60   2.6e-55       1     224 []       1     208 [.       1     208 [. 0.95
+
+  Alignments for each domain:
+  == domain 1    score: 196.3 bits;  conditional E-value: 1.3e-60
+               MOBB   1 myikitkqkn.gtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgee 91 
+                        m+i++  +k   + +nkgs+r+l+ YlekEn+++ e+ +  +FF+  +d ++ eeVi +iD+n+kkl+k d+k+y ++i Ps+kel     +
+  BEBA001c01_020770   1 MIITFGSKKYpNGASNKGSCRKLAIYLEKENEGQPESFK-RHFFSFDKDSVKVEEVIGNIDKNIKKLGKDDSKYYLMNICPSQKELLSK-PN 90 
+                        788998888887889****************99777666.**********************************************988.67 PP
+
+               MOBB  92 eqekaeklkkytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsrkdasnkvkLsplsks 183
+                        +q+  e l +ytr++m+ Yaknfn+++++  kD++yyakie  R+     ee        g++K Gl+ h+h+I+srkd s+k kLsp +++
+  BEBA001c01_020770  91 SQSMDEFLMNYTRNMMDLYAKNFNKGLSG--KDIMYYAKIEDYRYD----EET-------GKKKYGLNHHVHVIISRKDISQKLKLSPRTNH 169
+                        88899************************..9**********9975....444.......899***************************** PP
+
+               MOBB 184 kaskkelkkvkggfdrkeffqraektfdklfgyernlkesf 224
+                        ++s+   +++ ggfdr  ff++ae+ fd++   +r+++e+f
+  BEBA001c01_020770 170 RNSQT--GVIRGGFDRCIFFKNAERMFDSMTRMDRTVEETF 208
+                        ***98..********************************98 PP
+
+>> ALFI001c01_001920  D ATG TGA 219857 222667 Valid Alfi_0199 2811 _YP_006409294.1_ Alfi_0199 1 219857 222667 | hypothet
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   -1.3   0.0       3.4   6.8e+05      15      34 ..      13      32 ..       3      36 .. 0.72
+   2 !  171.9   0.1   3.8e-53   7.5e-48      15     224 .]      35     312 ..      23     312 .. 0.96
+   3 ?   -0.4   0.2       1.8   3.6e+05      24      56 ..     832     870 ..     815     879 .. 0.53
+
+  Alignments for each domain:
+  == domain 1    score: -1.3 bits;  conditional E-value: 3.4
+               MOBB 15 nkgssrdlveYlekEnqeke 34
+                        + s ++ ++YlekE++ ++
+  ALFI001c01_001920 13 GQSSVAEYAGYLEKESLIQS 32
+                       456778999******98654 PP
+
+  == domain 2    score: 171.9 bits;  conditional E-value: 3.8e-53
+               MOBB  15 nkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahl.................. 88 
+                         + ssr+l  Yl+k n     +++ e FFn t +    e V+k+iD+n++ lkk++a++y  +isPs++e+ahl                  
+  ALFI001c01_001920  35 DETSSRQLSAYLDKQNDVVRVEGR-EYFFNGTGNTYDTEDVVKNIDANVRGLKKKEARYYTFSISPSKDEIAHLrrtiadtkqtlleageai 125
+                        4679**************999999.******************************************************************* PP
+
+               MOBB  89 ..geeeqekaeklkkytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqaka........................... 151
+                            e++   + lk y+ ++m+ Ya+nf+   ++ ++Dl++++ +e++R+ k +d +v+++++                             
+  ALFI001c01_001920 126 paRLEDDMMRNYLKDYAIQCMDAYARNFGHPEIHDNRDLMWFGMVEKDRYWKSHDPHVRNNSRIDkeiarlekqlgggkddsvqrriadlea 217
+                        987788889999*********************999**********************988776699************************* PP
+
+               MOBB 152 ...................gerKeGlqlhihiIvsrkdasnkvkLsplskskaskkel...kkvkggfdrkeffqraektfdklfgyernlk 221
+                                            ++K+G++ hih+ vsr+d +n+++Lsp+++ ++skk++   k+v  gfdr++++ ++e+ fd+ f  +r ++
+  ALFI001c01_001920 218 qyvreshvrlggrdeilraMMPKAGDNWHIHVTVSRRDITNSINLSPNANGRGSKKHVlngKAVRIGFDREAYKIECERLFDRFFAHHRLQT 309
+                        ******************99***********************************9889*99****************************** PP
+
+               MOBB 222 esf 224
+                        es+
+  ALFI001c01_001920 310 ESY 312
+                        *98 PP
+
+  == domain 3    score: -0.4 bits;  conditional E-value: 1.8
+               MOBB  24 eYlekEnqekeeke.....vy.elFFnqtedeiskeeVi 56 
+                        + + +E++ek +++     +y +++F+  e++ +ke ++
+  ALFI001c01_001920 832 QAIPQEDLEKIQRQqnylnRYiNKYFSAAESKTKKEALQ 870
+                        444444444333321111133455555555555555555 PP
+
+>> ALFI001c01_007870  C ATG TGA 874744 877554 Valid Alfi_0823 2811 _YP_006409881.1_ Alfi_0823 1 874744 877554 | hypothet
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?    2.0   0.0      0.33   6.5e+04      11      35 ..       9      33 ..       1      38 [. 0.75
+   2 !  163.0   0.2     2e-50   3.9e-45      18     224 .]      38     312 ..      30     312 .. 0.96
+   3 ?   -2.6   0.0       8.7   1.7e+06     179     207 ..     680     708 ..     679     712 .. 0.89
+
+  Alignments for each domain:
+  == domain 1    score: 2.0 bits;  conditional E-value: 0.33
+               MOBB 11 gtsnnkgssrdlveYlekEnqekee 35
+                        t   + s  d+++YlekE++ +e+
+  ALFI001c01_007870  9 NTKYGQSSVMDFAGYLEKESLVQEQ 33
+                       4555567889**********98766 PP
+
+  == domain 2    score: 163.0 bits;  conditional E-value: 2e-50
+               MOBB  18 ssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahl....................g 89 
+                         sr+l  Yl+k n     +++ e FFn   +    e V+k iD+n+k lkk++a++y  ++sPs +e+ahl                     
+  ALFI001c01_007870  38 TSRQLSAYLDKQNDSVRVEGR-EYFFNGRGSTFDCEDVTKAIDANVKGLKKKEARYYTFSLSPSGEEIAHLrrtiadtrqalsdagevvpaD 128
+                        5889**********9999999.*******************************************************************876 PP
+
+               MOBB  90 eeeqekaeklkkytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqaka.............................. 151
+                         e+      lk+y+ ++m+ Ya+nf+    + ++Dl +++ +e++R+ k++d ev+++ +                                
+  ALFI001c01_007870 129 LEDTLMRTYLKEYAVKCMDAYARNFGHPEVKDNNDLLWFGMVEKDRYWKKSDPEVRKNMQIYkeieklrqritednekeitrkiatlerkli 220
+                        677778899*******************99999**********************999877689**************************** PP
+
+               MOBB 152 ................gerKeGlqlhihiIvsrkdasnkvkLsplskskaskkel...kkvkggfdrkeffqraektfdklfgyernlkesf 224
+                                         ++K+G++ h+hi vsr+d +n+++Lsp+++ ++skk++   +kv  gf+r++++  +e+ fdk+f   r ++es+
+  ALFI001c01_007870 221 renkvrpggsqeilhpMMAKTGDNWHVHIAVSRRDITNSFNLSPNANGRGSKKHVlngRKVRIGFNREAYKVACERIFDKTFVHSRLITESY 312
+                        ****************************************************9889*99*******************************98 PP
+
+  == domain 3    score: -2.6 bits;  conditional E-value: 8.7
+               MOBB 179 plskskaskkelkkvkggfdrkeffqrae 207
+                        p+ k+ a +kel+++  g+++ ++ ++ae
+  ALFI001c01_007870 680 PDMKYGALRKELGEIFEGLEKVQIERQAE 708
+                        889999999**************999988 PP
+
+>> LEBU001c01_001060  D ATG TAA 106500 107165 Valid Lebu_0113 666 _YP_003163034.1_ Lebu_0113 1 106500 107165 | hypotheti
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   59.2   8.7     1e-18   2.1e-13      10     216 ..      13     177 ..       2     183 .. 0.93
+
+  Alignments for each domain:
+  == domain 1    score: 59.2 bits;  conditional E-value: 1e-18
+               MOBB  10 ngtsnnkgssrdlveYlekEnqekeekevyelFFnqtedeiskeeVikeiDnnkkklkkedakfysitisPsekelahlgeeeqekaeklkk 101
+                         g+s +++s+++ ++++++E +++e+kev         +++ ++e+++ +++++++  +e ak++ ++i+++e+++++      +k++ ++k
+  LEBU001c01_001060  13 LGNSFAAPSKNSKIGSVSNEITANEKKEV---------ERVLQKELQSIMNEIVGAELSEIAKIIGNQIFDKESNISAS-----AKNRIIQK 90 
+                        38999******************999999.........9****************************************.....999***** PP
+
+               MOBB 102 ytrevmkeYaknfnreieesgkDlkyyakieteRsykdtdeevkegqakagerKeGlqlhihiIvsrkdasnkvkLsplskskaskkelkkv 193
+                        +++e    Y++++ ++i+++  D+k+++++++++ +  +d+++k               +i+ I+ ++++++++k+ ++  +k+++      
+  LEBU001c01_001060  91 FSKE----YISMALNNIDTK-IDIKQFKNLPNNKVQVFYDIKIK---------------DISKISLESKKEMEEKVLKNLGYKSQD------ 156
+                        **98....***********6.**********************8...............9***********************999...... PP
+
+               MOBB 194 kggfdrkeffqraektfdklfgy 216
+                          ++++  ++++++++++k++++
+  LEBU001c01_001060 157 --EIKKILMSSSNDAKKEKIYES 177
+                        ..599999999999999999986 PP
+
+>> BACE004c01_013500  C ATG TAA 1323079 1323603 Valid BCB4264_A1365 525 _YP_002366095.1_ BCB4264_A1365 1 1323079 1323603
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   18.4   3.4   3.2e-06      0.64      17     105 ..      46     132 ..      32     168 .. 0.77
+
+  Alignments for each domain:
+  == domain 1    score: 18.4 bits;  conditional E-value: 3.2e-06
+               MOBB  17 gssrdlveYlekEnqekeekevyelFFnqtedeisk...eeVikeiDnnkkklkkedakfysitisPsekelahlgeeeqekaeklkkytre 105
+                         + ++ v+ lekE q+      + +F nq+ d++++   + +  +i++ ++k k+  a  +++t+sP +  l+ l++++ + +e  k+++ +
+  BACE004c01_013500  46 HKLTSGVDELEKELQQ-----LTAQFNNQYTDYVKQltgNSLNDQINEWQDKWKELSAHMHQLTVSPTKTSLSILTQTSGQFEETTKQFIEQ 132
+                        5556667778888876.....3467889999998763336799********************************88877777778888765 PP
+
+>> BACE006c01_012990  C ATG TAA 1291371 1291895 Valid BC1313 525 _NP_831095.1_ BC1313 1 1291371 1291895 | PhaP protein  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   18.4   3.4   3.2e-06      0.64      17     105 ..      46     132 ..      32     168 .. 0.77
+
+  Alignments for each domain:
+  == domain 1    score: 18.4 bits;  conditional E-value: 3.2e-06
+               MOBB  17 gssrdlveYlekEnqekeekevyelFFnqtedeisk...eeVikeiDnnkkklkkedakfysitisPsekelahlgeeeqekaeklkkytre 105
+                         + ++ v+ lekE q+      + +F nq+ d++++   + +  +i++ ++k k+  a  +++t+sP +  l+ l++++ + +e  k+++ +
+  BACE006c01_012990  46 HKLTSGVDELEKELQQ-----LTAQFNNQYTDYVKQltgNSLNDQINEWQDKWKELSAHMHQLTVSPTKTSLSILTQTSGQFEETTKQFIEQ 132
+                        5556667778888876.....3467889999998763336799********************************88877777778888765 PP
+
+>> BATU003c01_012680  C ATG TAA 1295466 1295990 Valid BMB171_C1157 525 _YP_003663693.1_ BMB171_C1157 1 1295466 1295990 |
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   18.4   3.4   3.2e-06      0.64      17     105 ..      46     132 ..      32     168 .. 0.77
+
+  Alignments for each domain:
+  == domain 1    score: 18.4 bits;  conditional E-value: 3.2e-06
+               MOBB  17 gssrdlveYlekEnqekeekevyelFFnqtedeisk...eeVikeiDnnkkklkkedakfysitisPsekelahlgeeeqekaeklkkytre 105
+                         + ++ v+ lekE q+      + +F nq+ d++++   + +  +i++ ++k k+  a  +++t+sP +  l+ l++++ + +e  k+++ +
+  BATU003c01_012680  46 HKLTSGVDELEKELQQ-----LTAQFNNQYTDYVKQltgNSLNDQINEWQDKWKELSAHMHQLTVSPTKTSLSILTQTSGQFEETTKQFIEQ 132
+                        5556667778888876.....3467889999998763336799********************************88877777778888765 PP
+
+>> BAAN001c01_013190  C ATG TAA 1271518 1272042 Valid BA_1327 525 _NP_843792.1_ BA_1327 1 1271518 1272042 | phaP protein
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   17.0   4.0   8.5e-06       1.7      17     105 ..      46     132 ..      32     169 .. 0.78
+
+  Alignments for each domain:
+  == domain 1    score: 17.0 bits;  conditional E-value: 8.5e-06
+               MOBB  17 gssrdlveYlekEnqekeekevyelFFnqtedeisk...eeVikeiDnnkkklkkedakfysitisPsekelahlgeeeqekaeklkkytre 105
+                         + ++ v+ lekE q+      + +F nq+ d++++   + +  +i++ ++k k+  a  +++t+sP +  l+ l++++ + +e  k+++ +
+  BAAN001c01_013190  46 HKLTSGVDELEKELQQ-----FTAQFNNQYTDYVKQltgNSLNDQINEWQEKWKELSAHMHQLTVSPTKTSLSILTQTSGQFEETTKQFIEQ 132
+                        5555667777777765.....4478999999999873336799********************************88888888888888765 PP
+
+>> BAAN002c01_013140  C ATG TAA 1271641 1272165 Valid GBAA_1327 525 _YP_017941.1_ GBAA_1327 1 1271641 1272165 | phaP pro
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   17.0   4.0   8.5e-06       1.7      17     105 ..      46     132 ..      32     169 .. 0.78
+
+  Alignments for each domain:
+  == domain 1    score: 17.0 bits;  conditional E-value: 8.5e-06
+               MOBB  17 gssrdlveYlekEnqekeekevyelFFnqtedeisk...eeVikeiDnnkkklkkedakfysitisPsekelahlgeeeqekaeklkkytre 105
+                         + ++ v+ lekE q+      + +F nq+ d++++   + +  +i++ ++k k+  a  +++t+sP +  l+ l++++ + +e  k+++ +
+  BAAN002c01_013140  46 HKLTSGVDELEKELQQ-----FTAQFNNQYTDYVKQltgNSLNDQINEWQEKWKELSAHMHQLTVSPTKTSLSILTQTSGQFEETTKQFIEQ 132
+                        5555667777777765.....4478999999999873336799********************************88888888888888765 PP
+
+>> BAAN003c01_012660  C ATG TAA 1271541 1272065 Valid BAA_1394 525 _YP_002865829.1_ BAA_1394 1 1271541 1272065 | phaP pr
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   17.0   4.0   8.5e-06       1.7      17     105 ..      46     132 ..      32     169 .. 0.78
+
+  Alignments for each domain:
+  == domain 1    score: 17.0 bits;  conditional E-value: 8.5e-06
+               MOBB  17 gssrdlveYlekEnqekeekevyelFFnqtedeisk...eeVikeiDnnkkklkkedakfysitisPsekelahlgeeeqekaeklkkytre 105
+                         + ++ v+ lekE q+      + +F nq+ d++++   + +  +i++ ++k k+  a  +++t+sP +  l+ l++++ + +e  k+++ +
+  BAAN003c01_012660  46 HKLTSGVDELEKELQQ-----FTAQFNNQYTDYVKQltgNSLNDQINEWQEKWKELSAHMHQLTVSPTKTSLSILTQTSGQFEETTKQFIEQ 132
+                        5555667777777765.....4478999999999873336799********************************88888888888888765 PP
+
+>> BAAN004c01_013010  C ATG TAA 1271587 1272111 Valid BAS1227 525 _YP_027496.1_ BAS1227 1 1271587 1272111 | phaP protein
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   17.0   4.0   8.5e-06       1.7      17     105 ..      46     132 ..      32     169 .. 0.78
+
+  Alignments for each domain:
+  == domain 1    score: 17.0 bits;  conditional E-value: 8.5e-06
+               MOBB  17 gssrdlveYlekEnqekeekevyelFFnqtedeisk...eeVikeiDnnkkklkkedakfysitisPsekelahlgeeeqekaeklkkytre 105
+                         + ++ v+ lekE q+      + +F nq+ d++++   + +  +i++ ++k k+  a  +++t+sP +  l+ l++++ + +e  k+++ +
+  BAAN004c01_013010  46 HKLTSGVDELEKELQQ-----FTAQFNNQYTDYVKQltgNSLNDQINEWQEKWKELSAHMHQLTVSPTKTSLSILTQTSGQFEETTKQFIEQ 132
+                        5555667777777765.....4478999999999873336799********************************88888888888888765 PP
+
+>> BAAN005c01_032200  D ATG TAA 2967032 2967556 Valid BAMEG_3269 525 _YP_002815854.1_ BAMEG_3269 1 2967032 2967556 | pha
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   17.0   4.0   8.5e-06       1.7      17     105 ..      46     132 ..      32     169 .. 0.78
+
+  Alignments for each domain:
+  == domain 1    score: 17.0 bits;  conditional E-value: 8.5e-06
+               MOBB  17 gssrdlveYlekEnqekeekevyelFFnqtedeisk...eeVikeiDnnkkklkkedakfysitisPsekelahlgeeeqekaeklkkytre 105
+                         + ++ v+ lekE q+      + +F nq+ d++++   + +  +i++ ++k k+  a  +++t+sP +  l+ l++++ + +e  k+++ +
+  BAAN005c01_032200  46 HKLTSGVDELEKELQQ-----FTAQFNNQYTDYVKQltgNSLNDQINEWQEKWKELSAHMHQLTVSPTKTSLSILTQTSGQFEETTKQFIEQ 132
+                        5555667777777765.....4478999999999873336799********************************88888888888888765 PP
+
+>> BAAN007c01_013340  C ATG TAA 1262365 1262889 Valid H9401_1241 525 _YP_006208295.1_ H9401_1241 1 1262365 1262889 | Pha
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ?   17.0   4.0   8.5e-06       1.7      17     105 ..      46     132 ..      32     169 .. 0.78
+
+  Alignments for each domain:
+  == domain 1    score: 17.0 bits;  conditional E-value: 8.5e-06
+               MOBB  17 gssrdlveYlekEnqekeekevyelFFnqtedeisk...eeVikeiDnnkkklkkedakfysitisPsekelahlgeeeqekaeklkkytre 105
+                         + ++ v+ lekE q+      + +F nq+ d++++   + +  +i++ ++k k+  a  +++t+sP +  l+ l++++ + +e  k+++ +
+  BAAN007c01_013340  46 HKLTSGVDELEKELQQ-----FTAQFNNQYTDYVKQltgNSLNDQINEWQEKWKELSAHMHQLTVSPTKTSLSILTQTSGQFEETTKQFIEQ 132
+                        5555667777777765.....4478999999999873336799********************************88888888888888765 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                            1  (224 nodes)
+Target sequences:                    7169236  (2258311084 residues)
+Passed MSV filter:                    234729  (0.0327411); expected 143384.7 (0.02)
+Passed bias filter:                   113348  (0.0158103); expected 143384.7 (0.02)
+Passed Vit filter:                      7562  (0.00105478); expected 7169.2 (0.001)
+Passed Fwd filter:                        88  (1.22747e-05); expected 71.7 (1e-05)
+Initial search space (Z):            7169236  [actual number of targets]
+Domain search space  (domZ):              36  [number of targets reported over threshold]
+# CPU time: 136.70u 4.13s 00:02:20.82 Elapsed: 00:02:21.08
+# Mc/sec: 3585.64
+//
