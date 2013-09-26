@@ -22,10 +22,6 @@
         {{/replicon}}
     </ul>
     
-    
-    <div id="genes_schema" class="grabbable">
-    </div>
-    
     <h3>Genes</h3>
     <table>
         <thead>
@@ -52,10 +48,21 @@
         </tbody>
     </table>
 </script>
+<script id="gene_info_Tpl" type="text/template">
+    <h4>Gene Informations</h4>
+          <ul>
+                      <li>name: {{name}}</li>
+                      <li>match : {{match}}</li>
+                      <li>protein length: {{length}}</li>
+                      <li>description : {{description}}</li>
+                    </ul>
+</script>
  </head>
     <body>
     <H1>test javascript</H1>
     <div id="genes_schema" class="grabbable">
+    </div>
+    <div id="gene_infos">
     </div>
     <div id="table">
     
@@ -261,10 +268,14 @@
 
         Gene.prototype.show = function show_gene(){
         	this.drawing["popup"].show();
+        	var template = $('#gene_info_Tpl').html();
+            var html = Mustache.to_html(template, this);
+            $('#gene_infos').html(html);
         }
 
         Gene.prototype.hide = function hide_gene(){
         	this.drawing["popup"].hide();
+        	$('#gene_infos').html("");
         }
         
         
@@ -328,6 +339,11 @@
             return [x, y, null] //null is to keep the same signature of CircularDrawer.pos_2_coord
         }
         
+        
+        
+        /***************************************
+        * Bouchon pour les documents a fficher
+        ****************************************/
         
         var c_doc = {
                 "replicon" : {
@@ -399,35 +415,164 @@
                     system : "T4SS"
                 }]
             };
-        
+        /****************************************
+        * creation de la table HTML par mustache
+        *****************************************/
         var template = $('#repl_table_Tpl').html();
         var html = Mustache.to_html(template, c_doc);
         $('#table').html(html);
 
-             var c_rep = new Replicon(c_doc);
-             var paper = Raphael("genes_schema", c_rep.drawer.paper_w, c_rep.drawer.paper_h );
-             c_rep.drawing = c_rep.draw(paper);
-             
-             //doit on integrer la boucle dans
-             //Replicon.draw
-             //ou une methode Replicon.draw_gene
-             //sur chaque elt on doit binder les evts !!!
-             
-             for (var i = 0; i < c_rep.genes.length; i++ ){
-               g = c_rep.genes[i];
-               g.drawing = g.draw(paper);
-               g.drawing["arrow"].mouseover(g.show.bind(g));
-               g.drawing["arrow"].mouseout(g.hide.bind(g));
-              }
-             
-             /*
-             var l_rep = new Replicon(l_doc);
-             var paper = Raphael("genes_schema", l_rep.drawer.paper_w, l_rep.drawer.paper_h );
-             l_rep.drawing = l_rep.draw(paper);
-             for (var i = 0; i < l_rep.genes.length; i++ ){
-                 g = l_rep.genes[i];
-                 g.drawing = g.draw(paper);
-             }
+        /********************************************
+        * Instanciation des objets MEtiers et Dessin
+        *********************************************/
+        var c_rep = new Replicon(c_doc);
+        var paper = Raphael("genes_schema", c_rep.drawer.paper_w, c_rep.drawer.paper_h );
+        /*
+        var paper = {'gene' : Raphael('genes_schema', c_rep.drawer.paper_w, c_rep.drawer.paper_h),
+        	         'popup' : Raphael('genes_schema', c_rep.drawer.paper_w, c_rep.drawer.paper_h )
+        	         };
+        */
+        c_rep.drawing = c_rep.draw(paper);
+        
+        //doit on integrer la boucle dans
+        //Replicon.draw
+        //ou une methode Replicon.draw_gene
+        //sur chaque elt on doit binder les evts !!!
+        
+        for (var i = 0; i < c_rep.genes.length; i++ ){
+          g = c_rep.genes[i];
+          g.drawing = g.draw(paper);
+          g.drawing["arrow"].mouseover(g.show.bind(g));
+          g.drawing["arrow"].mouseout(g.hide.bind(g));
+         }
+        
+        /*
+        var l_rep = new Replicon(l_doc);
+        var paper = Raphael("genes_schema", l_rep.drawer.paper_w, l_rep.drawer.paper_h );
+        l_rep.drawing = l_rep.draw(paper);
+        for (var i = 0; i < l_rep.genes.length; i++ ){
+            g = l_rep.genes[i];
+            g.drawing = g.draw(paper);
+        }
+        */
+        
+        /**************
+        * pan and zoom
+        ***************/
+        paper.setViewBox(0, 0, paper.width, paper.height);
+        var viewBoxWidth = paper.width;
+        var viewBoxHeight = paper.height;
+        var canvasID = "#genes_schema";
+        var startX, startY;
+        var mousedown = false;
+        var dX, dY;
+        var oX = 0, oY = 0, oWidth = viewBoxWidth, oHeight = viewBoxHeight;
+        var viewBox = paper.setViewBox(oX, oY, viewBoxWidth,
+                viewBoxHeight);
+        viewBox.X = oX;
+        viewBox.Y = oY;
+        function handle(delta) {
+            vBHo = viewBoxHeight;
+            vBWo = viewBoxWidth;
+            if (delta < 0) {
+                viewBoxWidth *= 0.95;
+                viewBoxHeight *= 0.95;
+            } else {
+                viewBoxWidth *= 1.05;
+                viewBoxHeight *= 1.05;
+            }
+            /*
+             vB.attr({
+             x: viewBox.X,
+             y: viewBox.Y,
+             width: viewBoxWidth,
+             height: viewBoxHeight
+             });
              */
+
+            viewBox.X -= (viewBoxWidth - vBWo) / 2;
+            viewBox.Y -= (viewBoxHeight - vBHo) / 2;
+            paper.setViewBox(viewBox.X, viewBox.Y, viewBoxWidth,
+                    viewBoxHeight);
+        }
+
+        /** Event handler for mouse wheel event.
+         */
+        function wheel(event) {
+            var delta = 0;
+            if (!event) /* For IE. */
+                event = window.event;
+            if (event.wheelDelta) { /* IE/Opera. */
+                delta = event.wheelDelta / 120;
+            } else if (event.detail) {
+                /** Mozilla case. */
+                /** In Mozilla, sign of delta is different than in IE.
+                 * Also, delta is multiple of 3.
+                 */
+                delta = -event.detail / 3;
+            }
+            /** If delta is nonzero, handle it.
+             * Basically, delta is now positive if wheel was scrolled up,
+             * and negative, if wheel was scrolled down.
+             */
+            if (delta)
+                handle(delta);
+            /** Prevent default actions caused by mouse wheel.
+             * That might be ugly, but we handle scrolls somehow
+             * anyway, so don't bother here..
+             */
+            if (event.preventDefault)
+                event.preventDefault();
+            event.returnValue = false;
+        }
+        /** Initialization code. 
+         * If you use your own event management code, change it as required.
+         */
+        if (window.addEventListener)
+            /** DOMMouseScroll is for mozilla. */
+            window.addEventListener('DOMMouseScroll', wheel, false);
+        /** IE/Opera. */
+        window.onmousewheel = document.onmousewheel = wheel;
+
+        //Pane
+        $(canvasID).mousedown(function(e) {
+
+            if (paper.getElementByPoint(e.pageX, e.pageY) != null) {
+                return;
+            }
+            mousedown = true;
+            startX = e.pageX;
+            startY = e.pageY;
+        });
+
+        $(canvasID).mousemove(
+                function(e) {
+                    if (mousedown == false) {
+                        return;
+                    }
+                    dX = startX - e.pageX;
+                    dY = startY - e.pageY;
+                    x = viewBoxWidth / paper.width;
+                    y = viewBoxHeight / paper.height;
+
+                    dX *= x;
+                    dY *= y;
+                    //alert(viewBoxWidth +" "+ paper.width );
+
+                    paper.setViewBox(viewBox.X + dX,
+                            viewBox.Y + dY, viewBoxWidth,
+                            viewBoxHeight);
+
+                })
+
+        $(canvasID).mouseup(function(e) {
+            if (mousedown == false)
+                return;
+            viewBox.X += dX;
+            viewBox.Y += dY;
+            mousedown = false;
+
+        });
+        
         </script>
 </html>
