@@ -1,0 +1,116 @@
+  {
+    "replicon": {
+      "length": 106, 
+      "name": "ACBA010p01", 
+      "topology": "circular"
+    }, 
+    "genes": [
+      {
+        "gene_status": "mandatory", 
+        "end_match": 890, 
+        "begin_match": 25, 
+        "system": "cT4SS", 
+        "score": 469.2, 
+        "sequence_coverage": 0.9622222222222222, 
+        "sequence_length": 900, 
+        "i_eval": 1.3e-137, 
+        "position": 48183, 
+        "profile_coverage": 0.8207847295864263, 
+        "id": "ACBA010p01_000400", 
+        "match": "virB4"
+      }, 
+      {
+        "gene_status": "allowed", 
+        "end_match": 147, 
+        "begin_match": 69, 
+        "system": "pT4SSt", 
+        "score": 34.5, 
+        "sequence_coverage": 0.39303482587064675, 
+        "sequence_length": 201, 
+        "i_eval": 5.8e-06, 
+        "position": 48192, 
+        "profile_coverage": 0.5734265734265734, 
+        "id": "ACBA010p01_000490", 
+        "match": "T_virB1"
+      }, 
+      {
+        "gene_status": "mandatory", 
+        "end_match": 1034, 
+        "begin_match": 1, 
+        "system": "cT4SS", 
+        "score": 705.9, 
+        "sequence_coverage": 0.9582947173308619, 
+        "sequence_length": 1079, 
+        "i_eval": 3.5e-209, 
+        "position": 48210, 
+        "profile_coverage": 0.9977272727272727, 
+        "id": "ACBA010p01_000670", 
+        "match": "MOBF"
+      }, 
+      {
+        "gene_status": "allowed", 
+        "end_match": 552, 
+        "begin_match": 337, 
+        "system": "cT4SS", 
+        "score": 141.0, 
+        "sequence_coverage": 0.30422535211267604, 
+        "sequence_length": 710, 
+        "i_eval": 1.3e-38, 
+        "position": 48211, 
+        "profile_coverage": 0.990990990990991, 
+        "id": "ACBA010p01_000680", 
+        "match": "virD4"
+      }
+    ], 
+    "name": "ACBA010p01_cT4SS_1", 
+    "summary": {
+      "mandatory": {
+        "virB4": 1, 
+        "MOBH": 0, 
+        "MOBP3": 0, 
+        "MOBB": 0, 
+        "MOBC": 0, 
+        "MOBF": 1, 
+        "MOBP2": 0, 
+        "MOBP1": 0, 
+        "MOBQ": 0, 
+        "MOBV": 0, 
+        "MOBT": 0
+      }, 
+      "forbiden": {}, 
+      "exmandatory_genes": {
+        "traU": "virB4"
+      }, 
+      "exallowed_genes": {
+        "tcpA": "virD4"
+      }, 
+      "state": "single_locus", 
+      "allowed": {
+        "I_trbB": 0, 
+        "T_virB11": 0, 
+        "I_trbA": 0, 
+        "T_virB10": 0, 
+        "I_traM": 0, 
+        "T_virB9": 0, 
+        "T_virB8": 0, 
+        "T_virB6": 0, 
+        "T_virB5": 0, 
+        "T_virB3": 0, 
+        "T_virB2": 0, 
+        "T_virB1": 1, 
+        "I_traK": 0, 
+        "I_traI": 0, 
+        "I_traO": 0, 
+        "I_traN": 0, 
+        "virD4": 1, 
+        "I_traL": 0, 
+        "I_traE": 0, 
+        "I_traY": 0, 
+        "I_traR": 0, 
+        "I_traQ": 0, 
+        "I_traP": 0, 
+        "I_traW": 0, 
+        "I_traT": 0
+      }
+    }
+  }
