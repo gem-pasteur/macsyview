@@ -76,7 +76,7 @@
 </script>
  </head>
     <body>
-    <H1>test javascript</H1>
+    <H1>titre à déterminer</H1>
     <div id="genes_schema" class="grabbable">
     </div>
     <div id="gene_infos">
@@ -132,29 +132,8 @@
                 return rep
             }
         }
-
-        Replicon.prototype.zoom = function zoom(factor){
-           this.drawing.scale(factor);
-           for(var i = 0; i < this.genes.length; i++){
-                this.genes[i].zoom(factor);
-            }
-           //TODO: si on prend bbox on fait une erreur du a l'origin
-           // il faudrait se base que sur le cercle
-           var box = this.drawing.getBBox();
-           this.drawer.center.x = box.x+(box.width/2);
-           this.drawer.center.y = box.y+(box.heigth/2);
-           //TODO: il faut aussi recalculez les rayons 
-        }
         
-        Replicon.prototype.translate = function translate(dx, dy){
-            this.drawing.translate(dx ,dy);
-						for(var i = 0; i < this.genes.length; i++){
-                this.genes[i].translate(dx, dy);
-            }
-            this.drawer.center.x = this.drawer.center.x + dx;
-            this.drawer.center.y = this.drawer.center.y + dy;
-        }
-        
+ 
         var Gene = function Gene(replicon, doc_gene){
             this.replicon = replicon;
             this.paper = replicon.paper
@@ -229,63 +208,9 @@
                 var color=$(".gene_" + this.match).css( "background-color" );
                 arrow.attr({fill: color, stroke: "none", "fill-opacity": 0.9});
             }
-            /*********************************
-             *        draw the popup
-             **********************************/
-            /*
-            var popup = paper.set();
-            var label = paper.set();
-            var txt = {font: '12px Helvetica, Arial', fill: "#fff"};
-            var title = {font: '12px Helvetica, Arial', fill: "#aaf"};
-            label.push(paper.text(60, 12, "Gene-name: " + this.name ).attr(title));
-            if(this.match){
-                label.push(paper.text(60, 27, "match: " + this.match ).attr(txt));
-            }
-            label.push(paper.text(60, 42, "protein length: " + this.length).attr(txt));
-            if(this.description){
-                label.push(paper.text(60, 57, "description: " + this.description).attr(txt));
-            }
-            label.hide();
-            var corner = drawer.pos_2_coord(this.position + (this.length / 2), "popup");
-            popup.push( label );
-            if (corner[2] < Math.PI / 2) {
-            	var pos = "top-left";
-            }else if(corner[2] >= Math.PI / 2 && corner[2] < Math.PI ){
-            	var pos = "bottom-left";
-            }else if(corner[2] >= Math.PI && corner[2] < 3 * Math.PI / 2){
-            	var pos = "bottom-right";
-            }else{
-            	var pos = "top-right";
-            }
-            	  
-            var frame = Raphael.fn.popup( corner[0], 
-            		corner[1], 
-            		label, 
-            		pos).attr({fill: "#000", stroke: "#666", "stroke-width": 2, "fill-opacity": .7});
-            frame.hide();
-            popup.push(frame);
-            */
-            var popup = null;
-            return { "arrow" : arrow, 
-                     "popup" : popup}
+            return arrow 
         }
-
-        Gene.prototype.zoom = function zoom_gene(factor){
-           var bf_box = this.drawing["arrow"].getBBox();
-           this.drawing["arrow"].scale(factor, factor, this.drawer.center.x, this.drawer.center.y);
-           var af_box = this.drawing["arrow"].getBBox();
-           this.popup.translate((af_box.x+(af_box.width/2)) - (bf_box.x+(bf_box.width /2 )), 
-                                (af_box.y+(af_box.heigth/2)) - (bf_box.y+(bf_box.heigth /2 )));
-        }  
-
-        Gene.prototype.translate = function translate_gene(dx, dy){
-            var bf_box = this.arrow.getBBox(false);
-            this.drawing["arrow"].translate(dx ,dy);
-            var af_box = this.arrow.getBBox(false);
-            this.drawing["popup"].translate((af_box.x + (af_box.width /2 )) - (bf_box.x + (bf_box.width /2 )),
-(af_box.y-bf_box.y));
-
-				}
+        
 
         Gene.prototype.show = function show_gene(){
         	this.drawing["popup"].show();
@@ -478,18 +403,18 @@
         	      }
         	    };
         
-        /***********************************************************
-         * HTML table creation using mustache templating
-         * must be done before raphael otherwise arrow have not any color
-         ***********************************************************/
+        /******************************************************************
+         * HTML table creation using mustache templating                  *
+         * must be done before raphael otherwise arrow have not any color *
+         ******************************************************************/
          var template = $('#repl_table_Tpl').html();
          var table_html = Mustache.to_html(template, c_doc);
          $('#table').html(table_html);
          
          
-         /********************************************
-          * replace cursor icon with open/close hand 
-          * when mouse over gene schema
+         /*********************************************
+          * replace cursor icon with open/close hand  *
+          * when mouse is over interactive part       *
           *********************************************/
          $("#genes_schema").bind("mousedown" , function( evt ){
              $(this).toggleClass( "grabbing" ).toggleClass( "grabbable" );
@@ -497,56 +422,42 @@
          $("#genes_schema").bind("mouseup" , function(){
              $(this).toggleClass( "grabbable" ).toggleClass( "grabbing" );
          });
-        /********************************************
-        * Instanciation des objets Metiers et Dessin
-        *********************************************/
-        
-        var c_rep = new Replicon(c_doc);
-        var paper = Raphael("genes_schema", c_rep.drawer.paper_w, c_rep.drawer.paper_h );
+         
+        /******************************
+        * replicon and genes creation *
+        *******************************/
+        var replicon = new Replicon(c_doc);
+        var gene_map = Raphael("genes_schema", replicon.drawer.paper_w, replicon.drawer.paper_h );
         
         var genes_schema_w = $("#genes_schema").width();
-        var genes_schema_h = c_rep.drawer.paper_h;
-        /*
-        var paper = {'gene' : Raphael('genes_schema', c_rep.drawer.paper_w, c_rep.drawer.paper_h),
-        	         'popup' : Raphael('genes_schema', c_rep.drawer.paper_w, c_rep.drawer.paper_h )
-        	         };
-        */
-        c_rep.drawing = c_rep.draw(paper);
+        var genes_schema_h = replicon.drawer.paper_h;
+        replicon.drawing = replicon.draw(gene_map);
         
         //doit on integrer la boucle dans
         //Replicon.draw
         //ou une methode Replicon.draw_gene
         //sur chaque elt on doit binder les evts !!!
         
-        for (var i = 0; i < c_rep.genes.length; i++ ){
-          g = c_rep.genes[i];
-          g.drawing = g.draw(paper);
-          g.drawing["arrow"].mouseover(g.show.bind(g));
-          g.drawing["arrow"].mouseout(g.hide.bind(g));
+        for (var i = 0; i < replicon.genes.length; i++ ){
+          g = replicon.genes[i];
+          g.arrow = g.draw(gene_map);
+          g.arrow.mouseover(g.show.bind(g));
+          g.arrow.mouseout(g.hide.bind(g));
          }
         
-        /*
-        var l_rep = new Replicon(l_doc);
-        var paper = Raphael("genes_schema", l_rep.drawer.paper_w, l_rep.drawer.paper_h );
-        l_rep.drawing = l_rep.draw(paper);
-        for (var i = 0; i < l_rep.genes.length; i++ ){
-            g = l_rep.genes[i];
-            g.drawing = g.draw(paper);
-        }
-        */
         
-        /**************
-        * pan and zoom
-        ***************/
-        paper.setViewBox(0, 0, paper.width, paper.height);
-        var viewBoxWidth = paper.width;
-        var viewBoxHeight = paper.height;
+        /***************
+        * pan and zoom *
+        ****************/
+        gene_map.setViewBox(0, 0, gene_map.width, gene_map.height);
+        var viewBoxWidth = gene_map.width;
+        var viewBoxHeight = gene_map.height;
         var canvasID = "#genes_schema";
         var startX, startY;
         var mousedown = false;
         var dX, dY;
         var oX = 0, oY = 0, oWidth = viewBoxWidth, oHeight = viewBoxHeight;
-        var viewBox = paper.setViewBox(oX, oY, viewBoxWidth,
+        var viewBox = gene_map.setViewBox(oX, oY, viewBoxWidth,
                 viewBoxHeight);
         viewBox.X = oX;
         viewBox.Y = oY;
@@ -563,22 +474,27 @@
 
             viewBox.X -= (viewBoxWidth - vBWo) / 2;
             viewBox.Y -= (viewBoxHeight - vBHo) / 2;
-            paper.setViewBox(viewBox.X, viewBox.Y, viewBoxWidth,
+            gene_map.setViewBox(viewBox.X, viewBox.Y, viewBoxWidth,
                     viewBoxHeight);
         }
-
-        //zoom in/out
+        
+        /***************
+         * zoom in/out *
+         ***************/
         $("#genes_schema").mousewheel(function(event){
         	// event.deltaY = 1 when wheel up and -1 when down 
         	var delta = event.deltaY;
         	handle(delta);
         	return false;//prevent to scroll the window
         });
-
-        //Pane
+        
+        
+        /********
+         * Pane *
+         ********/
         $(canvasID).mousedown(function(e) {
 
-            if (paper.getElementByPoint(e.pageX, e.pageY) != null) {
+            if (gene_map.getElementByPoint(e.pageX, e.pageY) != null) {
                 return;
             }
             mousedown = true;
@@ -593,14 +509,14 @@
                     }
                     dX = startX - e.pageX;
                     dY = startY - e.pageY;
-                    x = viewBoxWidth / paper.width;
-                    y = viewBoxHeight / paper.height;
+                    x = viewBoxWidth / gene_map.width;
+                    y = viewBoxHeight / gene_map.height;
 
                     dX *= x;
                     dY *= y;
-                    //alert(viewBoxWidth +" "+ paper.width );
+                    //alert(viewBoxWidth +" "+ gene_map.width );
 
-                    paper.setViewBox(viewBox.X + dX,
+                    gene_map.setViewBox(viewBox.X + dX,
                             viewBox.Y + dY, viewBoxWidth,
                             viewBoxHeight);
 
@@ -615,7 +531,9 @@
 
         });
         
-        // resize canvas folowing window resize
+        /****************************************
+         * resize canvas folowing window resize *
+         ****************************************/
         function resizePaper(){
             var win = $(this);
             var ratioW =  $("#genes_schema").width() / genes_schema_w;
@@ -625,14 +543,11 @@
             //var newHeight = parseInt(old_h * scale);
             var newHeight = genes_schema_h;
             var newWidth = parseInt(genes_schema_w * scale);
-            paper.setSize(newWidth, newHeight);
+            gene_map.setSize(newWidth, newHeight);
           }
           resizePaper();
           $(window).resize(resizePaper); 
           
-          
-
-           
            
         </script>
 </html>
