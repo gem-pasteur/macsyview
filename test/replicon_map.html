@@ -334,13 +334,18 @@
         	for(var c = 0; c < g_classes.length; c++ ){
         		gene_x += this.drawer.inter_gene;
             	for (var i = 0; i < this[g_classes[c]].length; i++){
+            		var gene = this[g_classes[c]][i];
             		if (gene_x == 0){
             			gene_x += this.drawer.system_offset ;
             		} else {
             			gene_x += gene_len_in_px + this.drawer.inter_gene;
             		}
             		var color = colors[g_classes[c]];
-            		paper.rect(gene_x, gene_y, gene_len_in_px, this.drawer.gene_h).attr({fill: color, stroke:"#000", "stroke-width":"1"});
+            		var gene_sch = paper.set()
+            		var box = paper.rect(gene_x, gene_y, gene_len_in_px, this.drawer.gene_h).attr({fill: color, stroke:"#000", "stroke-width":"1"});
+            		gene_sch.push(box);
+            		var occ = paper.text(gene_x + gene_len_in_px/2, this.drawer.y_system, gene.occurence ).attr({font: '12px Helvetica, Arial', fill: "#000"})
+            		gene_sch.push(occ);
             	}
         	}
            //boucler sur les occurence des mandatory, allowed, forbidden
