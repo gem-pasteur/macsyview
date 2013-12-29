@@ -77,9 +77,12 @@
  </head>
     <body>
     <H1>titre à déterminer</H1>
+    <div id="system_schema">
+    </div>
     <div id="genes_schema" class="grabbable">
     </div>
     <div id="gene_infos">
+    fly cursor over a gene to display informations
     </div>
     <div id="table">
     
@@ -113,7 +116,7 @@
         
         Replicon.prototype.draw = function draw_replicon(paper){
             if (this.topology == 'linear'){
-                repl_len_in_px = this.drawer.paper_w -(2 * this.drawer.replicon_offset);
+                var repl_len_in_px = this.drawer.paper_w -(2 * this.drawer.replicon_offset);
                 return paper.path(["M, ",this.drawer.replicon_offset, this.drawer.y_replicon, 
                                    "h", repl_len_in_px, "a25,5 -1 0,1 0,5h", 
                                    (-1*(repl_len_in_px)),"a25,5 0 0,1 0,-5z"]).attr({fill: "#aaa", stroke:"#aaa", "stroke-width":"1"} );
@@ -213,15 +216,13 @@
         
 
         Gene.prototype.show = function show_gene(){
-        	this.drawing["popup"].show();
         	var template = $('#gene_info_Tpl').html();
             var html = Mustache.to_html(template, this);
             $('#gene_infos').html(html);
         }
 
         Gene.prototype.hide = function hide_gene(){
-        	this.drawing["popup"].hide();
-        	$('#gene_infos').html("");
+        	$('#gene_infos').html("fly cursor over a gene to display informations");
         }
         
         
@@ -286,7 +287,65 @@
         }
         
         
+        var System = function System(doc){
+        	this.mandatory = []
+        	this.allowed = []
+        	this.forbiden = []
+        	var g_classes = ["mandatory","allowed", "forbiden"];
+        	for( var i = 0; i < g_classes.length; i++ ){
+        		var gene_class = doc.summary[g_classes[i]]
+        		for(var key in gene_class){
+        			if (gene_class.hasOwnProperty(key)) {
+        				var gene = {};
+        				gene.name = key;
+        				gene.occurence =  gene_class[key];
+        				this[g_classes[i]].push(gene);
+        			}
+        		}
+        	}
+        	this.drawer = new SytemDrawer(this)
+        }
         
+        var SytemDrawer = function SystemDrawer(sytem){
+        	this.paper_h = 125;
+        	this.paper_w = $("#system_schema").width();
+        	this.y_system = 55;
+            this.system_offset = 40;
+            this.genes_offset = 20;
+            this.inter_gene = 10
+            this.gene_h = 20
+        }
+        
+        System.prototype.draw = function draw_system(paper){
+           //dessiner un axe
+           var system_len_in_px = this.drawer.paper_w -(2 * this.drawer.system_offset);
+           var trame = paper.path(["M, ",this.drawer.system_offset, this.drawer.y_system,  
+                                   "h", system_len_in_px, "a25,5 -1 0,1 0,5h", 
+                                   (-1*(system_len_in_px)),"a25,5 0 0,1 0,-5z"]).attr({fill: "#aaa", stroke:"#aaa", "stroke-width":"1"} );
+            var gene_nb = this.mandatory.length + this.allowed.length + this.forbiden.length;
+            var gene_len_in_px = (system_len_in_px - (gene_nb + 4) * this.drawer.inter_gene) / gene_nb;
+            var gene_y = this.drawer.y_system - this.drawer.gene_h / 2;
+            var gene_x = 0;
+            var g_classes = ["mandatory","allowed", "forbiden"];
+            var colors = { "mandatory" : "#88f",
+            		       "allowed" : "#0f0",
+            		       "forbiden" : "#f00"
+            			};
+        	for(var c = 0; c < g_classes.length; c++ ){
+        		gene_x += this.drawer.inter_gene;
+            	for (var i = 0; i < this[g_classes[c]].length; i++){
+            		if (gene_x == 0){
+            			gene_x += this.drawer.system_offset ;
+            		} else {
+            			gene_x += gene_len_in_px + this.drawer.inter_gene;
+            		}
+            		var color = colors[g_classes[c]];
+            		paper.rect(gene_x, gene_y, gene_len_in_px, this.drawer.gene_h).attr({fill: color, stroke:"#000", "stroke-width":"1"});
+            	}
+        	}
+           //boucler sur les occurence des mandatory, allowed, forbidden
+           //dessiner une occurence (doit ressembler a draw gene les uns derieres les autres)
+        }
         /***************************************
         * Bouchon pour les documents a afficher
         ****************************************/
@@ -439,7 +498,7 @@
         //sur chaque elt on doit binder les evts !!!
         
         for (var i = 0; i < replicon.genes.length; i++ ){
-          g = replicon.genes[i];
+          var g = replicon.genes[i];
           g.arrow = g.draw(gene_map);
           g.arrow.mouseover(g.show.bind(g));
           g.arrow.mouseout(g.hide.bind(g));
@@ -535,7 +594,6 @@
          * resize canvas folowing window resize *
          ****************************************/
         function resizePaper(){
-            var win = $(this);
             var ratioW =  $("#genes_schema").width() / genes_schema_w;
             var ratioH = 1 ;
             //var scale = ratioW < ratioH ? ratioW : ratioH;
@@ -548,6 +606,15 @@
           resizePaper();
           $(window).resize(resizePaper); 
           
+          /*******************
+           * system creation *
+           *******************/
+          var system = new System(c_doc);
+          var system_paper = Raphael("system_schema", system.drawer.paper_w, system.drawer.paper_h );
+          
+          var system_schema_w = $("#system_schema").width();
+          var system_schema_h = system.paper_h;
+          system.draw(system_paper);
            
         </script>
 </html>

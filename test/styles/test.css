@@ -1,3 +1,11 @@
+#system_schema{
+    border:1px solid black;
+    padding:0;
+    margin-right:40px;
+    margin-left:40px;
+    margin-bottom: 20px;
+}
+
 #genes_schema{
 	position: relative;
     border:1px solid black;
@@ -15,8 +23,23 @@
 
 #gene_table{
 	position: relative;
+	
 }
 
+#gene_table,table {
+	margin: 0 auto; 
+	border-collapse:collapse;
+	border :1px solid #000;
+	font-size: 0.75em;
+}
+#gene_table,th{ border :1px solid #000;}
+
+#gene_table,td{ 
+	border: 1px solid #999;
+	padding: .3em;
+	margin: 0;
+   }
+   
 .grabbing{
     cursor: url("../images/closedhand.cur") , default !important;
 }
