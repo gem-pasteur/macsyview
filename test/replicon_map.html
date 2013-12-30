@@ -77,18 +77,18 @@
  </head>
     <body>
     <H1>titre à déterminer</H1>
-    <div id="system_schema">
+    <div id="system_schema" class="grabbable">
     </div>
-    <div id="genes_schema" class="grabbable">
+    <div id="replicon_schema" class="grabbable">
     </div>
     <div id="gene_infos">
     fly cursor over a gene to display informations
     </div>
-    <div id="table">
+    <div id="genes_table">
     
     </div>
 </body>
-     <script type="text/javascript">
+<script type="text/javascript">
         //if I don't put my script here Rapahael produce an error
         //due to jquery selector which not work 
         //even if I use document.ready  
@@ -110,8 +110,7 @@
             } else {
                 this.drawer = new CircularDrawer(this)
             }
-            
-            //this.drawing = this.draw();
+            this.drawing = {};
         }
         
         Replicon.prototype.draw = function draw_replicon(paper){
@@ -236,7 +235,7 @@
             //rapport entre replicon.length en pb et gene.protein_lenght en aa ??
             		
             this.paper_h = 500;
-            this.paper_w = $("#genes_schema").width();
+            this.paper_w = $("#replicon_schema").width();
             this.replicon_l = replicon.length //ne peut pas acceder a replicon grace a une fermeture??
             this.center = { x : this.paper_w / 2,
                             y : this.paper_h / 2 };
@@ -260,7 +259,7 @@
         
         var LinearDrawer = function LinearDrawer(replicon){
             this.paper_h = 250;
-            this.paper_w = $("#genes_schema").width();
+            this.paper_w = $("#replicon_schema").width();
             this.y_replicon = 55;
             this.replicon_offset = 40;
             this.genes_offset = 20;
@@ -303,7 +302,8 @@
         			}
         		}
         	}
-        	this.drawer = new SytemDrawer(this)
+        	this.drawer = new SytemDrawer(this);
+        	this.drawing = {};
         }
         
         var SytemDrawer = function SystemDrawer(sytem){
@@ -319,15 +319,17 @@
         System.prototype.draw = function draw_system(paper){
            //dessiner un axe
            var system_len_in_px = this.drawer.paper_w -(2 * this.drawer.system_offset);
+           var system_set = paper.set();
            var trame = paper.path(["M, ",this.drawer.system_offset, this.drawer.y_system,  
                                    "h", system_len_in_px, "a25,5 -1 0,1 0,5h", 
                                    (-1*(system_len_in_px)),"a25,5 0 0,1 0,-5z"]).attr({fill: "#aaa", stroke:"#aaa", "stroke-width":"1"} );
-            var gene_nb = this.mandatory.length + this.allowed.length + this.forbiden.length;
-            var gene_len_in_px = (system_len_in_px - (gene_nb + 4) * this.drawer.inter_gene) / gene_nb;
-            var gene_y = this.drawer.y_system - this.drawer.gene_h / 2;
-            var gene_x = 0;
-            var g_classes = ["mandatory","allowed", "forbiden"];
-            var colors = { "mandatory" : "#88f",
+           system_set.push(trame); 
+           var gene_nb = this.mandatory.length + this.allowed.length + this.forbiden.length;
+           var gene_len_in_px = (system_len_in_px - (gene_nb + 4) * this.drawer.inter_gene) / gene_nb;
+           var gene_y = this.drawer.y_system - this.drawer.gene_h / 2;
+           var gene_x = 0;
+           var g_classes = ["mandatory","allowed", "forbiden"];
+           var colors = { "mandatory" : "#88f",
             		       "allowed" : "#0f0",
             		       "forbiden" : "#f00"
             			};
@@ -341,15 +343,15 @@
             			gene_x += gene_len_in_px + this.drawer.inter_gene;
             		}
             		var color = colors[g_classes[c]];
-            		var gene_sch = paper.set()
+            		var gene_sch = paper.set();
             		var box = paper.rect(gene_x, gene_y, gene_len_in_px, this.drawer.gene_h).attr({fill: color, stroke:"#000", "stroke-width":"1"});
             		gene_sch.push(box);
             		var occ = paper.text(gene_x + gene_len_in_px/2, this.drawer.y_system, gene.occurence ).attr({font: '12px Helvetica, Arial', fill: "#000"})
             		gene_sch.push(occ);
+            		system_set.push(gene_sch);
             	}
         	}
-           //boucler sur les occurence des mandatory, allowed, forbidden
-           //dessiner une occurence (doit ressembler a draw gene les uns derieres les autres)
+        	return system_set;
         }
         /***************************************
         * Bouchon pour les documents a afficher
@@ -473,17 +475,17 @@
          ******************************************************************/
          var template = $('#repl_table_Tpl').html();
          var table_html = Mustache.to_html(template, c_doc);
-         $('#table').html(table_html);
+         $('#genes_table').html(table_html);
          
          
          /*********************************************
           * replace cursor icon with open/close hand  *
           * when mouse is over interactive part       *
           *********************************************/
-         $("#genes_schema").bind("mousedown" , function( evt ){
+         $("#replicon_schema").bind("mousedown" , function( evt ){
              $(this).toggleClass( "grabbing" ).toggleClass( "grabbable" );
          }); 
-         $("#genes_schema").bind("mouseup" , function(){
+         $("#replicon_schema").bind("mouseup" , function(){
              $(this).toggleClass( "grabbable" ).toggleClass( "grabbing" );
          });
          
@@ -491,11 +493,14 @@
         * replicon and genes creation *
         *******************************/
         var replicon = new Replicon(c_doc);
-        var gene_map = Raphael("genes_schema", replicon.drawer.paper_w, replicon.drawer.paper_h );
         
-        var genes_schema_w = $("#genes_schema").width();
-        var genes_schema_h = replicon.drawer.paper_h;
-        replicon.drawing = replicon.draw(gene_map);
+        var replicon_paper = Raphael("replicon_schema", replicon.drawer.paper_w, replicon.drawer.paper_h );
+        replicon_paper.canvas.style.backgroundColor = '#F00';
+        replicon.drawing.paper = replicon_paper;
+        
+        var replicon_schema_w = $("#replicon_schema").width();
+        var replicon_schema_h = replicon.drawer.paper_h;
+        replicon.drawing.schema = replicon.draw(replicon_paper);
         
         //doit on integrer la boucle dans
         //Replicon.draw
@@ -504,122 +509,169 @@
         
         for (var i = 0; i < replicon.genes.length; i++ ){
           var g = replicon.genes[i];
-          g.arrow = g.draw(gene_map);
+          g.arrow = g.draw(replicon_paper);
           g.arrow.mouseover(g.show.bind(g));
           g.arrow.mouseout(g.hide.bind(g));
          }
         
+        /*******************
+         * system creation *
+         *******************/
+        var system = new System(c_doc);
+        var system_paper = Raphael("system_schema", system.drawer.paper_w, system.drawer.paper_h );
+        system.drawing.paper = system_paper;
+        
+        var system_schema_w = $("#system_schema").width();
+        var system_schema_h = system_paper.height;
+        system.drawing.schema = system.draw(system_paper);
         
         /***************
         * pan and zoom *
         ****************/
-        gene_map.setViewBox(0, 0, gene_map.width, gene_map.height);
-        var viewBoxWidth = gene_map.width;
-        var viewBoxHeight = gene_map.height;
-        var canvasID = "#genes_schema";
-        var startX, startY;
-        var mousedown = false;
-        var dX, dY;
-        var oX = 0, oY = 0, oWidth = viewBoxWidth, oHeight = viewBoxHeight;
-        var viewBox = gene_map.setViewBox(oX, oY, viewBoxWidth,
-                viewBoxHeight);
-        viewBox.X = oX;
-        viewBox.Y = oY;
-        function handle(delta) {
-            vBHo = viewBoxHeight;
-            vBWo = viewBoxWidth;
-            if (delta < 0) {
-                viewBoxWidth *= 0.95;
-                viewBoxHeight *= 0.95;
-            } else {
-                viewBoxWidth *= 1.05;
-                viewBoxHeight *= 1.05;
-            }
-
-            viewBox.X -= (viewBoxWidth - vBWo) / 2;
-            viewBox.Y -= (viewBoxHeight - vBHo) / 2;
-            gene_map.setViewBox(viewBox.X, viewBox.Y, viewBoxWidth,
-                    viewBoxHeight);
-        }
         
+        /********************
+         * pan and zoom init*
+         ********************/
+        replicon_paper.setViewBox(0, 0, replicon_paper.width, replicon_paper.height);
+        system_paper.setViewBox(0, 0, system_paper.width, system_paper.height);
+        var objArray = [replicon, system];
+        for(var i = 0; i < objArray.length; i++){
+        	var obj = objArray[i];
+        	obj.drawing.viewBox = {};
+        	obj.drawing.viewBox.X = 0;
+        	obj.drawing.viewBox.Y = 0;
+        	obj.drawing.pan = {};
+        	obj.drawing.pan.startX = 0;
+        	obj.drawing.pan.startY = 0;
+        	obj.drawing.pan.mousedown = false;
+        }
+        replicon.drawing.viewBox.width = replicon_paper.width;
+    	replicon.drawing.viewBox.height = replicon_paper.height;
+    	system.drawing.viewBox.width = system_paper.width;
+    	system.drawing.viewBox.height = system_paper.height;
+        
+        /***********************
+        * pan and zoom helpers *
+        ************************/
+        var ObjSelector = function ObjSelector(ctx){
+        	if(ctx.id == "replicon_schema"){
+        		return replicon;
+        	}else if(ctx.id == "system_schema"){
+        		return system;
+        	} else {
+        		return false;
+        	}
+        }
         /***************
          * zoom in/out *
          ***************/
-        $("#genes_schema").mousewheel(function(event){
+         var zoom = function zoom(evt){
         	// event.deltaY = 1 when wheel up and -1 when down 
-        	var delta = event.deltaY;
-        	handle(delta);
-        	return false;//prevent to scroll the window
-        });
+        	var obj = ObjSelector(this);
+        	if(!obj){
+        		return false;
+        	}
+        	vBWo = obj.drawing.viewBox.width;
+        	vBHo = obj.drawing.viewBox.height;
+            if (evt.deltaY < 0) {
+            	obj.drawing.viewBox.width *= 0.95;
+            	obj.drawing.viewBox.height *= 0.95;
+            } else {
+                obj.drawing.viewBox.width *= 1.05;
+                obj.drawing.viewBox.height *= 1.05;
+            }
+            obj.drawing.viewBox.X -= (obj.drawing.viewBox.width - vBWo) / 2;
+            obj.drawing.viewBox.Y -= (obj.drawing.viewBox.height - vBHo) / 2;
+            obj.drawing.paper.setViewBox(obj.drawing.viewBox.X, 
+            			   				 obj.drawing.viewBox.Y, 
+            			   				 obj.drawing.viewBox.width, 
+            			   				 obj.drawing.viewBox.height);
+         	return false;//prevent to scroll the window
+        }
         
+        $("#replicon_schema").mousewheel(zoom);
+        $("#system_schema").mousewheel(zoom);
         
         /********
          * Pane *
          ********/
-        $(canvasID).mousedown(function(e) {
-
-            if (gene_map.getElementByPoint(e.pageX, e.pageY) != null) {
+        var startRecord = function startRecord(evt){
+        	var obj = ObjSelector(this);
+        	if(!obj){
+        		return false;
+        	}
+        	obj.drawing.pan.mousedown = true;
+            obj.drawing.pan.startX = evt.pageX;
+            obj.drawing.pan.startY = evt.pageY;
+        }
+        $("#replicon_schema").mousedown(startRecord);
+        $("#system_schema").mousedown(startRecord);
+        
+		var doPan = function doPan(evt){
+			var obj = ObjSelector(this);
+        	if(!obj){
+        		return false;
+        	}
+			if (obj.drawing.pan.mousedown == false) {
                 return;
             }
-            mousedown = true;
-            startX = e.pageX;
-            startY = e.pageY;
-        });
+			obj.drawing.viewBox.dX = obj.drawing.pan.startX - evt.pageX;
+			obj.drawing.viewBox.dY = obj.drawing.pan.startY - evt.pageY;
+            var x = obj.drawing.viewBox.width / obj.drawing.paper.width;
+            var y = obj.drawing.viewBox.height / obj.drawing.paper.height;
 
-        $(canvasID).mousemove(
-                function(e) {
-                    if (mousedown == false) {
-                        return;
-                    }
-                    dX = startX - e.pageX;
-                    dY = startY - e.pageY;
-                    x = viewBoxWidth / gene_map.width;
-                    y = viewBoxHeight / gene_map.height;
-
-                    dX *= x;
-                    dY *= y;
-                    //alert(viewBoxWidth +" "+ gene_map.width );
-
-                    gene_map.setViewBox(viewBox.X + dX,
-                            viewBox.Y + dY, viewBoxWidth,
-                            viewBoxHeight);
-
-                })
-
-        $(canvasID).mouseup(function(e) {
-            if (mousedown == false)
-                return;
-            viewBox.X += dX;
-            viewBox.Y += dY;
-            mousedown = false;
-
-        });
-        
-        /****************************************
-         * resize canvas folowing window resize *
-         ****************************************/
-        function resizePaper(){
-            var ratioW =  $("#genes_schema").width() / genes_schema_w;
-            var ratioH = 1 ;
-            //var scale = ratioW < ratioH ? ratioW : ratioH;
-            var scale = ratioW;
-            //var newHeight = parseInt(old_h * scale);
-            var newHeight = genes_schema_h;
-            var newWidth = parseInt(genes_schema_w * scale);
-            gene_map.setSize(newWidth, newHeight);
-          }
-          resizePaper();
-          $(window).resize(resizePaper); 
-          
-          /*******************
-           * system creation *
-           *******************/
-          var system = new System(c_doc);
-          var system_paper = Raphael("system_schema", system.drawer.paper_w, system.drawer.paper_h );
-          
-          var system_schema_w = $("#system_schema").width();
-          var system_schema_h = system.paper_h;
-          system.draw(system_paper);
-           
+            obj.drawing.viewBox.dX *= x;
+            obj.drawing.viewBox.dY *= y;
+            obj.drawing.paper.setViewBox(
+            		obj.drawing.viewBox.X + obj.drawing.viewBox.dX,
+            		obj.drawing.viewBox.Y + obj.drawing.viewBox.dY, 
+            		obj.drawing.viewBox.width,
+            		obj.drawing.viewBox.height);
+		}
+		$("#replicon_schema").mousemove(doPan);
+		$("#system_schema").mousemove(doPan);
+         
+		var stopRecord = function stopRecord(evt){
+			var obj = ObjSelector(this);
+        	if(!obj){
+        		return false;
+        	}
+        	obj.drawing.viewBox.X += obj.drawing.viewBox.dX;
+            obj.drawing.viewBox.Y += obj.drawing.viewBox.dY;
+            obj.drawing.pan.mousedown = false;
+		}
+		$("#replicon_schema").mouseup(stopRecord);
+		$("#system_schema").mouseup(stopRecord);
+		
+          /****************************************
+           * resize canvas folowing window resize *
+           ****************************************/
+           function resizePaper(){
+              var ratioW =  $("#replicon_schema").width() / replicon_schema_w;
+              var ratioH = 1 ;
+              //var scale = ratioW < ratioH ? ratioW : ratioH;
+              var scale = ratioW;
+              
+              var newGenesWidth = parseInt(replicon_schema_w * scale);
+              //var newGenesHeight = parseInt(replicon_schema_h * scale);
+              var newGenesHeight = replicon_schema_h;
+              
+              var newSystemWidth = parseInt(system_schema_w * scale);
+              //var newSystemHeight = parseInt(system_schema_h* scale);
+              var newSystemHeight = system_schema_h;
+              
+              replicon_paper.setSize(newGenesWidth, newGenesHeight);
+              system_paper.setSize(newSystemWidth, newSystemHeight);
+              
+              replicon_schema_w = newGenesWidth;
+              replicon_schema_h = newGenesHeight;
+              system_schema_w = newSystemWidth;
+              system_schema_h = newSystemHeight;
+              
+              replicon_paper.setViewBox(0, 0, newGenesWidth, newGenesHeight);
+              system_paper.setViewBox(0, 0, newSystemWidth, newSystemHeight);
+            }
+            resizePaper();
+            $(window).resize(resizePaper);   
         </script>
 </html>
