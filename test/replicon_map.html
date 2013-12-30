@@ -131,6 +131,7 @@
                 		             2, 
                 		             this.drawer.radius["outer_body"] - this.drawer.radius["inner_body"]).attr({fill: "#aaa", stroke:"#aaa"});
                 rep.push(ori);
+                console.log(ori.getBBox());
                 return rep
             }
         }
@@ -540,6 +541,7 @@
         	obj.drawing.viewBox = {};
         	obj.drawing.viewBox.X = 0;
         	obj.drawing.viewBox.Y = 0;
+        	obj.drawing.viewBox.zoom = 1;
         	obj.drawing.pan = {};
         	obj.drawing.pan.startX = 0;
         	obj.drawing.pan.startY = 0;
@@ -565,27 +567,63 @@
         /***************
          * zoom in/out *
          ***************/
+         
+         function doZoom(coords, factor) {        
+        	    //transform real coordinates into viewbox coordinates
+        	    x = viewbox[0] + coords.x / zoom; 
+        	    y = viewbox[1] + coords.y / zoom;
+        	    
+        	    if (factor < 0) {
+        	        factor= 0.95;
+        	    }
+        	    else {
+        	        factor = 1.05;
+        	    }
+        	    var z = ((zoom || 1) * factor) || 1;
+        	    zoom = z;
+        	    //zoom viewbox dimensions
+        	    viewbox[2] = bbox.width / zoom;
+        	    viewbox[3] = bbox.height / zoom;
+        	    //transform coordinates to new viewbox coordinates
+        	    viewbox[0] = x - coords.x / zoom;
+        	    viewbox[1] = y - coords.y / zoom;
+        	    paper.setViewBox.apply(paper, viewbox);
+        	}
+        
          var zoom = function zoom(evt){
         	// event.deltaY = 1 when wheel up and -1 when down 
         	var obj = ObjSelector(this);
         	if(!obj){
         		return false;
         	}
-        	vBWo = obj.drawing.viewBox.width;
-        	vBHo = obj.drawing.viewBox.height;
-            if (evt.deltaY < 0) {
-            	obj.drawing.viewBox.width *= 0.95;
-            	obj.drawing.viewBox.height *= 0.95;
+            var factor;
+        	if (evt.deltaY < 0) {
+            	factor = 0.95;
             } else {
-                obj.drawing.viewBox.width *= 1.05;
-                obj.drawing.viewBox.height *= 1.05;
+                factor = 1.05;
             }
-            obj.drawing.viewBox.X -= (obj.drawing.viewBox.width - vBWo) / 2;
-            obj.drawing.viewBox.Y -= (obj.drawing.viewBox.height - vBHo) / 2;
-            obj.drawing.paper.setViewBox(obj.drawing.viewBox.X, 
-            			   				 obj.drawing.viewBox.Y, 
-            			   				 obj.drawing.viewBox.width, 
-            			   				 obj.drawing.viewBox.height);
+        	//transform coordinate in page in coordinate relative to the elt
+            var coords = { 
+        			x: evt.pageX - $(this).offset().left,
+            		y: evt.pageY - $(this).offset().top
+        			};
+            //transform real coordinates into viewbox coordinates before to aplly new zoom
+            var x =  obj.drawing.viewBox.X + coords.x / obj.drawing.viewBox.zoom; 
+            var y =  obj.drawing.viewBox.Y + coords.y / obj.drawing.viewBox.zoom;
+            
+            var z = ((obj.drawing.viewBox.zoom || 1) * factor) || 1; //to avoid division by 0
+            obj.drawing.viewBox.zoom = z;
+    	    
+        	obj.drawing.viewBox.width =  obj.drawing.paper.width / z;
+        	obj.drawing.viewBox.height = obj.drawing.paper.height / z;
+        	obj.drawing.viewBox.X = x - coords.x / z;
+        	obj.drawing.viewBox.Y = y - coords.y / z;
+            
+            obj.drawing.paper.setViewBox(
+            		obj.drawing.viewBox.X, 
+            		obj.drawing.viewBox.Y, 
+            		obj.drawing.viewBox.width, 
+            		obj.drawing.viewBox.height);
          	return false;//prevent to scroll the window
         }
         
@@ -649,27 +687,43 @@
            function resizePaper(){
               var ratioW =  $("#replicon_schema").width() / replicon_schema_w;
               var ratioH = 1 ;
-              //var scale = ratioW < ratioH ? ratioW : ratioH;
               var scale = ratioW;
               
               var newGenesWidth = parseInt(replicon_schema_w * scale);
-              //var newGenesHeight = parseInt(replicon_schema_h * scale);
               var newGenesHeight = replicon_schema_h;
               
               var newSystemWidth = parseInt(system_schema_w * scale);
-              //var newSystemHeight = parseInt(system_schema_h* scale);
               var newSystemHeight = system_schema_h;
               
               replicon_paper.setSize(newGenesWidth, newGenesHeight);
-              system_paper.setSize(newSystemWidth, newSystemHeight);
+              replicon.drawing.paper.width = newGenesWidth;
+              replicon.drawing.paper.height = newGenesHeight;
               
+              system_paper.setSize(newSystemWidth, newSystemHeight);
+              system.drawing.paper.width = newSystemWidth;
+              system.drawing.paper.height = newSystemHeight;
+              
+      		
               replicon_schema_w = newGenesWidth;
               replicon_schema_h = newGenesHeight;
               system_schema_w = newSystemWidth;
               system_schema_h = newSystemHeight;
               
-              replicon_paper.setViewBox(0, 0, newGenesWidth, newGenesHeight);
-              system_paper.setViewBox(0, 0, newSystemWidth, newSystemHeight);
+              replicon_paper.setViewBox(
+            		  replicon.drawing.viewBox.X,
+            		  replicon.drawing.viewBox.Y,
+            		  newGenesWidth, 
+            		  newGenesHeight);
+              replicon.drawing.viewBox.width = newGenesWidth;
+              replicon.drawing.viewBox.height = newGenesHeight;
+        		
+              system_paper.setViewBox(
+            		  system.drawing.viewBox.X,
+            		  system.drawing.viewBox.Y,
+            		  newSystemWidth, 
+            		  newSystemHeight);
+              system.drawing.viewBox.width = newSystemWidth;
+              system.drawing.viewBox.height = newSystemHeight;
             }
             resizePaper();
             $(window).resize(resizePaper);   
