@@ -6,7 +6,7 @@
     margin-bottom: 20px;
 }
 
-#genes_schema{
+#replicon_schema{
 	position: relative;
     border:1px solid black;
     padding:0;
@@ -17,24 +17,28 @@
 #gene_infos{
 	height: 150px;
 	margin:0;
+	margin-right:40px;
+    margin-left:40px;
 	padding:0;
 	background: yellow;
 }
 
-#gene_table{
+#genes_table{
 	position: relative;
-	
+	margin-right:10px;
+    margin-left:10px;
 }
 
-#gene_table,table {
+#genes_table table {
 	margin: 0 auto; 
 	border-collapse:collapse;
 	border :1px solid #000;
 	font-size: 0.75em;
 }
-#gene_table,th{ border :1px solid #000;}
 
-#gene_table,td{ 
+#genes_table th{ border :1px solid #000;}
+
+#genes_table td{ 
 	border: 1px solid #999;
 	padding: .3em;
 	margin: 0;
