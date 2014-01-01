@@ -131,7 +131,6 @@
                 		             2, 
                 		             this.drawer.radius["outer_body"] - this.drawer.radius["inner_body"]).attr({fill: "#aaa", stroke:"#aaa"});
                 rep.push(ori);
-                console.log(ori.getBBox());
                 return rep
             }
         }
@@ -234,13 +233,15 @@
             // si lineaire avec gene sur l'origine ???
             		
             //rapport entre replicon.length en pb et gene.protein_lenght en aa ??
-            		
-            this.paper_h = 500;
-            this.paper_w = $("#replicon_schema").width();
+            this.paper_w = screen.width;
+            this.paper_h = screen.height;		
+            //this.paper_h = 500;
+            //this.paper_w = $("#replicon_schema").width();
             this.replicon_l = replicon.length //ne peut pas acceder a replicon grace a une fermeture??
             this.center = { x : this.paper_w / 2,
                             y : this.paper_h / 2 };
-            var radius = (this.paper_h - 170) / 2;
+            var radius = (500 - 170) / 2;
+            console.log("radius = "+ radius);
             this.radius = {
                     "popup" : radius + 25,
                     "inner_body" : radius - 10,
@@ -259,8 +260,10 @@
         }
         
         var LinearDrawer = function LinearDrawer(replicon){
-            this.paper_h = 250;
-            this.paper_w = $("#replicon_schema").width();
+        	this.paper_w = screen.width;
+        	this.paper_h = screen.height;
+        	//this.paper_h = 250;
+            //this.paper_w = $("#replicon_schema").width();
             this.y_replicon = 55;
             this.replicon_offset = 40;
             this.genes_offset = 20;
@@ -308,8 +311,10 @@
         }
         
         var SytemDrawer = function SystemDrawer(sytem){
-        	this.paper_h = 125;
-        	this.paper_w = $("#system_schema").width();
+        	this.paper_h = screen.height;
+        	this.paper_w = screen.width;
+        	//this.paper_h = 125;
+        	//this.paper_w = $("#system_schema").width();
         	this.y_system = 55;
             this.system_offset = 40;
             this.genes_offset = 20;
@@ -533,7 +538,12 @@
         /********************
          * pan and zoom init*
          ********************/
-        replicon_paper.setViewBox(0, 0, replicon_paper.width, replicon_paper.height);
+        replicon_paper.setViewBox(
+        		(replicon.drawing.paper.width - $("#system_schema").width())/2,
+        		(replicon.drawing.paper.height - $("#system_schema").height())/2,
+        		$("#system_schema").width(), 
+        		500 );
+        
         system_paper.setViewBox(0, 0, system_paper.width, system_paper.height);
         var objArray = [replicon, system];
         for(var i = 0; i < objArray.length; i++){
@@ -568,28 +578,6 @@
          * zoom in/out *
          ***************/
          
-         function doZoom(coords, factor) {        
-        	    //transform real coordinates into viewbox coordinates
-        	    x = viewbox[0] + coords.x / zoom; 
-        	    y = viewbox[1] + coords.y / zoom;
-        	    
-        	    if (factor < 0) {
-        	        factor= 0.95;
-        	    }
-        	    else {
-        	        factor = 1.05;
-        	    }
-        	    var z = ((zoom || 1) * factor) || 1;
-        	    zoom = z;
-        	    //zoom viewbox dimensions
-        	    viewbox[2] = bbox.width / zoom;
-        	    viewbox[3] = bbox.height / zoom;
-        	    //transform coordinates to new viewbox coordinates
-        	    viewbox[0] = x - coords.x / zoom;
-        	    viewbox[1] = y - coords.y / zoom;
-        	    paper.setViewBox.apply(paper, viewbox);
-        	}
-        
          var zoom = function zoom(evt){
         	// event.deltaY = 1 when wheel up and -1 when down 
         	var obj = ObjSelector(this);
@@ -607,23 +595,30 @@
         			x: evt.pageX - $(this).offset().left,
             		y: evt.pageY - $(this).offset().top
         			};
+            var vb = replicon.drawing.paper._viewBox
             //transform real coordinates into viewbox coordinates before to aplly new zoom
-            var x =  obj.drawing.viewBox.X + coords.x / obj.drawing.viewBox.zoom; 
+            var x =  obj.drawing.viewBox.X + coords.x / obj.drawing.viewBox.zoom;
             var y =  obj.drawing.viewBox.Y + coords.y / obj.drawing.viewBox.zoom;
             
             var z = ((obj.drawing.viewBox.zoom || 1) * factor) || 1; //to avoid division by 0
             obj.drawing.viewBox.zoom = z;
-    	    
-        	obj.drawing.viewBox.width =  obj.drawing.paper.width / z;
+    	    console.log("zoom = "+ obj.drawing.viewBox.zoom);
+    	    console.log("zoom paper.size = "+obj.drawing.paper.width+ "x"+obj.drawing.paper.height);
+        	
+    	    obj.drawing.viewBox.width =  obj.drawing.paper.width / z;
         	obj.drawing.viewBox.height = obj.drawing.paper.height / z;
+        	obj.drawing.viewBox.height = vb[3] / z;
         	obj.drawing.viewBox.X = x - coords.x / z;
         	obj.drawing.viewBox.Y = y - coords.y / z;
-            
+        	console.log("zoom VB before = "+replicon.drawing.paper._viewBox);
+        	console.log("zoom coords ="+coords.x+"x"+coords.y);
+        	console.log("zoom x ="+x+"x"+y);
             obj.drawing.paper.setViewBox(
             		obj.drawing.viewBox.X, 
             		obj.drawing.viewBox.Y, 
             		obj.drawing.viewBox.width, 
             		obj.drawing.viewBox.height);
+            console.log("zoom VB after = "+replicon.drawing.paper._viewBox);
          	return false;//prevent to scroll the window
         }
         
@@ -653,16 +648,19 @@
 			if (obj.drawing.pan.mousedown == false) {
                 return;
             }
-			obj.drawing.viewBox.dX = obj.drawing.pan.startX - evt.pageX;
-			obj.drawing.viewBox.dY = obj.drawing.pan.startY - evt.pageY;
-            var x = obj.drawing.viewBox.width / obj.drawing.paper.width;
-            var y = obj.drawing.viewBox.height / obj.drawing.paper.height;
-
-            obj.drawing.viewBox.dX *= x;
-            obj.drawing.viewBox.dY *= y;
+			//compute dx, dy in the document
+			obj.drawing.pan.dX = obj.drawing.pan.startX - evt.pageX;
+			obj.drawing.pan.dY = obj.drawing.pan.startY - evt.pageY;
+           
+			var x_factor = obj.drawing.viewBox.width / obj.drawing.paper.width;
+            var y_factor = obj.drawing.viewBox.height / obj.drawing.paper.height;
+			console.log("pan x_factor = "+x_factor+" y_factor"+y_factor)
+            obj.drawing.pan.dX *= x_factor;
+            obj.drawing.pan.dY *= x_factor;
+            
             obj.drawing.paper.setViewBox(
-            		obj.drawing.viewBox.X + obj.drawing.viewBox.dX,
-            		obj.drawing.viewBox.Y + obj.drawing.viewBox.dY, 
+            		obj.drawing.viewBox.X + obj.drawing.pan.dX,
+            		obj.drawing.viewBox.Y + obj.drawing.pan.dY, 
             		obj.drawing.viewBox.width,
             		obj.drawing.viewBox.height);
 		}
@@ -674,8 +672,8 @@
         	if(!obj){
         		return false;
         	}
-        	obj.drawing.viewBox.X += obj.drawing.viewBox.dX;
-            obj.drawing.viewBox.Y += obj.drawing.viewBox.dY;
+        	obj.drawing.viewBox.X += obj.drawing.pan.dX;
+            obj.drawing.viewBox.Y += obj.drawing.pan.dY;
             obj.drawing.pan.mousedown = false;
 		}
 		$("#replicon_schema").mouseup(stopRecord);
@@ -685,47 +683,23 @@
            * resize canvas folowing window resize *
            ****************************************/
            function resizePaper(){
-              var ratioW =  $("#replicon_schema").width() / replicon_schema_w;
-              var ratioH = 1 ;
-              var scale = ratioW;
-              
-              var newGenesWidth = parseInt(replicon_schema_w * scale);
-              var newGenesHeight = replicon_schema_h;
-              
-              var newSystemWidth = parseInt(system_schema_w * scale);
-              var newSystemHeight = system_schema_h;
-              
-              replicon_paper.setSize(newGenesWidth, newGenesHeight);
-              replicon.drawing.paper.width = newGenesWidth;
-              replicon.drawing.paper.height = newGenesHeight;
-              
-              system_paper.setSize(newSystemWidth, newSystemHeight);
-              system.drawing.paper.width = newSystemWidth;
-              system.drawing.paper.height = newSystemHeight;
-              
-      		
-              replicon_schema_w = newGenesWidth;
-              replicon_schema_h = newGenesHeight;
-              system_schema_w = newSystemWidth;
-              system_schema_h = newSystemHeight;
-              
-              replicon_paper.setViewBox(
-            		  replicon.drawing.viewBox.X,
-            		  replicon.drawing.viewBox.Y,
-            		  newGenesWidth, 
-            		  newGenesHeight);
-              replicon.drawing.viewBox.width = newGenesWidth;
-              replicon.drawing.viewBox.height = newGenesHeight;
-        		
-              system_paper.setViewBox(
-            		  system.drawing.viewBox.X,
-            		  system.drawing.viewBox.Y,
-            		  newSystemWidth, 
-            		  newSystemHeight);
-              system.drawing.viewBox.width = newSystemWidth;
-              system.drawing.viewBox.height = newSystemHeight;
-            }
-            resizePaper();
-            $(window).resize(resizePaper);   
+        	   var rep = $("#replicon_schema");
+        	   console.log("#replicon_schema "+rep.width()+"x"+rep.height());
+        	   console.log("resizePaper VB= "+replicon_paper._viewBox);
+        	   
+        	   //replicon.drawing.paper.setSize(rep.width(), rep.height());
+        	   console.log("resizePaper screen = "+screen.width+"x"+screen.height);
+        	   replicon.drawing.paper.setSize(screen.width, screen.height);
+        	   //var vb = replicon_paper._viewBox;
+        	   /*
+        	   replicon.drawing.paper.setViewBox(vb[0], vb[1], rep.width(), rep.height());
+        	   replicon.drawing.viewBox.X = vb[0];
+        	   replicon.drawing.viewBox.Y = vb[1];
+        	   replicon.drawing.viewBox.width = rep.width();
+        	   replicon.drawing.viewBox.height = rep.height();
+               */
+          }
+            //resizePaper();
+            //$(window).resize(resizePaper);   
         </script>
 </html>
