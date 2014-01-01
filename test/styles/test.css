@@ -12,6 +12,7 @@
     padding:0;
     margin-right:40px;
     margin-left:40px;
+    overflow: hidden;
 }
 
 #gene_infos{
