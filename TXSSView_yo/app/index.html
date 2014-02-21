@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>TXSSView</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>TXSSView</h1>
+            <p>Select the folder containing the TXSScan results</p>
+            <p class="btn btn-primary col-lg-12 btn-file">
+                Browse
+                <input type="file" id="directory" webkitdirectory>
+            </p>
+        </div>
+<!--
+        <label>load file
+        </label>
+
+        <div id="progressbar">
+            <div class="progress-label"></div>
+        </div>
+        <progress id="progress" value="0" max="100"></progress>
+-->
+        <output id="contents" style="white-space: pre-wrap;"></output>
+    </div>
+
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/mustache/mustache.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>
