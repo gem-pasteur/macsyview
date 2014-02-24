@@ -20,24 +20,25 @@
 <body>
 
     <div class="container">
-        <div class="jumbotron">
-            <h1>TXSSView</h1>
-            <p>Select the folder containing the TXSScan results</p>
-            <p class="btn btn-primary col-lg-12 btn-file">
-                Browse
-                <input type="file" id="directory" webkitdirectory>
-            </p>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">TXSSView</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#" id="homeLink">Open Results file</a>
+                    </li>
+                    <li>
+                        <a href="#" id="systemMatchesLinkList">Results list for <span id="runName"></span></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <div id="mainView">
         </div>
-<!--
-        <label>load file
-        </label>
-
-        <div id="progressbar">
-            <div class="progress-label"></div>
-        </div>
-        <progress id="progress" value="0" max="100"></progress>
--->
-        <output id="contents" style="white-space: pre-wrap;"></output>
     </div>
 
 
@@ -52,6 +53,89 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
+
+    <script id="systemMatchesList" type="text/mustache-tmpl">
+        <table class="table table-hover tab-striped">
+            <tr>
+                <th>Replicon Name</th>
+                <th>System Name</th>
+                <th>Occurence No.</th>
+            </tr>
+            {{#files}}
+            <tr class="txsview-systemmatchtablerow" data-systemmatchid="{{id}}">
+                <td>{{replicon_name}}</td>
+                <td>{{system_name}}</td>
+                <td>{{occurence_number}}</td>
+            </tr>
+            {{/files}}
+        </table>
+    </script>
+
+    <script id="runSelectForm" type="text/mustache-tmpl">
+        <div class="jumbotron">
+            <h1>TXSSView</h1>
+            <p>Select the folder containing the TXSScan results</p>
+            <p class="btn btn-primary btn-file btn-block">
+                Browse
+                <input type="file" id="directory" title="select the directory containing the results to analyze" webkitdirectory>
+            </p>
+        </div>
+    </script>
+
+    <script id="systemMatchDetail" type="text/template">
+        <h2>Replicon</h2>
+        <ul>
+            {{#replicon}}
+            <li>name: {{name}}</li>
+            <li>length: {{length}}</li>
+            <li>topology: {{topology}}</li> 
+            {{/replicon}}
+        </ul>
+    
+        <h3>Genes</h3>
+        <table class="table table-hover tab-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gene status</th>
+                <th>Begin match</th>
+                <th>End match</th>
+				<th>System</th>
+                <th>Score</th>
+                <th>Sequence coverage</th>
+                <th>Sequence length</th>
+                <th>i_eval</th>
+                <th>Position</th>
+				<th>Profile coverage</th>
+				<th>Id</th>
+                <th>Match</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {{#matchedGenes}}
+            <tr>
+                <td {{#match}} class="gene_{{match}}"{{/match}}>{{name}}</td>
+                <td>{{gene_status}}</td>
+				<td>{{begin_match}}</td>
+				<td>{{end_match}}</td>
+				<td>{{system}}</td>
+                <!-- <td>{{strand}}</td> comment sait on sur quel brin est le gene?  beg et end?-->
+                <td>{{score}}</td>
+				<td>{{sequence_coverage}}</td>
+				<td>{{sequence_length}}</td>
+				<td>{{i_eval}}</td>
+				<td>{{position}}</td>
+				<td>{{profile_coverage}}</td>
+				<td>{{id}}</td>
+                <td>{{match}}</td>
+            </tr>
+            {{/matchedGenes}}
+        </tbody>
+    </table>
+    </script>
+
+
 </body>
 
 </html>
