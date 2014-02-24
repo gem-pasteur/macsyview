@@ -2,7 +2,20 @@
 
 (function () {
     'use strict';
-    function loadFile(textFile, loadedCallback) {
+
+    var selectedSystemMatchFiles = null;
+
+    var resetSelectedFiles = function () {
+        selectedSystemMatchFiles = null;
+        $('#systemMatchesLinkList').hide();
+    }
+
+    var setSelectedSystemMatchFiles = function (filesList) {
+        selectedSystemMatchFiles = filesList;
+        $('#systemMatchesLinkList').show();
+    }
+
+    var loadFile = function (textFile, loadedCallback) {
         var result = "";
         var chunkSize = 20000;
         var fileSize = textFile.size;
@@ -30,7 +43,7 @@
             reader.readAsBinaryString(blob);
         }
         readBlob(textFile, 0);
-    }
+    };
 
     var viewContainer = $("#mainView");
 
@@ -41,9 +54,26 @@
     };
 
     var displaySelectForm = function () {
+        resetSelectedFiles();
         displayView('runSelectForm', {});
-        $('#systemMatchesLinkList').hide();
         $('#directory').change(directorySelectionHandler);
+    };
+
+    var displaySystemMatches = function () {
+        displayView('systemMatchesList', {
+            'files': selectedSystemMatchFiles
+        });
+        initSystemMatchSelectionHandler();
+    };
+
+    var displaySystemMatchFileDetail = function (systemMatch) {
+        loadFile(systemMatch.file, function (contentsText) {
+            var doc = JSON.parse(contentsText);
+            doc.matchedGenes = doc.genes.filter(function (gene) {
+                return ('match' in gene);
+            });
+            displayView('systemMatchDetail', doc);
+        });
     };
 
     var listSystemMatchFiles = function (files) {
@@ -64,22 +94,10 @@
         return systemMatchFiles;
     };
 
-    var displaySystemMatchFileDetail = function (systemMatch) {
-        loadFile(systemMatch.file, function (contentsText) {
-            var doc = JSON.parse(contentsText);
-            doc.matchedGenes = doc.genes.filter(function (gene) {
-                return ('match' in gene);
-            });
-            displayView('systemMatchDetail', doc);
-        });
-    };
-
-
-
-    var initSystemMatchSelectionHandler = function (systemMatchFiles) {
+    var initSystemMatchSelectionHandler = function () {
         $(".txsview-systemmatchtablerow td").click(function (e) {
             var id = $(e.currentTarget).parent().attr('data-systemmatchid');
-            var selectedSystemMatchFile = systemMatchFiles.filter(function (systemMatchFile) {
+            var selectedSystemMatchFile = selectedSystemMatchFiles.filter(function (systemMatchFile) {
                 return systemMatchFile.id == id;
             })[0];
             displaySystemMatchFileDetail(selectedSystemMatchFile);
@@ -88,16 +106,16 @@
 
     var directorySelectionHandler = function (e) {
         var files = e.target.files;
-        var systemMatchFiles = listSystemMatchFiles(files);
-        displayView('systemMatchesList', {
-            'files': systemMatchFiles
-        });
-        initSystemMatchSelectionHandler(systemMatchFiles);
+        setSelectedSystemMatchFiles(listSystemMatchFiles(files));
+        displaySystemMatches();
     };
 
-    $(document).ready(function () {
-        displaySelectForm();
+    var init = function () {
         $('#homeLink').click(displaySelectForm);
+        $('#systemMatchesLinkList').click(displaySystemMatches);
+        resetSelectedFiles();
+        displaySelectForm();
+    }
 
-    });
+    $(document).ready(init);
 }());
