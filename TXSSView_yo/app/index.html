@@ -82,53 +82,44 @@
         </div>
     </script>
 
-    <script id="systemMatchDetail" type="text/template">
-        <h2>Replicon</h2>
-        <ul>
-            {{#replicon}}
-            <li>name: {{name}}</li>
-            <li>length: {{length}}</li>
-            <li>topology: {{topology}}</li> 
-            {{/replicon}}
-        </ul>
-    
-        <h3>Genes</h3>
+    <script id="systemMatchDetail" type="text/template">    
+        <h2>Components for system {{name}}</h2>
+        {{#replicon}}
+            <h4>Replicon {{name}} (length: {{length}}, topology: {{topology}})</h4>
+        {{/replicon}}
         <table class="table table-hover tab-striped">
         <thead>
             <tr>
-                <th>Name</th>
+				<th>Sequence Id</th>
+                <th>Position</th>
+                <th>Match</th>
                 <th>Gene status</th>
+				<th>System</th>
+                <th>Sequence length</th>
+                <th>Score</th>
+                <th>i-evalue</th>
+				<th>Profile coverage</th>                
+                <th>Sequence coverage</th>
                 <th>Begin match</th>
                 <th>End match</th>
-				<th>System</th>
-                <th>Score</th>
-                <th>Sequence coverage</th>
-                <th>Sequence length</th>
-                <th>i_eval</th>
-                <th>Position</th>
-				<th>Profile coverage</th>
-				<th>Id</th>
-                <th>Match</th>
-                
             </tr>
         </thead>
         <tbody>
             {{#matchedGenes}}
             <tr>
-                <td {{#match}} class="gene_{{match}}"{{/match}}>{{name}}</td>
+				<td>{{id}}</td>
+				<td>{{position}}</td>
+                <td>{{match}}</td>
                 <td>{{gene_status}}</td>
-				<td>{{begin_match}}</td>
-				<td>{{end_match}}</td>
 				<td>{{system}}</td>
+				<td>{{sequence_length}}</td>
                 <!-- <td>{{strand}}</td> comment sait on sur quel brin est le gene?  beg et end?-->
                 <td>{{score}}</td>
-				<td>{{sequence_coverage}}</td>
-				<td>{{sequence_length}}</td>
 				<td>{{i_eval}}</td>
-				<td>{{position}}</td>
 				<td>{{profile_coverage}}</td>
-				<td>{{id}}</td>
-                <td>{{match}}</td>
+				<td>{{sequence_coverage}}</td>
+				<td>{{begin_match}}</td>
+				<td>{{end_match}}</td>
             </tr>
             {{/matchedGenes}}
         </tbody>
