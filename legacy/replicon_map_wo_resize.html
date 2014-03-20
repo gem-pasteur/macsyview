@@ -131,6 +131,36 @@
                 		             2, 
                 		             this.drawer.radius["outer_body"] - this.drawer.radius["inner_body"]).attr({fill: "#aaa", stroke:"#aaa"});
                 rep.push(ori);
+                var vbx = (this.drawer.paper_w - $("#replicon_schema").width())/2;
+                var vby = (this.drawer.paper_h - $("#replicon_schema").height())/2;
+                var vbw = $("#replicon_schema").width();
+                var vbh = $("#replicon_schema").height();
+                console.log( "init replicon setViewBox ="+vbx+"x"+vby+" , "+vbw+"x"+vbh);
+                paper.setViewBox( 
+                		vbx,
+                	    vby,
+                	    vbw, 
+                	    vbh 
+                	    );
+                this.drawing.viewBox = {};
+                this.drawing.viewBox.X = vbx;
+                this.drawing.viewBox.Y = vby;
+                this.drawing.viewBox.width = vbw;
+                this.drawing.viewBox.height = vbh;
+                this.drawing.viewBox.zoom = 1;
+                this.drawing.pan = {};
+                this.drawing.pan.startX = 0;
+                this.drawing.pan.startY = 0;
+                this.drawing.pan.mousedown = false;
+                var cercle = paper.circle(960, 540, 5).attr({stroke:"#000", "stroke-width":"2"} )
+                console.log("cercle size ="+cercle.getBBox());
+                var cadre = paper.rect(
+                		vbx+1,
+                		vby+1,
+                		vbw-2,
+                		vbh-2).attr({stroke:"#00f", "stroke-width":"2"} );
+                
+                console.log("rect size ="+cadre.getBBox());
                 return rep
             }
         }
@@ -233,17 +263,19 @@
             // si lineaire avec gene sur l'origine ???
             		
             //rapport entre replicon.length en pb et gene.protein_lenght en aa ??
-            this.paper_w = screen.width;
-            this.paper_h = screen.height;		
-            //this.paper_h = 500;
-            //this.paper_w = $("#replicon_schema").width();
-            this.replicon_l = replicon.length //ne peut pas acceder a replicon grace a une fermeture??
+            //this.paper_w = screen.width;
+            //this.paper_h = screen.height;	
+            this.paper_w = 1440;
+            this.paper_h = 500;
+            console.log( "replicon paper size = "+this.paper_w+"x"+this.paper_h);
+            this.replicon_l = replicon.length; //ne peut pas acceder a replicon grace a une fermeture??
+            
             this.center = { x : this.paper_w / 2,
                             y : this.paper_h / 2 };
-            var radius = (500 - 170) / 2;
+            console.log( "center = "+this.center.x+"x"+this.center.y);
+            var radius = ($("#replicon_schema").height() - 170) / 2;
             console.log("radius = "+ radius);
             this.radius = {
-                    "popup" : radius + 25,
                     "inner_body" : radius - 10,
                     "outer_body" : radius + 10,
                     "inner_head" : radius - 20,
@@ -523,13 +555,13 @@
         /*******************
          * system creation *
          *******************/
-        var system = new System(c_doc);
-        var system_paper = Raphael("system_schema", system.drawer.paper_w, system.drawer.paper_h );
-        system.drawing.paper = system_paper;
+        //var system = new System(c_doc);
+        //var system_paper = Raphael("system_schema", system.drawer.paper_w, system.drawer.paper_h );
+        //system.drawing.paper = system_paper;
         
-        var system_schema_w = $("#system_schema").width();
-        var system_schema_h = system_paper.height;
-        system.drawing.schema = system.draw(system_paper);
+        //var system_schema_w = $("#system_schema").width();
+        //var system_schema_h = system_paper.height;
+        //system.drawing.schema = system.draw(system_paper);
         
         /***************
         * pan and zoom *
@@ -538,14 +570,9 @@
         /********************
          * pan and zoom init*
          ********************/
-        replicon_paper.setViewBox(
-        		(replicon.drawing.paper.width - $("#system_schema").width())/2,
-        		(replicon.drawing.paper.height - $("#system_schema").height())/2,
-        		$("#system_schema").width(), 
-        		500 );
-        
-        system_paper.setViewBox(0, 0, system_paper.width, system_paper.height);
-        var objArray = [replicon, system];
+       /*
+         system_paper.setViewBox(0, 0, system_paper.width, system_paper.height);
+        var objArray = [system];
         for(var i = 0; i < objArray.length; i++){
         	var obj = objArray[i];
         	obj.drawing.viewBox = {};
@@ -557,11 +584,11 @@
         	obj.drawing.pan.startY = 0;
         	obj.drawing.pan.mousedown = false;
         }
-        replicon.drawing.viewBox.width = replicon_paper.width;
-    	replicon.drawing.viewBox.height = replicon_paper.height;
+        //replicon.drawing.viewBox.width = replicon_paper.width;
+    	//replicon.drawing.viewBox.height = replicon_paper.height;
     	system.drawing.viewBox.width = system_paper.width;
     	system.drawing.viewBox.height = system_paper.height;
-        
+        */
         /***********************
         * pan and zoom helpers *
         ************************/
@@ -579,6 +606,7 @@
          ***************/
          
          var zoom = function zoom(evt){
+        	console.log("========== begin zoom ============")
         	// event.deltaY = 1 when wheel up and -1 when down 
         	var obj = ObjSelector(this);
         	if(!obj){
@@ -592,11 +620,19 @@
             }
         	//transform coordinate in page in coordinate relative to the elt
             var coords = { 
-        			x: evt.pageX - $(this).offset().left,
-            		y: evt.pageY - $(this).offset().top
+        			x: evt.pageX - $(document).scrollLeft() - $(this).offset().left,
+            		y: evt.pageY - $(document).scrollTop() - $(this).offset().top
         			};
-            var vb = replicon.drawing.paper._viewBox
+            var vb = obj.drawing.paper._viewBox;
             //transform real coordinates into viewbox coordinates before to aplly new zoom
+            console.log( "viewBox reel= "+vb);
+            var vbs = [ 
+                        obj.drawing.viewBox.X,
+                        obj.drawing.viewBox.Y,
+                        obj.drawing.viewBox.width,
+                        obj.drawing.viewBox.height
+                        ];
+            console.log( "viewBox suposée = "+ vbs);
             var x =  obj.drawing.viewBox.X + coords.x / obj.drawing.viewBox.zoom;
             var y =  obj.drawing.viewBox.Y + coords.y / obj.drawing.viewBox.zoom;
             
@@ -611,19 +647,20 @@
         	obj.drawing.viewBox.X = x - coords.x / z;
         	obj.drawing.viewBox.Y = y - coords.y / z;
         	console.log("zoom VB before = "+replicon.drawing.paper._viewBox);
-        	console.log("zoom coords ="+coords.x+"x"+coords.y);
-        	console.log("zoom x ="+x+"x"+y);
+        	console.log("zoom coords rel to elt ="+coords.x+"x"+coords.y);
+        	console.log("zoom coord in VB x ="+x+"x"+y);
             obj.drawing.paper.setViewBox(
             		obj.drawing.viewBox.X, 
             		obj.drawing.viewBox.Y, 
             		obj.drawing.viewBox.width, 
             		obj.drawing.viewBox.height);
             console.log("zoom VB after = "+replicon.drawing.paper._viewBox);
+            console.log("========== end zoom ============")
          	return false;//prevent to scroll the window
         }
         
         $("#replicon_schema").mousewheel(zoom);
-        $("#system_schema").mousewheel(zoom);
+        //$("#system_schema").mousewheel(zoom);
         
         /********
          * Pane *
@@ -638,7 +675,7 @@
             obj.drawing.pan.startY = evt.pageY;
         }
         $("#replicon_schema").mousedown(startRecord);
-        $("#system_schema").mousedown(startRecord);
+        //$("#system_schema").mousedown(startRecord);
         
 		var doPan = function doPan(evt){
 			var obj = ObjSelector(this);
@@ -665,7 +702,7 @@
             		obj.drawing.viewBox.height);
 		}
 		$("#replicon_schema").mousemove(doPan);
-		$("#system_schema").mousemove(doPan);
+		//$("#system_schema").mousemove(doPan);
          
 		var stopRecord = function stopRecord(evt){
 			var obj = ObjSelector(this);
@@ -677,29 +714,8 @@
             obj.drawing.pan.mousedown = false;
 		}
 		$("#replicon_schema").mouseup(stopRecord);
-		$("#system_schema").mouseup(stopRecord);
+		//$("#system_schema").mouseup(stopRecord);
 		
-          /****************************************
-           * resize canvas folowing window resize *
-           ****************************************/
-           function resizePaper(){
-        	   var rep = $("#replicon_schema");
-        	   console.log("#replicon_schema "+rep.width()+"x"+rep.height());
-        	   console.log("resizePaper VB= "+replicon_paper._viewBox);
-        	   
-        	   //replicon.drawing.paper.setSize(rep.width(), rep.height());
-        	   console.log("resizePaper screen = "+screen.width+"x"+screen.height);
-        	   replicon.drawing.paper.setSize(screen.width, screen.height);
-        	   //var vb = replicon_paper._viewBox;
-        	   /*
-        	   replicon.drawing.paper.setViewBox(vb[0], vb[1], rep.width(), rep.height());
-        	   replicon.drawing.viewBox.X = vb[0];
-        	   replicon.drawing.viewBox.Y = vb[1];
-        	   replicon.drawing.viewBox.width = rep.width();
-        	   replicon.drawing.viewBox.height = rep.height();
-               */
-          }
-            //resizePaper();
-            //$(window).resize(resizePaper);   
+   
         </script>
 </html>
