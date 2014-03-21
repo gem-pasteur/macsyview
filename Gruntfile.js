@@ -23,6 +23,8 @@ module.exports = function (grunt) {
         dist: 'dist'
     };
 
+    grunt.loadNpmTasks('grunt-bower-install');
+
     grunt.initConfig({
         yeoman: yeomanConfig,
         watch: {
@@ -41,6 +43,23 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass:server']
             }
+        },
+        bowerInstall: {
+          target: {
+            // Point to the files that should be updated when
+            // you run `grunt bower-install`
+            src: [
+              'app/index.html'
+            ],
+            // Optional:
+            // ---------
+            cwd: '',
+            dependencies: true,
+            devDependencies: false,
+            exclude: [],
+            fileTypes: {},
+            ignorePath: ''
+          }
         },
         connect: {
             options: {
