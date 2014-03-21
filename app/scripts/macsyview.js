@@ -77,7 +77,7 @@ var macsyview = (function () {
     };
 
     var listSystemMatchFiles = function (files) {
-        var systemMatchRE = /([A-Za-z0-9]+)_([A-Za-z0-9]+)_([A-Za-z0-9]+)\.json/;
+        var systemMatchRE = /([A-Za-z0-9]+)_([A-Za-z0-9]+)_([A-Za-z0-9]+)\.sfmatch\.json/;
         var systemMatchFiles = [];
         for (var i = 0, len = files.length; i < len; i++) {
             var match = systemMatchRE.exec(files[i].name)
@@ -117,5 +117,5 @@ var macsyview = (function () {
         displaySelectForm();
     }
 
-    $(document).ready(init);
-}());
+    return {init: init};
+});
