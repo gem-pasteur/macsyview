@@ -48,7 +48,8 @@ macsyview.orderedview = (function () {
 			}
 		}
 		//in number of pixels
-		this.length = this.genes[this.genes.length - 1].start + (configMap.genes_offset * 2);
+		var last_gene = this.genes[this.genes.length- 1];
+		this.length = last_gene.start + last_gene.length + (configMap.genes_offset * 2);
 	};
 
 	/*************************
@@ -76,7 +77,6 @@ macsyview.orderedview = (function () {
 		this.graph = null;
 		this.replicon = replicon;
 		this.genes = [];
-		console.log("this.replicon.genes_number = ", this.replicon.genes_number);
 		for (var i = 0; i < this.replicon.genes.length; i++){
 			this.genes[i] = new GenesGrphx(this, this.replicon.genes[i]);
 		};
@@ -112,13 +112,11 @@ macsyview.orderedview = (function () {
 	};
 
 	GenesGrphx.prototype.draw = function draw_gene(paper){
-		var x = this.gene.start;
+		var x = this.gene.start + configMap.replicon_offset + configMap.genes_offset;
 		var y = configMap.y_replicon - (configMap.gene_high / 2) ; 
 		var w = this.gene.length; 
 		var h = configMap.gene_high;
-		console.log( "x =",x," y = ",y, " w = ",w+" h = "+h);
 		var arrow = paper.rect(x, y, w, h);
-		console.log( "this.gene.match =", this.gene.match);
 		if(!this.gene.match){
 			arrow.attr({fill: "white", 
 				stroke: "black", 
@@ -128,7 +126,6 @@ macsyview.orderedview = (function () {
 		}else{
 			var color = $(".gene_" + this.gene.match).css("background-color");
 			arrow.attr({fill: color, stroke: "none", "fill-opacity": 0.9});
-			console.log(".gene_" + this.gene.match+"  "+color);
 		};
 		return arrow;
 	};
@@ -146,9 +143,10 @@ macsyview.orderedview = (function () {
 
 	var draw = function(json_data, container){
 		var replicon = new Replicon(json_data);
-
-		var paper = Raphael(container, configMap.paper_w, configMap.paper_h );
-		console.log( "container = ", container , "w = ",configMap.paper_w, " h = ",configMap.paper_h);
+		var paper_w = replicon.length + (2 * configMap.replicon_offset);
+		configMap.paper_w = paper_w;
+		var paper = Raphael(container, paper_w, configMap.paper_h );
+		
 		paper.canvas.style.backgroundColor = '#F00';
 		var repliconGrphx = new RepliconGrphx(replicon);
 		repliconGrphx.draw(paper);
