@@ -58,10 +58,13 @@ macsyview.orderedview = (function () {
 	var Gene = function Gene(replicon, json_gene){
 		this.replicon = replicon;
 		this.id = json_gene.id;
+		this.profile_coverage = json_gene.profile_coverage;
+		this.i_eval = json_gene.i_eval;
 		this.position = json_gene.position;
 		this.length = json_gene.sequence_length;
 		this.match = json_gene.match;
 		this.start = null;
+		console.log("profile_coverage = ", this.profile_coverage);
 	};
 
 	/***************************

@@ -9,14 +9,15 @@
 <script>var macsyview = {};</script>
 <script src="../app/scripts/macsyview.ordered.js"></script>
 
-<script id="gene_info_Tpl" type="text/template">
+<script id="gene_infos_Tpl" type="text/template">
     <h4>Gene Informations</h4>
           <ul>
-                      <li>name: {{name}}</li>
-                      <li>match : {{match}}</li>
-                      <li>protein length: {{length}}</li>
-                      <li>description : {{description}}</li>
-                    </ul>
+              <li>id: {{id}}</li>
+              {{#match}}<li>match : {{.}}</li>{{/match}}
+              {{#i_eval}}<li>i-evalue : {{i_eval}}</li>{{/i_eval}}
+              {{#profile_coverage}}<li>profile coverage : {{profile_coverage}}</li>{{/profile_coverage}}
+              <li>length: {{length}}</li>
+           </ul>
 </script>
 
 <script id="repl_table_Tpl" type="text/template">
@@ -52,7 +53,7 @@
         <tbody>
             {{#genes}}
             <tr>
-                <td class="gene_{{match}}">{{name}}</td>
+                <td {{#match}}class="gene_{{.}}"{{/match}}>{{name}}</td>
                 <td>{{gene_status}}</td>
                 <td>{{begin_match}}</td>
                 <td>{{end_match}}</td>
@@ -95,7 +96,18 @@ var json_data = {"replicon": {
 	          {"sequence_length": 158, "id": "PSAE001c01_016720", "position": 1710}, 
 	          {"sequence_length": 388, "id": "PSAE001c01_016730", "position": 1711}, 
 	          {"sequence_length": 200, "id": "PSAE001c01_016740", "position": 1712}, 
-	          {"gene_status": "mandatory", "end_match": 476, "begin_match": 17, "system": "T6SS", "score": 167.8, "sequence_coverage": 0.888030888030888, "sequence_length": 518, "i_eval": 1.4e-49, "position": 1713, "profile_coverage": 0.9793103448275862, "id": "PSAE001c01_016750", "match": "tssA"}, 
+	          {"gene_status": "mandatory", 
+	        	  "end_match": 476, 
+	        	  "begin_match": 17, 
+	        	  "system": "T6SS", 
+	        	  "score": 167.8, 
+	        	  "sequence_coverage": 0.888030888030888, 
+	        	  "sequence_length": 518, 
+	        	  "i_eval": 1.4e-49, 
+	        	  "position": 1713, 
+	        	  "profile_coverage": 0.9793103448275862, 
+	        	  "id": "PSAE001c01_016750", 
+	        	  "match": "tssA"}, 
 	          {"gene_status": "mandatory", "end_match": 159, "begin_match": 6, "system": "T6SS", "score": 166.5, "sequence_coverage": 0.9166666666666666, "sequence_length": 168, "i_eval": 1.1e-49, "position": 1714, "profile_coverage": 0.9447852760736196, "id": "PSAE001c01_016760", "match": "tssB"}, 
 	          {"gene_status": "mandatory", "end_match": 491, "begin_match": 10, "system": "T6SS", "score": 698.9, "sequence_coverage": 0.9816700610997964, "sequence_length": 491, "i_eval": 9.9e-211, "position": 1715, "profile_coverage": 0.9876543209876543, "id": "PSAE001c01_016770", "match": "tssC"}, 
 	          {"gene_status": "mandatory", "end_match": 134, "begin_match": 6, "system": "T6SS", "score": 87.2, "sequence_coverage": 0.9555555555555556, "sequence_length": 135, "i_eval": 2.4e-25, "position": 1716, "profile_coverage": 0.9794520547945206, "id": "PSAE001c01_016780", "match": "tssE"}, 
