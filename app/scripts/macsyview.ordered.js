@@ -25,8 +25,7 @@ macsyview.orderedview = (function () {
 			genes_offset : 20,
 			gene_high : 20,
 			inter_gene_space : 20,
-			gene_infos_container : $('<div id="gene_infos"></div>'),
-			gene_infos_tpl : $('#gene_info_Tpl'),
+			gene_infos_container : "#gene_infos",
 	};
 
 	/***********************
@@ -58,7 +57,7 @@ macsyview.orderedview = (function () {
 
 	var Gene = function Gene(replicon, json_gene){
 		this.replicon = replicon;
-		this.name = json_gene.name;
+		this.id = json_gene.id;
 		this.position = json_gene.position;
 		this.length = json_gene.sequence_length;
 		this.match = json_gene.match;
@@ -131,26 +130,33 @@ macsyview.orderedview = (function () {
 	};
 
 	GenesGrphx.prototype.show = function show_gene(){
-		var template = configMap.gene_infos_tpl.html();
-		var html = Mustache.to_html(template, this);
-		configMap.gene_infos_container.html(html);
+		var template = $('#gene_infos_Tpl').html();
+		var info_html = Mustache.to_html(template, this.gene);
+		$(configMap.gene_infos_container).html(info_html);
 	};
 
 	GenesGrphx.prototype.hide = function hide_gene(){
-		configMap.gene_infos_container.html("fly cursor over a gene to display informations");
+		$(configMap.gene_infos_container).html("fly cursor over a gene to display informations");
 	};
 
 
 	var draw = function(json_data, container){
 		var replicon = new Replicon(json_data);
-		var paper_w = replicon.length + (2 * configMap.replicon_offset);
-		configMap.paper_w = paper_w;
-		var paper = Raphael(container, paper_w, configMap.paper_h );
+		
+		configMap.paper_w = replicon.length + (2 * configMap.replicon_offset);
+		var paper = Raphael(container, configMap.paper_w, configMap.paper_h );
 		
 		paper.canvas.style.backgroundColor = '#F00';
 		var repliconGrphx = new RepliconGrphx(replicon);
 		repliconGrphx.draw(paper);
-
+		
+		for (var i = 0; i < repliconGrphx.genes.length; i++ ){
+	          var g = repliconGrphx.genes[i];
+	          g.arrow = g.draw(paper);
+	          g.arrow.mouseover(g.show.bind(g));
+	          g.arrow.mouseout(g.hide.bind(g));
+	         }
+		
 	};
 	return {
 		configMap: configMap,
