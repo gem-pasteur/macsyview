@@ -21,11 +21,12 @@ macsyview.orderedview = (function () {
 			paper_h : 250,
 			paper_w : 2500,
 			y_replicon : 55,
-			replicon_offset : 40,
-			genes_offset : 20,
-			gene_high : 20,
-			inter_gene_space : 20,
+			replicon_offset : 40, //in px
+			genes_offset : 40, //in bp
+			gene_high : 30, //in px
+			inter_gene_space : 40, //in bp
 			gene_infos_container : "#gene_infos",
+			ratio_bp_px : 8,
 	};
 
 	/***********************
@@ -46,7 +47,7 @@ macsyview.orderedview = (function () {
 				this.genes[i].start = 0;
 			}
 		}
-		//in number of pixels
+		//in number bp
 		var last_gene = this.genes[this.genes.length- 1];
 		this.length = last_gene.start + last_gene.length + (configMap.genes_offset * 2);
 	};
@@ -64,7 +65,6 @@ macsyview.orderedview = (function () {
 		this.length = json_gene.sequence_length;
 		this.match = json_gene.match;
 		this.start = null;
-		console.log("profile_coverage = ", this.profile_coverage);
 	};
 
 	/***************************
@@ -82,10 +82,12 @@ macsyview.orderedview = (function () {
 		for (var i = 0; i < this.replicon.genes.length; i++){
 			this.genes[i] = new GenesGrphx(this, this.replicon.genes[i]);
 		};
+		//in number of pixels
+		this.length = Math.round(this.replicon.length / configMap.ratio_bp_px);
 	};
 
 	RepliconGrphx.prototype.draw = function draw_replicon(paper){
-		var repl_len_in_px = configMap.paper_w - (2 * configMap.replicon_offset);
+		var repl_len_in_px =  this.length ;
 		var p = $('<p class="replicon_body"></p>').hide().appendTo("body");
 		var replicon_color = p.css("background-color");
 		p.remove();
@@ -114,9 +116,9 @@ macsyview.orderedview = (function () {
 	};
 
 	GenesGrphx.prototype.draw = function draw_gene(paper){
-		var x = this.gene.start + configMap.replicon_offset + configMap.genes_offset;
+		var x = ((this.gene.start + configMap.genes_offset) / configMap.ratio_bp_px ) + configMap.replicon_offset;
 		var y = configMap.y_replicon - (configMap.gene_high / 2) ; 
-		var w = this.gene.length; 
+		var w = this.gene.length / configMap.ratio_bp_px ; 
 		var h = configMap.gene_high;
 		var arrow = paper.rect(x, y, w, h);
 		if(!this.gene.match){
@@ -145,13 +147,22 @@ macsyview.orderedview = (function () {
 
 	var draw = function(json_data, container){
 		var replicon = new Replicon(json_data);
-		
-		configMap.paper_w = replicon.length + (2 * configMap.replicon_offset);
-		var paper = Raphael(container, configMap.paper_w, configMap.paper_h );
-		
-		paper.canvas.style.backgroundColor = '#F00';
 		var repliconGrphx = new RepliconGrphx(replicon);
+		
+		configMap.paper_w = repliconGrphx.length + (2 * configMap.replicon_offset);
+		var paper = Raphael(container, configMap.paper_w, configMap.paper_h );
+		paper.canvas.style.backgroundColor = '#F00';
+		
 		repliconGrphx.draw(paper);
+		
+		var container_w = $("#"+container).width();
+		var container_h = $("#"+container).height();
+		var zoom = configMap.paper_w / container_w;
+		zoom =1;
+		console.log("paper_w = ",configMap.paper_w," paper_h = ", configMap.paper_h);
+		console.log( "w = ",container_w," h = ",container_h);
+		
+		paper.setViewBox(0, 0, Math.round(configMap.paper_w * zoom) , configMap.paper_h , false);
 		
 		for (var i = 0; i < repliconGrphx.genes.length; i++ ){
 	          var g = repliconGrphx.genes[i];
