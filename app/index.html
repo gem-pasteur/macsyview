@@ -63,9 +63,9 @@
             </tr>
             {{#files}}
             <tr class="txsview-systemmatchtablerow" data-systemmatchid="{{id}}">
-                <td>{{replicon_name}}</td>
-                <td>{{system_name}}</td>
-                <td>{{occurence_number}}</td>
+                <td>{{repliconName}}</td>
+                <td>{{systemName}}</td>
+                <td>{{occurenceNumber}}</td>
             </tr>
             {{/files}}
         </table>
@@ -74,10 +74,10 @@
     <script id="runSelectForm" type="text/mustache-tmpl">
         <div class="jumbotron">
             <h1>MacSyView</h1>
-            <p>Select the folder containing the TXSScan results</p>
+            <p>Select the JSON file containing the TXSScan results</p>
             <p class="btn btn-primary btn-file btn-block">
                 Browse
-                <input type="file" id="directory" title="select the directory containing the results to analyze" webkitdirectory>
+                <input type="file" id="directory" title="select the file containing the results to analyze">
             </p>
         </div>
     </script>

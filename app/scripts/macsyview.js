@@ -4,16 +4,11 @@
 var macsyview = (function () {
     'use strict';
 
-    var selectedSystemMatchFiles = null,
-
+    var matchesList,
+        
         resetSelectedFiles = function () {
-            selectedSystemMatchFiles = null;
+            matchesList = [];
             $('#systemMatchesLinkList').hide();
-        },
-
-        setSelectedSystemMatchFiles = function (filesList) {
-            selectedSystemMatchFiles = filesList;
-            $('#systemMatchesLinkList').show();
         },
 
         loadFile = function (textFile, loadedCallback) {
@@ -22,6 +17,7 @@ var macsyview = (function () {
                 fileSize = textFile.size;
 
             function readBlob(file, offset) {
+                console.log("reading file at offset ", offset);
                 var stop = offset + chunkSize - 1,
                     reader,
                     blob;
@@ -48,27 +44,6 @@ var macsyview = (function () {
             readBlob(textFile, 0);
         },
 
-        listSystemMatchFiles = function (files) {
-            var systemMatchRE = /([A-Za-z0-9]+)_([A-Za-z0-9]+)_([A-Za-z0-9]+)\.sfmatch\.json/,
-                systemMatchFiles = [],
-                i,
-                len,
-                match;
-            for (i = 0, len = files.length; i < len; i++) {
-                match = systemMatchRE.exec(files[i].name);
-                if (match) {
-                    systemMatchFiles.push({
-                        'file': files[i],
-                        'replicon_name': match[1],
-                        'system_name': match[2],
-                        'occurence_number': match[3],
-                        'id': files[i].name
-                    });
-                }
-            }
-            return systemMatchFiles;
-        },
-
         viewContainer = $("#mainView"),
 
         displayView = function (viewName, context) {
@@ -77,44 +52,45 @@ var macsyview = (function () {
             viewContainer.html(Mustache.render(template, context));
         },
 
-        displaySystemMatchFileDetail = function (systemMatch) {
-            loadFile(systemMatch.file, function (contentsText) {
-                var doc = JSON.parse(contentsText);
-                doc.matchedGenes = doc.genes.filter(function (gene) {
-                    return ('match' in gene);
-                });
-                displayView('systemMatchDetail', doc);
+        displaySystemMatchFileDetail = function (doc) {
+            doc.matchedGenes = doc.genes.filter(function (gene) {
+                return ('match' in gene);
             });
+            displayView('systemMatchDetail', doc);
         },
 
         initSystemMatchSelectionHandler = function () {
             $(".txsview-systemmatchtablerow td").click(function (e) {
-                var id = $(e.currentTarget).parent().attr('data-systemmatchid'),
-                    selectedSystemMatchFile = selectedSystemMatchFiles.filter(function (systemMatchFile) {
-                        return systemMatchFile.id === id;
-                    })[0];
-                displaySystemMatchFileDetail(selectedSystemMatchFile);
+                var id = $(e.currentTarget).parent().attr('data-systemmatchid');
+                displaySystemMatchFileDetail(matchesList[id].components);
             });
         },
         
         displaySystemMatches = function () {
             displayView('systemMatchesList', {
-                'files': selectedSystemMatchFiles
+                'files': matchesList
             });
             initSystemMatchSelectionHandler();
         },
-    
-        directorySelectionHandler = function (e) {
-            var files = e.target.files;
-            setSelectedSystemMatchFiles(listSystemMatchFiles(files));
-            displaySystemMatches();
-        },
 
+        fileSelectionHandler = function (e) {
+            var jsonFile = e.target.files[0],
+                i;
+            loadFile(jsonFile, function (jsonText) {
+                console.log('parsing json begins...');
+                matchesList = JSON.parse(jsonText);
+                console.log('parsing json finished!');
+                for (i = 0; i < matchesList.length; i++) {
+                    matchesList[i].id = i;
+                }
+                displaySystemMatches();
+            });
+        },
         
         displaySelectForm = function () {
             resetSelectedFiles();
             displayView('runSelectForm', {});
-            $('#directory').change(directorySelectionHandler);
+            $('#directory').change(fileSelectionHandler);
         },
 
         init = function () {
