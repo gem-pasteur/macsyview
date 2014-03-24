@@ -19,7 +19,7 @@ macsyview.orderedview = (function () {
 
 	var configMap = {
 			paper_h : 250,
-			paper_w : 500,
+			paper_w : 2500,
 			y_replicon : 55,
 			replicon_offset : 40,
 			genes_offset : 20,
@@ -46,7 +46,6 @@ macsyview.orderedview = (function () {
 			}else{
 				this.genes[i].start = 0;
 			}
-			console.log(this.genes[i].start);
 		}
 		//in number of pixels
 		this.length = this.genes[this.genes.length - 1].start + (configMap.genes_offset * 2);
@@ -87,9 +86,7 @@ macsyview.orderedview = (function () {
 		var repl_len_in_px = configMap.paper_w - (2 * configMap.replicon_offset);
 		var p = $('<p class="replicon_body"></p>').hide().appendTo("body");
 		var replicon_color = p.css("background-color");
-		console.log("replicon_color = ", replicon_color);
 		p.remove();
-		console
 		this.graph = paper.set();
 		var genome = paper.path(["M, ", configMap.replicon_offset, configMap.y_replicon, 
 		                   "h", repl_len_in_px, "a25,5 -1 0,1 0,5h", 
@@ -98,9 +95,7 @@ macsyview.orderedview = (function () {
 		                	   "stroke-width":"1"
 		                   } );
 		this.graph.push(genome);
-		console.log( "this.genes.length", this.genes.length);
 		for (var i = 0; i < this.genes.length; i++){
-			console.log("appel de gene.draw");
 			var g = this.genes[i].draw(paper);
 			this.graph.push(g);
 		};
@@ -131,8 +126,9 @@ macsyview.orderedview = (function () {
 				"fill-opacity": 0.5}
 			);
 		}else{
-			var color = $(".gene_" + this.match).css("background-color");
+			var color = $(".gene_" + this.gene.match).css("background-color");
 			arrow.attr({fill: color, stroke: "none", "fill-opacity": 0.9});
+			console.log(".gene_" + this.gene.match+"  "+color);
 		};
 		return arrow;
 	};
