@@ -256,8 +256,9 @@ macsyview.orderedview = (function () {
 		
 		var container_w = $("#"+container).width();
 		var container_h = $("#"+container).height();
-		var zoom = configMap.paper_w / container_w;
-		zoom = 1;
+		
+		//var zoom = configMap.paper_w / container_w;
+		//zoom = 1;
 		//console.log("paper_w = ",configMap.paper_w," paper_h = ", configMap.paper_h);
 		//console.log( "w = ",container_w," h = ",container_h);
 		
@@ -274,6 +275,18 @@ macsyview.orderedview = (function () {
 		$("#"+container).mousemove(doPan);
 		$("#"+container).mouseup(stopRecord);
 		$("#"+container).mousewheel(wheel);
+		
+		
+		/********************************************
+         * replace cursor icon with open/close hand 
+         * when mouse over replicon schema
+         *********************************************/
+		$("#"+container).bind("mousedown" , function( evt ){
+            $(this).toggleClass( "grabbing" ).toggleClass( "grabbable" );
+        }); 
+		$("#"+container).bind("mouseup" , function(){
+            $(this).toggleClass( "grabbable" ).toggleClass( "grabbing" );
+        });
 	};
 	return {
 		configMap: configMap,
