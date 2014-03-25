@@ -4,44 +4,9 @@
 var macsyview = (function () {
     'use strict';
 
-    var matchesList,
-        
-        resetSelectedFiles = function () {
-            matchesList = [];
+    var resetSelectedFiles = function () {
+            macsyview.data.reset();
             $('#systemMatchesLinkList').hide();
-        },
-
-        loadFile = function (textFile, loadedCallback) {
-            var result = "",
-                chunkSize = 20000,
-                fileSize = textFile.size;
-
-            function readBlob(file, offset) {
-                console.log("reading file at offset ", offset);
-                var stop = offset + chunkSize - 1,
-                    reader,
-                    blob;
-                if (stop > (fileSize - 1)) {
-                    stop = fileSize - 1;
-                }
-                reader = new FileReader();
-                // If we use onloadend, we need to check the readyState.
-                reader.onloadend = function (evt) {
-                    if (evt.target.readyState === FileReader.DONE) { // DONE == 2
-                        result += evt.target.result;
-                        if (stop < fileSize - 1) {
-                            offset = offset + chunkSize;
-                            evt = null;
-                            readBlob(file, offset);
-                        } else {
-                            loadedCallback(result);
-                        }
-                    }
-                };
-                blob = file.slice(offset, stop + 1);
-                reader.readAsBinaryString(blob);
-            }
-            readBlob(textFile, 0);
         },
 
         viewContainer = $("#mainView"),
@@ -62,30 +27,22 @@ var macsyview = (function () {
         initSystemMatchSelectionHandler = function () {
             $(".txsview-systemmatchtablerow td").click(function (e) {
                 var id = $(e.currentTarget).parent().attr('data-systemmatchid');
-                location.hash = "!detail:" + matchesList.macsyviewId + ":" + id;
+                location.hash = "!detail:" + macsyview.data.list().macsyviewId + ":" + id;
                 $(window).trigger('hashchange');
             });
         },
         
         displaySystemMatches = function () {
             displayView('systemMatchesList', {
-                'files': matchesList
+                'files': macsyview.data.list()
             });
             initSystemMatchSelectionHandler();
         },
 
         fileSelectionHandler = function (e) {
-            var jsonFile = e.target.files[0],
-                i;
-            loadFile(jsonFile, function (jsonText) {
-                console.log('parsing json begins...');
-                matchesList = JSON.parse(jsonText);
-                matchesList.macsyviewId = Date.now();
-                console.log('parsing json finished!');
-                for (i = 0; i < matchesList.length; i++) {
-                    matchesList[i].id = i;
-                }
-                location.hash = "!list:" + matchesList.macsyviewId;
+            var jsonFile = e.target.files[0];
+            macsyview.data.load(jsonFile,function(){
+                location.hash = "!list:" + macsyview.data.list().macsyviewId;
                 $(window).trigger('hashchange');
             });
         },
@@ -110,7 +67,7 @@ var macsyview = (function () {
                 case "#!list":
                     // control that we are asking for the correct file
                     var macsyviewRequestedId = parseInt(location.hash.split(":")[1]);
-                    if (macsyviewRequestedId !== matchesList.macsyviewId) {
+                    if (macsyviewRequestedId !== macsyview.data.list().macsyviewId) {
                         location.hash = "!select";
                         $(window).trigger('hashchange');
                     }
@@ -119,11 +76,11 @@ var macsyview = (function () {
                 case "#!detail":
                     // control that we are asking for the correct file
                     var macsyviewRequestedId = parseInt(location.hash.split(":")[1]);
-                    if (macsyviewRequestedId !== matchesList.macsyviewId) {
+                    if (macsyviewRequestedId !== macsyview.data.list().macsyviewId) {
                         location.hash = "!select";
                         $(window).trigger('hashchange');
                     }
-                    displaySystemMatchFileDetail(matchesList[location.hash.split(":")[2]]);
+                    displaySystemMatchFileDetail(macsyview.data.list()[location.hash.split(":")[2]]);
                     break;
                 default:
                     location.hash = "!select";
