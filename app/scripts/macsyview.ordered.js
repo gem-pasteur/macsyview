@@ -19,7 +19,7 @@ macsyview.orderedview = (function () {
 
 	var configMap = {
 			paper_h : 250,
-			paper_w : 2500,
+			paper_w : null,
 			y_replicon : 55,
 			replicon_offset : 40, //in px
 			genes_offset : 40, //in bp
@@ -70,7 +70,16 @@ macsyview.orderedview = (function () {
 	/***************************
 	 *      View objects
 	 ***************************/
-
+	
+	var drawer = {
+		'pan' : {
+			'mousedown' : false,
+			'startX' : 0,
+			'startY' : 0,
+		},
+		'viewBox' : [],
+		'paper' : null,
+	};
 
 	/******************
 	 *  RepliconGrphx
@@ -145,6 +154,43 @@ macsyview.orderedview = (function () {
 	};
 
 
+	/********
+	 * Pan *
+	 ********/
+
+	 var startRecord = function startRecord(event){
+	     drawer.pan.mousedown = true;
+	     drawer.pan.startX = event.pageX;
+	     drawer.pan.startY = event.pageY;
+	 }
+	 
+	 var doPan = function doPan(event){
+	     if (drawer.pan.mousedown == false) {
+	         return;
+	     }
+	     //compute dx, dy in the document
+	     drawer.pan.dX = drawer.pan.startX - event.pageX;
+	     drawer.pan.dY = drawer.pan.startY - event.pageY;
+	    
+	     var x_factor = drawer.viewBox[2] / drawer.paper.width;
+	     var y_factor = drawer.viewBox[3] / drawer.paper.height;
+
+	     drawer.pan.dX *= x_factor;
+	     drawer.pan.dY *= y_factor;
+
+	     drawer.paper.setViewBox(
+	    		 drawer.viewBox[0] + drawer.pan.dX,
+	    		 drawer.viewBox[1] + drawer.pan.dY,
+	    		 drawer.viewBox[2],
+	    		 drawer.viewBox[3]);
+	 }
+	 
+	 var stopRecord = function stopRecord(evt){
+	     drawer.viewBox[0] += drawer.pan.dX;
+	     drawer.viewBox[1] += drawer.pan.dY;
+	     drawer.pan.mousedown = false;
+	 }
+	 
 	var draw = function(json_data, container){
 		var replicon = new Replicon(json_data);
 		var repliconGrphx = new RepliconGrphx(replicon);
@@ -153,16 +199,19 @@ macsyview.orderedview = (function () {
 		var paper = Raphael(container, configMap.paper_w, configMap.paper_h );
 		paper.canvas.style.backgroundColor = '#F00';
 		
+		drawer.viewBox = [0, 0, configMap.paper_w, configMap.paper_h];
+		drawer.paper = paper;
+		
 		repliconGrphx.draw(paper);
 		
 		var container_w = $("#"+container).width();
 		var container_h = $("#"+container).height();
 		var zoom = configMap.paper_w / container_w;
-		zoom =1;
-		console.log("paper_w = ",configMap.paper_w," paper_h = ", configMap.paper_h);
-		console.log( "w = ",container_w," h = ",container_h);
+		zoom = 1;
+		//console.log("paper_w = ",configMap.paper_w," paper_h = ", configMap.paper_h);
+		//console.log( "w = ",container_w," h = ",container_h);
 		
-		paper.setViewBox(0, 0, Math.round(configMap.paper_w * zoom) , configMap.paper_h , false);
+		//paper.setViewBox(0, 0, Math.round(configMap.paper_w * zoom) , configMap.paper_h , false);
 		
 		for (var i = 0; i < repliconGrphx.genes.length; i++ ){
 	          var g = repliconGrphx.genes[i];
@@ -171,6 +220,9 @@ macsyview.orderedview = (function () {
 	          g.arrow.mouseout(g.hide.bind(g));
 	         }
 		
+		$("#"+container).mousedown(startRecord);
+		$("#"+container).mousemove(doPan);
+		$("#"+container).mouseup(stopRecord);
 	};
 	return {
 		configMap: configMap,
