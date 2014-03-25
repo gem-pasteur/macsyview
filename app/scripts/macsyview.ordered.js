@@ -2,7 +2,7 @@
 /*
  * macsyview.orderedview
  * Ordered view for MacSyView
- * requires RaphaelJS + ???
+ * requires RaphaelJS + jquery + jquery-mousewheel.js
  */
 
 /* jslint         browser : true, continue : true,
@@ -79,6 +79,7 @@ macsyview.orderedview = (function () {
 		},
 		'viewBox' : [],
 		'paper' : null,
+		'zoom' : 1,
 	};
 
 	/******************
@@ -191,6 +192,54 @@ macsyview.orderedview = (function () {
 	     drawer.pan.mousedown = false;
 	 }
 	 
+	/********
+	 * Zoom *
+	 ********/
+	 
+	 /* transforms screen coordinates into paper coordinates */
+	 function transformEventCoords(container, event) {
+		 var offset = container.offset();
+		 return {
+	         x : event.clientX - offset.left,
+	         y : event.clientY - offset.top
+	 	};
+	 }
+	     
+	 function doZoom(coords, factor) {  
+	     //transform real coordinates into viewBox coordinates
+		 var x = drawer.viewBox[0] + coords.x / drawer.zoom; 
+	     var y = drawer.viewBox[1] + coords.y / drawer.zoom;
+	     
+	     if (factor < 0) {
+	         factor= 0.95;
+	     }
+	     else {
+	         factor = 1.05;
+	     }
+	     
+	     var z = ((drawer.zoom || 1) * factor) || 1;
+	     drawer.zoom = z;
+	     //zoom viewBox dimensions
+	     drawer.viewBox[2] = Math.round(configMap.paper_w / drawer.zoom);
+	     drawer.viewBox[3] = Math.round(configMap.paper_h / drawer.zoom);
+	     
+	     //transform coordinates to new viewBox coordinates
+	     drawer.viewBox[0] = Math.round(x - coords.x / drawer.zoom);
+	     drawer.viewBox[1] = Math.round(y - coords.y / drawer.zoom);
+	     drawer.paper.setViewBox.apply(
+	     		drawer.paper, 
+	     		drawer.viewBox);
+	 }
+
+	 /* Event handler for mouse wheel event.   */
+	 function wheel(event) {
+	     doZoom(transformEventCoords($('#'+drawer.container_id), event), event.deltaY);        
+	     if (event.preventDefault)
+	         event.preventDefault();
+	     event.returnValue = false;//prevent to scroll the window
+	 }
+
+	 
 	var draw = function(json_data, container){
 		var replicon = new Replicon(json_data);
 		var repliconGrphx = new RepliconGrphx(replicon);
@@ -199,6 +248,7 @@ macsyview.orderedview = (function () {
 		var paper = Raphael(container, configMap.paper_w, configMap.paper_h );
 		paper.canvas.style.backgroundColor = '#F00';
 		
+		drawer.container_id = container;
 		drawer.viewBox = [0, 0, configMap.paper_w, configMap.paper_h];
 		drawer.paper = paper;
 		
@@ -223,6 +273,7 @@ macsyview.orderedview = (function () {
 		$("#"+container).mousedown(startRecord);
 		$("#"+container).mousemove(doPan);
 		$("#"+container).mouseup(stopRecord);
+		$("#"+container).mousewheel(wheel);
 	};
 	return {
 		configMap: configMap,
