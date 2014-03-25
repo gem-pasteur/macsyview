@@ -109,7 +109,7 @@ var macsyview = (function () {
                     break;
                 case "#!list":
                     // control that we are asking for the correct file
-                    var macsyviewRequestedId = location.hash.split(":")[1];
+                    var macsyviewRequestedId = parseInt(location.hash.split(":")[1]);
                     if (macsyviewRequestedId !== matchesList.macsyviewId) {
                         location.hash = "!select";
                         $(window).trigger('hashchange');
@@ -118,12 +118,12 @@ var macsyview = (function () {
                     break;
                 case "#!detail":
                     // control that we are asking for the correct file
-                    var macsyviewRequestedId = location.hash.split(":")[1];
+                    var macsyviewRequestedId = parseInt(location.hash.split(":")[1]);
                     if (macsyviewRequestedId !== matchesList.macsyviewId) {
                         location.hash = "!select";
                         $(window).trigger('hashchange');
                     }
-                    displaySystemMatchFileDetail(matchesList[location.hash.split(":")[2]].components);
+                    displaySystemMatchFileDetail(matchesList[location.hash.split(":")[2]]);
                     break;
                 default:
                     location.hash = "!select";
