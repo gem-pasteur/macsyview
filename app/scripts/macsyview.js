@@ -1,5 +1,5 @@
 /*jslint plusplus: true */
-/*global $, FileReader, Mustache */
+/*global $, FileReader, Mustache, console */
 
 var macsyview = (function () {
     'use strict';
@@ -62,7 +62,8 @@ var macsyview = (function () {
         initSystemMatchSelectionHandler = function () {
             $(".txsview-systemmatchtablerow td").click(function (e) {
                 var id = $(e.currentTarget).parent().attr('data-systemmatchid');
-                displaySystemMatchFileDetail(matchesList[id].components);
+                location.hash = "!detail:"+ matchesList.macsyviewId+":"+id;
+                $(window).trigger('hashchange');
             });
         },
         
@@ -79,11 +80,13 @@ var macsyview = (function () {
             loadFile(jsonFile, function (jsonText) {
                 console.log('parsing json begins...');
                 matchesList = JSON.parse(jsonText);
+                matchesList.macsyviewId = Date.now();
                 console.log('parsing json finished!');
                 for (i = 0; i < matchesList.length; i++) {
                     matchesList[i].id = i;
                 }
-                displaySystemMatches();
+                location.hash = "!list:"+matchesList.macsyviewId;
+                $(window).trigger('hashchange');
             });
         },
         
@@ -98,6 +101,36 @@ var macsyview = (function () {
             $('#systemMatchesLinkList').click(displaySystemMatches);
             resetSelectedFiles();
             displaySelectForm();
+            $(window).bind('hashchange', function(event) {
+                var viewName = location.hash.split(":")[0];
+                switch(viewName){
+                    case "#!select":
+                        displaySelectForm();
+                        break;
+                    case "#!list":
+                        // control that we are asking for the correct file
+                        var macsyviewRequestedId = location.hash.split(":")[1];
+                        if(macsyviewRequestedId!=matchesList.macsyviewId){
+                            location.hash = "!select";
+                            $(window).trigger('hashchange');
+                        }
+                        displaySystemMatches();
+                        break;
+                    case "#!detail":
+                        // control that we are asking for the correct file
+                        var macsyviewRequestedId = location.hash.split(":")[1];
+                        if(macsyviewRequestedId!=matchesList.macsyviewId){
+                            location.hash = "!select";
+                            $(window).trigger('hashchange');
+                        }
+                        displaySystemMatchFileDetail(matchesList[location.hash.split(":")[2]].components);
+                        break;
+                    default:
+                        location.hash = "!select";
+                        $(window).trigger('hashchange');
+                };
+            });
+            $(window).trigger('hashchange');
         };
 
     return {init: init};
