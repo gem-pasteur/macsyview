@@ -29,6 +29,7 @@ macsyview.orderedview = (function () {
 			ratio_bp_px : 8,
 	};
 
+
 	/***********************
 	 *  Business objects
 	 ***********************/
@@ -65,21 +66,22 @@ macsyview.orderedview = (function () {
 		this.length = json_gene.sequence_length;
 		this.match = json_gene.match;
 		this.start = null;
+		this.color = json_gene.color;
 	};
 
 	/***************************
 	 *      View objects
 	 ***************************/
-	
+
 	var drawer = {
-		'pan' : {
-			'mousedown' : false,
-			'startX' : 0,
-			'startY' : 0,
-		},
-		'viewBox' : [],
-		'paper' : null,
-		'zoom' : 1,
+			'pan' : {
+				'mousedown' : false,
+				'startX' : 0,
+				'startY' : 0,
+			},
+			'viewBox' : [],
+			'paper' : null,
+			'zoom' : 1,
 	};
 
 	/******************
@@ -103,11 +105,11 @@ macsyview.orderedview = (function () {
 		p.remove();
 		this.graph = paper.set();
 		var genome = paper.path(["M, ", configMap.replicon_offset, configMap.y_replicon, 
-		                   "h", repl_len_in_px, "a25,5 -1 0,1 0,5h", 
-		                   (-1 * (repl_len_in_px)), "a25,5 0 0,1 0,-5z"]).attr({"fill": replicon_color, 
-		                	   "stroke": replicon_color, 
-		                	   "stroke-width":"1"
-		                   } );
+		                         "h", repl_len_in_px, "a25,5 -1 0,1 0,5h", 
+		                         (-1 * (repl_len_in_px)), "a25,5 0 0,1 0,-5z"]).attr({"fill": replicon_color, 
+		                        	 "stroke": replicon_color, 
+		                        	 "stroke-width":"1"
+		                         } );
 		this.graph.push(genome);
 		for (var i = 0; i < this.genes.length; i++){
 			var g = this.genes[i].draw(paper);
@@ -131,15 +133,18 @@ macsyview.orderedview = (function () {
 		var w = this.gene.length / configMap.ratio_bp_px ; 
 		var h = configMap.gene_high;
 		var arrow = paper.rect(x, y, w, h);
+		
+		console.log("GenesGrphx color= ", this.gene.color);
+		
 		if(!this.gene.match){
-			arrow.attr({fill: "white", 
+			arrow.attr({fill: this.gene.color, 
 				stroke: "black", 
 				"stroke-dasharray": "-", 
 				"fill-opacity": 0.5}
 			);
 		}else{
-			var color = $(".gene_" + this.gene.match).css("background-color");
-			arrow.attr({fill: color, stroke: "none", "fill-opacity": 0.9});
+			//var color = $(".gene_" + this.gene.match).css("background-color");
+			arrow.attr({fill: this.gene.color, stroke: "none", "fill-opacity": 0.9});
 		};
 		return arrow;
 	};
@@ -159,134 +164,136 @@ macsyview.orderedview = (function () {
 	 * Pan *
 	 ********/
 
-	 var startRecord = function startRecord(event){
-	     drawer.pan.mousedown = true;
-	     drawer.pan.startX = event.pageX;
-	     drawer.pan.startY = event.pageY;
-	 }
-	 
-	 var doPan = function doPan(event){
-	     if (drawer.pan.mousedown == false) {
-	         return;
-	     }
-	     //compute dx, dy in the document
-	     drawer.pan.dX = drawer.pan.startX - event.pageX;
-	     drawer.pan.dY = drawer.pan.startY - event.pageY;
-	    
-	     var x_factor = drawer.viewBox[2] / drawer.paper.width;
-	     var y_factor = drawer.viewBox[3] / drawer.paper.height;
+	var startRecord = function startRecord(event){
+		drawer.pan.mousedown = true;
+		drawer.pan.startX = event.pageX;
+		drawer.pan.startY = event.pageY;
+	};
 
-	     drawer.pan.dX *= x_factor;
-	     drawer.pan.dY *= y_factor;
+	var doPan = function doPan(event){
+		if (drawer.pan.mousedown == false) {
+			return;
+		}
+		//compute dx, dy in the document
+		drawer.pan.dX = drawer.pan.startX - event.pageX;
+		drawer.pan.dY = drawer.pan.startY - event.pageY;
 
-	     drawer.paper.setViewBox(
-	    		 drawer.viewBox[0] + drawer.pan.dX,
-	    		 drawer.viewBox[1] + drawer.pan.dY,
-	    		 drawer.viewBox[2],
-	    		 drawer.viewBox[3]);
-	 }
-	 
-	 var stopRecord = function stopRecord(evt){
-	     drawer.viewBox[0] += drawer.pan.dX;
-	     drawer.viewBox[1] += drawer.pan.dY;
-	     drawer.pan.mousedown = false;
-	 }
-	 
+		var x_factor = drawer.viewBox[2] / drawer.paper.width;
+		var y_factor = drawer.viewBox[3] / drawer.paper.height;
+
+		drawer.pan.dX *= x_factor;
+		drawer.pan.dY *= y_factor;
+
+		drawer.paper.setViewBox(
+				drawer.viewBox[0] + drawer.pan.dX,
+				drawer.viewBox[1] + drawer.pan.dY,
+				drawer.viewBox[2],
+				drawer.viewBox[3]);
+	}
+
+	var stopRecord = function stopRecord(evt){
+		drawer.viewBox[0] += drawer.pan.dX;
+		drawer.viewBox[1] += drawer.pan.dY;
+		drawer.pan.mousedown = false;
+	}
+
 	/********
 	 * Zoom *
 	 ********/
-	 
-	 /* transforms screen coordinates into paper coordinates */
-	 function transformEventCoords(container, event) {
-		 var offset = container.offset();
-		 return {
-	         x : event.clientX - offset.left,
-	         y : event.clientY - offset.top
-	 	};
-	 }
-	     
-	 function doZoom(coords, factor) {  
-	     //transform real coordinates into viewBox coordinates
-		 var x = drawer.viewBox[0] + coords.x / drawer.zoom; 
-	     var y = drawer.viewBox[1] + coords.y / drawer.zoom;
-	     
-	     if (factor < 0) {
-	         factor= 0.95;
-	     }
-	     else {
-	         factor = 1.05;
-	     }
-	     
-	     var z = ((drawer.zoom || 1) * factor) || 1;
-	     drawer.zoom = z;
-	     //zoom viewBox dimensions
-	     drawer.viewBox[2] = Math.round(configMap.paper_w / drawer.zoom);
-	     drawer.viewBox[3] = Math.round(configMap.paper_h / drawer.zoom);
-	     
-	     //transform coordinates to new viewBox coordinates
-	     drawer.viewBox[0] = Math.round(x - coords.x / drawer.zoom);
-	     drawer.viewBox[1] = Math.round(y - coords.y / drawer.zoom);
-	     drawer.paper.setViewBox.apply(
-	     		drawer.paper, 
-	     		drawer.viewBox);
-	 }
 
-	 /* Event handler for mouse wheel event.   */
-	 function wheel(event) {
-	     doZoom(transformEventCoords($('#'+drawer.container_id), event), event.deltaY);        
-	     if (event.preventDefault)
-	         event.preventDefault();
-	     event.returnValue = false;//prevent to scroll the window
-	 }
+	/* transforms screen coordinates into paper coordinates */
+	function transformEventCoords(container, event) {
+		var offset = container.offset();
+		return {
+			x : event.clientX - offset.left,
+			y : event.clientY - offset.top
+		};
+	}
 
-	 
+	function doZoom(coords, factor) {  
+		//transform real coordinates into viewBox coordinates
+		var x = drawer.viewBox[0] + coords.x / drawer.zoom; 
+		var y = drawer.viewBox[1] + coords.y / drawer.zoom;
+
+		if (factor < 0) {
+			factor= 0.95;
+		}
+		else {
+			factor = 1.05;
+		}
+
+		var z = ((drawer.zoom || 1) * factor) || 1;
+		drawer.zoom = z;
+		//zoom viewBox dimensions
+		drawer.viewBox[2] = Math.round(configMap.paper_w / drawer.zoom);
+		drawer.viewBox[3] = Math.round(configMap.paper_h / drawer.zoom);
+
+		//transform coordinates to new viewBox coordinates
+		drawer.viewBox[0] = Math.round(x - coords.x / drawer.zoom);
+		drawer.viewBox[1] = Math.round(y - coords.y / drawer.zoom);
+		drawer.paper.setViewBox.apply(
+				drawer.paper, 
+				drawer.viewBox);
+	}
+
+	/* Event handler for mouse wheel event.   */
+	function wheel(event) {
+		doZoom(transformEventCoords($('#'+drawer.container_id), event), event.deltaY);        
+		if (event.preventDefault)
+			event.preventDefault();
+		event.returnValue = false;//prevent to scroll the window
+	}
+
+
+
+
 	var draw = function(json_data, container){
 		var replicon = new Replicon(json_data);
 		var repliconGrphx = new RepliconGrphx(replicon);
-		
+
 		configMap.paper_w = repliconGrphx.length + (2 * configMap.replicon_offset);
 		var paper = Raphael(container, configMap.paper_w, configMap.paper_h );
 		paper.canvas.style.backgroundColor = '#F00';
-		
+
 		drawer.container_id = container;
 		drawer.viewBox = [0, 0, configMap.paper_w, configMap.paper_h];
 		drawer.paper = paper;
-		
+
 		repliconGrphx.draw(paper);
-		
+
 		var container_w = $("#"+container).width();
 		var container_h = $("#"+container).height();
-		
+
 		//var zoom = configMap.paper_w / container_w;
 		//zoom = 1;
 		//console.log("paper_w = ",configMap.paper_w," paper_h = ", configMap.paper_h);
 		//console.log( "w = ",container_w," h = ",container_h);
-		
+
 		//paper.setViewBox(0, 0, Math.round(configMap.paper_w * zoom) , configMap.paper_h , false);
-		
+
 		for (var i = 0; i < repliconGrphx.genes.length; i++ ){
-	          var g = repliconGrphx.genes[i];
-	          g.arrow = g.draw(paper);
-	          g.arrow.mouseover(g.show.bind(g));
-	          g.arrow.mouseout(g.hide.bind(g));
-	         }
-		
+			var g = repliconGrphx.genes[i];
+			g.arrow = g.draw(paper);
+			g.arrow.mouseover(g.show.bind(g));
+			g.arrow.mouseout(g.hide.bind(g));
+		}
+
 		$("#"+container).mousedown(startRecord);
 		$("#"+container).mousemove(doPan);
 		$("#"+container).mouseup(stopRecord);
 		$("#"+container).mousewheel(wheel);
-		
-		
+
+
 		/********************************************
-         * replace cursor icon with open/close hand 
-         * when mouse over replicon schema
-         *********************************************/
+		 * replace cursor icon with open/close hand 
+		 * when mouse over replicon schema
+		 *********************************************/
 		$("#"+container).bind("mousedown" , function( evt ){
-            $(this).toggleClass( "grabbing" ).toggleClass( "grabbable" );
-        }); 
+			$(this).toggleClass( "grabbing" ).toggleClass( "grabbable" );
+		}); 
 		$("#"+container).bind("mouseup" , function(){
-            $(this).toggleClass( "grabbable" ).toggleClass( "grabbing" );
-        });
+			$(this).toggleClass( "grabbable" ).toggleClass( "grabbing" );
+		});
 	};
 	return {
 		configMap: configMap,

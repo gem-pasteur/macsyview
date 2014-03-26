@@ -7,8 +7,10 @@
 <script src="../app/bower_components/raphael/raphael.js"></script>
 <script src="../app/bower_components/mustache/mustache.js"></script>
 <script src="../app/bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
+
 <script>var macsyview = {};</script>
 <script src="../app/scripts/macsyview.ordered.js"></script>
+<script src="../app/scripts/macsyview.utils.js"></script>
 
 <script id="gene_infos_Tpl" type="text/template">
     <h4>Gene Informations</h4>
@@ -54,7 +56,7 @@
         <tbody>
             {{#genes}}
             <tr>
-                <td {{#match}}class="gene_{{.}}"{{/match}}>{{name}}</td>
+                <td {{#match}}style="background-color:{{color}}"{{/match}}>{{name}}</td>
                 <td>{{gene_status}}</td>
                 <td>{{begin_match}}</td>
                 <td>{{end_match}}</td>
@@ -73,14 +75,13 @@
     </table>
 </script>
 
-<link rel="stylesheet" href="../app/styles/color.css">
 <link rel="stylesheet" href="../app/styles/grabable.css">
 </head>
 
 <body>
 	<H1>titre à déterminer</H1>
 	<div id="system_schema"></div>
-	<div id="replicon_schema" class="grabbable"></div>
+	<div id="replicon_schema" class="grabbable" style="border:1px"></div>
 	<div id="gene_infos">fly cursor over a gene to display
 		informations</div>
 	<div id="genes_table"></div>
@@ -136,6 +137,19 @@ var json_data = {"replicon": {
 	        	  "allowed": {}
 	        	  }
 	};
+
+/******************************
+ * pick a color for each gene 
+ * and add it to the data
+ ******************************/
+ var utils = macsyview.utils;
+ var colorPicker = utils.colorPicker;
+ for(var i = 0; i < json_data.genes.length; i++){
+	 var g = json_data.genes[i];
+	 var c = colorPicker.pick(g);
+	 g.color =  c;
+ }
+
 /******************************************************************
  * HTML table creation using mustache templating                  *
  * must be done before raphael otherwise arrow have not any color *
