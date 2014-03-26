@@ -11,7 +11,7 @@ var macsyview = (function () {
 
         checkDataId = function () {
             // control that we are asking for the correct file
-            var macsyviewRequestedId = parseInt(location.hash.split(":")[1]);
+            var macsyviewRequestedId = parseInt(location.hash.split(":")[1], 10);
             if (macsyviewRequestedId !== macsyview.data.list().macsyviewId) {
                 go('select');
                 return false;
