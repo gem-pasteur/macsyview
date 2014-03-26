@@ -10,7 +10,7 @@
   white  : true
  */
 
-/*global $, macsyview, Mustache, console, location, window */
+/*global $, macsyview, Mustache, console*/
 
 macsyview.view = (function () {
     'use strict';
@@ -30,6 +30,19 @@ macsyview.view = (function () {
             viewContainer.html(Mustache.render(template, context));
         },
 
+        sortByKeys = function (keys) {
+            return function(item1, item2) {
+                var cmpRes = 0,
+                    keysHere = keys.slice(),
+                    currentKey;
+                while(cmpRes === 0 && keysHere.length>0){
+                    currentKey = keysHere.shift();
+                    cmpRes = item1[currentKey].localeCompare(item2[currentKey]);
+                }
+                return cmpRes;
+            }
+        },
+        
         displaySystemMatchFileDetail = function (doc) {
             doc.matchedGenes = doc.genes.filter(function (gene) {
                 return ('match' in gene);
@@ -40,23 +53,33 @@ macsyview.view = (function () {
         initSystemMatchSelectionHandler = function () {
             $(config.viewContainer + " .txsview-systemmatchtablerow td").click(function (e) {
                 var id = $(e.currentTarget).parent().attr('data-systemmatchid');
-                location.hash = "!detail:" + macsyview.data.list().macsyviewId + ":" + id;
-                $(window).trigger('hashchange');
+                macsyview.go('detail:' + macsyview.data.list().macsyviewId + ":" + id);
             });
         },
 
-        displaySystemMatches = function () {
-            displayView('systemMatchesList', {
-                'files': macsyview.data.list()
-            });
+        displaySystemMatches = function (sortKeys) {
+            var list = macsyview.data.list();
+            list.sort(sortByKeys(sortKeys));
+            var tplData = {
+                'files': list,
+                'sortKey': sortKeys[0]
+            };
+            switch(sortKeys[0]){
+                case "repliconName":
+                    tplData["sortBySystemLink"] = "list:" + macsyview.data.list().macsyviewId + ":by_system";
+                    break;
+                case "systemName":
+                    tplData["sortByRepliconLink"] = "list:" + macsyview.data.list().macsyviewId + ":by_replicon";
+                    break;
+            }
+            displayView('systemMatchesList', tplData);
             initSystemMatchSelectionHandler();
         },
 
         fileSelectionHandler = function (e) {
             var jsonFile = e.target.files[0];
             macsyview.data.load(jsonFile, function () {
-                location.hash = "!list:" + macsyview.data.list().macsyviewId;
-                $(window).trigger('hashchange');
+                macsyview.go("list:" + macsyview.data.list().macsyviewId + ":by_replicon");
             });
         },
 

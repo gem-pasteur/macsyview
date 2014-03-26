@@ -19,7 +19,7 @@ var macsyview = (function () {
                 return true;
             }
         },
-
+        
         init = function () {
             macsyview.view.init();
             $(window).bind('hashchange', function (event) {
@@ -30,7 +30,15 @@ var macsyview = (function () {
                     break;
                 case "#!list":
                     checkDataId();
-                    macsyview.view.displaySystemMatches();
+                    switch(location.hash.split(":")[2]){
+                        case "by_system":
+                            macsyview.view.displaySystemMatches(['systemName', 'repliconName', 'occurencesNumber']);
+                            break;
+                        case "by_replicon":
+                        default:
+                            macsyview.view.displaySystemMatches(['repliconName', 'systemName', 'occurencesNumber']);  
+                            break;
+                    }
                     break;
                 case "#!detail":
                     checkDataId();
@@ -44,6 +52,7 @@ var macsyview = (function () {
         };
 
     return {
-        init: init
+        init: init,
+        go: go
     };
 }());

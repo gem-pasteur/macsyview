@@ -58,17 +58,25 @@
     <!-- endbuild -->
 
     <script id="systemMatchesList" type="text/mustache-tmpl">
-        <table class="table table-hover tab-striped">
+        <table class="span12 table table-hover tab-striped">
             <tr>
-                <th>Replicon Name</th>
-                <th>System Name</th>
-                <th>Occurence No.</th>
+                <th style="width: 40%">Replicon Name 
+                   {{#sortByRepliconLink}}
+                   <a href="#!{{sortByRepliconLink}}" title="sort by replicon first"><span class="glyphicon glyphicon-chevron-down"></span></a>
+                   {{/sortByRepliconLink}}
+                </th>
+                <th style="width: 40%">System Name 
+                   {{#sortBySystemLink}}
+                   <a href="#!{{sortBySystemLink}}" title="sort by system first"><span class="glyphicon glyphicon-chevron-down"></span></a>
+                   {{/sortBySystemLink}}
+                </th>
+                <th style="width: 20%">Occurence No.</th>
             </tr>
             {{#files}}
             <tr class="txsview-systemmatchtablerow" data-systemmatchid="{{id}}">
                 <td>{{repliconName}}</td>
                 <td>{{systemName}}</td>
-                <td>{{occurenceNumber}}</td>
+                <td>{{occurencesNumber}}</td>
             </tr>
             {{/files}}
         </table>
