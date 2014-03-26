@@ -100,9 +100,7 @@ macsyview.orderedview = (function () {
 
 	RepliconGrphx.prototype.draw = function draw_replicon(paper){
 		var repl_len_in_px =  this.length ;
-		var p = $('<p class="replicon_body"></p>').hide().appendTo("body");
-		var replicon_color = p.css("background-color");
-		p.remove();
+		var replicon_color = "#aaa";
 		this.graph = paper.set();
 		var genome = paper.path(["M, ", configMap.replicon_offset, configMap.y_replicon, 
 		                         "h", repl_len_in_px, "a25,5 -1 0,1 0,5h", 
@@ -133,9 +131,6 @@ macsyview.orderedview = (function () {
 		var w = this.gene.length / configMap.ratio_bp_px ; 
 		var h = configMap.gene_high;
 		var arrow = paper.rect(x, y, w, h);
-		
-		console.log("GenesGrphx color= ", this.gene.color);
-		
 		if(!this.gene.match){
 			arrow.attr({fill: this.gene.color, 
 				stroke: "black", 
@@ -143,7 +138,6 @@ macsyview.orderedview = (function () {
 				"fill-opacity": 0.5}
 			);
 		}else{
-			//var color = $(".gene_" + this.gene.match).css("background-color");
 			arrow.attr({fill: this.gene.color, stroke: "none", "fill-opacity": 0.9});
 		};
 		return arrow;
