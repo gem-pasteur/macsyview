@@ -1,7 +1,6 @@
 /*
- * macsyview.orderedview
+ * macsyview.utils
  * Ordered view for MacSyView
- * requires RaphaelJS + jquery + jquery-mousewheel.js
  */
 
 /* jslint         browser : true, continue : true,
