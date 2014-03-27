@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<script src="../app/bower_components/jquery/dist/jquery.js"></script>
+<script src="../app/bower_components/mustache/mustache.js"></script>
+
+<script>var macsyview = {};</script>
+<script src="../app/scripts/macsyview.system.js"></script>
+
+<script id="gene_infos_Tpl" type="text/template">
+    <h4>Gene Informations</h4>
+          <ul>
+              <li>id: {{id}}</li>
+              {{#match}}<li>match : {{.}}</li>{{/match}}
+              {{#i_eval}}<li>i-evalue : {{i_eval}}</li>{{/i_eval}}
+              {{#profile_coverage}}<li>profile coverage : {{profile_coverage}}</li>{{/profile_coverage}}
+              <li>length: {{length}} bp</li>
+           </ul>
+</script>
+
+<script id="repl_table_Tpl" type="text/template">
+<h2>Replicon</h2>
+    <ul>
+        {{#replicon}}
+        <li>name: {{name}}</li>
+        <li>length: {{length}}</li>
+        <li>topology: {{topology}}</li> 
+        {{/replicon}}
+    </ul>
+    
+    <h3>Genes</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gene status</th>
+                <th>Begin match</th>
+                <th>End match</th>
+                <th>System</th>
+                <th>Score</th>
+                <th>Sequence coverage</th>
+                <th>Sequence length</th>
+                <th>i_eval</th>
+                <th>Position</th>
+                <th>Profile coverage</th>
+                <th>Id</th>
+                <th>Match</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {{#genes}}
+            <tr>
+                <td {{#match}}style="background-color:{{color}}"{{/match}}>{{name}}</td>
+                <td>{{gene_status}}</td>
+                <td>{{begin_match}}</td>
+                <td>{{end_match}}</td>
+                <td>{{system}}</td>
+                <td>{{score}}</td>
+                <td>{{sequence_coverage}}</td>
+                <td>{{sequence_length}}</td>
+                <td>{{i_eval}}</td>
+                <td>{{position}}</td>
+                <td>{{profile_coverage}}</td>
+                <td>{{id}}</td>
+                <td>{{match}}</td>
+            </tr>
+            {{/genes}}
+        </tbody>
+    </table>
+</script>
+
+<link rel="stylesheet" href="../app/styles/grabable.css">
+</head>
+
+<body>
+	<H1>titre à déterminer</H1>
+	<div id="system_schema"></div>
+	<div id="replicon_schema" class="grabbable" style="border:1px"></div>
+	<div id="replicon_schema_crtl"><input type="button" value="Reset Zoom" id="resetZoom"></div>
+	<div id="gene_infos">fly cursor over a gene to display
+		informations</div>
+	<div id="genes_table"></div>
+	
+</body>
+
+
+<script type="text/javascript">
+
+/*
+var json_data = {"replicon":{
+	                  "length": 5569, 
+	                  "name": "PSAE001c01", 
+	                  "topology": "circular"
+	                }, 
+	              "genes": [
+	                          {"sequence_length": 399, "id": "PSAE001c01_000720", "position": 72}, 
+	                          {"sequence_length": 239, "id": "PSAE001c01_000730", "position": 73}, 
+	                          {"sequence_length": 1032, "id": "PSAE001c01_000740", "position": 74}, 
+	                          {"sequence_length": 242, "id": "PSAE001c01_000750", "position": 75}, 
+	                          {"sequence_length": 226, "id": "PSAE001c01_000760", "position": 76}, 
+	                          {"gene_status": "mandatory", "end_match": 1101, "begin_match": 1, "system": "T6SS", "score": 1393.3, "sequence_coverage": 1.0, "sequence_length": 1101, "i_eval": 0.0, "position": 77, "profile_coverage": 1.0, "id": "PSAE001c01_000770", "match": "tssM"}, 
+	                          {"gene_status": "mandatory", "end_match": 279, "begin_match": 66, "system": "T6SS", "score": 278.8, "sequence_coverage": 0.4766146993318486, "sequence_length": 449, "i_eval": 8.5e-84, "position": 78, "profile_coverage": 0.9953271028037384, "id": "PSAE001c01_000780", "match": "tssL"}, 
+	                          {"gene_status": "mandatory", "end_match": 442, "begin_match": 2, "system": "T6SS", "score": 632.0, "sequence_coverage": 0.9932432432432432, "sequence_length": 444, "i_eval": 1.6e-190, "position": 79, "profile_coverage": 1.0, "id": "PSAE001c01_000790", "match": "tssK"}, 
+	                          {"gene_status": "mandatory", "end_match": 147, "begin_match": 1, "system": "T6SS", "score": 170.3, "sequence_coverage": 0.9545454545454546, "sequence_length": 154, "i_eval": 5.9e-51, "position": 80, "profile_coverage": 0.987012987012987, "id": "PSAE001c01_000800", "match": "tssJ"}, 
+	                          {"sequence_length": 497, "id": "PSAE001c01_000810", "position": 81}, 
+	                          {"gene_status": "mandatory", "end_match": 328, "begin_match": 158, "system": "T6SS", "score": 97.5, "sequence_coverage": 0.49709302325581395, "sequence_length": 344, "i_eval": 2.9e-28, "position": 82, "profile_coverage": 0.5057471264367817, "id": "PSAE001c01_000820", "match": "tssA"}, 
+	                          {"gene_status": "mandatory", "end_match": 164, "begin_match": 5, "system": "T6SS", "score": 224.4, "sequence_coverage": 0.9302325581395349, "sequence_length": 172, "i_eval": 1.8e-67, "position": 83, "profile_coverage": 0.9877300613496932, "id": "PSAE001c01_000830", "match": "tssB"}, 
+	                          {"gene_status": "mandatory", "end_match": 494, "begin_match": 11, "system": "T6SS", "score": 762.6, "sequence_coverage": 0.9718875502008032, "sequence_length": 498, "i_eval": 4.6e-230, "position": 84, "profile_coverage": 0.9917695473251029, "id": "PSAE001c01_000840", "match": "tssC"}, 
+	                          {"gene_status": "mandatory", "end_match": 159, "begin_match": 1, "system": "T6SS", "score": 208.4, "sequence_coverage": 0.9814814814814815, "sequence_length": 162, "i_eval": 2.1e-62, "position": 85, "profile_coverage": 1.0, "id": "PSAE001c01_000850", "match": "tssD"}, 
+	                          {"sequence_length": 281, "id": "PSAE001c01_000860", "position": 86}, 
+	                          {"gene_status": "mandatory", "end_match": 161, "begin_match": 11, "system": "T6SS", "score": 172.4, "sequence_coverage": 0.893491124260355, "sequence_length": 169, "i_eval": 1.3e-51, "position": 87, "profile_coverage": 0.9931506849315068, "id": "PSAE001c01_000870", "match": "tssE"}, 
+	                          {"gene_status": "mandatory", "end_match": 619, "begin_match": 5, "system": "T6SS", "score": 847.7, "sequence_coverage": 0.9935379644588045, "sequence_length": 619, "i_eval": 1.5e-255, "position": 88, "profile_coverage": 0.9983388704318937, "id": "PSAE001c01_000880", "match": "tssF"}, 
+	                          {"gene_status": "mandatory", "end_match": 330, "begin_match": 3, "system": "T6SS", "score": 437.3, "sequence_coverage": 0.9425287356321839, "sequence_length": 348, "i_eval": 9.6e-132, "position": 89, "profile_coverage": 0.9939759036144579, "id": "PSAE001c01_000890", "match": "tssG"}, 
+	                          {"gene_status": "mandatory", "end_match": 898, "begin_match": 9, "system": "T6SS", "score": 1419.4, "sequence_coverage": 0.9866962305986696, "sequence_length": 902, "i_eval": 0.0, "position": 90, "profile_coverage": 1.0, "id": "PSAE001c01_000900", "match": "tssH"}, 
+	                          {"gene_status": "mandatory", "end_match": 570, "begin_match": 2, "system": "T6SS", "score": 753.6, "sequence_coverage": 0.8849144634525661, "sequence_length": 643, "i_eval": 4.4e-227, "position": 91, "profile_coverage": 0.9303482587064676, "id": "PSAE001c01_000910", "match": "tssI"}, 
+	                          {"sequence_length": 94, "id": "PSAE001c01_000920", "position": 92}, 
+	                          {"gene_status": "mandatory", "end_match": 161, "begin_match": 22, "system": "T6SS", "score": 129.8, "sequence_coverage": 0.32558139534883723, "sequence_length": 430, "i_eval": 9.9e-39, "position": 93, "profile_coverage": 0.9894736842105263, "id": "PSAE001c01_000930", "match": "evpJ"}, 
+	                          {"sequence_length": 144, "id": "PSAE001c01_000940", "position": 94}, 
+	                          {"gene_status": "mandatory", "end_match": 617, "begin_match": 5, "system": "T6SS", "score": 807.2, "sequence_coverage": 0.8272604588394062, "sequence_length": 741, "i_eval": 2.7e-243, "position": 95, "profile_coverage": 0.9966832504145937, "id": "PSAE001c01_000950", "match": "tssI"}, 
+	                          {"sequence_length": 149, "id": "PSAE001c01_000960", "position": 96}, 
+	                          {"sequence_length": 399, "id": "PSAE001c01_000970", "position": 97}, 
+	                          {"sequence_length": 345, "id": "PSAE001c01_000980", "position": 98}, 
+	                          {"sequence_length": 386, "id": "PSAE001c01_000990", "position": 99}, 
+	                          {"sequence_length": 306, "id": "PSAE001c01_001000", "position": 100}
+	                          ], 
+	              "name": "PSAE001c01_T6SS_1", 
+	              "summary": {
+	            	   "state": "single_locus", 
+	            	   "forbiden": {}, 
+	            	   "mandatory": {"evpJ": 1, "tssL": 1, "tssM": 1, "tssJ": 1, "tssK": 1, "tssH": 1, "tssI": 2, "tssF": 1, "tssG": 1, "tssD": 1, "tssE": 1, "tssB": 1, "tssC": 1, "tssA": 1}, 
+	            	   "allowed": {}
+	            	   },
+	                "systemName": "T6SS", 
+	                "occurencesNumber": "1"
+	               };
+*/	               
+var json_data = {
+		"name": "PSAE001c01_T2SS_1", 
+		"replicon": {
+			"length": 5569, 
+			"name": "PSAE001c01", 
+			"topology": "circular"
+			}, 
+		"genes": [
+		          {"sequence_length": 285, "id": "PSAE001c01_031240", "position": 3092}, 
+		          {"sequence_length": 479, "id": "PSAE001c01_031250", "position": 3093}, 
+		          {"sequence_length": 679, "id": "PSAE001c01_031260", "position": 3094}, 
+		          {"sequence_length": 372, "id": "PSAE001c01_031270", "position": 3095}, 
+		          {"sequence_length": 345, "id": "PSAE001c01_031280", "position": 3096}, 
+		          {"gene_status": "mandatory", "end_match": 155, "begin_match": 23, "system": "T2SS", "score": 156.7, "sequence_coverage": 0.764367816091954, "sequence_length": 174, "i_eval": 1.3e-46, "position": 3097, "profile_coverage": 1.0, "id": "PSAE001c01_031320", "match": "gspM"}, 
+		          {"gene_status": "allowed", "end_match": 277, "begin_match": 49, "system": "T2SS", "score": 197.6, "sequence_coverage": 0.599476439790576, "sequence_length": 382, "i_eval": 1.1e-58, "position": 3098, "profile_coverage": 1.0, "id": "PSAE001c01_031330", "match": "gspL"}, 
+		          {"gene_status": "mandatory", "end_match": 250, "begin_match": 6, "system": "T2SS", "score": 297.9, "sequence_coverage": 0.7357357357357357, "sequence_length": 333, "i_eval": 2.2e-89, "position": 3099, "profile_coverage": 1.0, "id": "PSAE001c01_031340","match": "gspK"}, 
+		          {"gene_status": "mandatory", "end_match": 125, "begin_match": 6, "system": "T2SS", "score": 151.1, "sequence_coverage": 0.5063291139240507, "sequence_length": 237, "i_eval": 6.9e-45, "position": 3100, "profile_coverage": 0.991869918699187, "id": "PSAE001c01_031350", "match": "gspJ"}, 
+		          {"gene_status": "mandatory", "end_match": 110, "begin_match": 6, "system": "T2SS", "score": 147.2, "sequence_coverage": 0.813953488372093, "sequence_length": 129, "i_eval": 6.8e-44, "position": 3101, "profile_coverage": 0.9541284403669725, "id": "PSAE001c01_031360", "match": "gspI"}, 
+		          {"gene_status": "mandatory", "end_match": 100, "begin_match": 2, "system": "T2SS", "score": 46.6, "sequence_coverage": 0.5755813953488372, "sequence_length": 172, "i_eval": 8.5e-13, "position": 3102, "profile_coverage": 0.6274509803921569, "id": "PSAE001c01_031370", "match": "gspH"}, 
+		          {"gene_status": "mandatory", "end_match": 146, "begin_match": 16, "system":"T2SS", "score": 211.4, "sequence_coverage": 0.8851351351351351, "sequence_length": 148, "i_eval": 1.2e-63, "position": 3103, "profile_coverage": 1.0, "id": "PSAE001c01_031380", "match": "gspG"}, 
+		          {"gene_status": "mandatory", "end_match": 403, "begin_match": 8, "system": "T2SS", "score": 571.6, "sequence_coverage":0.9777777777777777, "sequence_length": 405, "i_eval": 2.8e-172, "position": 3104, "profile_coverage": 1.0, "id": "PSAE001c01_031390", "match": "gspF"}, 
+		          {"gene_status": "mandatory", "end_match": 395, "begin_match": 19, "system": "T2SS", "score": 640.7, "sequence_coverage": 0.750996015936255, "sequence_length": 502, "i_eval": 2.1e-193, "position": 3105, "profile_coverage": 1.0, "id": "PSAE001c01_031400", "match": "gspE"}, 
+		          {"gene_status": "allowed", "end_match": 163, "begin_match": 85, "system": "T2SS", "score": 87.2, "sequence_coverage": 0.33617021276595743, "sequence_length": 235, "i_eval": 1.6e-25, "position": 3106, "profile_coverage": 1.0, "id": "PSAE001c01_031410", "match": "gspC"}, 
+		          {"gene_status": "mandatory", "end_match": 614, "begin_match": 55, "system": "T2SS", "score": 699.3, "sequence_coverage": 0.851063829787234, "sequence_length": 658, "i_eval": 1.2e-210, "position": 3107, "profile_coverage": 1.0, "id": "PSAE001c01_031420","match": "gspD"}, 
+		          {"sequence_length": 255, "id": "PSAE001c01_031430", "position": 3108}, 
+		          {"sequence_length": 403, "id": "PSAE001c01_031440", "position": 3109}, 
+		          {"sequence_length": 501, "id": "PSAE001c01_031450", "position": 3110}, 
+		          {"sequence_length": 180, "id": "PSAE001c01_031460", "position": 3111}, 
+		          {"sequence_length": 219, "id": "PSAE001c01_031470", "position": 3112}], 
+		"summary": {
+			  "state": "single_locus", 
+		      "forbiden": {"pilT_pilU": 0}, 
+		      "mandatory": {"gspF": 1, "gspG": 1, "gspD": 1, "gspE": 1, "gspJ": 1, "gspK": 1, "gspH": 1, "gspI": 1, "gspM": 1}, 
+		      "allowed": {"gspC": 1, "gspN": 0, "gspO": 0, "gspL": 1}}, "systemName": "T2SS", 
+		      "occurencesNumber": "1"
+		      };
+
+/******************************************************************
+ * HTML table creation using mustache templating                  *
+ * must be done before raphael otherwise arrow have not any color *
+ ******************************************************************/
+ var template = $('#repl_table_Tpl').html();
+ var table_html = Mustache.to_html(template, json_data);
+ $('#genes_table').html(table_html);
+
+ var my_system = macsyview.system;
+ my_system.draw(json_data, "system_schema");
+</script>
+
+</html>
