@@ -238,7 +238,13 @@ macsyview.orderedview = (function () {
 		event.returnValue = false;//prevent to scroll the window
 	}
 
-
+	function reset(event) {
+		drawer.viewBox = [0, 0, configMap.paper_w, configMap.paper_h];
+		drawer.zoom = 1;
+		drawer.paper.setViewBox.apply(
+				drawer.paper, 
+				drawer.viewBox);
+	}
 
 
 	var draw = function(json_data, container){
@@ -276,7 +282,7 @@ macsyview.orderedview = (function () {
 		$("#"+container).mousemove(doPan);
 		$("#"+container).mouseup(stopRecord);
 		$("#"+container).mousewheel(wheel);
-
+		$('#resetZoom').click(reset);
 
 		/********************************************
 		 * replace cursor icon with open/close hand 
