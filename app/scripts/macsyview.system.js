@@ -19,11 +19,11 @@ macsyview.system = (function () {
 	var colorMap = {
 			"mandatory" : "green",
 			"allowed" : "blue",
-			"forbiden" : "red",
+			"forbidden" : "red",
 			"empty" : "grey"
 	};
 	
-	var presence = ["mandatory", "allowed", "forbiden"];
+	var presence = ["mandatory", "allowed", "forbidden"];
 	
 	var draw = function(json_data, container){
 		$("#"+container).append("<h2> System "+ json_data.systemName +"</h2>");
