@@ -22,13 +22,14 @@ macsyview.utils = (function () {
 	var ColorPicker = function ColorPicker(){
 		this.colorMap = [
 		                 "Aqua", 
-		                 "Blue", "BlueViolet", "Brown", "BurlyWood", 
-		                 "CadetBlue", "Chartreuse", "Chocolate", "Crimson", 
+		                 "Bisque", "Blue", "BlueViolet", "Brown", "BurlyWood", 
+		                 "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Crimson", 
 		                 "DarkCyan", "DarkGoldenRod", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen", 
-		                 "DarkOrange", "DarkSalmon", "DarkSlateBlue", "DarkSlateGray", "DeepPink", "DodgerBlue", 
+		                 "DarkOrange", "DarkGoldenRod", "DarkKhaki", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray", "DeepPink", "DodgerBlue", 
 		                 "FireBrick", 
 		                 "Gold", "GreenYellow", 
 		                 "IndianRed",  
+		                 "Khaki",
 		                 "MediumOrchid", "MediumSeaGreen", 
 		                 "Olive", "OliveDrab", "Orange", "OrangeRed", 
 		                 "Peru", "Purple", 
