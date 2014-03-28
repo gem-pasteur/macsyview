@@ -253,7 +253,6 @@ macsyview.orderedview = (function () {
 
 		configMap.paper_w = repliconGrphx.length + (2 * configMap.replicon_offset);
 		var paper = Raphael(container, configMap.paper_w, configMap.paper_h );
-		paper.canvas.style.backgroundColor = '#F00';
 
 		drawer.container_id = container;
 		drawer.viewBox = [0, 0, configMap.paper_w, configMap.paper_h];
