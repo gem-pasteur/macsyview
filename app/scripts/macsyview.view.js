@@ -58,6 +58,7 @@ macsyview.view = (function () {
         },
 
         displaySystemMatches = function (sortKeys) {
+            displayWaitSplash(true);
             var list = macsyview.data.list();
             list.sort(sortByKeys(sortKeys));
             var tplData = {
@@ -74,12 +75,23 @@ macsyview.view = (function () {
             }
             displayView('systemMatchesList', tplData);
             initSystemMatchSelectionHandler();
+            displayWaitSplash(false);
+        },
+        
+        displayWaitSplash = function(toggle){
+            $('#waitMessage').toggleClass('in',toggle);
+            $('#waitBack').toggleClass('in',toggle);
+            var displayValue = toggle ? 'block' : 'none';
+            $('#waitMessage').css('display',displayValue);
+            $('#waitBack').css('display',displayValue);
         },
 
         fileSelectionHandler = function (e) {
+            displayWaitSplash(true);
             var jsonFile = e.target.files[0];
             macsyview.data.load(jsonFile, function () {
                 macsyview.go("list:" + macsyview.data.list().macsyviewId + ":by_replicon");
+                displayWaitSplash(false);
             });
         },
 

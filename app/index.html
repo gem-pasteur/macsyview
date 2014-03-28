@@ -40,7 +40,25 @@
         </div>
     </div>
 
+    <div class="modal fade" id="waitMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Loading data, please wait...</h4>
+          </div>
+          <div class="modal-body">
+            <div class="progress progress-striped active">
+              <div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                <span class="sr-only">100% Complete</span>
+              </div>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
 
+    <div id="waitBack" class="modal-backdrop fade" style="display: none;"></div>
+    
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
