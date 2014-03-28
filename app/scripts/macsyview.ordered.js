@@ -278,10 +278,10 @@ macsyview.orderedview = (function () {
 			g.arrow.mouseout(g.hide.bind(g));
 		}
 
-		$("#"+container).mousedown(startRecord);
-		$("#"+container).mousemove(doPan);
-		$("#"+container).mouseup(stopRecord);
-		$("#"+container).mousewheel(wheel);
+		$("#"+container+" :first-child").mousedown(startRecord);
+		$("#"+container+" :first-child").mousemove(doPan);
+		$("#"+container+" :first-child").mouseup(stopRecord);
+		$("#"+container+" :first-child").mousewheel(wheel);
 		$('#resetZoom').click(reset);
 
 		/********************************************
