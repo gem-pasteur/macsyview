@@ -48,6 +48,10 @@ macsyview.view = (function () {
                 return ('match' in gene);
             });
             displayView('systemMatchDetail', doc);
+            var my_system = macsyview.system;
+            my_system.draw(doc, "system_schema");
+            var my_orderedview = macsyview.orderedview;
+            my_orderedview.draw(doc, "replicon_schema");
         },
 
         initSystemMatchSelectionHandler = function () {

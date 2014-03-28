@@ -73,6 +73,9 @@
     <script src="scripts/macsyview.js"></script>
     <script src="scripts/macsyview.data.js"></script>
     <script src="scripts/macsyview.view.js"></script>
+    <script src="scripts/macsyview.ordered.js"></script>
+    <script src="scripts/macsyview.system.js"></script>
+    <script src="scripts/macsyview.utils.js"></script>
     <!-- endbuild -->
 
     <script id="systemMatchesList" type="text/mustache-tmpl">
@@ -116,6 +119,8 @@
         {{#replicon}}
             <h4>Replicon {{name}} (length: {{length}}, topology: {{topology}})</h4>
         {{/replicon}}
+        <div id="system_schema" />
+        <div id="replicon_schema" />
         <table class="table table-hover tab-striped">
         <thead>
             <tr>

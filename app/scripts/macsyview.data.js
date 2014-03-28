@@ -59,13 +59,20 @@ macsyview.data = (function () {
 
     load = function (jsonFileHandle, callback) {
         loadFile(jsonFileHandle, function (jsonText) {
-            var i;
+            var i, j;
             console.log('parsing json begins...');
             list = JSON.parse(jsonText);
             list.macsyviewId = Date.now();
             console.log('parsing json finished!');
+            var utils = macsyview.utils;
+            var colorPicker = utils.colorPicker;
             for (i = 0; i < list.length; i++) {
                 list[i].id = i;
+                 for(j = 0; j < list[i].genes.length; j++){
+                     var g = list[i].genes[j];
+                     var c = colorPicker.pick(g);
+                     g.color =  c;
+                }
             }
             callback();
         });
