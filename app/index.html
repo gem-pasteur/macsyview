@@ -141,7 +141,7 @@
         <tbody>
             {{#matchedGenes}}
             <tr>
-				<td>{{id}}</td>
+				<td {{#match}}style="background-color:{{color}}"{{/match}}>{{id}}</td>
 				<td>{{position}}</td>
                 <td>{{match}}</td>
                 <td>{{gene_status}}</td>
