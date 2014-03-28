@@ -30,7 +30,7 @@ macsyview.data = (function () {
             fileSize = textFileHandle.size;
 
         function readBlob(file, offset) {
-            console.log("reading file at offset ", offset);
+            //console.log("reading file at offset ", offset);
             var stop = offset + chunkSize - 1,
                 reader,
                 blob;

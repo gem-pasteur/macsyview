@@ -95,7 +95,7 @@
             </tr>
             {{#files}}
             <tr class="txsview-systemmatchtablerow" data-systemmatchid="{{id}}">
-                <td>{{repliconName}}</td>
+                <td>{{replicon.name}}</td>
                 <td>{{systemName}}</td>
                 <td>{{occurencesNumber}}</td>
             </tr>
@@ -119,8 +119,12 @@
         {{#replicon}}
             <h4>Replicon {{name}} (length: {{length}}, topology: {{topology}})</h4>
         {{/replicon}}
-        <div id="system_schema" />
-        <div id="replicon_schema" />
+        <div class="panel panel-default">
+            <div id="system_schema" class="panel-default"/>
+        </div>
+        <div class="panel panel-default">
+            <div id="replicon_schema" class="panel-default" style="width: 100%; overflow: scroll;"/>
+        </div>
         <table class="table table-hover tab-striped">
         <thead>
             <tr>

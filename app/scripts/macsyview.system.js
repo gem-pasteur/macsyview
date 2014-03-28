@@ -26,7 +26,6 @@ macsyview.system = (function () {
 	var presence = ["mandatory", "allowed", "forbidden"];
 	
 	var draw = function(json_data, container){
-		$("#"+container).append("<h2> System "+ json_data.systemName +"</h2>");
 		var summary = json_data.summary;
 		
 		for (var i = 0; i < presence.length ; i++){

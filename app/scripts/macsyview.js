@@ -32,11 +32,11 @@ var macsyview = (function () {
                     checkDataId();
                     switch(location.hash.split(":")[2]){
                         case "by_system":
-                            macsyview.view.displaySystemMatches(['systemName', 'repliconName', 'occurencesNumber']);
+                            macsyview.view.displaySystemMatches(['systemName', 'replicon.name', 'occurencesNumber']);
                             break;
                         case "by_replicon":
                         default:
-                            macsyview.view.displaySystemMatches(['repliconName', 'systemName', 'occurencesNumber']);  
+                            macsyview.view.displaySystemMatches(['replicon.name', 'systemName', 'occurencesNumber']);  
                             break;
                     }
                     break;

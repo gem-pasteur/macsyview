@@ -24,34 +24,52 @@ macsyview.view = (function () {
 
         viewContainer = $(config.viewContainer),
 
+        displayWaitSplash = function (toggle) {
+            $('#waitMessage').toggleClass('in', toggle);
+            $('#waitBack').toggleClass('in', toggle);
+            var displayValue = toggle ? 'block' : 'none';
+            $('#waitMessage').css('display', displayValue);
+            $('#waitBack').css('display', displayValue);
+        },
+        
         displayView = function (viewName, context) {
             viewContainer.html('');
             var template = $('#' + viewName).text();
             viewContainer.html(Mustache.render(template, context));
         },
 
+        pathValue = function (obj, path, defaultValue) {
+            var properties = path.split('.'),
+                i;
+            for (i = 0; i < properties.length; i++) {
+                if (!obj) {
+                    return defaultValue || null;
+                }
+                obj = obj[properties[i]];
+            }
+            return obj || defaultValue;
+        },
+
         sortByKeys = function (keys) {
-            return function(item1, item2) {
+            return function (item1, item2) {
                 var cmpRes = 0,
                     keysHere = keys.slice(),
                     currentKey;
-                while(cmpRes === 0 && keysHere.length>0){
+                while (cmpRes === 0 && keysHere.length > 0) {
                     currentKey = keysHere.shift();
-                    cmpRes = item1[currentKey].localeCompare(item2[currentKey]);
+                    cmpRes = pathValue(item1, currentKey, '').localeCompare(pathValue(item2, currentKey, ''));
                 }
                 return cmpRes;
-            }
+            };
         },
-        
+
         displaySystemMatchFileDetail = function (doc) {
             doc.matchedGenes = doc.genes.filter(function (gene) {
                 return ('match' in gene);
             });
             displayView('systemMatchDetail', doc);
-            var my_system = macsyview.system;
-            my_system.draw(doc, "system_schema");
-            var my_orderedview = macsyview.orderedview;
-            my_orderedview.draw(doc, "replicon_schema");
+            macsyview.system.draw(doc, "system_schema");
+            macsyview.orderedview.draw(doc, "replicon_schema");
         },
 
         initSystemMatchSelectionHandler = function () {
@@ -69,25 +87,17 @@ macsyview.view = (function () {
                 'files': list,
                 'sortKey': sortKeys[0]
             };
-            switch(sortKeys[0]){
-                case "repliconName":
-                    tplData["sortBySystemLink"] = "list:" + macsyview.data.list().macsyviewId + ":by_system";
-                    break;
-                case "systemName":
-                    tplData["sortByRepliconLink"] = "list:" + macsyview.data.list().macsyviewId + ":by_replicon";
-                    break;
+            switch (sortKeys[0]) {
+            case "replicon.name":
+                tplData["sortBySystemLink"] = "list:" + macsyview.data.list().macsyviewId + ":by_system";
+                break;
+            case "systemName":
+                tplData["sortByRepliconLink"] = "list:" + macsyview.data.list().macsyviewId + ":by_replicon";
+                break;
             }
             displayView('systemMatchesList', tplData);
             initSystemMatchSelectionHandler();
             displayWaitSplash(false);
-        },
-        
-        displayWaitSplash = function(toggle){
-            $('#waitMessage').toggleClass('in',toggle);
-            $('#waitBack').toggleClass('in',toggle);
-            var displayValue = toggle ? 'block' : 'none';
-            $('#waitMessage').css('display',displayValue);
-            $('#waitBack').css('display',displayValue);
         },
 
         fileSelectionHandler = function (e) {
@@ -105,13 +115,13 @@ macsyview.view = (function () {
             displayView('runSelectForm', {});
             $(config.directory).change(fileSelectionHandler);
         },
-    
+
         init = function () {
             $(config.homeLink).click(displaySelectForm);
             $(config.systemMatchesLinkList).click(displaySystemMatches);
             displaySelectForm();
         };
-    
+
     return {
         'config': config,
         'init': init,
