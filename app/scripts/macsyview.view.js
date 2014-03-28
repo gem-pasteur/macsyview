@@ -110,7 +110,6 @@ macsyview.view = (function () {
         },
 
         displaySelectForm = function () {
-            macsyview.data.reset();
             $(config.systemMatchesLinkList).hide();
             displayView('runSelectForm', {});
             $(config.directory).change(fileSelectionHandler);
