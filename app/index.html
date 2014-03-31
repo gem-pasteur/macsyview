@@ -122,8 +122,9 @@
         <div class="panel panel-default">
             <div id="system_schema" class="panel-default"/>
         </div>
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="position: relative;">
             <div id="replicon_schema" class="panel-default" style="width: 100%; overflow: scroll;"/>
+            <div id="gene_infos" class="well well-sm" style="position: absolute; bottom: 0; left: 2px;"/>
         </div>
         <table class="table table-hover tab-striped">
         <thead>
@@ -164,6 +165,17 @@
     </table>
     </script>
 
+    <script id="gene_infos_Tpl" type="text/template">
+        <h4>Gene Information</h4>
+              <ul>
+                  <li {{#match}}style="background-color:{{color}}"{{/match}}>id: {{id}}</li>
+                  {{#match}}<li>match : {{.}}</li>{{/match}}
+                  {{#i_eval}}<li>i-evalue : {{i_eval}}</li>{{/i_eval}}
+                  {{#profile_coverage}}<li>profile coverage : {{profile_coverage}}</li>{{/profile_coverage}}
+                  <li>length: {{length}} bp</li>
+               </ul>
+    </script>
+    
     <script>
         var macsyview = macsyview;
         $(document).ready(macsyview.init());
