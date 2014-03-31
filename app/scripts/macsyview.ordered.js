@@ -147,10 +147,13 @@ macsyview.orderedview = (function () {
 		var template = $('#gene_infos_Tpl').html();
 		var info_html = Mustache.to_html(template, this.gene);
 		$(configMap.gene_infos_container).html(info_html);
+		$(configMap.gene_infos_container).stop();
+		$(configMap.gene_infos_container).fadeIn();
 	};
 
 	GenesGrphx.prototype.hide = function hide_gene(){
-		$(configMap.gene_infos_container).html("fly cursor over a gene to display informations");
+		$(configMap.gene_infos_container).stop();
+		$(configMap.gene_infos_container).fadeOut();
 	};
 
 
@@ -248,10 +251,17 @@ macsyview.orderedview = (function () {
 
 
 	var draw = function(json_data, container){
-		var replicon = new Replicon(json_data);
+
+        var container_w = $("#"+container).width();
+		var container_h = $("#"+container).height();
+
+        var replicon = new Replicon(json_data);
 		var repliconGrphx = new RepliconGrphx(replicon);
 
 		configMap.paper_w = repliconGrphx.length + (2 * configMap.replicon_offset);
+        if (configMap.paper_w < container_w){
+            configMap.paper_w = container_w;
+        }
 		var paper = Raphael(container, configMap.paper_w, configMap.paper_h );
 
 		drawer.container_id = container;
@@ -260,8 +270,6 @@ macsyview.orderedview = (function () {
 
 		repliconGrphx.draw(paper);
 
-		var container_w = $("#"+container).width();
-		var container_h = $("#"+container).height();
 
 		//var zoom = configMap.paper_w / container_w;
 		//zoom = 1;
