@@ -64,9 +64,6 @@ macsyview.view = (function () {
         },
 
         displaySystemMatchFileDetail = function (doc) {
-            doc.matchedGenes = doc.genes.filter(function (gene) {
-                return ('match' in gene);
-            });
             displayView('systemMatchDetail', doc);
             macsyview.system.draw(doc, "system_schema");
             macsyview.orderedview.draw(doc, "replicon_schema");

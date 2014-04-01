@@ -132,6 +132,7 @@
 				<th>Sequence Id</th>
                 <th>Position</th>
                 <th>Match</th>
+                <th>Function</th>
                 <th>Gene status</th>
 				<th>System</th>
                 <th>Sequence length</th>
@@ -144,11 +145,12 @@
             </tr>
         </thead>
         <tbody>
-            {{#matchedGenes}}
+            {{#genes}}
             <tr>
 				<td {{#match}}style="background-color:{{color}}"{{/match}}>{{id}}</td>
 				<td>{{position}}</td>
                 <td>{{match}}</td>
+                <td><em>TBD</em></td>
                 <td>{{gene_status}}</td>
 				<td>{{system}}</td>
 				<td>{{sequence_length}}</td>
@@ -160,7 +162,7 @@
 				<td>{{begin_match}}</td>
 				<td>{{end_match}}</td>
             </tr>
-            {{/matchedGenes}}
+            {{/genes}}
         </tbody>
     </table>
     </script>
@@ -170,6 +172,7 @@
               <ul>
                   <li {{#match}}style="background-color:{{color}}"{{/match}}>id: {{id}}</li>
                   {{#match}}<li>match : {{.}}</li>{{/match}}
+                  {{#match}}<li>function : <em>TBD</em></li>{{/match}}
                   {{#i_eval}}<li>i-evalue : {{i_eval}}</li>{{/i_eval}}
                   {{#profile_coverage}}<li>profile coverage : {{profile_coverage}}</li>{{/profile_coverage}}
                   <li>length: {{length}} bp</li>
