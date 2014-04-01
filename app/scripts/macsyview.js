@@ -5,7 +5,7 @@ var macsyview = (function () {
     'use strict';
 
     var go = function (hashString) {
-        location.hash = "!" + hashString;
+        location.hash = "#!" + hashString;
         $(window).trigger('hashchange');
     },
 
@@ -30,14 +30,14 @@ var macsyview = (function () {
                     break;
                 case "#!list":
                     checkDataId();
-                    switch(location.hash.split(":")[2]){
-                        case "by_system":
-                            macsyview.view.displaySystemMatches(['systemName', 'replicon.name', 'occurencesNumber']);
-                            break;
-                        case "by_replicon":
-                        default:
-                            macsyview.view.displaySystemMatches(['replicon.name', 'systemName', 'occurencesNumber']);  
-                            break;
+                    switch (location.hash.split(":")[2]) {
+                    case "by_system":
+                        macsyview.view.displaySystemMatches(['systemName', 'replicon.name', 'occurencesNumber']);
+                        break;
+                    case "by_replicon":
+                    default:
+                        macsyview.view.displaySystemMatches(['replicon.name', 'systemName', 'occurencesNumber']);  
+                        break;
                     }
                     break;
                 case "#!detail":

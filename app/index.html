@@ -69,15 +69,6 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/macsyview.js"></script>
-    <script src="scripts/macsyview.data.js"></script>
-    <script src="scripts/macsyview.view.js"></script>
-    <script src="scripts/macsyview.ordered.js"></script>
-    <script src="scripts/macsyview.system.js"></script>
-    <script src="scripts/macsyview.utils.js"></script>
-    <!-- endbuild -->
-
     <script id="systemMatchesList" type="text/mustache-tmpl">
         <table class="span12 table table-hover tab-striped">
             <tr>
@@ -178,12 +169,17 @@
                   <li>length: {{length}} bp</li>
                </ul>
     </script>
-    
-    <script>
-        var macsyview = macsyview;
-        $(document).ready(macsyview.init());
-    </script>
 
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/macsyview.js"></script>
+    <script src="scripts/macsyview.data.js"></script>
+    <script src="scripts/macsyview.view.js"></script>
+    <script src="scripts/macsyview.ordered.js"></script>
+    <script src="scripts/macsyview.system.js"></script>
+    <script src="scripts/macsyview.utils.js"></script>
+    <script src="scripts/launcher.js"></script>
+    <!-- endbuild -->
+    
 </body>
 
 </html>
