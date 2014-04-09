@@ -26,9 +26,12 @@ var macsyview = (function () {
                 var viewName = location.hash.split(":")[0];
                 switch (viewName) {
                 case "#!select":
+                    $("#listLink").hide();
                     macsyview.view.displaySelectForm();
                     break;
                 case "#!list":
+                    $("#listLink").hide();
+                    $("#listLink").attr('href',location.hash);
                     checkDataId();
                     switch (location.hash.split(":")[2]) {
                     case "by_system":
@@ -42,6 +45,7 @@ var macsyview = (function () {
                     break;
                 case "#!detail":
                     checkDataId();
+                    $("#listLink").show();
                     macsyview.view.displaySystemMatchFileDetail(macsyview.data.list()[location.hash.split(":")[2]]);
                     break;
                 default:

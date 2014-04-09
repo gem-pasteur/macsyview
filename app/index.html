@@ -26,11 +26,8 @@
                     <a class="navbar-brand" href="#">MacSyView</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="#" id="homeLink">Open Results file</a>
-                    </li>
                     <li>
-                        <a href="#" id="systemMatchesLinkList">System Matches List<span id="runName"></span></a>
+                        <a id="listLink" href="#!list:xx" >Back to systems list</a>
                     </li>
                 </ul>
             </div>
@@ -87,8 +84,8 @@
             {{#files}}
             <tr class="txsview-systemmatchtablerow" data-systemmatchid="{{id}}">
                 <td>{{replicon.name}}</td>
-                <td>{{systemName}}</td>
-                <td>{{occurencesNumber}}</td>
+                <td>{{name}}</td>
+                <td>{{occurenceNumber}}</td>
             </tr>
             {{/files}}
         </table>
@@ -106,67 +103,94 @@
     </script>
 
     <script id="systemMatchDetail" type="text/template">    
-        <h2>Components for system {{systemName}}</h2>
+        <h2>Components for system {{name}}</h2>
         {{#replicon}}
-            <h4>Replicon {{name}} (length: {{length}}, topology: {{topology}})</h4>
+            <h4>Replicon {{name}} {{#length}}(length: {{length}}, topology: {{topology}}){{/length}}</h4>
         {{/replicon}}
+
         <div class="panel panel-default">
-            <div id="system_schema" class="panel-default"/>
+            <div class="panel-heading">
+                <h3 class="panel-title">Effectives of system components</h3>
+            </div>
+            <div class="panel-body">
+                <i>hover boxes to display information</i>
+                <div class="panel panel-default">
+                    <div id="system_schema" class="panel-default"/>
+                </div>
+            </div>
         </div>
-        <div class="panel panel-default" style="position: relative;">
-            <div id="replicon_schema" class="panel-default" style="width: 100%; overflow: scroll;"/>
-            <div id="gene_infos" class="well well-sm" style="position: absolute; bottom: 0; left: 2px;"/>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Genomic context of the detected system</h3>
+            </div>
+            <div class="panel-body">
+                <i>hover boxes to display information</i>
+                <div class="panel panel-default" style="position: relative;">
+                    <div id="replicon_schema" class="panel-default" style="width: 100%; overflow: scroll;"/>
+                    <div id="gene_infos" class="well well-sm" style="position: absolute; bottom: 0; left: 2px;"/>
+                    <button id="resetZoom" class="btn btn-primary" style="position: absolute; bottom: 0; right: 2px;"><i class="glyphicon glyphicon-fullscreen"></i></button>
+                </div>
+            </div>
         </div>
-        <table class="table table-hover tab-striped">
-        <thead>
-            <tr>
-				<th>Sequence Id</th>
-                <th>Position</th>
-                <th>Match</th>
-                <th>Function</th>
-                <th>Gene status</th>
-				<th>System</th>
-                <th>Sequence length</th>
-                <th>Score</th>
-                <th>i-evalue</th>
-				<th>Profile coverage</th>                
-                <th>Sequence coverage</th>
-                <th>Begin match</th>
-                <th>End match</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#genes}}
-            <tr>
-				<td {{#match}}style="background-color:{{color}}"{{/match}}>{{id}}</td>
-				<td>{{position}}</td>
-                <td>{{match}}</td>
-                <td><em>TBD</em></td>
-                <td>{{gene_status}}</td>
-				<td>{{system}}</td>
-				<td>{{sequence_length}}</td>
-                <!-- <td>{{strand}}</td> comment sait on sur quel brin est le gene?  beg et end?-->
-                <td>{{score}}</td>
-				<td>{{i_eval}}</td>
-				<td>{{profile_coverage}}</td>
-				<td>{{sequence_coverage}}</td>
-				<td>{{begin_match}}</td>
-				<td>{{end_match}}</td>
-            </tr>
-            {{/genes}}
-        </tbody>
-    </table>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Hits summary</h3>
+            </div>
+                <table class="table table-hover tab-striped">
+                    <thead>
+                        <tr>
+                            <th>Color</th>            
+                            <th>Sequence Id</th>
+                            <th>Position</th>
+                            <th>Match</th>
+                            <th>Function</th>
+                            <th>Gene status</th>
+                            <th>System</th>
+                            <th>Sequence length</th>
+                            <th>Score</th>
+                            <th>i-evalue</th>
+                            <th>Profile coverage</th>                
+                            <th>Sequence coverage</th>
+                            <th>Begin match</th>
+                            <th>End match</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#genes}}
+                        <tr>
+                            <td {{#match}}style="background-color:{{color}}"{{/match}}>&nbsp;&nbsp;&nbsp;</td>
+                            <td>{{id}}</td>
+                            <td>{{position}}</td>
+                            <td>{{match}}</td>
+                            <td><em>TBD</em></td>
+                            <td>{{gene_status}}</td>
+                            <td>{{system}}</td>
+                            <td>{{sequence_length}}</td>
+                            <!-- <td>{{strand}}</td> comment sait on sur quel brin est le gene?  beg et end?-->
+                            <td>{{score}}</td>
+                            <td style="whitespace: nowrap;">{{i_eval}}</td>
+                            <td>{{profile_coverage}}</td>
+                            <td>{{sequence_coverage}}</td>
+                            <td>{{begin_match}}</td>
+                            <td>{{end_match}}</td>
+                        </tr>
+                        {{/genes}}
+                    </tbody>
+                </table>
+        </div>
     </script>
 
     <script id="gene_infos_Tpl" type="text/template">
         <h4>Gene Information</h4>
               <ul>
-                  <li {{#match}}style="background-color:{{color}}"{{/match}}>id: {{id}}</li>
+                  <li>{{#match}}<span style="background-color:{{color}}">&nbsp;&nbsp;&nbsp;&nbsp;</span>{{/match}} id: {{id}}</li>
                   {{#match}}<li>match : {{.}}</li>{{/match}}
                   {{#match}}<li>function : <em>TBD</em></li>{{/match}}
                   {{#i_eval}}<li>i-evalue : {{i_eval}}</li>{{/i_eval}}
                   {{#profile_coverage}}<li>profile coverage : {{profile_coverage}}</li>{{/profile_coverage}}
-                  <li>length: {{length}} bp</li>
+                  <li>length: {{length}} aa</li>
                </ul>
     </script>
 

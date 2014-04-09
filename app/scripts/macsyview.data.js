@@ -72,6 +72,8 @@ macsyview.data = (function () {
                      var g = list[i].genes[j];
                      var c = colorPicker.pick(g);
                      g.color =  c;
+                     g.profile_coverage = g.profile_coverage.toFixed(2);
+                     g.sequence_coverage = g.sequence_coverage.toFixed(2);
                 }
             }
             callback();
