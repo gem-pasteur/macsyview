@@ -60,6 +60,7 @@ macsyview.data = (function () {
     load = function (jsonFileHandle, callback) {
         loadFile(jsonFileHandle, function (jsonText) {
             var i, j;
+            var presence = ["mandatory", "allowed", "forbidden"];
             console.log('parsing json begins...');
             list = JSON.parse(jsonText);
             list.macsyviewId = Date.now();
@@ -67,18 +68,31 @@ macsyview.data = (function () {
             var utils = macsyview.utils;
             var colorPicker = utils.colorPicker;
             for (i = 0; i < list.length; i++) {
-                list[i].id = i;
+                 //list[i].id = i; //TODO remove as soon as Bertrand provides the ID
                  for(j = 0; j < list[i].genes.length; j++){
                      var g = list[i].genes[j];
                      var c = colorPicker.pick(g);
                      g.color =  c;
                      if(g.profile_coverage){
+                         console.log(g.profile_coverage);
+                         console.log(typeof g.profile_coverage);
                          g.profile_coverage = g.profile_coverage.toFixed(2);
                      }
                      if(g.sequence_coverage){
                          g.sequence_coverage = g.sequence_coverage.toFixed(2);
                      }
                 }
+                /*
+                for (var i = 0; i < presence.length ; i++){
+                    var  p = presence[i];
+                    var arr = [];
+                    for (var g_name in list[i].summary[p]){
+                        list[i].summary[p][g_name]['name'] = g_name;
+                        console.log(list[i].summary[p][g_name]);
+                        arr.push(list[i].summary[p][g_name]);
+                    }
+                    list[i].summary[p]=arr;
+                }*/
             }
             callback();
         });

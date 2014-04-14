@@ -69,22 +69,26 @@
     <script id="systemMatchesList" type="text/mustache-tmpl">
         <table class="span12 table table-hover tab-striped">
             <tr>
-                <th style="width: 40%">Replicon Name 
+                <th style="width: 20%">Replicon Name 
                    {{#sortByRepliconLink}}
                    <a href="#!{{sortByRepliconLink}}" title="sort by replicon first"><span class="glyphicon glyphicon-chevron-down"></span></a>
                    {{/sortByRepliconLink}}
                 </th>
-                <th style="width: 40%">System Name 
+                <th style="width: 20%">System Name 
                    {{#sortBySystemLink}}
                    <a href="#!{{sortBySystemLink}}" title="sort by system first"><span class="glyphicon glyphicon-chevron-down"></span></a>
                    {{/sortBySystemLink}}
                 </th>
-                <th style="width: 20%">Occurence No.</th>
+                <th style="width: 40%">System Id</th>
+                <th style="width: 10%">Status</th>
+                <th style="width: 10%">Occurence No.</th>
             </tr>
             {{#files}}
             <tr class="txsview-systemmatchtablerow" data-systemmatchid="{{id}}">
                 <td>{{replicon.name}}</td>
                 <td>{{name}}</td>
+                <td>{{id}}</td>
+                <td>{{summary.state}}</td>
                 <td>{{occurenceNumber}}</td>
             </tr>
             {{/files}}
@@ -103,7 +107,7 @@
     </script>
 
     <script id="systemMatchDetail" type="text/template">    
-        <h2>Components for system {{name}}</h2>
+        <h2>Components for system {{id}} ({{summary.state}})</h2>
         {{#replicon}}
             <h4>Replicon {{name}} {{#length}}(length: {{length}}, topology: {{topology}}){{/length}}</h4>
         {{/replicon}}
@@ -127,7 +131,9 @@
             <div class="panel-body">
                 <i>hover boxes to display information</i>
                 <div class="panel panel-default" style="position: relative;">
-                    <div id="replicon_schema" class="panel-default" style="width: 100%; overflow: scroll;"/>
+                    <div class="panel-default" style="width: 100%; overflow: scroll;">
+                    <div id="replicon_schema"></div>
+                    </div>
                     <div id="gene_infos" class="well well-sm" style="position: absolute; bottom: 0; left: 2px;"/>
                     <button id="resetZoom" class="btn btn-primary" style="position: absolute; bottom: 0; right: 2px;"><i class="glyphicon glyphicon-fullscreen"></i></button>
                 </div>
@@ -164,7 +170,7 @@
                             <td>{{id}}</td>
                             <td>{{position}}</td>
                             <td>{{match}}</td>
-                            <td><em>TBD</em></td>
+                            <td>{{function}}</td>
                             <td>{{gene_status}}</td>
                             <td>{{system}}</td>
                             <td>{{sequence_length}}</td>
@@ -183,15 +189,30 @@
     </script>
 
     <script id="gene_infos_Tpl" type="text/template">
-        <h4>Gene Information</h4>
-              <ul>
-                  <li>{{#match}}<span style="background-color:{{color}}">&nbsp;&nbsp;&nbsp;&nbsp;</span>{{/match}} id: {{id}}</li>
-                  {{#match}}<li>match : {{.}}</li>{{/match}}
-                  {{#match}}<li>function : <em>TBD</em></li>{{/match}}
-                  {{#i_eval}}<li>i-evalue : {{i_eval}}</li>{{/i_eval}}
-                  {{#profile_coverage}}<li>profile coverage : {{profile_coverage}}</li>{{/profile_coverage}}
-                  <li>length: {{length}} aa</li>
-               </ul>
+    <div class="row">
+        <span class="col-md-6">
+            <h4>Gene&nbsp;Information</h4>
+                  <ul>
+                      <li>{{#match}}<span style="background-color:{{color}}">&nbsp;&nbsp;&nbsp;&nbsp;</span>{{/match}}&nbsp;id:&nbsp;{{id}}</li>
+                      <li>length:&nbsp;{{length}}&nbsp;aa</li>
+                   </ul>
+        </span>
+        <span class="col-md-6">
+            <h4>&nbsp;</h4>
+                  <ul>
+                      {{#match}}
+                      <li>match:&nbsp;{{.}}</li>
+                      {{/match}}
+                      {{#function}}
+                      <li>function:&nbsp;<em>{{.}}</em></li>
+                      {{/function}}
+                      {{#match}}
+                      <li>i-evalue:&nbsp;{{i_eval}}</li>
+                      <li>profile&nbsp;coverage:&nbsp;{{profile_coverage}}</li>
+                      {{/match}}
+                   </ul>
+        </span>
+    </div>
     </script>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->

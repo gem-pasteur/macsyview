@@ -35,18 +35,21 @@ var macsyview = (function () {
                     checkDataId();
                     switch (location.hash.split(":")[2]) {
                     case "by_system":
-                        macsyview.view.displaySystemMatches(['systemName', 'replicon.name', 'occurencesNumber']);
+                        macsyview.view.displaySystemMatches(['name', 'replicon.name', 'occurenceNumber']);
                         break;
                     case "by_replicon":
                     default:
-                        macsyview.view.displaySystemMatches(['replicon.name', 'systemName', 'occurencesNumber']);  
+                        macsyview.view.displaySystemMatches(['replicon.name', 'name', 'occurenceNumber']);  
                         break;
                     }
                     break;
                 case "#!detail":
                     checkDataId();
                     $("#listLink").show();
-                    macsyview.view.displaySystemMatchFileDetail(macsyview.data.list()[location.hash.split(":")[2]]);
+                    var detailDoc = macsyview.data.list().filter(function(item){
+                        return item.id==location.hash.split(":")[2];
+                    })[0];
+                    macsyview.view.displaySystemMatchFileDetail(detailDoc);
                     break;
                 default:
                     go('select');

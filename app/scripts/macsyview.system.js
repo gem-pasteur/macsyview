@@ -32,7 +32,8 @@ macsyview.system = (function () {
 			var  p = presence[i];
 			console.log( "i = ", i , " p = ",p);
 			var p_container = $("#"+container);
-			p_container.append('<div id="'+ p +'"></div>'); 
+            console.log(summary[p].length);
+			p_container.append('<div id="'+ p +'" style="width:' + summary[p].length + 'px;"></div>'); 
 			p_container.append("<h3>"+p+"</h3>");
 			for (var g_name in summary[p]){
 				var occurence = parseInt(summary[p][g_name]);
@@ -40,7 +41,7 @@ macsyview.system = (function () {
 				if(occurence){
 					color = colorMap[p];
 				}
-				p_container.append('<span id="'+ g_name +'" style="background-color:' + color + '" title="'+ g_name +'">&nbsp;&nbsp;' + summary[p][g_name] + '&nbsp;&nbsp;</span>');
+				p_container.append('<span id="'+ g_name +'" style="display: inline-block; width:50px;" title="'+ g_name +'"><div style="background-color:' + color + ';">&nbsp;&nbsp;&nbsp;&nbsp;</div><div>' + summary[p][g_name] + '</div></span>');
 				p_container.append('&nbsp;');
 			}
 		}
