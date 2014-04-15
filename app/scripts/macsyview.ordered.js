@@ -82,6 +82,8 @@ macsyview.orderedview = (function () {
 			'viewBox' : [],
 			'paper' : null,
 			'zoom' : 1,
+			'container_id': null,
+			
 	};
 
 	/******************
@@ -249,7 +251,18 @@ macsyview.orderedview = (function () {
 				drawer.viewBox);
 	}
 
-
+	function fit_2_window(event){
+		var new_zoom = configMap.paper_w / $('#'+drawer.container_id).width();
+		drawer.zoom = new_zoom;
+		var nw_viewBox_w = Math.round(configMap.paper_w / drawer.zoom);
+		var nw_viewBox_h = Math.round(configMap.paper_h / drawer.zoom);
+		
+		drawer.viewBox = [0, 0, nw_viewBox_w, nw_viewBox_h];
+		drawer.paper.setViewBox.apply(
+				drawer.paper, 
+				drawer.viewBox);
+	}
+	
 	var draw = function(json_data, container){
 
         var container_w = $("#"+container).width();
@@ -271,13 +284,6 @@ macsyview.orderedview = (function () {
 		repliconGrphx.draw(paper);
 
 
-		//var zoom = configMap.paper_w / container_w;
-		//zoom = 1;
-		//console.log("paper_w = ",configMap.paper_w," paper_h = ", configMap.paper_h);
-		//console.log( "w = ",container_w," h = ",container_h);
-
-		//paper.setViewBox(0, 0, Math.round(configMap.paper_w * zoom) , configMap.paper_h , false);
-
 		for (var i = 0; i < repliconGrphx.genes.length; i++ ){
 			var g = repliconGrphx.genes[i];
 			g.arrow = g.draw(paper);
@@ -290,6 +296,7 @@ macsyview.orderedview = (function () {
 		$("#"+container+" :first-child").mouseup(stopRecord);
 		$("#"+container+" :first-child").mousewheel(wheel);
 		$('#resetZoom').click(reset);
+		$('#fit_2_window').click(fit_2_window);
 
 		/********************************************
 		 * replace cursor icon with open/close hand 
