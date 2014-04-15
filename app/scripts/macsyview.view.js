@@ -57,7 +57,21 @@ macsyview.view = (function () {
                     currentKey;
                 while (cmpRes === 0 && keysHere.length > 0) {
                     currentKey = keysHere.shift();
-                    cmpRes = pathValue(item1, currentKey, '').localeCompare(pathValue(item2, currentKey, ''));
+                    var i1 = pathValue(item1, currentKey, '');
+                    var i2 = pathValue(item2, currentKey, '');                    
+                    if (typeof i1 =="number"){
+                        // compare numeric values
+                        if(i1 <i2){
+                            cmpRes = -1;
+                        }else if(i1 == i2){
+                            cmpRes = 0;
+                        }else if(i1 > i2){
+                            cmpRes = 1;
+                        }
+                    }else{
+                        // compare string values
+                        cmpRes = i1.localeCompare(i2);
+                    }
                 }
                 return cmpRes;
             };
