@@ -252,7 +252,7 @@ macsyview.orderedview = (function () {
 	}
 
 	function fit_2_window(event){
-		var new_zoom = configMap.paper_w / $('#'+drawer.container_id).width();
+		var new_zoom = $('#'+drawer.container_id).width() / configMap.paper_w ;
 		drawer.zoom = new_zoom;
 		var nw_viewBox_w = Math.round(configMap.paper_w / drawer.zoom);
 		var nw_viewBox_h = Math.round(configMap.paper_h / drawer.zoom);
@@ -262,6 +262,7 @@ macsyview.orderedview = (function () {
 				drawer.paper, 
 				drawer.viewBox);
 	}
+	
 	
 	var draw = function(json_data, container){
 
