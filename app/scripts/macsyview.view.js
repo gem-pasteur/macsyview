@@ -102,7 +102,7 @@ macsyview.view = (function () {
             case "replicon.name":
                 tplData["sortBySystemLink"] = "list:" + macsyview.data.list().macsyviewId + ":by_system";
                 break;
-            case "systemName":
+            case "name":
                 tplData["sortByRepliconLink"] = "list:" + macsyview.data.list().macsyviewId + ":by_replicon";
                 break;
             }
