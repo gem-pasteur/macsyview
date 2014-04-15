@@ -74,13 +74,18 @@ macsyview.data = (function () {
                      var c = colorPicker.pick(g);
                      g.color =  c;
                      if(g.profile_coverage){
-                         g.profile_coverage = g.profile_coverage.toFixed(2);
+                         console.log(g);
+                         g.profile_coverage = parseFloat(g.profile_coverage).toFixed(2);
                      }
                      if(g.sequence_coverage){
-                         g.sequence_coverage = g.sequence_coverage.toFixed(2);
+                         g.sequence_coverage = parseFloat(g.sequence_coverage).toFixed(2);
                      }
                 }
                 /*
+                for (var i = 0; i < presence.length ; i++){
+                    var  p = presence[i];
+                    var arr = $.map(list[i].summary[p], function (value, key) { return {'name': key, 'value': value }});
+                }
                 for (var i = 0; i < presence.length ; i++){
                     var  p = presence[i];
                     var arr = [];
