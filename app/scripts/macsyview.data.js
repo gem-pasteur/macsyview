@@ -74,8 +74,6 @@ macsyview.data = (function () {
                      var c = colorPicker.pick(g);
                      g.color =  c;
                      if(g.profile_coverage){
-                         console.log(g.profile_coverage);
-                         console.log(typeof g.profile_coverage);
                          g.profile_coverage = g.profile_coverage.toFixed(2);
                      }
                      if(g.sequence_coverage){
