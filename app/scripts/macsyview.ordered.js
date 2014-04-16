@@ -159,6 +159,42 @@ macsyview.orderedview = (function () {
 		$(configMap.gene_infos_container).fadeOut();
 	};
 
+	var Scale = function(replicon_grphx ){
+		//in aa
+		this.replicon_grphx = replicon_grphx
+		var scales = [1000, 2000, 5000]
+		var len = Math.round(replicon_grphx.replicon.length / 10) ;
+		var round_len = null;
+		for (var i = 0; i < scales.length; i ++ ){
+			round_len = scales[i];
+			if(len - round_len < 0){
+				break;
+			}
+		}
+		this.length = round_len ;
+		this.graph = null;
+	};
+	
+	Scale.prototype.draw = function(paper){
+		var len_in_px =  Math.round(this.length / configMap.ratio_bp_px);
+		this.graph = paper.set();
+		var gene_grph_0 = this.replicon_grphx.genes[0].arrow;
+		var bbox = gene_grph_0.getBBox();
+		var X0 = bbox.x;
+		var Y0 = bbox.y2 + 20 ;
+		var thickness = 4;
+		var tick_len = 8;
+		var bar = paper.rect( X0, Y0 , len_in_px, thickness).attr({'fill': 'black'});
+		this.graph.push(bar);
+		var tick_0 = paper.rect(X0, Y0 , thickness, tick_len).attr({'fill': 'black'});
+		this.graph.push(tick_0);
+		var tick_1 = paper.rect(X0 + len_in_px - thickness , Y0 , thickness, tick_len).attr({'fill': 'black'});
+		this.graph.push(tick_1);
+		var start = paper.text(X0 + 4, Y0 + tick_len + 5, "0");
+		this.graph.push(start);
+		var end = paper.text(X0 + len_in_px , Y0 + tick_len + 5, this.length.toString() + " aa");
+		this.graph.push(end);
+	}
 
 	/********
 	 * Pan *
@@ -272,7 +308,8 @@ macsyview.orderedview = (function () {
 
         var replicon = new Replicon(json_data);
 		var repliconGrphx = new RepliconGrphx(replicon);
-
+		var scale = new Scale(repliconGrphx);
+		
 		configMap.paper_w = repliconGrphx.length + (2 * configMap.replicon_offset);
         if (configMap.paper_w < container_w){
             configMap.paper_w = container_w;
@@ -285,14 +322,16 @@ macsyview.orderedview = (function () {
 
 		repliconGrphx.draw(paper);
 
-
 		for (var i = 0; i < repliconGrphx.genes.length; i++ ){
 			var g = repliconGrphx.genes[i];
 			g.arrow = g.draw(paper);
 			g.arrow.mouseover(g.show.bind(g));
 			g.arrow.mouseout(g.hide.bind(g));
 		}
-
+		// the scale must be draw after the gene 
+		// because it use bbox of the gene to be placed at the right place
+		scale.draw(paper);
+		
 		$("#"+container+" :first-child").mousedown(startRecord);
 		$("#"+container+" :first-child").mousemove(doPan);
 		$("#"+container+" :first-child").mouseup(stopRecord);
