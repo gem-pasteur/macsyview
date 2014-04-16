@@ -39,7 +39,7 @@ macsyview.system = (function () {
             });
             $.each(summary[p], function(index, gene){
 				var occurence = parseInt(gene.value);
-				p_container.append('<span id="'+ gene.name +'" style="display: inline-block; width:50px;" title="'+ gene.name +'"><div style="background-color:' + gene.color + ';">&nbsp;&nbsp;&nbsp;&nbsp;</div><div>' + occurence + '</div></span>');
+				p_container.append('<span id="'+ gene.name +'" style="display: inline-block; width:50px;" title="'+ gene.name +'"><div style="background-color:' + gene.color + ';">&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="text-center">' + occurence + '</div></span>');
 				p_container.append('&nbsp;');
             });
 		}
