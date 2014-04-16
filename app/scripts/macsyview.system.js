@@ -30,20 +30,22 @@ macsyview.system = (function () {
 		
 		for (var i = 0; i < presence.length ; i++){
 			var  p = presence[i];
-			console.log( "i = ", i , " p = ",p);
 			var p_container = $("#"+container);
-            console.log(summary[p].length);
 			p_container.append('<div id="'+ p +'" style="width:' + summary[p].length + 'px;"></div>'); 
 			p_container.append("<h3>"+p+"</h3>");
-			for (var g_name in summary[p]){
-				var occurence = parseInt(summary[p][g_name]);
-				var color = colorMap["empty"];
+            // sort alphabetically by gene name
+            summary[p].sort(function(gene1, gene2){
+                return gene1.name.localeCompare(gene2.name);
+            });
+            $.each(summary[p], function(index, gene){
+				var occurence = parseInt(gene.value);
+				var color = colorMap["empty"];                
 				if(occurence){
 					color = colorMap[p];
 				}
-				p_container.append('<span id="'+ g_name +'" style="display: inline-block; width:50px;" title="'+ g_name +'"><div style="background-color:' + color + ';">&nbsp;&nbsp;&nbsp;&nbsp;</div><div>' + summary[p][g_name] + '</div></span>');
+				p_container.append('<span id="'+ gene.name +'" style="display: inline-block; width:50px;" title="'+ gene.name +'"><div style="background-color:' + color + ';">&nbsp;&nbsp;&nbsp;&nbsp;</div><div>' + occurence + '</div></span>');
 				p_container.append('&nbsp;');
-			}
+            });
 		}
 	};
 	

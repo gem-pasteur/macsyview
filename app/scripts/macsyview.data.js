@@ -80,21 +80,13 @@ macsyview.data = (function () {
                          g.sequence_coverage = parseFloat(g.sequence_coverage).toFixed(2);
                      }
                 }
-                /*
-                for (var i = 0; i < presence.length ; i++){
-                    var  p = presence[i];
+                for (var j = 0; j < presence.length ; j++){
+                    console.log(presence[j]);
+                    var  p = presence[j];
+                    console.log(p);
                     var arr = $.map(list[i].summary[p], function (value, key) { return {'name': key, 'value': value }});
-                }
-                for (var i = 0; i < presence.length ; i++){
-                    var  p = presence[i];
-                    var arr = [];
-                    for (var g_name in list[i].summary[p]){
-                        list[i].summary[p][g_name]['name'] = g_name;
-                        console.log(list[i].summary[p][g_name]);
-                        arr.push(list[i].summary[p][g_name]);
-                    }
                     list[i].summary[p]=arr;
-                }*/
+                }
             }
             callback();
         });
