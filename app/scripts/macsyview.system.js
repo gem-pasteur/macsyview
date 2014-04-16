@@ -16,9 +16,7 @@
 macsyview.system = (function () {
 	'use strict';
 
-	var presence = ["mandatory", "allowed", "forbidden"],
-	
-	    draw = function (json_data, container) {
+	var draw = function (json_data, container) {
             var summary = json_data.summary,
                 i,
                 p,
@@ -26,6 +24,10 @@ macsyview.system = (function () {
                 gene_sort_alpha = function (gene1, gene2) {
                     return gene1.name.localeCompare(gene2.name);
                 },
+                gene_sort_occ = function (gene1, gene2) {
+                    return parseInt(gene2.value, 10) - parseInt(gene1.value, 10);
+                },
+
                 draw_gene = function (index, gene) {
                     var occurence = parseInt(gene.value, 10),
                         // use gene color if the number of occurences is >0
@@ -34,12 +36,13 @@ macsyview.system = (function () {
                     p_container.append('&nbsp;');
                 };
 
-            for (i = 0; i < presence.length; i++) {
-                p = presence[i];
+            for (i = 0; i < macsyview.data.presence.length; i++) {
+                p = macsyview.data.presence[i];
                 p_container.append('<div id="' + p + '" style="width:' + summary[p].length + 'px;"></div>');
                 p_container.append("<h3>" + p + "</h3>");
                 // sort alphabetically by gene name
                 summary[p].sort(gene_sort_alpha);
+                summary[p].sort(gene_sort_occ);
                 $.each(summary[p], draw_gene);
             }
         };

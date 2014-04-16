@@ -18,11 +18,14 @@ macsyview.data = (function () {
     var loadFile,
         load,
         reset,
+        presence,
         list = [];
 
     reset = function () {
         list = [];
     };
+
+    presence = ["mandatory", "accessory", "forbidden"];
     
     loadFile = function (textFileHandle, loadedCallback) {
         var result = "",
@@ -60,7 +63,6 @@ macsyview.data = (function () {
     load = function (jsonFileHandle, callback) {
         loadFile(jsonFileHandle, function (jsonText) {
             var i, j;
-            var presence = ["mandatory", "allowed", "forbidden"];
             console.log('parsing json begins...');
             list = JSON.parse(jsonText);
             list.macsyviewId = Date.now();
@@ -98,6 +100,7 @@ macsyview.data = (function () {
     return {
         load: load,
         reset: reset,
+        presence: presence,
         list: function () {
             return list;
         }
