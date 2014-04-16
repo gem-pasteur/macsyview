@@ -62,6 +62,7 @@ macsyview.orderedview = (function () {
 		this.id = json_gene.id;
 		this.profile_coverage = json_gene.profile_coverage;
 		this.i_eval = json_gene.i_eval;
+        this.function = json_gene.function;
 		this.position = json_gene.position;
 		this.length = json_gene.sequence_length;
 		this.match = json_gene.match;
