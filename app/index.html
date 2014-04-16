@@ -68,21 +68,21 @@
     <!-- endbuild -->
 
     <script id="systemMatchesList" type="text/mustache-tmpl">
+        <p class="alert alert-info">click on a system to display its detail</p>
         <table class="span12 table table-hover tab-striped">
             <tr>
-                <th style="width: 20%">Replicon Name 
+                <th style="width: 30%">Replicon Name 
                    {{#sortByRepliconLink}}
                    <a href="#!{{sortByRepliconLink}}" title="sort by replicon first"><span class="glyphicon glyphicon-chevron-down"></span></a>
                    {{/sortByRepliconLink}}
                 </th>
-                <th style="width: 20%">System Name 
+                <th style="width: 20%">System Type 
                    {{#sortBySystemLink}}
                    <a href="#!{{sortBySystemLink}}" title="sort by system first"><span class="glyphicon glyphicon-chevron-down"></span></a>
                    {{/sortBySystemLink}}
                 </th>
                 <th style="width: 40%">System Id</th>
                 <th style="width: 10%">Status</th>
-                <th style="width: 10%">Occurence No.</th>
             </tr>
             {{#files}}
             <tr class="txsview-systemmatchtablerow" data-systemmatchid="{{id}}">
@@ -90,7 +90,6 @@
                 <td>{{name}}</td>
                 <td>{{id}}</td>
                 <td>{{summary.state}}</td>
-                <td>{{occurenceNumber}}</td>
             </tr>
             {{/files}}
         </table>
@@ -120,7 +119,7 @@
                 <h3 class="panel-title">Repertoire of components</h3>
             </div>
             <div class="panel-body">
-                <i>hover boxes to display information</i>
+                <p class="alert alert-info">hover boxes to display information</p>
                 <div class="panel panel-default">
                     <div id="system_schema" class="panel-default" style="width: 100%; overflow: scroll;"/>
                 </div>
@@ -132,7 +131,7 @@
                 <h3 class="panel-title">Genomic context of the detected system</h3>
             </div>
             <div class="panel-body">
-                <i>hover boxes to display information</i>
+                <p class="alert alert-info">hover boxes to display information</p>
                 <div class="panel panel-default" style="position: relative;">
                     <div class="panel-default" style="width: 100%; overflow: scroll;">
                     <div id="replicon_schema"></div>
