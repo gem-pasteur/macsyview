@@ -81,10 +81,13 @@ macsyview.data = (function () {
                      }
                 }
                 for (var j = 0; j < presence.length ; j++){
-                    console.log(presence[j]);
                     var  p = presence[j];
-                    console.log(p);
-                    var arr = $.map(list[i].summary[p], function (value, key) { return {'name': key, 'value': value }});
+                    var arr = $.map(list[i].summary[p], 
+                                    function (value, key) {
+                                        return {'name': key,
+                                                'color': colorPicker.pick({'match': key}),
+                                                'value': value };
+                                    });
                     list[i].summary[p]=arr;
                 }
             }

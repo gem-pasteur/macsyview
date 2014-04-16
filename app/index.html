@@ -117,7 +117,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Effectives of system components</h3>
+                <h3 class="panel-title">Repertoire of components</h3>
             </div>
             <div class="panel-body">
                 <i>hover boxes to display information</i>
@@ -156,13 +156,13 @@
                             <th>Color</th>            
                             <th>Sequence Id</th>
                             <th>Position</th>
-                            <th>Match</th>
+                            <th>Profile Match</th>
                             <th>Function</th>
                             <th>Gene status</th>
                             <th>System</th>
-                            <th>Sequence length</th>
+                            <th>Protein length (aa)</th>
                             <th>Score</th>
-                            <th>i-evalue</th>
+                            <th style="whitespace: nowrap;">i-evalue</th>
                             <th>Profile coverage</th>                
                             <th>Sequence coverage</th>
                             <th>Begin match</th>
@@ -210,7 +210,7 @@
                       <li>match:&nbsp;{{.}}</li>
                       {{/match}}
                       {{#function}}
-                      <li>function:&nbsp;<em>{{.}}</em></li>
+                      <li>function:&nbsp;{{.}}</li>
                       {{/function}}
                       {{#match}}
                       <li>i-evalue:&nbsp;{{i_eval}}</li>
