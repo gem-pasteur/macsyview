@@ -310,7 +310,17 @@ macsyview.orderedview = (function () {
 				drawer.viewBox);
 	}
 	
-	
+	function export_svg(event){
+		console.log("IN export_svg");
+		var svgString = drawer.paper.toSVG();
+		console.log("svgString = ",svgString);
+        var a = $('#export_svg_link');
+        a.attr('download', 'mySvg.svg');
+        a.attr('type', 'image/svg+xml');
+        var blob = new Blob([svgString], {"type": "image/svg+xml"});
+        a.attr('href', (window.URL || webkitURL).createObjectURL(blob));
+	 }
+	 
 	var draw = function(json_data, container){
 
         var container_w = $("#"+container).width();
@@ -342,6 +352,10 @@ macsyview.orderedview = (function () {
 		// because it use bbox of the gene to be placed at the right place
 		scale.draw(paper);
 		
+		console.log('#export_svg_link', $('#export_svg_link').length);
+		if ( $('#export_svg_link').length){
+			$('#export_svg_link').click(export_svg);
+		};
 		$("#"+container+" :first-child").mousedown(startRecord);
 		$("#"+container+" :first-child").mousemove(doPan);
 		$("#"+container+" :first-child").mouseup(stopRecord);
