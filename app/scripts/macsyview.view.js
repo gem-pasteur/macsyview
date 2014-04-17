@@ -80,7 +80,10 @@ macsyview.view = (function () {
         displaySystemMatchFileDetail = function (doc) {
             displayView('systemMatchDetail', doc);
             macsyview.system.draw(doc, "system_schema");
-            macsyview.orderedview.draw(doc, "replicon_schema");
+            if(macsyview.data.isOrdered()){
+                $("#genomicContextPanel").removeClass("hidden");
+                macsyview.orderedview.draw(doc, "replicon_schema");
+            }
         },
 
         initSystemMatchSelectionHandler = function () {
@@ -96,7 +99,7 @@ macsyview.view = (function () {
             list.sort(sortByKeys(sortKeys));
             var tplData = {
                 'files': list,
-                'sortKey': sortKeys[0]
+                'sortKey': sortKeys[0],
             };
             switch (sortKeys[0]) {
             case "replicon.name":
@@ -106,7 +109,8 @@ macsyview.view = (function () {
                 tplData["sortByRepliconLink"] = "list:" + macsyview.data.list().macsyviewId + ":by_replicon";
                 break;
             }
-            displayView('systemMatchesList', tplData);
+            var tplName = macsyview.data.isOrdered() ? 'systemMatchesOrderedList' : 'systemMatchesUnorderedList';
+            displayView(tplName, tplData);
             initSystemMatchSelectionHandler();
             displayWaitSplash(false);
         },

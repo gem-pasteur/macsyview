@@ -19,6 +19,7 @@ macsyview.data = (function () {
         load,
         reset,
         presence,
+        isOrdered = false,
         list = [];
 
     reset = function () {
@@ -69,20 +70,25 @@ macsyview.data = (function () {
             console.log('parsing json finished!');
             var utils = macsyview.utils;
             var colorPicker = utils.colorPicker;
+            if (list[0] !== undefined && list[0].occurenceNumber !== undefined) {
+                isOrdered = true;
+            }else{
+                isOrdered = false;
+            }
             for (i = 0; i < list.length; i++) {
                  //list[i].id = i; //TODO remove as soon as Bertrand provides the ID
-                 for(j = 0; j < list[i].genes.length; j++){
-                     var g = list[i].genes[j];
-                     var c = colorPicker.pick(g);
-                     g.color =  c;
-                     if(g.profile_coverage){
-                         g.profile_coverage = parseFloat(g.profile_coverage).toFixed(2);
-                     }
-                     if(g.sequence_coverage){
-                         g.sequence_coverage = parseFloat(g.sequence_coverage).toFixed(2);
-                     }
+                for (j = 0; j < list[i].genes.length; j++) {
+                    var g = list[i].genes[j];
+                    var c = colorPicker.pick(g);
+                    g.color =  c;
+                    if (g.profile_coverage) {
+                        g.profile_coverage = parseFloat(g.profile_coverage).toFixed(2);
+                    }
+                    if (g.sequence_coverage) {
+                        g.sequence_coverage = parseFloat(g.sequence_coverage).toFixed(2);
+                    }
                 }
-                for (var j = 0; j < presence.length ; j++){
+                for (var j = 0; j < presence.length ; j++) {
                     var  p = presence[j];
                     var arr = $.map(list[i].summary[p], 
                                     function (value, key) {
@@ -103,6 +109,9 @@ macsyview.data = (function () {
         presence: presence,
         list: function () {
             return list;
+        },
+        isOrdered: function(){
+            return isOrdered
         }
     };
 

@@ -68,7 +68,7 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <script id="systemMatchesList" type="text/mustache-tmpl">
+    <script id="systemMatchesOrderedList" type="text/mustache-tmpl">
         <p class="alert alert-info">click on a system to display its details</p>
         <table class="span12 table table-hover tab-striped">
             <tr>
@@ -96,6 +96,22 @@
         </table>
     </script>
 
+    <script id="systemMatchesUnorderedList" type="text/mustache-tmpl">
+        <p class="alert alert-info">click on a system to display its details</p>
+        <table class="span12 table table-hover tab-striped">
+            <tr>
+                <th style="width: 20%">System Type 
+                </th>
+            </tr>
+            {{#files}}
+            <tr class="txsview-systemmatchtablerow" data-systemmatchid="{{id}}">
+                <td>{{name}}</td>
+            </tr>
+            {{/files}}
+        </table>
+    </script>
+
+    
     <script id="runSelectForm" type="text/mustache-tmpl">
         <div class="jumbotron">
             <h1>
@@ -127,7 +143,7 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
+        <div class="panel panel-default hidden" id="genomicContextPanel">
             <div class="panel-heading">
                 <h3 class="panel-title">Genomic context of the detected system</h3>
             </div>
