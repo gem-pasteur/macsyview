@@ -39,14 +39,16 @@ macsyview.utils = (function () {
 		                 "DarkOrange", "DarkGoldenRod", "DarkKhaki", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray", "DeepPink", "DodgerBlue", 
 		                 "FireBrick", 
 		                 "Gold", "GreenYellow", 
-		                 "IndianRed",  
+		                 "HotPink",
+		                 "IndianRed", "Indigo", 
 		                 "Khaki",
-		                 "MediumOrchid", "MediumSeaGreen", 
+		                 "LightCoral", "LightGreen", "LightPink", "LightSeaGreen", "LightSlateGray", 
+		                 "MediumOrchid", "MediumSeaGreen", "MediumSlateBlue", "Moccasin", 
 		                 "Olive", "OliveDrab", "Orange", "OrangeRed", 
-		                 "Peru", "Purple", 
-		                 "Red",
-		                 "SaddleBrown", "Salmon", "SandyBrown", 
-		                 "Tomato", 
+		                 "PaleVioletRed", "Peru", "Plum", "Purple", 
+		                 "Red", "RosyBrown", 
+		                 "SaddleBrown", "Salmon", "SandyBrown", "SteelBlue",
+		                 "Teal", "Tomato", 
 		                 "Yellow", "YellowGreen" 
 		                 ];
 
@@ -56,7 +58,7 @@ macsyview.utils = (function () {
 			if(gene.match){
 				var key = 0;
 				for( var i = 0; i < gene.match.length; i++){
-					key += gene.match.charCodeAt(i);
+					key += (gene.match.charCodeAt(i) * (i + 1));
 				};
 				key %= this.colorMap.length;
 				color = this.colorMap[key];
