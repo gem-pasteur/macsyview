@@ -5,7 +5,7 @@
 // │ Copyright © 2014 Institut Pasteur, Paris.                            │ \\
 // │ See the COPYRIGHT file for details.                                  │ \\
 // ├──────────────────────────────────────────────────────────────────────┤ \\
-// │ MacsyFinder is distributed under the terms of the                    │ \\
+// │ MacSyView is distributed under the terms of the                      │ \\
 // │ GNU General Public License (GPLv3). See the COPYING file for details.│ \\
 // └──────────────────────────────────────────────────────────────────────┘ \\
 

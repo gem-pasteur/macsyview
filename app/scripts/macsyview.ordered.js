@@ -5,7 +5,7 @@
 // │ Copyright © 2014 Institut Pasteur, Paris.                            │ \\
 // │ See the COPYRIGHT file for details.                                  │ \\
 // ├──────────────────────────────────────────────────────────────────────┤ \\
-// │ MacsyFinder is distributed under the terms of the                    │ \\
+// │ MacSyView is distributed under the terms of the                      │ \\
 // │ GNU General Public License (GPLv3). See the COPYING file for details.│ \\
 // └──────────────────────────────────────────────────────────────────────┘ \\
 
@@ -311,9 +311,7 @@ macsyview.orderedview = (function () {
 	}
 	
 	function export_svg(event){
-		console.log("IN export_svg");
 		var svgString = drawer.paper.toSVG();
-		console.log("svgString = ",svgString);
         var a = $('#export_svg_link');
         a.attr('download', 'mySvg.svg');
         a.attr('type', 'image/svg+xml');
