@@ -327,7 +327,6 @@ macsyview.orderedview = (function () {
 		var container_h = $("#"+container).height();
 
 		current_system_id = json_data.id;
-		console.log( 'current_system_id = ', current_system_id);
         var replicon = new Replicon(json_data);
 		var repliconGrphx = new RepliconGrphx(replicon);
 		var scale = new Scale(repliconGrphx);
@@ -354,7 +353,6 @@ macsyview.orderedview = (function () {
 		// because it use bbox of the gene to be placed at the right place
 		scale.draw(paper);
 		
-		console.log('#export_svg_link', $('#export_svg_link').length);
 		if ( $('#export_svg_link').length){
 			$('#export_svg_link').click(export_svg);
 		};
