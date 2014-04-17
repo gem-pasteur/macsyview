@@ -137,8 +137,12 @@
             </div>
             <div class="panel-body">
                 <p class="alert alert-info">hover boxes to display information</p>
-                <div class="panel panel-default">
+                <div class="panel panel-default"  style="position: relative;">
                     <div id="system_schema" class="panel-default" style="width: 100%; overflow: scroll;"/>
+                    <div style="position: absolute; bottom: 0; right: 2px;">
+                        <button id="sortByGeneName" class="btn btn-primary" title="sort system components by gene name"><i class="glyphicon glyphicon-sort-by-alphabet"></i></button>
+                        <button id="sortByOcc" class="btn btn-primary" title="sort system components by occurence number"><i class="glyphicon glyphicon-sort-by-attributes-alt"></i></button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -90,7 +90,7 @@ macsyview.view = (function () {
 
         displaySystemMatchFileDetail = function (doc) {
             displayView('systemMatchDetail', doc);
-            macsyview.system.draw(doc, "system_schema");
+            macsyview.system.init(doc, "system_schema");
             if(macsyview.data.isOrdered()){
                 $("#genomicContextPanel").removeClass("hidden");
                 macsyview.orderedview.draw(doc, "replicon_schema");
