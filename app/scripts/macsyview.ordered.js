@@ -43,6 +43,8 @@ macsyview.orderedview = (function () {
 	/***********************
 	 *  Business objects
 	 ***********************/
+	
+	var current_system_id = null;
 
 	/*************************
 	 *        Replicon
@@ -313,7 +315,7 @@ macsyview.orderedview = (function () {
 	function export_svg(event){
 		var svgString = drawer.paper.toSVG();
         var a = $('#export_svg_link');
-        a.attr('download', 'mySvg.svg');
+        a.attr('download', current_system_id + '.svg');
         a.attr('type', 'image/svg+xml');
         var blob = new Blob([svgString], {"type": "image/svg+xml"});
         a.attr('href', (window.URL || webkitURL).createObjectURL(blob));
@@ -324,6 +326,8 @@ macsyview.orderedview = (function () {
         var container_w = $("#"+container).width();
 		var container_h = $("#"+container).height();
 
+		current_system_id = json_data.id;
+		console.log( 'current_system_id = ', current_system_id);
         var replicon = new Replicon(json_data);
 		var repliconGrphx = new RepliconGrphx(replicon);
 		var scale = new Scale(repliconGrphx);
