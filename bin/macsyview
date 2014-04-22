@@ -1,0 +1,25 @@
+#! /bin/sh
+
+browser='chromium firefox'
+macsyview_start=$MACSYVIEW
+
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
+found_browser=0
+
+for i in $browser; 
+do
+	if command_exists $i; 
+	then
+	    found_browser=1
+		$i ${macsyview_start} 2> /dev/null &
+		break
+	fi
+done
+if [ $found_browser -eq 0 ];
+then
+    echo "No web browser (firefox or chrome) detected."
+    echo "You must open file ${macsyview_start} with one of these web browsers."
+fi
