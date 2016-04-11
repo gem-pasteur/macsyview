@@ -81,7 +81,7 @@ macsyview.data = (function () {
             console.log('parsing json finished!');
             var utils = macsyview.utils;
             var colorPicker = utils.colorPicker;
-            if (list[0] !== undefined && list[0].occurenceNumber !== undefined) {
+            if (list[0] !== undefined && list[0].occurrence_number !== undefined) {
                 isOrdered = true;
             }else{
                 isOrdered = false;
