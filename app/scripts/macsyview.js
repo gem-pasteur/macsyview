@@ -46,11 +46,11 @@ var macsyview = (function () {
                     checkDataId();
                     switch (location.hash.split(":")[2]) {
                     case "by_system":
-                        macsyview.view.displaySystemMatches(['name', 'replicon.name', 'occurenceNumber']);
+                        macsyview.view.displaySystemMatches(['name', 'replicon.name', 'occurrence_number']);
                         break;
                     case "by_replicon":
                     default:
-                        macsyview.view.displaySystemMatches(['replicon.name', 'name', 'occurenceNumber']);  
+                        macsyview.view.displaySystemMatches(['replicon.name', 'name', 'occurrence_number']);  
                         break;
                     }
                     break;
