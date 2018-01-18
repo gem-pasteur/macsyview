@@ -5,20 +5,20 @@ OS="$(uname -s)"
 macsyview_start=$MACSYVIEW
 
 command_exists () {
-    type "$1" &> /dev/null ;
+    command -v "$1" > /dev/null 2>&1;
 }
 
 #############################################
 
 case "${OS}" in
     Linux*)
-
     supported_browser='chromium firefox'
     found_browser=0
 
     for browser in $supported_browser;
         do
-        if command_exists $i;
+        command_exists $browser
+        if command_exists $browser;
             then
             found_browser=1
             ${browser} ${macsyview_start} 2> /dev/null &
@@ -43,5 +43,5 @@ case "${OS}" in
             exit $?
         fi
     ;;
-
+esac
 
